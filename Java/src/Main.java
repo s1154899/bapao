@@ -33,7 +33,7 @@ public class Main extends JFrame {
         menu = new JPanel();
         menu.setLayout(grid);
 
-        String[] buttons = {"Songs" , "Results", "Playlists","Actions", "Edit_Playlist","Sensors","playing" };
+        String[] buttons = {"Songs", "Results", "Playlists", "Actions", "Edit_Playlist", "Sensors", "Playing" };
 
         for(String button : buttons) {
             //creates button for creating the senors page
@@ -57,6 +57,9 @@ public class Main extends JFrame {
     //function called when songs button is pressed
     public void SongsPage(){
         remove(menu);
+
+        Songs songs = new Songs(this, true);
+        add(songs);
 
         revalidate();
         repaint();
@@ -101,13 +104,15 @@ public class Main extends JFrame {
         repaint();
     }
     //function called when playing is pressed
-    public void playingPage(){
+    public void PlayingPage(){
         remove(menu);
+
+        Playing playing = new Playing();
+        add(playing);
 
         revalidate();
         repaint();
     }
-
 }
 
 class Reflect{
