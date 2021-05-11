@@ -11,30 +11,23 @@ public class Songs extends JDialog {
         super(frame, modal);
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width, r.height);
-
-        JPanel songsPanel = new JPanel();
-        songsPanel.setLayout(new GridLayout(songNames.size(), 1));
+        setLayout(new BorderLayout());
 
         songNames.add("test 1");
         songNames.add("test 2");
         songNames.add("test 3");
         songNames.add("test 4");
         songNames.add("test 5");
-        songNames.add("test 5");
-        songNames.add("test 5");
-        songNames.add("test 5");
-        songNames.add("test 5");
-        songNames.add("test 5");
-        songNames.add("test 5");
-        songNames.add("test 5");
 
         for (String name : songNames){
             JButton songName = new JButton(name);
             //songName.addActionListener((ActionListener) this);
-            songsPanel.add(songName);
+            add(songName);
+
         }
 
-        add(songsPanel);
+//        JScrollPane scrollPane = new JScrollPane(new JTextArea(10, 20), JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+//        add(scrollPane);
 
         Playing playing = new Playing();
         add(playing,BorderLayout.EAST);
