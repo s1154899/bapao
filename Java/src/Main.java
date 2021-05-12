@@ -79,8 +79,15 @@ public class Main extends JFrame {
     public void PlaylistsPage(){
         remove(menu);
 
+        Playlists playlists = new Playlists(this, true);
+        add(playlists);
+
         revalidate();
         repaint();
+
+
+
+
     }
     //function called when actions is pressed
     public void ActionsPage(){
