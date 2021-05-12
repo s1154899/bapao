@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/bapao.iml" filepath="$PROJECT_DIR$/.idea/bapao.iml" />
+
+      <module fileurl="file://$PROJECT_DIR$/bapao.iml" filepath="$PROJECT_DIR$/bapao.iml" />
+
     </modules>
   </component>
 </project>
