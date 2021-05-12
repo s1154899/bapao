@@ -5,9 +5,14 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+
 
 public class RaspberryPi {
 
+    public static ArrayList<RaspberryPi> connectedPis = new ArrayList<>();
     private static final int BUFFER_SIZE = 4096;
     private String host = "192.168.2.4";
     private String user = "pi";
@@ -15,11 +20,23 @@ public class RaspberryPi {
     private String filePath = "C:/Users/edmar/Downloads/5758.jpg";
     private String uploadPath = "/files/pic.jpg";
 
+    public DatabaseCon databaseCon;
+
     public static void main(String[] args) {
-        RaspberryPi r = new RaspberryPi();
-        r.UploadMusic("test.mp3");
+//        RaspberryPi r = new RaspberryPi();
+//        r.UploadMusic("test.mp3");
     }
 
+    public RaspberryPi(String Host){
+        host = Host;
+        try {
+            databaseCon = new DatabaseCon(host);
+            connectedPis.add(this);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
 
     public void UploadMusic(String name){
         upload("C:/Users/edmar/Downloads/test.mp3","/music/"+name);
@@ -55,6 +72,12 @@ public class RaspberryPi {
             ex.printStackTrace();
         }
     }
+
+
+    public String getHost() {
+        return host;
+    }
+
 
 
 }
