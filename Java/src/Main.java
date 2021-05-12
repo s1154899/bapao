@@ -1,8 +1,12 @@
+import raspberry.RaspberryPi;
+import raspberry.SubnetCheck;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 
 public class Main extends JFrame {
 
@@ -49,6 +53,10 @@ public class Main extends JFrame {
         //adds the menu to the main screen
         add(menu, BorderLayout.CENTER);
 
+        //SubnetCheck subnetCheck = new SubnetCheck(this,true);
+
+        new RaspberryPi("192.168.2.4");
+
         //turns the Jframe Visible
         setVisible(true);
 
@@ -65,12 +73,20 @@ public class Main extends JFrame {
         repaint();
     }
     //function called when results button is pressed
-    public void ResultsPage(){
+    public void ResultsPage() {
         remove(menu);
 
+        RaspberryPi pi = RaspberryPi.connectedPis.get(0);
         Graphs graphs = new Graphs();
 
-        add(graphs.lineGraph());
+        try {
+
+            add(graphs.lineGraph(pi.databaseCon.getTemp()));
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
         revalidate();
         repaint();
         System.out.println("x");

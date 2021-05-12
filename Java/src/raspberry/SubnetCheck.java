@@ -44,7 +44,7 @@ public class SubnetCheck extends JDialog {
                         try {
                             pi.databaseCon.viewTable();
                         } catch (SQLException throwables) {
-                            throwables.printStackTrace();
+//                            throwables.printStackTrace();
                         }
                     }
                 }
