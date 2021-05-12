@@ -1,3 +1,4 @@
+package raspberry;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,27 +15,25 @@ class DatabaseCon{
     String serverName;
     String portNumber = "3306";
 
+    private Connection con;
 
-    public static void main(String args[]) throws ClassNotFoundException {
 
-//        Class.forName("com.mysql.cj.jdbc.Driver");
-        DatabaseCon dcon = new DatabaseCon("127.0.0.1");
-        try {
-            Connection connection = dcon.getConnection();
-            DatabaseCon.viewTable(connection);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
+//    public static void main(String args[]) throws ClassNotFoundException {
+//
+////        Class.forName("com.mysql.cj.jdbc.Driver");
+//        DatabaseCon dcon = new DatabaseCon("127.0.0.1");
+//        try {
+//            Connection connection = dcon.getConnection();
+//            DatabaseCon.viewTable(connection);
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
+//    }
 
-    public DatabaseCon(String serverName){
+    public DatabaseCon(String serverName) throws SQLException {
         this.serverName = serverName;
-        try {
-            Connection con = getConnection();
-            DatabaseCon.viewTable(con);
-        } catch (SQLException throwables) {
-            //throwables.printStackTrace();
-        }
+        con = getConnection();
+
     }
 
 
@@ -64,14 +63,14 @@ class DatabaseCon{
     }
 
 
-    public static void viewTable(Connection con) throws SQLException {
-        String query = "SELECT * FROM `meting`";
+    public void viewTable() throws SQLException {
+        String query = "SELECT * FROM `meting` A LEFT JOIN meting_types B ON A.metingTypesID = B.TypeID;";
         try (Statement stmt = con.createStatement()) {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                String coffeeName = rs.getString("meting");
-
-                System.out.println(coffeeName);
+                String meting = rs.getString("meting");
+                String type = rs.getString("type");
+                System.out.println(meting+ " " + type);
             }
         } catch (SQLException e) {
             //e.printStackTrace();

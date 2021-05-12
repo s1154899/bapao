@@ -1,3 +1,8 @@
+package raspberry;
+
+import raspberry.RaspberryPi;
+import raspberry.SubnetCheck;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -18,18 +23,21 @@ public class CheckHost extends Thread {
         super.run();
 
         int timeout = 50;
-        for (int i = 1; i < 255; i++) {
+        for (int i = 1; i <= 255; i++) {
             String host = subnet + "." + i;
             try {
                 if (InetAddress.getByName(host).isReachable(timeout)) {
                     System.out.println(host + " is reachable");
-                    openIps.add(host);
+//                    openIps.add(host);
+                    new RaspberryPi(host);
                 }
             } catch (UnknownHostException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+            SubnetCheck.addOneToProgress();
         }
         done = true;
     }
