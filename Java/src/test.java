@@ -21,7 +21,7 @@ public class test extends JDialog {
         JProgressBar checkingIp = new JProgressBar(0, 255 * 255);
         checkingIp.setPreferredSize(new Dimension(500,50));
 
-        checkingIp.setValue(200);
+//        checkingIp.setValue(200);
 
 
 

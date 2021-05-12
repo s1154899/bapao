@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Properties;
 
-class DatabaseCon{
+public class DatabaseCon{
 
     String userName = "app";
     String password = "admin";
@@ -76,4 +76,44 @@ class DatabaseCon{
             //e.printStackTrace();
         }
     }
+
+    public int[] getTemp() throws SQLException {
+
+        String query = "SELECT COUNT(*) A FROM `meting` where metingTypesID = 1;";
+        int size =0;
+        try (Statement stmt = con.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+
+
+            while (rs.next())
+            {
+//                rs.last();    // moves cursor to the last row
+                size = Integer.parseInt(rs.getString("A")); // get row id
+            }
+
+        } catch (SQLException e) {
+            //e.printStackTrace();
+        }
+
+        int[] amount = new int[size];
+
+        query = "SELECT * FROM `meting` where metingTypesID = 1;";
+        try (Statement stmt = con.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            int i = 0;
+            while (rs.next()) {
+                amount[i] = Integer.parseInt(rs.getString("meting"));
+                //String type = rs.getString("type");
+//                System.out.println(meting);
+                i++;
+            }
+
+        } catch (SQLException e) {
+            //e.printStackTrace();
+        }
+
+        return amount;
+    }
+
+
 }
