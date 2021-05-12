@@ -6,26 +6,23 @@ import java.lang.reflect.InvocationTargetException;
 
 public class Main extends JFrame {
 
-
     public JPanel menu;
-
 
     public static void main(String[] args) {
         new Main();
 
     }
 
-
     //creates the main page for the domotica system
     public Main(){
         super();
         setTitle("Domotica: home screen");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width,r.height);
 
         //layout for the main panel
         BorderLayout border = new BorderLayout();
-
         setLayout(border);
 
         //layout for the menu
