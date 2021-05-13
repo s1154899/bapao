@@ -5,18 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36aed5e0-e1db-4a97-8ae4-5cb7fe230041" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/json_simple_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Accounts.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/AccountManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Login.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Register.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/RaspMetingen.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/RaspMetingen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bapao.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bapao.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/DatabaseCon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/DatabaseCon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/AccountManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/AccountManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Songs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Songs.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +63,18 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Application.AccountManager">
+  <component name="RunManager" selected="Application.Main">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AccountManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AccountManager" />
       <module name="bapao" />
@@ -103,21 +110,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AccountManager" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.AccountManager" />
         <item itemvalue="Application.DatabaseCon" />
         <item itemvalue="Application.findDrivers" />
         <item itemvalue="Application.SubnetCheck" />
