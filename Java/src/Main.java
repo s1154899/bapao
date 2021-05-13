@@ -59,7 +59,7 @@ public class Main extends JFrame {
 
     //function called at the start for displaying a log-in screen
     public void loginPage(){
-        remove(menu);
+        setVisible(false);
 
         Login login = new Login(this, true);
 
