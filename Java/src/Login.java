@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,9 +8,10 @@ import java.awt.event.ActionListener;
 public class Login extends JDialog {
 
     private JButton login;
+    private JButton goToRegister;
 
-    JTextArea usernameInput;
-    JTextArea passwordInput;
+    JTextField usernameInput;
+    JTextField passwordInput;
 
     private AccountManager accountManager;
     private String insertedName;
@@ -19,7 +21,14 @@ public class Login extends JDialog {
 
     private JFrame frame;
 
+    public Register register;
+
     public Login(JFrame frame, boolean modal){
+
+        this.frame = frame;
+
+        register = new Register(frame, modal, this);
+
         //super(frame, modal);
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(500,700);
@@ -33,7 +42,6 @@ public class Login extends JDialog {
         loginPanel.setLayout(new BorderLayout());
 
         JLabel title = new JLabel("Login", SwingConstants.CENTER);
-        title.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         title.setPreferredSize(new Dimension(400,100));
         title.setMaximumSize(new Dimension(400,100));
@@ -44,33 +52,62 @@ public class Login extends JDialog {
         loginPanel.add(title, BorderLayout.PAGE_START);
 
         JPanel centerPanel = new JPanel();
-        centerPanel.setLayout(new GridLayout(4, 1));
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        Box[] boxes = new Box[4];
+
+        for (int i = 0; i < boxes.length; i++){
+            boxes[i] = Box.createHorizontalBox();
+            centerPanel.add(boxes[i]);
+        }
+
+
+
+        centerPanel.setPreferredSize(new Dimension(480,100));
+        centerPanel.setMaximumSize(new Dimension(480,100));
+        centerPanel.setBackground(null);
+
         JLabel username = new JLabel("Username:");
-        username.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        username.setPreferredSize(new Dimension(460,30));
+        username.setMaximumSize(new Dimension(460,30));
+        boxes[0].add(username);
 
-        username.setPreferredSize(new Dimension(400,30));
-        username.setMaximumSize(new Dimension(400,30));
+        usernameInput = new JTextField();
+        usernameInput.setFont(usernameInput.getFont().deriveFont(20f));
+        usernameInput.setMaximumSize(new Dimension(460, 60));
+        usernameInput.setPreferredSize(new Dimension(460, 60));
 
-        centerPanel.add(username);
+        boxes[1].add(usernameInput);
 
-        usernameInput = new JTextArea();
+        JLabel password = new JLabel("Password:");
+        password.setPreferredSize(new Dimension(460,30));
+        password.setMaximumSize(new Dimension(460,30));
+        boxes[2].add(password);
 
-        centerPanel.add(usernameInput);
+        passwordInput = new JTextField();
+        passwordInput.setFont(passwordInput.getFont().deriveFont(20f));
+        passwordInput.setMaximumSize(new Dimension(460, 60));
+        passwordInput.setPreferredSize(new Dimension(460, 60));
 
-        loginPanel.add(centerPanel, BorderLayout.LINE_START);
+        boxes[3].add(passwordInput);
 
+        loginPanel.add(centerPanel, BorderLayout.CENTER);
+
+        JPanel buttonPanel = new JPanel(new GridLayout(1,2));
         login = new JButton("Login");
+        goToRegister = new JButton("Want to register?");
+        buttonPanel.add(goToRegister);
+        buttonPanel.add(login);
 
-
-        passwordInput = new JTextArea();
+        loginPanel.add(buttonPanel, BorderLayout.PAGE_END);
 
         accountManager = new AccountManager();
-        this.frame = frame;
+
 
         login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                insertedName = usernameInput.getText();
+                insertedPassword = passwordInput.getText();
 
                 if (accountManager.validateAccount(insertedName, insertedPassword)){
                     currentAccountName = insertedName;
@@ -80,12 +117,24 @@ public class Login extends JDialog {
             }
         });
 
+        goToRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeThis();
+                showRegister();
+            }
+        });
+
         add(loginPanel);
         setVisible(true);
     }
 
     public void removeThis(){
-        frame.remove(this);
+        this.setVisible(false );
+    }
+
+    public void showRegister(){
+        register.setVisible(true);
     }
 
     public String getCurrentAccountName() {
