@@ -8,6 +8,7 @@ public class Main extends JFrame {
 
 
     public JPanel menu;
+    public AccountManager accountManager;
 
 
     public static void main(String[] args) {
@@ -51,6 +52,8 @@ public class Main extends JFrame {
 
         //turns the Jframe Visible
         setVisible(true);
+
+
 
     }
 
