@@ -111,7 +111,7 @@ public class Login extends JDialog {
 
                 if (accountManager.validateAccount(insertedName, insertedPassword)){
                     currentAccountName = insertedName;
-
+                    frame.setVisible(true);
                     removeThis();
                 }
             }

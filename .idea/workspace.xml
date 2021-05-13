@@ -6,13 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="36aed5e0-e1db-4a97-8ae4-5cb7fe230041" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accounts.json" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +127,7 @@
       <option name="presentableId" value="Default" />
       <updated>1619775404064</updated>
       <workItem from="1620826320302" duration="5204000" />
-      <workItem from="1620927645676" duration="4440000" />
+      <workItem from="1620927645676" duration="5392000" />
     </task>
     <servers />
   </component>

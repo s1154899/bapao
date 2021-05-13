@@ -119,6 +119,7 @@ public class Register extends JDialog {
                     accountManager.makeAccount(insertedName, insertedPassword);
                     currentAccountName = insertedName;
                     removeThis();
+                    frame.setVisible(true);
                 }
             }
         });
