@@ -54,8 +54,20 @@ public class Main extends JFrame {
         setVisible(true);
 
 
-
+        loginPage();
     }
+
+    //function called at the start for displaying a log-in screen
+    public void loginPage(){
+        remove(menu);
+
+        Login login = new Login(this, true);
+
+
+        revalidate();
+        repaint();
+    }
+
 
     //function called when songs button is pressed
     public void SongsPage(){
