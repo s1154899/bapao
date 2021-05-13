@@ -12,7 +12,4 @@ public class RaspMetingen {
     public RaspMetingen(DatabaseCon[] databaseCon){
         this.conns = databaseCon;
     }
-
-
-
 }
