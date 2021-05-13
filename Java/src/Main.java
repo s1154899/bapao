@@ -63,7 +63,6 @@ public class Main extends JFrame {
 
         Login login = new Login(this, true);
 
-
         revalidate();
         repaint();
     }
