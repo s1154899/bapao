@@ -9,7 +9,7 @@ public class Main extends JFrame {
 
     public JPanel menu;
     public AccountManager accountManager;
-
+    private static colorEnum colorScheme;
 
     public static void main(String[] args) {
         new Main();
@@ -20,6 +20,7 @@ public class Main extends JFrame {
     //creates the main page for the domotica system
     public Main(){
         super();
+        colorScheme = colorEnum.darkMode;
         setTitle("Domotica: home screen");
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width,r.height);
@@ -51,7 +52,7 @@ public class Main extends JFrame {
         add(menu, BorderLayout.CENTER);
 
         //turns the Jframe Visible
-        setVisible(true);
+
 
 
         loginPage();
@@ -67,6 +68,26 @@ public class Main extends JFrame {
         repaint();
     }
 
+    public void homeScreen(){
+        remove(menu);
+
+        Home home = new Home(this, true);
+        this.add(home);
+
+        revalidate();
+        repaint();
+    }
+
+    public void showMusic(){
+
+
+
+
+    }
+
+    public void showStats(){
+
+    }
 
     //function called when songs button is pressed
     public void SongsPage(){
@@ -127,6 +148,52 @@ public class Main extends JFrame {
         revalidate();
         repaint();
     }
+
+    public enum colorEnum{
+        lightMode(1),
+        normalMode(2),
+        darkMode(3);
+
+        colorEnum(int number){
+            switch (number) {
+                case 1 -> {
+                    this.primaryColor = new Color(249, 247, 247);
+                    this.secondaryColor = new Color(219, 226, 239);
+                    this.detailColor = new Color(63, 114, 175);
+                }
+                case 2 -> {
+                    this.primaryColor = new Color(67, 136, 204);
+                    this.secondaryColor = new Color(238, 238, 238);
+                    this.detailColor = Color.BLACK;
+                }
+                case 3 -> {
+                    this.primaryColor = new Color(34, 40, 49);
+                    this.secondaryColor = new Color(57, 62, 70);
+                    this.detailColor = new Color(238, 238, 238);
+                }
+            }
+        }
+
+        public Color primaryColor = null;
+        public Color secondaryColor = null;
+        public Color detailColor = null;
+
+        public Color getDetailColor() {
+            return detailColor;
+        }
+
+        public Color getPrimaryColor() {
+            return primaryColor;
+        }
+
+        public Color getSecondaryColor() {
+            return secondaryColor;
+        }
+    }
+
+    public static colorEnum getColorScheme() {
+        return colorScheme;
+    }
 }
 
 class Reflect{
@@ -149,3 +216,5 @@ class Reflect{
     }
 
 }
+
+
