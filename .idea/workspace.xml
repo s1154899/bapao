@@ -5,36 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36aed5e0-e1db-4a97-8ae4-5cb7fe230041" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/Comfort.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/Comfortaa-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/Comfortaa-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/Louis George Cafe Bold Italic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/Louis George Cafe Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/Louis George Cafe Italic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/Louis George Cafe Light Italic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/Louis George Cafe Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/Louis George Cafe.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/Louis George Café Typeface.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/music.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/nonVisible.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/sensors.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/visible.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Home.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Assets/button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Assets/home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Assets/home128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Assets/homeLight.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Assets/homeLight128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Assets/musicplay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Assets/playMusic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Assets/thermometer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Header.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accounts.json" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Home.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$7.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Main$colorEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main$colorEnum.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Register$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Register$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Register.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +86,8 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Yorben\Desktop\BapaoInvaders\bapao\Java\src\Assets" />
+      <recent name="C:\Users\Yorben\Desktop\BapaoInvaders\bapao\Java\src" />
+      <recent name="C:\Users\Yorben\Desktop\BapaoInvaders\bapao\Java" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -108,6 +105,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Home" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Home" />
+      <module name="bapao" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="bapao" />
@@ -115,27 +119,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SubnetCheck" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="SubnetCheck" />
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test" />
       <module name="bapao" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="findDrivers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="findDrivers" />
-      <module name="bapao" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -143,10 +142,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Home" />
+        <item itemvalue="Application.test" />
         <item itemvalue="Application.AccountManager" />
         <item itemvalue="Application.DatabaseCon" />
-        <item itemvalue="Application.findDrivers" />
-        <item itemvalue="Application.SubnetCheck" />
       </list>
     </recent_temporary>
   </component>
@@ -160,7 +159,8 @@
       <updated>1619775404064</updated>
       <workItem from="1620826320302" duration="5204000" />
       <workItem from="1620927645676" duration="5392000" />
-      <workItem from="1620981894938" duration="17753000" />
+      <workItem from="1620981894938" duration="18059000" />
+      <workItem from="1621063277928" duration="16790000" />
     </task>
     <servers />
   </component>

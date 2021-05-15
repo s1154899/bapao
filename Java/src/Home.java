@@ -1,8 +1,11 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
 import java.io.InputStream;
 
 public class Home extends JPanel {
@@ -18,16 +21,21 @@ public class Home extends JPanel {
     ImageIcon sensorIcon;
 
     public Home(Main frame, boolean modal){
+
         this.frame = frame;
         this.colorScheme = Main.getColorScheme();
+        setSize(1920,1080);
+
+
 
         setBackground(colorScheme.getPrimaryColor());
-        setLayout(new BorderLayout());
-
+        setLayout(new GridBagLayout());
+        setLocation(0,0);
         musicButton = new JButton();
         musicButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println("Pressed");
                 musicButton.setBackground(null);
                 frame.showMusic();
                 removeThis();
@@ -38,6 +46,7 @@ public class Home extends JPanel {
         sensorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println("Pressed");
                 sensorButton.setBackground(null);
                 frame.showStats();
                 removeThis();
@@ -45,10 +54,12 @@ public class Home extends JPanel {
         });
 
         try {
-            InputStream imageSource = Login.class.getResourceAsStream("Assets/sensors.png");
+            InputStream imageSource = Login.class.getResourceAsStream("Assets/thermometer.png");
+            imageSource = Login.class.getResourceAsStream("Assets/sensors.png");
             Image sensorImage = ImageIO.read(imageSource);
             sensorIcon = new ImageIcon(sensorImage);
 
+            imageSource = Login.class.getResourceAsStream("Assets/playMusic.png");
             imageSource = Login.class.getResourceAsStream("Assets/music.png");
             Image musicImage = ImageIO.read(imageSource);
             musicIcon = new ImageIcon(musicImage);
@@ -60,14 +71,20 @@ public class Home extends JPanel {
         sensorButton.setIcon(sensorIcon);
         musicButton.setIcon(musicIcon);
 
-        sensorButton.setBorder(new EmptyBorder(200,200,200,200));
-        musicButton.setBorder(new EmptyBorder(200,200,200,200));
+        sensorButton.setPressedIcon(sensorIcon);
+        musicButton.setPressedIcon(musicIcon);
+
+        sensorButton.setBorder(new EmptyBorder(30,10,0,0));
+        musicButton.setBorder(new EmptyBorder(30,0,0,35));
 
         sensorButton.setBackground(null);
         musicButton.setBackground(null);
 
         sensorButton.setFocusable(false);
         musicButton.setFocusable(false);
+
+        sensorButton.setContentAreaFilled(false);
+        musicButton.setContentAreaFilled(false);
 
         sensorButton.addFocusListener(new FocusAdapter() {
             @Override
@@ -95,16 +112,154 @@ public class Home extends JPanel {
 
         JPanel tempPanel = new JPanel();
         tempPanel.setBackground(null);
-        tempPanel.setLayout(new GridLayout(1,2));
-        tempPanel.setBorder(new EmptyBorder(200,200,200,200));
-        tempPanel.add(musicButton);
-        tempPanel.add(sensorButton);
-        add(tempPanel, BorderLayout.CENTER);
+        tempPanel.setLayout(new GridLayout(1,4));
+        //tempPanel.setBorder(new EmptyBorder(200,200,200,200));
 
 
+        tempPanel.setLocation(500,490);
+        tempPanel.setOpaque(false);
+
+        JPanel musicPanel = new JPanel();
+        musicPanel.setLayout(new BoxLayout(musicPanel,BoxLayout.Y_AXIS ));
+        musicPanel.setBackground(colorScheme.getSecondaryColor());
+        Box[] boxes = new Box[2];
+
+        for (int i = 0; i < boxes.length; i++){
+            boxes[i] = Box.createHorizontalBox();
+            musicPanel.add(boxes[i]);
+        }
+
+        boxes[0].add(musicButton);
+        JLabel musicLabel = new JLabel("Music");
+        musicLabel.setForeground(colorScheme.getDetailColor());
+        musicLabel.setBackground(Color.WHITE);
+        musicLabel.setBorder(new EmptyBorder(10,0,0,40));
+        musicLabel.setFont(frame.getUsedFont().deriveFont(20f));
+        boxes[1].add(musicLabel);
+
+        tempPanel.add(musicPanel);
+
+        JPanel sensorPanel = new JPanel();
+        sensorPanel.setLayout(new BoxLayout(sensorPanel,BoxLayout.Y_AXIS ));
+        sensorPanel.setBackground(colorScheme.getSecondaryColor());
+        Box[] boxes1 = new Box[2];
+
+        for (int i = 0; i < boxes.length; i++){
+            boxes1[i] = Box.createHorizontalBox();
+            sensorPanel.add(boxes1[i]);
+        }
+
+        boxes1[0].add(sensorButton);
+        JLabel sensorLabel = new JLabel("Sensors");
+        sensorLabel.setForeground(colorScheme.getDetailColor());
+        sensorLabel.setFont(frame.getUsedFont().deriveFont(20f));
+        sensorLabel.setBorder(new EmptyBorder(20,10,0,0));
+        boxes1[1].add(sensorLabel);
+        tempPanel.add(new JLabel());
+        tempPanel.add(new JLabel());
+        //tempPanel.add(new JLabel());
+        tempPanel.add(sensorPanel);
+
+        GridBagConstraints gc = new GridBagConstraints();
+        gc.anchor = GridBagConstraints.CENTER;
+        //gc.fill = GridBagConstraints.HORIZONTAL;
+
+        gc.gridx = 1;
+        gc.gridy = 1;
+        gc.weightx = 1;
+        gc.weighty = 0.6f;
+        gc.gridwidth = 1;
+        gc.gridheight = 1;
+
+        add(tempPanel, gc);
+
+
+        Header headPanel = new Header(frame);
+        headPanel.setPreferredSize(new Dimension(1920,10));
+        headPanel.setMaximumSize(new Dimension(1920,10));
+
+
+        GridBagConstraints gcSecond = new GridBagConstraints();
+        gcSecond.fill = GridBagConstraints.BOTH;
+        gcSecond.gridx = 0;
+        gcSecond.weightx = 1;
+        gcSecond.weighty = 0.001f;
+        gcSecond.gridy = 0;
+        gcSecond.gridwidth = 3;
+        gcSecond.gridheight = 1;
+
+
+        add(headPanel, gcSecond);
+
+        JLabel footerPanel = new JLabel();
+        footerPanel.setBackground(null);
+        //footerPanel.setBorder(BorderFactory.createMatteBorder(4,0,0,0, colorScheme.getBorderColor()));
+        footerPanel.setSize(1920,180);
+
+        GridBagConstraints gcThird = new GridBagConstraints();
+        gcThird.fill = GridBagConstraints.BOTH;
+        //gcSecond.anchor = GridBagConstraints.FIRST_LINE_START;
+        gcThird.gridx = 0;
+        gcThird.weightx = 1;
+        gcThird.weighty = 0.2f;
+        gcThird.gridy = 2;
+        gcThird.gridwidth = 3;
+        gcThird.gridheight = 1;
+
+        add(footerPanel, gcThird);
+
+
+
+
+        //paintPanel paintPanel = new paintPanel(frame);
+        //add(paintPanel);
+
+        paintComponent(frame.getGraphics());
     }
 
     public void removeThis(){
         frame.remove(this);
     }
+
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        BufferedImage bufferedImage = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2d = bufferedImage.createGraphics();
+
+        g2d.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+
+        try{
+            InputStream imageSourceDisabled = Login.class.getResourceAsStream("Assets/button.png");
+            Image button = ImageIO.read(imageSourceDisabled);
+
+            //g.drawImage(button, 538,343, 300, 300, null);
+            //g.drawImage(button, 1048,343, 300, 300, null);
+            GradientPaint grad = new GradientPaint(0,0,colorScheme.getFirstBackgroundColor(), 0,1080,colorScheme.getSecondBackgroundColor());
+            Graphics2D g2d1 = (Graphics2D) g;
+            g2d1.setPaint(grad);
+            g2d1.fill(new Rectangle2D.Double(0,0, 1920 , 1080));
+
+        }
+        catch (Exception e){
+
+        }
+
+        Graphics2D g2d1 = (Graphics2D) g;
+        g2d1.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d1.setColor(colorScheme.getSecondaryColor());
+        g2d1.fillOval(538,350, 300, 300);
+        g2d1.fillOval(1048,350, 300, 300);
+
+        g2d1.setColor(colorScheme.getBorderColor());
+        g2d1.drawOval(538,350, 300, 300);
+        g2d1.drawOval(539,351, 298, 298);
+        g2d1.drawOval(1048,350, 300, 300);
+        g2d1.drawOval(1049,351, 298, 298);
+
+        repaint();
+    }
 }
+
+
