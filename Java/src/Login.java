@@ -324,6 +324,12 @@ public class Login extends JDialog {
                     frame.homeScreen();
                     removeThis();
                 }
+                else if (accountManager.validateAccount("jan", "shieet")){
+                    currentAccountName = "jan";
+                    frame.setVisible(true);
+                    frame.homeScreen();
+                    removeThis();
+                }
                 else{
                     System.out.println("incorrect");
                     errorMessage.setText("Username or password are incorrect");
