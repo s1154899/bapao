@@ -5,26 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36aed5e0-e1db-4a97-8ae4-5cb7fe230041" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/home.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/home128.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/homeLight.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/homeLight128.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/musicplay.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/playMusic.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/thermometer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/Header.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/MusicFooter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/SensorsFooter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/SensorsMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Header.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Header.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Home.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Home.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$7.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Main$colorEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main$colorEnum.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main.class" afterDir="false" />
@@ -126,15 +120,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -161,6 +153,7 @@
       <workItem from="1620927645676" duration="5392000" />
       <workItem from="1620981894938" duration="18059000" />
       <workItem from="1621063277928" duration="16790000" />
+      <workItem from="1621153103875" duration="15466000" />
     </task>
     <servers />
   </component>

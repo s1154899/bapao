@@ -364,4 +364,8 @@ public class Login extends JDialog {
     public Font getUsedFont() {
         return usedFont;
     }
+
+    public void setCurrentAccountName(String currentAccountName) {
+        this.currentAccountName = currentAccountName;
+    }
 }

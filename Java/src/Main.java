@@ -12,9 +12,11 @@ public class Main extends JFrame {
     public AccountManager accountManager;
     private static colorEnum colorScheme;
     private Font usedFont;
+    private Home home;
+    private static Main main;
 
     public static void main(String[] args) {
-        new Main();
+        main = new Main();
 
     }
 
@@ -22,6 +24,7 @@ public class Main extends JFrame {
     //creates the main page for the domotica system
     public Main(){
         super();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         colorScheme = colorEnum.lightMode;
         setTitle("Domotica: home screen");
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
@@ -75,12 +78,30 @@ public class Main extends JFrame {
         repaint();
     }
 
-    public void homeScreen(){
-        //add(menu);
-        remove(menu);
+    public void resetApp(){
+        main.dispose();
+        main = new Main();
+    }
 
-        Home home = new Home(this, true);
+    public void homeScreen(){
+
+        remove(menu);
+        try {
+            remove(home);
+        }
+        catch (Exception e){
+
+        }
+        home = new Home(this, true);
+
         this.add(home);
+
+
+        //add(menu);
+
+
+
+
 
         revalidate();
         repaint();
@@ -95,7 +116,9 @@ public class Main extends JFrame {
     }
 
     public void showStats(){
-
+        remove(home);
+        SensorsMain sensors = new SensorsMain(this, true);
+        add(sensors);
 
         revalidate();
         repaint();

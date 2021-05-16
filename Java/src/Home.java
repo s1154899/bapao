@@ -19,9 +19,10 @@ public class Home extends JPanel {
 
     ImageIcon musicIcon;
     ImageIcon sensorIcon;
+    static boolean added;
 
     public Home(Main frame, boolean modal){
-
+        added = true;
         this.frame = frame;
         this.colorScheme = Main.getColorScheme();
         setSize(1920,1080);
@@ -39,6 +40,7 @@ public class Home extends JPanel {
                 musicButton.setBackground(null);
                 frame.showMusic();
                 removeThis();
+                Home.added = false;
             }
         });
 
@@ -50,6 +52,7 @@ public class Home extends JPanel {
                 sensorButton.setBackground(null);
                 frame.showStats();
                 removeThis();
+
             }
         });
 
@@ -122,6 +125,8 @@ public class Home extends JPanel {
         JPanel musicPanel = new JPanel();
         musicPanel.setLayout(new BoxLayout(musicPanel,BoxLayout.Y_AXIS ));
         musicPanel.setBackground(colorScheme.getSecondaryColor());
+        musicPanel.setOpaque(false);
+
         Box[] boxes = new Box[2];
 
         for (int i = 0; i < boxes.length; i++){
@@ -140,6 +145,7 @@ public class Home extends JPanel {
         tempPanel.add(musicPanel);
 
         JPanel sensorPanel = new JPanel();
+        sensorPanel.setOpaque(false);
         sensorPanel.setLayout(new BoxLayout(sensorPanel,BoxLayout.Y_AXIS ));
         sensorPanel.setBackground(colorScheme.getSecondaryColor());
         Box[] boxes1 = new Box[2];
@@ -174,7 +180,7 @@ public class Home extends JPanel {
         add(tempPanel, gc);
 
 
-        Header headPanel = new Header(frame);
+        Header headPanel = new Header(frame, this);
         headPanel.setPreferredSize(new Dimension(1920,10));
         headPanel.setMaximumSize(new Dimension(1920,10));
 
