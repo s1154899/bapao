@@ -118,8 +118,8 @@ public class Header extends JPanel {
         time.setFont(frame.getUsedFont().deriveFont(20f));
         time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
         time.setBorder(new EmptyBorder(0,Math.round(20f*(frame.getWidth()/1080f)),0,Math.round(20f*(frame.getWidth()/1080f))));
-        time.setPreferredSize(new Dimension(Math.round(300f*(frame.getWidth()/1920f)),Math.round(64f*(frame.getHeight()/1080f))));
-        time.setMaximumSize(new Dimension(Math.round(300f*(frame.getWidth()/1920f)),Math.round(64f*(frame.getHeight()/1080f))));
+        time.setPreferredSize(new Dimension(Math.round(170f*(frame.getWidth()/1920f)),Math.round(64f*(frame.getHeight()/1080f))));
+        time.setMaximumSize(new Dimension(Math.round(170f*(frame.getWidth()/1920f)),Math.round(64f*(frame.getHeight()/1080f))));
         boxes[2].add(time);
 
         JButton logout = new JButton();
@@ -137,7 +137,7 @@ public class Header extends JPanel {
 
             }
         });
-        boxes[3].setBorder(new EmptyBorder(0,Math.round(1070f*(frame.getWidth()/1920f)),0,0));
+        boxes[3].setBorder(new EmptyBorder(0,Math.round(1200f*(frame.getWidth()/1920f)),0,0));
         boxes[3].add(logout);
 
         if (!timeEnabled) {
