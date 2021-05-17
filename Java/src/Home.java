@@ -25,13 +25,13 @@ public class Home extends JPanel {
         added = true;
         this.frame = frame;
         this.colorScheme = Main.getColorScheme();
-        setSize(1920,1080);
+        //setSize(1920,1080);
 
 
 
         setBackground(colorScheme.getPrimaryColor());
         setLayout(new GridBagLayout());
-        setLocation(0,0);
+
         musicButton = new JButton();
         musicButton.addActionListener(new ActionListener() {
             @Override
@@ -119,7 +119,7 @@ public class Home extends JPanel {
         //tempPanel.setBorder(new EmptyBorder(200,200,200,200));
 
 
-        tempPanel.setLocation(500,490);
+        //tempPanel.setLocation(500,490);
         tempPanel.setOpaque(false);
 
         JPanel musicPanel = new JPanel();
@@ -159,12 +159,14 @@ public class Home extends JPanel {
         JLabel sensorLabel = new JLabel("Sensors");
         sensorLabel.setForeground(colorScheme.getDetailColor());
         sensorLabel.setFont(frame.getUsedFont().deriveFont(20f));
-        sensorLabel.setBorder(new EmptyBorder(Math.round(20f*(frame.getHeight()/1080f)),Math.round(10f*(frame.getWidth()/1920f)),0,0));
+        sensorLabel.setBorder(new EmptyBorder(Math.round(20f*(frame.getHeight()/1080f)),Math.round(10f*(frame.getWidth()/1920f)),50,0));
         boxes1[1].add(sensorLabel);
         tempPanel.add(new JLabel());
         tempPanel.add(new JLabel());
         //tempPanel.add(new JLabel());
         tempPanel.add(sensorPanel);
+        //tempPanel.setPreferredSize(new Dimension(1920, 824));
+        tempPanel.setMaximumSize(new Dimension(1920, 824));
 
         GridBagConstraints gc = new GridBagConstraints();
         gc.anchor = GridBagConstraints.CENTER;
@@ -181,15 +183,15 @@ public class Home extends JPanel {
 
 
         Header headPanel = new Header(frame, this);
-        headPanel.setPreferredSize(new Dimension(1920,Math.round(10f*(frame.getHeight()/1080f))));
-        headPanel.setMaximumSize(new Dimension(1920,Math.round(10f*(frame.getHeight()/1080f))));
+        headPanel.setPreferredSize(new Dimension(1920,Math.round(128f*(frame.getHeight()/1080f))));
+        headPanel.setMaximumSize(new Dimension(1920,Math.round(128f*(frame.getHeight()/1080f))));
 
 
         GridBagConstraints gcSecond = new GridBagConstraints();
         gcSecond.fill = GridBagConstraints.BOTH;
         gcSecond.gridx = 0;
         gcSecond.weightx = 1;
-        gcSecond.weighty = 0.2f;
+        gcSecond.weighty = 0.001f;
         gcSecond.gridy = 0;
         gcSecond.gridwidth = 3;
         gcSecond.gridheight = 1;
@@ -200,14 +202,15 @@ public class Home extends JPanel {
         JPanel footerPanel = new JPanel();
         footerPanel.setBackground(null);
         //footerPanel.setBorder(BorderFactory.createMatteBorder(4,0,0,0, colorScheme.getBorderColor()));
-        footerPanel.setSize(1920,Math.round(128f*(frame.getHeight()/1080f)));
+        footerPanel.setMaximumSize(new Dimension(1920,Math.round(128f*(frame.getHeight()/1080f))));
+        footerPanel.setPreferredSize(new Dimension(1920,Math.round(128f*(frame.getHeight()/1080f))));
         footerPanel.setOpaque(false);
         GridBagConstraints gcThird = new GridBagConstraints();
         gcThird.fill = GridBagConstraints.BOTH;
         //gcSecond.anchor = GridBagConstraints.FIRST_LINE_START;
         gcThird.gridx = 0;
         gcThird.weightx = 1;
-        gcThird.weighty = 0.3f;
+        gcThird.weighty = 0.001f;
         gcThird.gridy = 2;
         gcThird.gridwidth = 3;
         gcThird.gridheight = 1;

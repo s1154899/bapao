@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="36aed5e0-e1db-4a97-8ae4-5cb7fe230041" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/Header.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Header.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/SensorsMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/SensorsMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Home.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/SensorsMain.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

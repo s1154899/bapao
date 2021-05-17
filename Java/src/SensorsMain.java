@@ -26,7 +26,7 @@ public class SensorsMain extends JPanel {
         gcSecond.gridx = 1;
         gcSecond.gridy = 1;
         gcSecond.weightx = 1;
-        gcSecond.weighty = 0.6f;
+        gcSecond.weighty = 0.8f;
         gcSecond.gridwidth = 1;
         gcSecond.gridheight = 1;
 
@@ -35,22 +35,22 @@ public class SensorsMain extends JPanel {
         //gcSecond.anchor = GridBagConstraints.FIRST_LINE_START;
         gcThird.gridx = 0;
         gcThird.weightx = 1;
-        gcThird.weighty = 0.01f;
+        gcThird.weighty = 0.001f;
         gcThird.gridy = 2;
         gcThird.gridwidth = 3;
         gcThird.gridheight = 1;
 
         Header headPanel = new Header(frame, this);
-        headPanel.setPreferredSize(new Dimension(1920,10));
-        headPanel.setMaximumSize(new Dimension(1920,10));
+        headPanel.setPreferredSize(new Dimension(1920,128));
+        headPanel.setMaximumSize(new Dimension(1920,128));
         add(headPanel, gc);
 
         JLabel center = new JLabel();
         add(center, gcSecond);
 
         SensorsFooter sensorsFooterPanel = new SensorsFooter(frame);
-        sensorsFooterPanel.setPreferredSize(new Dimension(1920,10));
-        sensorsFooterPanel.setMaximumSize(new Dimension(1920,10));
+        sensorsFooterPanel.setPreferredSize(new Dimension(1920,30));
+        sensorsFooterPanel.setMaximumSize(new Dimension(1920,30));
         add(sensorsFooterPanel, gcThird);
 
     }
