@@ -79,7 +79,7 @@ public class Header extends JPanel {
         homeButton.setPreferredSize(new Dimension(64,64));
         homeButton.setMaximumSize(new Dimension(64,64));
         homeButton.setBackground(null);
-        homeButton.setBorder(new EmptyBorder(32,0,32,0));
+        homeButton.setBorder(new EmptyBorder(Math.round(32f*(frame.getHeight()/1080f)),0,Math.round(32f*(frame.getHeight()/1080f)),0));
 
         homeButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -117,9 +117,9 @@ public class Header extends JPanel {
         time.setForeground(colorScheme.getDetailColor());
         time.setFont(frame.getUsedFont().deriveFont(20f));
         time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-        time.setBorder(new EmptyBorder(0,20,0,20));
-        time.setPreferredSize(new Dimension(300,64));
-        time.setMaximumSize(new Dimension(300,64));
+        time.setBorder(new EmptyBorder(0,Math.round(20f*(frame.getWidth()/1080f)),0,Math.round(20f*(frame.getWidth()/1080f))));
+        time.setPreferredSize(new Dimension(Math.round(300f*(frame.getWidth()/1920f)),Math.round(64f*(frame.getHeight()/1080f))));
+        time.setMaximumSize(new Dimension(Math.round(300f*(frame.getWidth()/1920f)),Math.round(64f*(frame.getHeight()/1080f))));
         boxes[2].add(time);
 
         JButton logout = new JButton();

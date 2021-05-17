@@ -138,7 +138,7 @@ public class Home extends JPanel {
         JLabel musicLabel = new JLabel("Music");
         musicLabel.setForeground(colorScheme.getDetailColor());
         musicLabel.setBackground(Color.WHITE);
-        musicLabel.setBorder(new EmptyBorder(10,0,0,40));
+        musicLabel.setBorder(new EmptyBorder(10,0,0,Math.round(40f*(frame.getWidth()/1920f))));
         musicLabel.setFont(frame.getUsedFont().deriveFont(20f));
         boxes[1].add(musicLabel);
 
@@ -173,7 +173,7 @@ public class Home extends JPanel {
         gc.gridx = 1;
         gc.gridy = 1;
         gc.weightx = 1;
-        gc.weighty = 0.6f;
+        gc.weighty = 0.8f;
         gc.gridwidth = 1;
         gc.gridheight = 1;
 
@@ -181,15 +181,15 @@ public class Home extends JPanel {
 
 
         Header headPanel = new Header(frame, this);
-        headPanel.setPreferredSize(new Dimension(1920,10));
-        headPanel.setMaximumSize(new Dimension(1920,10));
+        headPanel.setPreferredSize(new Dimension(1920,Math.round(10f*(frame.getHeight()/1080f))));
+        headPanel.setMaximumSize(new Dimension(1920,Math.round(10f*(frame.getHeight()/1080f))));
 
 
         GridBagConstraints gcSecond = new GridBagConstraints();
         gcSecond.fill = GridBagConstraints.BOTH;
         gcSecond.gridx = 0;
         gcSecond.weightx = 1;
-        gcSecond.weighty = 0.001f;
+        gcSecond.weighty = 0.2f;
         gcSecond.gridy = 0;
         gcSecond.gridwidth = 3;
         gcSecond.gridheight = 1;
@@ -197,17 +197,17 @@ public class Home extends JPanel {
 
         add(headPanel, gcSecond);
 
-        JLabel footerPanel = new JLabel();
+        JPanel footerPanel = new JPanel();
         footerPanel.setBackground(null);
         //footerPanel.setBorder(BorderFactory.createMatteBorder(4,0,0,0, colorScheme.getBorderColor()));
-        footerPanel.setSize(1920,180);
-
+        footerPanel.setSize(1920,Math.round(128f*(frame.getHeight()/1080f)));
+        footerPanel.setOpaque(false);
         GridBagConstraints gcThird = new GridBagConstraints();
         gcThird.fill = GridBagConstraints.BOTH;
         //gcSecond.anchor = GridBagConstraints.FIRST_LINE_START;
         gcThird.gridx = 0;
         gcThird.weightx = 1;
-        gcThird.weighty = 0.2f;
+        gcThird.weighty = 0.3f;
         gcThird.gridy = 2;
         gcThird.gridwidth = 3;
         gcThird.gridheight = 1;
