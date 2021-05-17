@@ -137,7 +137,7 @@ public class Header extends JPanel {
 
             }
         });
-        boxes[3].setBorder(new EmptyBorder(0,1070*(frame.getWidth()/1920),0,0));
+        boxes[3].setBorder(new EmptyBorder(0,Math.round(1070f*(frame.getWidth()/1920f)),0,0));
         boxes[3].add(logout);
 
         if (!timeEnabled) {
