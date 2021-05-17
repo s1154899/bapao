@@ -5,21 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36aed5e0-e1db-4a97-8ae4-5cb7fe230041" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Java/src/MusicFooter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/SensorsFooter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Java/src/SensorsMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/MusicMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/Header.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Header.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Main$colorEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main$colorEnum.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" afterDir="false" />
@@ -85,6 +74,17 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AccountManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AccountManager" />
       <module name="bapao" />
@@ -116,17 +116,6 @@
     <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test" />
       <module name="bapao" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
