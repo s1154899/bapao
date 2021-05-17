@@ -53,8 +53,8 @@ public class Header extends JPanel {
 
         boxes[0].setBorder(new EmptyBorder(0,32,0,32));
 
-        setPreferredSize(new Dimension(1920,128));
-        setMaximumSize(new Dimension(1920,128));
+        setPreferredSize(new Dimension(frame.getWidth(),128));
+        setMaximumSize(new Dimension(frame.getWidth(),128));
 
         try {
 
@@ -137,7 +137,7 @@ public class Header extends JPanel {
 
             }
         });
-        boxes[3].setBorder(new EmptyBorder(0,1070,0,0));
+        boxes[3].setBorder(new EmptyBorder(0,1070*(frame.getWidth()/1920),0,0));
         boxes[3].add(logout);
 
         if (!timeEnabled) {
@@ -155,7 +155,7 @@ public class Header extends JPanel {
         try {
             InputStream imageSource = Login.class.getResourceAsStream("Assets/icon.png");
             Image icon = ImageIO.read(imageSource);
-            g2d.drawImage(icon, 1814,32,64,64, null);
+            g2d.drawImage(icon, Math.round(1814f * (frame.getWidth() / 1920f)),32,64,64, null);
         }
         catch (Exception e){
             e.printStackTrace();

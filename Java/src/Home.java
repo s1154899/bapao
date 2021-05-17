@@ -255,14 +255,14 @@ public class Home extends JPanel {
         Graphics2D g2d1 = (Graphics2D) g;
         g2d1.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d1.setColor(colorScheme.getSecondaryColor());
-        g2d1.fillOval(538,350, 300, 300);
-        g2d1.fillOval(1048,350, 300, 300);
+        g2d1.fillOval(Math.round(538f* (frame.getWidth() / 1920f)),Math.round(350f* (frame.getHeight() / 1080f)), 300, 300);
+        g2d1.fillOval(Math.round(1048f* (frame.getWidth() / 1920f)),Math.round(350f* (frame.getHeight() / 1080f)), 300, 300);
 
         g2d1.setColor(colorScheme.getBorderColor());
-        g2d1.drawOval(538,350, 300, 300);
-        g2d1.drawOval(539,351, 298, 298);
-        g2d1.drawOval(1048,350, 300, 300);
-        g2d1.drawOval(1049,351, 298, 298);
+        g2d1.drawOval(Math.round(538f* (frame.getWidth() / 1920f)),Math.round(350f* (frame.getHeight() / 1080f)), 300, 300);
+        g2d1.drawOval(Math.round(539f* (frame.getWidth() / 1920f)),Math.round(351f* (frame.getHeight() / 1080f)), 298, 298);
+        g2d1.drawOval(Math.round(1048f* (frame.getWidth() / 1920f)),Math.round(350f* (frame.getHeight() / 1080f)), 300, 300);
+        g2d1.drawOval(Math.round(1049f* (frame.getWidth() / 1920f)),Math.round(351f* (frame.getHeight() / 1080f)), 298, 298);
 
         repaint();
     }
