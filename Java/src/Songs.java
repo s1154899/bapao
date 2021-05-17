@@ -30,17 +30,6 @@ public class Songs extends JDialog implements ActionListener{
 
         add(songsPanel);
 
-//        JPanel dotsPanel = new JPanel();
-//        dotsPanel.setLayout(new GridLayout(songNames.size(), 1));
-//
-//        for (String name: songNames){
-//            JButton dots = new JButton("***");
-//            dots.addActionListener(this);
-//            dotsPanel.add(dots);
-//        }
-//
-//        add(dotsPanel);
-
         Playing playing = new Playing();
         add(playing,BorderLayout.EAST);
 
@@ -52,8 +41,7 @@ public class Songs extends JDialog implements ActionListener{
         for (String name : songNames){
             if (((JButton) e.getSource()).getText() == new JButton(name).getText()){
                 System.out.println(name);
-                ClickOnSong clickOnSong = new ClickOnSong(this, true);
-
+                ClickOnSong clickOnSong = new ClickOnSong(this, true, name);
             }
         }
     }
