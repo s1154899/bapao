@@ -94,6 +94,7 @@ public class Main extends JFrame {
         home = new Home(this, true);
 
         this.add(home);
+
         revalidate();
         repaint();
     }

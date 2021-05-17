@@ -114,13 +114,13 @@ public class Home extends JPanel {
         });
 
         JPanel tempPanel = new JPanel();
-        tempPanel.setBackground(Color.YELLOW);
+        tempPanel.setBackground(null);
         tempPanel.setLayout(new GridLayout(1,2));
         //tempPanel.setBorder(new EmptyBorder(200,200,200,200));
 
 
         //tempPanel.setLocation(500,490);
-        tempPanel.setOpaque(true);
+        tempPanel.setOpaque(false);
 
         JPanel musicPanel = new JPanel();
         musicPanel.setLayout(new BoxLayout(musicPanel,BoxLayout.Y_AXIS ));
@@ -258,14 +258,14 @@ public class Home extends JPanel {
         Graphics2D g2d1 = (Graphics2D) g;
         g2d1.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d1.setColor(colorScheme.getSecondaryColor());
-        g2d1.fillOval(Math.round(538f* (frame.getWidth() / 1920f)),Math.round(350f* (frame.getHeight() / 1080f)), Math.round(300f* (frame.getWidth() / 1920f)), Math.round(300f* (frame.getWidth() / 1920f)));
-        g2d1.fillOval(Math.round(1048f* (frame.getWidth() / 1920f)),Math.round(350f* (frame.getHeight() / 1080f)), Math.round(300f* (frame.getWidth() / 1920f)), Math.round(300f* (frame.getWidth() / 1920f)));
+        g2d1.fillOval(Math.round(538f* (frame.getWidth() / 1920f)),Math.round(350f* (frame.getHeight() / 1080f)), 300, 300);
+        g2d1.fillOval(Math.round(1048f* (frame.getWidth() / 1920f)),Math.round(350f* (frame.getHeight() / 1080f)), 300, 300);
 
         g2d1.setColor(colorScheme.getBorderColor());
-        g2d1.drawOval(Math.round(538f* (frame.getWidth() / 1920f)),Math.round(350f* (frame.getHeight() / 1080f)), Math.round(300f* (frame.getWidth() / 1920f)), Math.round(300f* (frame.getWidth() / 1920f)));
-        g2d1.drawOval(Math.round(539f* (frame.getWidth() / 1920f)),Math.round(351f* (frame.getHeight() / 1080f)), Math.round(298f* (frame.getWidth() / 1920f)), Math.round(298f* (frame.getWidth() / 1920f)));
-        g2d1.drawOval(Math.round(1048f* (frame.getWidth() / 1920f)),Math.round(350f* (frame.getHeight() / 1080f)), Math.round(300f* (frame.getWidth() / 1920f)), Math.round(300f* (frame.getWidth() / 1920f)));
-        g2d1.drawOval(Math.round(1049f* (frame.getWidth() / 1920f)),Math.round(351f* (frame.getHeight() / 1080f)), Math.round(298f* (frame.getWidth() / 1920f)), Math.round(298f* (frame.getWidth() / 1920f)));
+        g2d1.drawOval(Math.round(538f* (frame.getWidth() / 1920f)),Math.round(350f* (frame.getHeight() / 1080f)), 300, 300);
+        g2d1.drawOval(Math.round(539f* (frame.getWidth() / 1920f)),Math.round(351f* (frame.getHeight() / 1080f)), 298, 298);
+        g2d1.drawOval(Math.round(1048f* (frame.getWidth() / 1920f)),Math.round(350f* (frame.getHeight() / 1080f)), 300, 300);
+        g2d1.drawOval(Math.round(1049f* (frame.getWidth() / 1920f)),Math.round(351f* (frame.getHeight() / 1080f)), 298, 298);
 
         repaint();
     }
