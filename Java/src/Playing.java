@@ -21,6 +21,5 @@ public class Playing extends JPanel {
         g.drawString("Song title", 435, 450);
         g.drawString("<", 325, 565);
         g.drawString(">", 615, 565);
-
     }
 }
