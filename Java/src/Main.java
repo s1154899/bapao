@@ -95,21 +95,14 @@ public class Main extends JFrame {
         home = new Home(this, true);
 
         this.add(home);
-
-
-        //add(menu);
-
-
-
-
-
         revalidate();
         repaint();
     }
 
     public void showMusic(){
-
-
+        remove(home);
+        MusicMain music = new MusicMain(this, true);
+        add(music);
 
         revalidate();
         repaint();
