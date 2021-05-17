@@ -77,8 +77,8 @@ public class Home extends JPanel {
         sensorButton.setPressedIcon(sensorIcon);
         musicButton.setPressedIcon(musicIcon);
 
-        sensorButton.setBorder(new EmptyBorder(30,10,0,0));
-        musicButton.setBorder(new EmptyBorder(30,0,0,35));
+        sensorButton.setBorder(new EmptyBorder(30,Math.round(10f*(frame.getWidth()/1920f)),0,0));
+        musicButton.setBorder(new EmptyBorder(30,0,0,Math.round(35f*(frame.getWidth()/1920f))));
 
         sensorButton.setBackground(null);
         musicButton.setBackground(null);
@@ -159,7 +159,7 @@ public class Home extends JPanel {
         JLabel sensorLabel = new JLabel("Sensors");
         sensorLabel.setForeground(colorScheme.getDetailColor());
         sensorLabel.setFont(frame.getUsedFont().deriveFont(20f));
-        sensorLabel.setBorder(new EmptyBorder(20,10,0,0));
+        sensorLabel.setBorder(new EmptyBorder(Math.round(20f*(frame.getHeight()/1080f)),Math.round(10f*(frame.getWidth()/1920f)),0,0));
         boxes1[1].add(sensorLabel);
         tempPanel.add(new JLabel());
         tempPanel.add(new JLabel());
