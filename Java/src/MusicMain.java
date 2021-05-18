@@ -1,7 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class MusicMain extends JPanel {
+public class MusicMain extends JPanel implements ActionListener {
 
     Main frame;
     Main.colorEnum colorScheme;
@@ -46,12 +48,34 @@ public class MusicMain extends JPanel {
         headPanel.setMaximumSize(new Dimension(1920,10));
         add(headPanel, gc);
 
-        JLabel center = new JLabel();
+        JLabel center = new JLabel("test");
         add(center, gcSecond);
 
-        MusicFooter musicFooter = new MusicFooter(frame, modal);
+
+        MusicFooter musicFooter = new MusicFooter(frame, modal, this);
         musicFooter.setPreferredSize(new Dimension(1920,10));
         musicFooter.setMaximumSize(new Dimension(1920,10));
         add(musicFooter, gcThird);
+    }
+
+    public void removeThis(){
+        frame.remove(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (((JButton) e.getSource()).getText() == "Playing"){
+            frame.PlayingPage();
+            removeThis();
+        } else if (((JButton) e.getSource()).getText() == "Songs"){
+            frame.SongsPage();
+            removeThis();
+        } else if (((JButton) e.getSource()).getText() == "Playists"){
+            frame.PlaylistsPage();
+            removeThis();
+        } else if (((JButton) e.getSource()).getText() == "Edit playlist"){
+            frame.Edit_PlaylistPage();
+            removeThis();
+        }
     }
 }
