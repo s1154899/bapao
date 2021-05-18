@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36aed5e0-e1db-4a97-8ae4-5cb7fe230041" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Java/src/ActionsPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/ActionsMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/ActionsPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/SensorsFooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/SensorsFooter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Main$colorEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main$colorEnum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsFooter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/SensorsFooter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +65,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -79,15 +90,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AccountManager" />
-      <module name="bapao" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DatabaseCon" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DatabaseCon" />
+    <configuration name="ActionsMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ActionsMain" />
       <module name="bapao" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -95,6 +99,13 @@
     </configuration>
     <configuration name="Home" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Home" />
+      <module name="bapao" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JTabbedPaneTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JTabbedPaneTest" />
       <module name="bapao" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -117,10 +128,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.ActionsMain" />
+        <item itemvalue="Application.JTabbedPaneTest" />
         <item itemvalue="Application.Home" />
         <item itemvalue="Application.test" />
-        <item itemvalue="Application.AccountManager" />
-        <item itemvalue="Application.DatabaseCon" />
       </list>
     </recent_temporary>
   </component>

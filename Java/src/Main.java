@@ -13,6 +13,7 @@ public class Main extends JFrame {
     private static colorEnum colorScheme;
     private Font usedFont;
     private Home home;
+    private SensorsMain sensor;
     private static Main main;
 
     public static void main(String[] args) {
@@ -24,9 +25,9 @@ public class Main extends JFrame {
     public Main(){
         super();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         colorScheme = colorEnum.lightMode;
         setTitle("Domotica: home screen");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width,r.height);
 
@@ -110,8 +111,8 @@ public class Main extends JFrame {
 
     public void showStats(){
         remove(home);
-        SensorsMain sensors = new SensorsMain(this, true);
-        add(sensors);
+        sensor = new SensorsMain(this, true);
+        add(sensor);
 
         revalidate();
         repaint();
@@ -147,9 +148,11 @@ public class Main extends JFrame {
     }
     //function called when actions is pressed
     public void ActionsPage(){
-        remove(menu);
+        remove(sensor);
 
-        
+        ActionsMain actionsMain = new ActionsMain(this, true);
+        add(actionsMain);
+
 
         revalidate();
         repaint();
