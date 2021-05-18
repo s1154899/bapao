@@ -5,15 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36aed5e0-e1db-4a97-8ae4-5cb7fe230041" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/Header.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Header.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/MusicMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/MusicMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Header.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Home.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Main$colorEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main$colorEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/MusicMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/MusicMain.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
