@@ -48,8 +48,10 @@ public class Header extends JPanel {
 
         for (int i = 0; i < boxes.length; i++){
             boxes[i] = Box.createHorizontalBox();
+
             add(boxes[i]);
         }
+
 
         boxes[0].setBorder(new EmptyBorder(0,32,0,32));
 
@@ -109,9 +111,9 @@ public class Header extends JPanel {
         JLabel date = new JLabel();
         date.setForeground(colorScheme.getDetailColor());
         date.setFont(frame.getUsedFont().deriveFont(20f));
-        date.setBorder(new EmptyBorder(3,0,0,0));
+        date.setBorder(new EmptyBorder(3,50,0,0));
         date.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("cccc dd.MM.uuuu", Locale.ENGLISH)));
-        boxes[1].add(date);
+        boxes[2].add(date);
 
         time = new JLabel();
         time.setForeground(colorScheme.getDetailColor());
@@ -120,7 +122,7 @@ public class Header extends JPanel {
         time.setBorder(new EmptyBorder(0,Math.round(20f*(frame.getWidth()/1080f)),0,Math.round(20f*(frame.getWidth()/1080f))));
         time.setPreferredSize(new Dimension(Math.round(170f*(frame.getWidth()/1920f)),Math.round(64f*(frame.getHeight()/1080f))));
         time.setMaximumSize(new Dimension(Math.round(170f*(frame.getWidth()/1920f)),Math.round(64f*(frame.getHeight()/1080f))));
-        boxes[2].add(time);
+        boxes[3].add(time);
 
         JButton logout = new JButton();
         logout.setFont(frame.getUsedFont().deriveFont(20f));
@@ -128,6 +130,7 @@ public class Header extends JPanel {
         logout.setText("Log Out");
         logout.setBorder(new CompoundBorder(new LineBorder(colorScheme.getBorderColor(), 2), new EmptyBorder(5,5,5,5)));
         logout.setForeground(colorScheme.getDetailColor());
+        logout.setAlignmentX(Component.RIGHT_ALIGNMENT);
         logout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -137,8 +140,8 @@ public class Header extends JPanel {
 
             }
         });
-        boxes[3].setBorder(new EmptyBorder(0,Math.round(1200f*(frame.getWidth()/1920f)),0,0));
-        boxes[3].add(logout);
+        //boxes[3].setBorder(new EmptyBorder(0,Math.round(1200f*(frame.getWidth()/1920f)),0,0));
+        boxes[1].add(logout);
 
         if (!timeEnabled) {
             bc = new TimeControl();

@@ -27,7 +27,8 @@ public class Home extends JPanel {
         this.colorScheme = Main.getColorScheme();
         //setSize(1920,1080);
 
-
+        frame.setVisible(true);
+        frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 
         setBackground(colorScheme.getPrimaryColor());
         setLayout(new GridBagLayout());
@@ -77,11 +78,11 @@ public class Home extends JPanel {
         sensorButton.setPressedIcon(sensorIcon);
         musicButton.setPressedIcon(musicIcon);
 
-        sensorButton.setBorder(new EmptyBorder(30,Math.round(10f*(frame.getWidth()/1920f)),0,0));
-        musicButton.setBorder(new EmptyBorder(30,0,0,Math.round(35f*(frame.getWidth()/1920f))));
+        sensorButton.setBorder(new EmptyBorder(30,Math.round(200f*(frame.getWidth()/1920f)),0,0));
+        musicButton.setBorder(new EmptyBorder(30,0,0,Math.round(200f*(frame.getWidth()/1920f))));
 
-        sensorButton.setBackground(null);
-        musicButton.setBackground(null);
+        sensorButton.setBackground(Color.RED);
+        musicButton.setBackground(Color.RED);
 
         sensorButton.setFocusable(false);
         musicButton.setFocusable(false);
@@ -116,7 +117,7 @@ public class Home extends JPanel {
         JPanel tempPanel = new JPanel();
         tempPanel.setBackground(null);
         tempPanel.setLayout(new GridLayout(1,2));
-        //tempPanel.setBorder(new EmptyBorder(200,200,200,200));
+        tempPanel.setBorder(new EmptyBorder(0,0,0,0));
 
 
         //tempPanel.setLocation(500,490);
@@ -138,7 +139,7 @@ public class Home extends JPanel {
         JLabel musicLabel = new JLabel("Music");
         musicLabel.setForeground(colorScheme.getDetailColor());
         musicLabel.setBackground(Color.WHITE);
-        musicLabel.setBorder(new EmptyBorder(10,0,0,Math.round(40f*(frame.getWidth()/1920f))));
+        musicLabel.setBorder(new EmptyBorder(10,0,0,Math.round(200f*(frame.getWidth()/1920f))));
         musicLabel.setFont(frame.getUsedFont().deriveFont(20f));
         boxes[1].add(musicLabel);
 
@@ -159,17 +160,17 @@ public class Home extends JPanel {
         JLabel sensorLabel = new JLabel("Sensors");
         sensorLabel.setForeground(colorScheme.getDetailColor());
         sensorLabel.setFont(frame.getUsedFont().deriveFont(20f));
-        sensorLabel.setBorder(new EmptyBorder(Math.round(20f*(frame.getHeight()/1080f)),Math.round(10f*(frame.getWidth()/1920f)),50,0));
+        sensorLabel.setBorder(new EmptyBorder(Math.round(20f*(frame.getHeight()/1080f)),Math.round(170f*(frame.getWidth()/1920f)),50,0));
         boxes1[1].add(sensorLabel);
-        tempPanel.add(new JLabel());
-        tempPanel.add(new JLabel());
+        //tempPanel.add(new JLabel());
+        //tempPanel.add(new JLabel());
         //tempPanel.add(new JLabel());
         tempPanel.add(sensorPanel);
         //tempPanel.setPreferredSize(new Dimension(1920, 824));
         tempPanel.setMaximumSize(new Dimension(1920, 824));
 
         GridBagConstraints gc = new GridBagConstraints();
-        gc.anchor = GridBagConstraints.CENTER;
+        //gc.anchor = GridBagConstraints.CENTER;
         //gc.fill = GridBagConstraints.HORIZONTAL;
 
         gc.gridx = 1;
