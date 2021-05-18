@@ -149,6 +149,8 @@ public class Main extends JFrame {
     public void ActionsPage(){
         remove(menu);
 
+        
+
         revalidate();
         repaint();
     }
