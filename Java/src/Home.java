@@ -24,14 +24,12 @@ public class Home extends JPanel {
         added = true;
         this.frame = frame;
         this.colorScheme = Main.getColorScheme();
-<<<<<<< Updated upstream
         //setSize(1920,1080);
 
         frame.setVisible(true);
         frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-=======
         setSize(1920,1080);
->>>>>>> Stashed changes
+
 
         setBackground(colorScheme.getPrimaryColor());
         setLayout(new GridBagLayout());
