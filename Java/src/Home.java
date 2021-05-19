@@ -262,8 +262,8 @@ public class Home extends JPanel {
         catch (Exception e){
 
         }
-        float screenWidthFactor = (float) (frame.getWidth() / GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getWidth());
-        float screenHeightFactor = (float) (frame.getHeight() / GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getHeight());
+        float screenWidthFactor = (frame.getWidth() / 1920f);
+        float screenHeightFactor = (frame.getHeight() / 1080f);
         Graphics2D g2d1 = (Graphics2D) g;
         g2d1.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d1.setColor(colorScheme.getSecondaryColor());
