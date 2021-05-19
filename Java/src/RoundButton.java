@@ -20,9 +20,8 @@ public class RoundButton extends JButton {
     Color color;
 
     public RoundButton(){
-        this.width = getWidth();
-        this.height = getHeight();
-        this.color = new Color(1f,0f,0f,.5f );
+        this(100,100,new Color(1f,0f,0f,.5f ));
+
     }
 
     public RoundButton(int width, int height, Color color){
@@ -30,23 +29,6 @@ public class RoundButton extends JButton {
         this.height = height;
         this.color = color;
 
-    try {
-        addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Pressed");
-//                musicButton.setBackground(null);
-//                Home.added = false;
-            }
-        });
-
-
-        InputStream imageSource = Login.class.getResourceAsStream("Assets/music.png");
-        Image musicImage = ImageIO.read(imageSource);
-        ImageIcon musicIcon = new ImageIcon(musicImage);
-//
-            setIcon(musicIcon);
-            setPressedIcon(musicIcon);
 
         setBorder(new EmptyBorder(30, 0, 0, Math.round(20f)));
         setFocusable(false);
@@ -77,9 +59,6 @@ public class RoundButton extends JButton {
 
 //            musicLabel.setFont(frame.getUsedFont().deriveFont(20f));
 
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
     }
 
 
@@ -96,14 +75,35 @@ public class RoundButton extends JButton {
     }
 
 
+    public RoundButton(int width, int height, Color color, String imgLink){
+        this(width,height,color);
+        try {
+        InputStream imageSource = Login.class.getResourceAsStream(imgLink);
+        Image musicImage = null;
+        musicImage = ImageIO.read(imageSource);
+        ImageIcon musicIcon = new ImageIcon(musicImage);
+
+        setIcon(musicIcon);
+        setPressedIcon(musicIcon);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     public static void main(String[] args){
         JFrame frame = new JFrame();
         frame.setSize(500,500);
 
-        RoundButton rb = new RoundButton(150,150,new Color(1f,0f,0f,.5f ));
+        RoundButton rb = new RoundButton(150,150,new Color(1f,0f,0f,.5f ),"Assets/music.png");
+        RoundButton rb2 = new RoundButton(150,150,new Color(1f,0f,0f,.5f ));
+        rb2.setText("dasd");
         frame.setLayout(new FlowLayout());
-        frame.add(rb, BorderLayout.CENTER);
+        frame.add(rb);
+        frame.add(rb2);
+
+
 
         frame.setVisible(true);
     }

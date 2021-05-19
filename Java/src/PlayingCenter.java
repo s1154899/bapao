@@ -173,35 +173,35 @@ public class PlayingCenter extends JPanel {
 
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
-
-        Image albumCoverImage = null;
-        try {
-            InputStream albumCoverImg = Login.class.getResourceAsStream("Assets/AlbumCover1.png");
-            albumCoverImage = ImageIO.read(albumCoverImg);
-
-            GradientPaint grad = new GradientPaint(0,0,colorScheme.getFirstBackgroundColor(), 0,1080,colorScheme.getSecondBackgroundColor());
-            Graphics2D g2d1 = (Graphics2D) g;
-            g2d1.setPaint(grad);
-            g2d1.fill(new Rectangle2D.Double(0,0, 1920 , 1080));
-
-        } catch (Exception e) {
-
-        }
-
-        Graphics2D g2d = (Graphics2D)g;
-        g2d.drawImage(albumCoverImage, 750,20,420,420, this);
-
-        Graphics2D g2d1 = (Graphics2D) g;
-        g2d1.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d1.setColor(colorScheme.getSecondaryColor());
-        g2d1.fillOval(Math.round(750f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-        g2d1.fillOval(Math.round(890f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-        g2d1.fillOval(Math.round(1030f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-
-        g2d1.setColor(colorScheme.getBorderColor());
-        g2d1.drawOval(Math.round(750f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-        g2d1.drawOval(Math.round(890f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-        g2d1.drawOval(Math.round(1030f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-        repaint();
+//
+//        Image albumCoverImage = null;
+//        try {
+//            InputStream albumCoverImg = Login.class.getResourceAsStream("Assets/AlbumCover1.png");
+//            albumCoverImage = ImageIO.read(albumCoverImg);
+//
+//            GradientPaint grad = new GradientPaint(0,0,colorScheme.getFirstBackgroundColor(), 0,1080,colorScheme.getSecondBackgroundColor());
+//            Graphics2D g2d1 = (Graphics2D) g;
+//            g2d1.setPaint(grad);
+//            g2d1.fill(new Rectangle2D.Double(0,0, 1920 , 1080));
+//
+//        } catch (Exception e) {
+//
+//        }
+//
+//        Graphics2D g2d = (Graphics2D)g;
+//        g2d.drawImage(albumCoverImage, 750,20,420,420, this);
+//
+//        Graphics2D g2d1 = (Graphics2D) g;
+//        g2d1.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+//        g2d1.setColor(colorScheme.getSecondaryColor());
+//        g2d1.fillOval(Math.round(750f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+//        g2d1.fillOval(Math.round(890f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+//        g2d1.fillOval(Math.round(1030f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+//
+//        g2d1.setColor(colorScheme.getBorderColor());
+//        g2d1.drawOval(Math.round(750f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+//        g2d1.drawOval(Math.round(890f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+//        g2d1.drawOval(Math.round(1030f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+//        repaint();
     }
 }
