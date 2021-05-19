@@ -46,5 +46,37 @@ public class Playlists extends JDialog implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         JButton event = (JButton) e.getSource();
         System.out.println(event.getText());
+        Playlist();
+    }
+
+    // needs parameters stringArray to pull songs out from, for now using strings
+    public void Playlist(){
+        Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+        setSize(r.width, r.height);
+
+        repaint();
+        remove(listPanel);
+        listPanel.setLayout(new GridLayout(10, 1));
+        ArrayList<String> songs = new ArrayList;
+        songs.add("song1");
+        songs.add("song2");
+        songs.add("song3");
+        songs.add("song4");
+
+
+        for (String name : songs) {
+            JButton listName = new JButton(name);
+            listPanel.add(listName);
+        }
+
+
+        add(listPanel);
+
+        Playing playing = new Playing();
+        add(playing, BorderLayout.EAST);
+
+
+        setVisible(true);
+
     }
 }
