@@ -30,8 +30,8 @@ public class Songs extends JDialog implements ActionListener{
 
         add(songsPanel);
 
-        Playing playing = new Playing();
-        add(playing,BorderLayout.EAST);
+//        Playing playing = new Playing(frame, true);
+//        add(playing,BorderLayout.EAST);
 
         setVisible(true);
     }

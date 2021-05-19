@@ -16,7 +16,6 @@ public class Home extends JPanel {
     JButton musicButton;
     JButton sensorButton;
 
-
     ImageIcon musicIcon;
     ImageIcon sensorIcon;
     static boolean added;
@@ -34,6 +33,8 @@ public class Home extends JPanel {
 
         frame.setVisible(true);
         frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+        setSize(1920,1080);
+
 
         setBackground(colorScheme.getPrimaryColor());
         setLayout(new GridBagLayout());
