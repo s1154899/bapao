@@ -1,10 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class Playlists extends JDialog {
+public class Playlists extends JDialog implements ActionListener{
     ArrayList<String> listNames = new ArrayList<>();
+
 
 
     public Playlists() {
@@ -13,8 +15,9 @@ public class Playlists extends JDialog {
         setSize(r.width, r.height);
 
         JPanel listPanel = new JPanel();
-        listPanel.setLayout(new GridLayout(listNames.size(), 1));
+        listPanel.setLayout(new GridLayout(10, 1));
 
+        listNames.add("playlists");
         listNames.add("plyalist");
         listNames.add(": cyka");
         listNames.add("blyat");
@@ -22,10 +25,10 @@ public class Playlists extends JDialog {
 
         for (String name : listNames) {
             JButton listName = new JButton(name);
-
-           // listName.addActionListener((ActionListener) this);
+            listName.addActionListener(this);
             listPanel.add(listName);
         }
+
 
         add(listPanel);
 
@@ -36,5 +39,12 @@ public class Playlists extends JDialog {
         setVisible(true);
 
 
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JButton event = (JButton) e.getSource();
+        System.out.println(event.getText());
     }
 }

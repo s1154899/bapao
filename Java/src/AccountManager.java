@@ -15,6 +15,7 @@ public class AccountManager {
         AccountManager accountManager = new AccountManager();
         accountManager.makeAccount("pete", "poep");
         accountManager.makeAccount("jan", "shieet");
+        accountManager.makeAccount("", "");
         System.out.println(accountManager.validateAccount("jan", "shieet"));
     }
 
