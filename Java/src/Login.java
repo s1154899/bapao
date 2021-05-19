@@ -324,8 +324,8 @@ public class Login extends JDialog {
                     frame.homeScreen();
                     removeThis();
                 }
-                else if (accountManager.validateAccount("jan", "shieet")){
-                    currentAccountName = "jan";
+                else if (accountManager.validateAccount("jantje", "password1")){
+                    currentAccountName = "jantje";
                     frame.setVisible(true);
                     frame.homeScreen();
                     removeThis();
