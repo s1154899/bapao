@@ -157,10 +157,9 @@ public class Main extends JFrame {
     }
     //function called when actions is pressed
     public void ActionsPage(){
-        remove(menu);
-
-        revalidate();
-        repaint();
+        JFrame frame = new JFrame();
+        frame.add(new ActionsMain());
+        frame.setVisible(true);
     }
     //function called when edit playlists is pressed
     public void Edit_PlaylistPage(){
