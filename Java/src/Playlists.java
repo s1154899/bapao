@@ -51,7 +51,7 @@ public class Playlists extends JDialog implements ActionListener{
 
     // needs parameters stringArray to pull songs out from, for now using strings
     public void Playlist(){
-        Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+        /*Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width, r.height);
 
         repaint();
@@ -75,7 +75,7 @@ public class Playlists extends JDialog implements ActionListener{
         Playing playing = new Playing();
         add(playing, BorderLayout.EAST);
 
-
+*/
         setVisible(true);
 
     }
