@@ -141,10 +141,15 @@ public class Main extends JFrame {
     }
     //function called when playlists button is pressed
     public void PlaylistsPage(){
-        remove(menu);
 
-        revalidate();
-        repaint();
+        Playlists playlists = new Playlists(this, true);
+        add(playlists);
+
+
+
+
+
+
     }
     //function called when actions is pressed
     public void ActionsPage(){
