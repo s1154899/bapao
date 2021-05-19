@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SensorsFooter extends JPanel{
     Main frame;
@@ -33,6 +35,18 @@ public class SensorsFooter extends JPanel{
         actions.setBackground(colorScheme.getSecondBackgroundColor());
         actions.setPreferredSize(new Dimension(640, 50));
         actions.setMaximumSize(new Dimension(640, 50));
+        actions.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("wot");
+                JFrame f = new JFrame();
+                f.setSize(500, 500);
+
+                add(new ActionsMain());
+
+                f.setVisible(true);
+            }
+        });
         boxes[1].add(actions);
 
         JButton sensors = new JButton();
