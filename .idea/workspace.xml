@@ -6,59 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="36aed5e0-e1db-4a97-8ae4-5cb7fe230041" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/AccountManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/CheckHost.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/ClickOnSong.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/DatabaseCon.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/GUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Graphs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/LineGrap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Main$colorEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Meting.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/MusicFooter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/MusicMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Playing.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Playlists.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/RaspMetingen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsFooter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Songs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/SubnetCheck.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/findDrivers$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/findDrivers.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/test.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
