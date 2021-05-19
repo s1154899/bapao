@@ -25,9 +25,9 @@ class ActionsMain extends JPanel implements ActionListener {
     private JButton jbUploadFile;
     private JButton jbSaveAction;
 
-    private ArrayList<String> actions = new ArrayList<>();
+    private ArrayList<String> alActions = new ArrayList<>();
     private int indexActions = 0;
-    private ArrayList<Integer> time = new ArrayList<>();
+    private ArrayList<Integer> alTimeInterval = new ArrayList<>();
     private int indexTime = 0;
 
 
@@ -102,12 +102,37 @@ class ActionsMain extends JPanel implements ActionListener {
         c.gridy = 1;
         jpAddAction.add(jtTimeInterval, c);
 
+        JLabel jlIntegerWarning = new JLabel();
+        jlIntegerWarning.setForeground(Color.red);
+        c.gridx = 1;
+        c.gridy = 2;
+        c.insets = new Insets(0, 0, 0, 0);
+        jpAddAction.add(jlIntegerWarning, c);
+
+        jtTimeInterval.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent ke) {
+                String value = jtTimeInterval.getText();
+                int l = value.length();
+
+                if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE) {
+                    jtTimeInterval.setEditable(true);
+                    jlIntegerWarning.setText("");
+                } else {
+                    jtTimeInterval.setEditable(false);
+                    jlIntegerWarning.setText("* Vul alleen hele nummers in (integers)[1-9]");
+                }
+            }
+        });
+
+
         String[] tijdInterval = {"Seconden", "Minuten", "Uren", "Dagen"};
         jcbTime = new JComboBox<>(tijdInterval);
         jcbTime.setFocusable(false);
         jcbTime.setSelectedIndex(0);
         jcbTime.setFont(usedFont.deriveFont(15f));
+        c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 2;
+        c.gridy = 1;
         jpAddAction.add(jcbTime, c);
 
         jbUploadFile = new JButton("Upload python file");
@@ -115,7 +140,7 @@ class ActionsMain extends JPanel implements ActionListener {
         jbUploadFile.setFocusable(false);
         c.fill = GridBagConstraints.NONE;
         c.gridx = 1;
-        c.gridy = 2;
+        c.gridy = 3;
         c.insets = new Insets(25, 0, 0, 0);
         jpAddAction.add(jbUploadFile, c);
 
@@ -125,7 +150,7 @@ class ActionsMain extends JPanel implements ActionListener {
         jbSaveAction.addActionListener(this);
         c.fill = GridBagConstraints.NONE;
         c.gridx = 1;
-        c.gridy = 3;
+        c.gridy = 4;
         c.insets = new Insets(50, 0, 0, 0);
         jpAddAction.add(jbSaveAction, c);
 
@@ -260,16 +285,15 @@ class ActionsMain extends JPanel implements ActionListener {
         });
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == jbSaveAction) {
-            actions.add(indexActions, jtActionName.getText());
-            time.add(indexTime, Integer.parseInt(jtTimeInterval.getText()));
+            alActions.add(indexActions, jtActionName.getText());
+            alTimeInterval.add(indexTime, Integer.parseInt(jtTimeInterval.getText()));
 
             System.out.println("jbsaveactionbutton pressed");
-            ActionView newAction = new ActionView(frame, time.get(indexTime));
-            jtpAction.addTab(actions.get(indexActions), newAction);
+            ActionView newAction = new ActionView(frame, alTimeInterval.get(indexTime));
+            jtpAction.addTab(alActions.get(indexActions), newAction);
         }
 
     }
@@ -302,7 +326,6 @@ class ActionView extends JPanel {
         c.gridx = 1;
         c.gridy = 0;
         add(jlTimeInterval);
-
 
 
     }
