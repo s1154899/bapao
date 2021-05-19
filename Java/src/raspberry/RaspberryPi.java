@@ -27,9 +27,9 @@ public class RaspberryPi {
     public static void main(String[] args) throws SQLException {
 
         RaspberryPi pi = new RaspberryPi("192.168.2.7");
-        pi.databaseCon.playmusic("mii channel but all the pauses are uncomfortably long.mp3");
-        pi.databaseCon.playmusic("Rick Astley - Never Gonna Give You Up (Video).mp3");
-        pi.databaseCon.playmusic("test.mp3");
+//        pi.databaseCon.playmusic("mii channel but all the pauses are uncomfortably long.mp3");
+//        pi.databaseCon.playmusic("Rick Astley - Never Gonna Give You Up (Video).mp3");
+//        pi.databaseCon.playmusic("test.mp3");
 
 
     }
@@ -39,29 +39,55 @@ public class RaspberryPi {
         try {
             databaseCon = new DatabaseCon(host);
             connectedPis.add(this);
-            String[] strings = musicDirJava();
-            String[] strings1 = musicDirRaspberry();
+            sync();
 
-
-            for (String s : strings){
-                boolean found = false;
-
-                for(String s1 : strings1){
-
-                    if (s.equals(s1)){
-                        found = true;
-                    }
-                }
-
-                if (!found){
-                    System.out.println("not found: " + s);
-                    UploadMusic(s);
-                }
-
-
-            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }
+
+    }
+
+    private void sync(){
+
+        String[] strings = musicDirJava();
+        String[] strings1 = DirRaspberry("listMusic.py");
+        for (String s : strings){
+            boolean found = false;
+
+            for(String s1 : strings1){
+
+                if (s.equals(s1)){
+                    found = true;
+                }
+            }
+
+            if (!found){
+                System.out.println("not found: " + s);
+                UploadMusic(s);
+            }
+
+
+        }
+
+        strings = scriptsDirJava();
+        strings1 = DirRaspberry("listScripts.py");
+
+        for (String s : strings){
+            boolean found = false;
+
+            for(String s1 : strings1){
+
+                if (s.equals(s1)){
+                    found = true;
+                }
+            }
+
+            if (!found){
+                System.out.println("not found: " + s);
+                UploadScripts(s);
+            }
+
+
         }
 
     }
@@ -69,13 +95,12 @@ public class RaspberryPi {
     public void UploadMusic(String name){
         upload("./music/"+name,"/music/"+name);
     }
+    public void UploadScripts(String name){ upload("./scripts/"+name, "/scripts/"+name);}
     //vraag me niet hoe dit werkt
     private void upload(String filePath, String uploadPath){
-//
+
         String ftpUrl = "ftp://%s:%s@%s/%s;type=i";
-//        String host = "192.168.2.4";
-//        String user = "pi";
-//        String pass = "raspberry";
+
 
         ftpUrl = String.format(ftpUrl, user, pass, host, uploadPath);
         System.out.println("Upload URL: " + ftpUrl);
@@ -103,29 +128,39 @@ public class RaspberryPi {
 
 
     public String[] musicDirJava(){
+        return DirJava("music");
 
-        try (Stream<Path> paths = Files.walk(Paths.get("./music/"))) {
+    }
+
+    public String[] scriptsDirJava(){
+        return DirJava("scripts");
+    }
+
+    private String[] DirJava(String location){
+
+        try (Stream<Path> paths = Files.walk(Paths.get("./"+location+"/"))) {
 
             Object[] p1 = paths.skip(1).toArray();
             String[] files = new String[p1.length];
             int count = 0;
             for(Object i :p1){
-                files[count] = i.toString().replaceAll("\\\\","").replaceFirst(".music","").trim();
+                files[count] = i.toString().replaceAll("\\\\","").replaceFirst("."+location,"").trim();
                 count++;
             }
             return files;
-          //          .filter(Files::isRegularFile)
-           //         .forEach(System.out::println);
+            //          .filter(Files::isRegularFile)
+            //         .forEach(System.out::println);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return new String[1];
     }
 
-    public String[] musicDirRaspberry(){
+
+    public String[] DirRaspberry(String page){
 
         try {
-            var url = new URL("http://192.168.2.7/cgi-bin/listMusic.py");
+            var url = new URL("http://"+host+"/cgi-bin/" + page);
             var br = new BufferedReader(new InputStreamReader(url.openStream()));
             String line;
 
@@ -156,6 +191,27 @@ public class RaspberryPi {
         return host;
     }
 
+    public static void copyFileUsingStream(File source) throws IOException {
+        File dest = new File( "./scripts/"+source.getName());
+        InputStream is = null;
+        OutputStream os = null;
+        try {
+            is = new FileInputStream(source);
+            os = new FileOutputStream(dest);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+            ArrayList<RaspberryPi> pi = RaspberryPi.connectedPis;
+            for (int i = 0; i < pi.size() ; i++){
+                pi.get(i).sync();
+            }
+        } finally {
+            is.close();
+            os.close();
+        }
 
+    }
 
 }

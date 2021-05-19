@@ -9,12 +9,17 @@ import java.util.ArrayList;
 
 public class Songs extends JDialog{
     ArrayList<String> songNames = new ArrayList<>();
+    test t;
 
     public Songs (JFrame frame, boolean modal){
         super(frame, modal);
+
+        t = new test("Assest/","wwwooopps");
         setTitle("Songs");
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width, r.height);
+
+        frame.setLayout(new GridLayout(1,2));
 
         JPanel songsPanel = new JPanel();
         songsPanel.setLayout(new GridLayout(songNames.size(), 1, 0, 20));
@@ -35,17 +40,17 @@ public class Songs extends JDialog{
 
         setLayout(new BorderLayout());
 
-        JPanel test = new JPanel();
-        test.setPreferredSize(new Dimension( getWidth() / 3 - 20, songs.length * 100));
-        JScrollPane scrollFrame = new JScrollPane(test);
-        test.setAutoscrolls(true);
+        JPanel songsButtons = new JPanel();
+        songsButtons.setPreferredSize(new Dimension( getWidth() / 3 - 20, songs.length * 100));
+        JScrollPane scrollFrame = new JScrollPane(songsButtons);
+        songsButtons.setAutoscrolls(true);
         scrollFrame.setPreferredSize(new Dimension( getWidth() / 3,300));
         add(scrollFrame, BorderLayout.LINE_START);
 
 
         GridLayout grid = new GridLayout(songs.length,1);
 
-        test.setLayout(grid);
+        songsButtons.setLayout(grid);
 
 
 
@@ -60,13 +65,16 @@ public class Songs extends JDialog{
                 public void actionPerformed(ActionEvent e) {
                     try {
                         pi.databaseCon.playmusic(s);
+                        t.setTitle(s);
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
                     }
                 }
             });
 
-            test.add(songButton);
+            songsButtons.add(songButton);
+
+            add(t);
 
         }
 
