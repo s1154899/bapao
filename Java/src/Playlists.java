@@ -30,8 +30,8 @@ public class Playlists extends JDialog {
 
         add(listPanel);
 
-        Playing playing = new Playing();
-        add(playing, BorderLayout.EAST);
+//        Playing playing = new Playing();
+//        add(playing, BorderLayout.EAST);
 
         setVisible(true);
 
