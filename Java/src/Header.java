@@ -100,6 +100,7 @@ public class Header extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if (!Home.added) {
                     frame.homeScreen();
+                    removeThis();
                 }
             }
         });

@@ -21,6 +21,8 @@ public class Home extends JPanel {
     ImageIcon sensorIcon;
     static boolean added;
 
+    Header header;
+
     public Home(Main frame, boolean modal){
         added = true;
         this.frame = frame;
@@ -53,7 +55,7 @@ public class Home extends JPanel {
                 sensorButton.setBackground(null);
                 frame.showStats();
                 removeThis();
-
+                Home.added = false;
             }
         });
 
@@ -183,9 +185,9 @@ public class Home extends JPanel {
         add(tempPanel, gc);
 
 
-        Header headPanel = new Header(frame, this);
-        headPanel.setPreferredSize(new Dimension(1920,Math.round(128f*(frame.getHeight()/1080f))));
-        headPanel.setMaximumSize(new Dimension(1920,Math.round(128f*(frame.getHeight()/1080f))));
+        header = new Header(frame, this);
+        header.setPreferredSize(new Dimension(1920,Math.round(128f*(frame.getHeight()/1080f))));
+        header.setMaximumSize(new Dimension(1920,Math.round(128f*(frame.getHeight()/1080f))));
 
 
         GridBagConstraints gcSecond = new GridBagConstraints();
@@ -198,7 +200,7 @@ public class Home extends JPanel {
         gcSecond.gridheight = 1;
 
 
-        add(headPanel, gcSecond);
+        add(header, gcSecond);
 
         JPanel footerPanel = new JPanel();
         footerPanel.setBackground(null);
@@ -229,6 +231,8 @@ public class Home extends JPanel {
 
     public void removeThis(){
         frame.remove(this);
+        frame.remove(header);
+        header = null;
     }
 
     protected void paintComponent(Graphics g) {
