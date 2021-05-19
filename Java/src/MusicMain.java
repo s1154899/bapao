@@ -53,5 +53,39 @@ public class MusicMain extends JPanel {
         musicFooter.setPreferredSize(new Dimension(1920,10));
         musicFooter.setMaximumSize(new Dimension(1920,10));
         add(musicFooter, gcThird);
+        Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+        setSize(r.width,r.height);
+
+        //layout for the main panel
+        BorderLayout border = new BorderLayout();
+        setLayout(border);
+
+        //layout for the menu
+        GridLayout grid = new GridLayout(4,2,40,60);
+        JPanel menu = new JPanel();
+        menu.setLayout(grid);
+
+        String[] buttons = {"Songs", "Results", "Playlists", "Actions", "Edit_Playlist", "Sensors", "Playing" };
+
+        for(String button : buttons) {
+            //creates button for creating the senors page
+            JButton button1 = new JButton();
+            button1.setText(button);
+            button1.addActionListener(Reflect.actionListenerFromMethod(this, button+"Page"));
+
+            //adds sensors button to the menu
+            menu.add(button1);
+        }
+
+
+        //adds the menu to the main screen
+        add(menu, BorderLayout.CENTER);
+
+
+    }
+    public void PlaylistsPage(){
+
+        Playlists playlists = new Playlists();
+        add(playlists);
     }
 }
