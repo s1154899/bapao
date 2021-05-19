@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Properties;
 
 class DatabaseCon{
@@ -17,7 +18,7 @@ class DatabaseCon{
 
     public static void main(String args[]) throws ClassNotFoundException {
 
-//        Class.forName("com.mysql.cj.jdbc.Driver");
+        //Class.forName("com.mysql.cj.jdbc.Driver");
         DatabaseCon dcon = new DatabaseCon("127.0.0.1");
         try {
             Connection connection = dcon.getConnection();
@@ -76,5 +77,20 @@ class DatabaseCon{
         } catch (SQLException e) {
             //e.printStackTrace();
         }
+    }
+
+    public String[] executeQuery(String query){
+        ArrayList<String> resultList = new ArrayList<String>();
+
+        try (Statement stmt = getConnection().createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                resultList.add(rs.getString("meting"));
+            }
+        } catch (SQLException e) {
+            //e.printStackTrace();
+        }
+        
+        return (String[]) resultList.toArray();
     }
 }

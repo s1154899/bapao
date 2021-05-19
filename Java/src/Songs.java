@@ -1,17 +1,20 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class Songs extends JDialog {
+public class Songs extends JDialog implements ActionListener{
     ArrayList<String> songNames = new ArrayList<>();
-
 
     public Songs (JFrame frame, boolean modal){
         super(frame, modal);
+        setTitle("Songs");
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width, r.height);
-        setLayout(new BorderLayout());
+
+        JPanel songsPanel = new JPanel();
+        songsPanel.setLayout(new GridLayout(songNames.size(), 1, 0, 20));
 
         songNames.add("test 1");
         songNames.add("test 2");
@@ -19,19 +22,27 @@ public class Songs extends JDialog {
         songNames.add("test 4");
         songNames.add("test 5");
 
-        for (String name : songNames){
+        for (String name: songNames){
             JButton songName = new JButton(name);
-            //songName.addActionListener((ActionListener) this);
-            add(songName);
-
+            songName.addActionListener(this);
+            songsPanel.add(songName);
         }
 
-//        JScrollPane scrollPane = new JScrollPane(new JTextArea(10, 20), JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-//        add(scrollPane);
+        add(songsPanel);
 
-        Playing playing = new Playing();
-        add(playing,BorderLayout.EAST);
+//        Playing playing = new Playing(frame, true);
+//        add(playing,BorderLayout.EAST);
 
         setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        for (String name : songNames){
+            if (((JButton) e.getSource()).getText() == new JButton(name).getText()){
+                System.out.println(name);
+                ClickOnSong clickOnSong = new ClickOnSong(this, true, name);
+            }
+        }
     }
 }
