@@ -1,10 +1,6 @@
 package raspberry;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Properties;
 
 public class DatabaseCon{
@@ -113,6 +109,20 @@ public class DatabaseCon{
         }
 
         return amount;
+    }
+
+    public void playmusic(String song) throws SQLException {
+        // the mysql insert statement
+        //TODO add prepared
+        String query = " INSERT INTO `sensors`.`player` (`location`,`set`) VALUES(\"/home/pi/ftp/music/"+song+"\",\"play\");";
+
+        // create the mysql insert preparedstatement
+        PreparedStatement preparedStmt = con.prepareStatement(query);
+        //preparedStmt.setString (1, song);
+
+        // execute the preparedstatement
+        preparedStmt.execute();
+
     }
 
 
