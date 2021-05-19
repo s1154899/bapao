@@ -57,4 +57,7 @@ public class SensorsFooter extends JPanel{
         sensors.setMaximumSize(new Dimension(640, 50));
         boxes[2].add(sensors);
     }
+    public void removeThis(){
+        frame.remove(this);
+    }
 }
