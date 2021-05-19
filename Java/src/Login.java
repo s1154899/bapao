@@ -63,7 +63,6 @@ public class Login extends JDialog {
         setLocation(710, 190);
         setIconImage(iconImage);
 
-
         JPanel loginPanel = new JPanel();
         loginPanel.setBackground(colorScheme.getPrimaryColor());
         loginPanel.setPreferredSize(new Dimension(500, 700));
@@ -91,8 +90,6 @@ public class Login extends JDialog {
             boxes[i] = Box.createHorizontalBox();
             centerPanel.add(boxes[i]);
         }
-
-
 
         centerPanel.setPreferredSize(new Dimension(480,100));
         centerPanel.setMaximumSize(new Dimension(480,100));

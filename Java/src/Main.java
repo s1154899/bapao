@@ -30,6 +30,7 @@ public class Main extends JFrame {
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width,r.height);
 
+
         //layout for the main panel
         BorderLayout border = new BorderLayout();
         setLayout(border);
@@ -175,10 +176,10 @@ public class Main extends JFrame {
         repaint();
     }
     //function called when playing is pressed
-    public void PlayingPage(){
+    public void PlayingPage(MusicMain musicMain){
         remove(menu);
 
-        Playing playing = new Playing();
+        Playing playing = new Playing(this, true, musicMain);
         add(playing);
 
         revalidate();
