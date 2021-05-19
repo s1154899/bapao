@@ -3,12 +3,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MusicFooter extends JPanel implements ActionListener {
+public class MusicFooter extends JPanel {
     Main frame;
     Main.colorEnum colorScheme;
     MusicMain musicMain;
 
-    public MusicFooter(Main frame, boolean modal, MusicMain musicMain){
+    public MusicFooter(Main frame, MusicMain musicMain){
         this.frame = frame;
         this.musicMain = musicMain;
         this.colorScheme = Main.getColorScheme();
@@ -55,9 +55,5 @@ public class MusicFooter extends JPanel implements ActionListener {
         playing.setMaximumSize(new Dimension(640, 50));
         playing.addActionListener(musicMain);
         boxes[3].add(playing);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
     }
 }
