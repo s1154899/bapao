@@ -87,13 +87,12 @@ public class Main extends JFrame {
         remove(menu);
         try {
             remove(home);
-            Home.added = false;
         }
         catch (Exception e){
 
         }
         home = new Home(this, true);
-        Home.added = true;
+
         this.add(home);
 
         revalidate();
@@ -102,7 +101,6 @@ public class Main extends JFrame {
 
     public void showMusic(){
         remove(home);
-        Home.added = false;
         MusicMain music = new MusicMain(this, true);
         add(music);
 
@@ -112,7 +110,6 @@ public class Main extends JFrame {
 
     public void showStats(){
         remove(home);
-        Home.added = false;
         SensorsMain sensors = new SensorsMain(this, true);
         add(sensors);
 
