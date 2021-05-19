@@ -26,7 +26,7 @@ public class Main extends JFrame {
         super();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        colorScheme = colorEnum.lightMode;
+        colorScheme = colorEnum.darkMode;
         setTitle("Domotica: home screen");
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width,r.height);
