@@ -85,7 +85,7 @@ public class MusicMain extends JPanel {
     }
     public void PlaylistsPage(){
 
-        Playlists playlists = new Playlists();
+        Playlists playlists = new Playlists(frame);
         add(playlists);
     }
 }
