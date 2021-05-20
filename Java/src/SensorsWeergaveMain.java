@@ -30,6 +30,7 @@ class SensorsWeergaveMain extends JPanel implements ActionListener {
 
         JLabel jlRaspberryIp = new JLabel("Ip van raspberry pi is: ");
         jlRaspberryIp.setFont(usedFont.deriveFont(20f));
+        jlRaspberryIp.setForeground(colorScheme.getDetailColor());
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
@@ -37,6 +38,7 @@ class SensorsWeergaveMain extends JPanel implements ActionListener {
 
         JLabel jlLastTemperature = new JLabel("De laatste temperatuur van de sensor is: ");
         jlLastTemperature.setFont(usedFont.deriveFont(20f));
+        jlLastTemperature.setForeground(colorScheme.getDetailColor());
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 1;
@@ -44,6 +46,7 @@ class SensorsWeergaveMain extends JPanel implements ActionListener {
 
         JLabel jlLastTemperatureDate = new JLabel("De laatste temperatuur is opgehaald op: ");
         jlLastTemperatureDate.setFont(usedFont.deriveFont(20f));
+        jlLastTemperatureDate.setForeground(colorScheme.getDetailColor());
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 2;
@@ -51,6 +54,7 @@ class SensorsWeergaveMain extends JPanel implements ActionListener {
 
         JLabel jlArduinoAddonId = new JLabel("Arduino Addon ID: ");
         jlArduinoAddonId.setFont(usedFont.deriveFont(20f));
+        jlArduinoAddonId.setForeground(colorScheme.getDetailColor());
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 3;
@@ -58,6 +62,7 @@ class SensorsWeergaveMain extends JPanel implements ActionListener {
 
         JLabel jlLastLight = new JLabel("Het laatste lichtsensor resultaat is: ");
         jlLastLight.setFont(usedFont.deriveFont(20f));
+        jlLastLight.setForeground(colorScheme.getDetailColor());
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 4;
@@ -65,11 +70,12 @@ class SensorsWeergaveMain extends JPanel implements ActionListener {
 
         JLabel jlLastLightDate = new JLabel("Het laatste lichtsensor resultaat is opgehaald op: ");
         jlLastLightDate.setFont(usedFont.deriveFont(20f));
+        jlLastLightDate.setForeground(colorScheme.getDetailColor());
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 5;
         add(jlLastLightDate, c);
-        
+
     }
 
     @Override
