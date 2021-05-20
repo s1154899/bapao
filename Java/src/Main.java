@@ -30,6 +30,7 @@ public class Main extends JFrame {
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width,r.height);
 
+
         //layout for the main panel
         BorderLayout border = new BorderLayout();
         setLayout(border);
@@ -38,24 +39,6 @@ public class Main extends JFrame {
         GridLayout grid = new GridLayout(4,2,40,60);
         menu = new JPanel();
         menu.setLayout(grid);
-
-        String[] buttons = {"Songs", "Results", "Playlists", "Actions", "Edit_Playlist", "Sensors", "Playing" };
-
-        for(String button : buttons) {
-            //creates button for creating the senors page
-            JButton button1 = new JButton();
-            button1.setText(button);
-            button1.addActionListener(Reflect.actionListenerFromMethod(this, button+"Page"));
-
-            //adds sensors button to the menu
-            menu.add(button1);
-        }
-
-
-        //adds the menu to the main screen
-        add(menu, BorderLayout.CENTER);
-
-        //turns the Jframe Visible
 
         try {
             usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
@@ -120,16 +103,7 @@ public class Main extends JFrame {
         repaint();
     }
 
-    //function called when songs button is pressed
-    public void SongsPage(){
-        remove(menu);
 
-        Songs songs = new Songs(this, true);
-        add(songs);
-
-        revalidate();
-        repaint();
-    }
     //function called when results button is pressed
     public void ResultsPage(){
         remove(menu);
@@ -141,18 +115,7 @@ public class Main extends JFrame {
         repaint();
         System.out.println("x");
     }
-    //function called when playlists button is pressed
-    public void PlaylistsPage(){
 
-        Playlists playlists = new Playlists(this, true);
-        add(playlists);
-
-
-
-
-
-
-    }
     //function called when actions is pressed
     public void ActionsPage(){
         remove(menu);
@@ -160,26 +123,10 @@ public class Main extends JFrame {
         revalidate();
         repaint();
     }
-    //function called when edit playlists is pressed
-    public void Edit_PlaylistPage(){
-        remove(menu);
 
-        revalidate();
-        repaint();
-    }
     //function called when sensors is pressed
     public void SensorsPage(){
         remove(menu);
-
-        revalidate();
-        repaint();
-    }
-    //function called when playing is pressed
-    public void PlayingPage(){
-        remove(menu);
-
-        Playing playing = new Playing();
-        add(playing);
 
         revalidate();
         repaint();

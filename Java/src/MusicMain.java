@@ -1,13 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class MusicMain extends JPanel {
+public class MusicMain extends JPanel implements ActionListener{
 
     Main frame;
     Main.colorEnum colorScheme;
 
 
-    public MusicMain(Main frame, boolean modal){
+    public MusicMain(Main frame, boolean modal) {
         this.frame = frame;
         this.colorScheme = Main.getColorScheme();
         setLayout(new GridBagLayout());
@@ -41,17 +42,104 @@ public class MusicMain extends JPanel {
         gcThird.gridwidth = 3;
         gcThird.gridheight = 1;
 
+
+        // header related
         Header headPanel = new Header(frame, this);
-        headPanel.setPreferredSize(new Dimension(1920,10));
-        headPanel.setMaximumSize(new Dimension(1920,10));
+        headPanel.setPreferredSize(new Dimension(1920, 10));
+        headPanel.setMaximumSize(new Dimension(1920, 10));
         add(headPanel, gc);
 
-        JLabel center = new JLabel();
-        add(center, gcSecond);
+        // menu
+        JPanel menu = new JPanel();
+        String[] buttons = {"Songs", "Playlists", "Edit_Playlist", "Playing"};
+        for(String button : buttons) {
+            //creates buttons for every item in arrayList
+            JButton button1 = new JButton(button);
+            button1.addActionListener(Reflect.actionListenerFromMethod(this, button+"Page"));
 
+
+            //adds button to menu
+            add(button1);
+        }
+
+
+
+
+        // footer
         MusicFooter musicFooter = new MusicFooter(frame, modal);
-        musicFooter.setPreferredSize(new Dimension(1920,10));
-        musicFooter.setMaximumSize(new Dimension(1920,10));
+        musicFooter.setPreferredSize(new Dimension(1920, 10));
+        musicFooter.setMaximumSize(new Dimension(1920, 10));
         add(musicFooter, gcThird);
+
     }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JButton event = (JButton) e.getSource();
+        System.out.println(event.getText());
+        if("Terug" == event.getText()){
+            // ga terug
+
+        } else if ("Edit playlist" == event.getText()){
+       //     EditPlaylist editPlaylist = new EditPlaylist();
+
+        }
+
+    }
+
+    //function called when playlists button is pressed
+    public void PlaylistsPage(){
+        Playlists playlists = new Playlists(new JFrame());
+        add(playlists);
+    }
+
 }
+
+
+
+
+
+/*
+
+        //adds the menu to the main screen
+        add(menu, BorderLayout.CENTER);
+
+         //function called when songs button is pressed
+    public void SongsPage(){
+        remove(menu);
+
+        Songs songs = new Songs(this, true);
+        add(songs);
+
+        revalidate();
+        repaint();
+    }
+
+
+
+       //function called when edit playlists is pressed
+    public void Edit_PlaylistPage(){
+        remove(menu);
+
+        revalidate();
+        repaint();
+    }
+
+
+       //function called when playing is pressed
+    public void PlayingPage(){
+        remove(menu);
+
+        Playing playing = new Playing();
+        add(playing);
+
+        revalidate();
+        repaint();
+    }
+
+
+
+
+*/
+
