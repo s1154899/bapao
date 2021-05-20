@@ -4,8 +4,8 @@ import java.awt.*;
 public class Graphs {
 
 
-    public JPanel lineGraph(){
-        JPanel graph = new LineGrap();
+    public JPanel lineGraph(int[] results){
+        JPanel graph = new LineGrap(results);
 
         return graph;
 
@@ -46,8 +46,9 @@ class LineGrap extends JPanel{
 
     private int points[];
 
-    public LineGrap(){
+    public LineGrap(int[] amounts){
 
+        Values = amounts;
 
         points = new int[Values.length];
 
@@ -111,10 +112,12 @@ class LineGrap extends JPanel{
             g.drawLine(xs, ys - (spaceBetweenSteps * i),xe,ys - (spaceBetweenSteps * i));
             g.setColor(Color.black);
         }
+        g.setColor(Color.MAGENTA);
         for (int i = 1; i < points.length; i++){
             g.drawLine(xs + spaceBetweenDates * (i - 1),height - points[i - 1] ,xs + spaceBetweenDates * i, height - (points[i]));
 //            System.out.println(points[i]);
         }
+        g.setColor(Color.black);
 
 
 

@@ -2,13 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class SensorsMain extends JPanel {
-
     Main frame;
     Main.colorEnum colorScheme;
 
     public SensorsMain(Main frame, boolean modal){
         this.frame = frame;
         this.colorScheme = Main.getColorScheme();
+
         setLayout(new GridBagLayout());
         setBackground(colorScheme.getPrimaryColor());
 
