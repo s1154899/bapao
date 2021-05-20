@@ -27,6 +27,7 @@ public class RaspberryPi {
     public static void main(String[] args) throws SQLException {
 
         RaspberryPi pi = new RaspberryPi("192.168.2.7");
+        pi.databaseCon.getScriptNames();
 //        pi.databaseCon.playmusic("mii channel but all the pauses are uncomfortably long.mp3");
 //        pi.databaseCon.playmusic("Rick Astley - Never Gonna Give You Up (Video).mp3");
 //        pi.databaseCon.playmusic("test.mp3");
@@ -213,5 +214,7 @@ public class RaspberryPi {
         }
 
     }
+
+
 
 }

@@ -38,13 +38,12 @@ public class SensorsFooter extends JPanel{
         actions.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("wot");
-                JFrame f = new JFrame();
-                f.setSize(500, 500);
+                System.out.println("Pressed");
+                removeThis();
+                frame.ActionsPage();
 
-                add(new ActionsMain());
 
-                f.setVisible(true);
+
             }
         });
         boxes[1].add(actions);

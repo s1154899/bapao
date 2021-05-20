@@ -164,4 +164,23 @@ public class DatabaseCon{
         // execute the preparedstatement
         preparedStmt.execute();
     }
+
+    public void getScriptNames(){
+        String query = "SELECT `ScriptName` FROM `sensors`";
+        int size =0;
+        try (Statement stmt = con.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+
+
+            while (rs.next())
+            {
+//                rs.last();    // moves cursor to the last row
+                System.out.println(rs.getString("ScriptName")); // get row id
+            }
+
+        } catch (SQLException e) {
+            //e.printStackTrace();
+        }
+
+    }
 }
