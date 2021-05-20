@@ -5,7 +5,7 @@ import java.util.Properties;
 
 public class DatabaseCon{
 
-    String userName = "app";
+    String userName = "admin";
     String password = "admin";
     String dbms = "mysql";
     String serverName;
@@ -126,4 +126,61 @@ public class DatabaseCon{
     }
 
 
+    public void backMusic() throws SQLException {
+        // the mysql insert statement
+        //TODO add prepared
+        String query = "UPDATE `sensors`.`player` SET `set` = 'play' WHERE `idplayer` = (SELECT MAX(`idplayer`) FROM (select * from `sensors`.`player` WHERE `set` = 'played') as t);";
+
+        // create the mysql insert preparedstatement
+        PreparedStatement preparedStmt = con.prepareStatement(query);
+        //preparedStmt.setString (1, song);
+
+        // execute the preparedstatement
+        preparedStmt.execute();
+    }
+
+    public void pauseMusic() throws SQLException {
+        // the mysql insert statement
+        //TODO add prepared
+        String query = "UPDATE `sensors`.`player` SET `set` = 'pause' WHERE `set` = 'playing';";
+
+        // create the mysql insert preparedstatement
+        PreparedStatement preparedStmt = con.prepareStatement(query);
+        //preparedStmt.setString (1, song);
+
+        // execute the preparedstatement
+        preparedStmt.execute();
+    }
+
+    public void nextMusic() throws SQLException {
+        // the mysql insert statement
+        //TODO add prepared
+        String query = "UPDATE `sensors`.`player` SET `set` = 'played' WHERE `set` = 'playing' OR `set` = 'paused' OR `set` = 'pause' ;";
+
+        // create the mysql insert preparedstatement
+        PreparedStatement preparedStmt = con.prepareStatement(query);
+        //preparedStmt.setString (1, song);
+
+        // execute the preparedstatement
+        preparedStmt.execute();
+    }
+
+    public void getScriptNames(){
+        String query = "SELECT `ScriptName` FROM `sensors`";
+        int size =0;
+        try (Statement stmt = con.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+
+
+            while (rs.next())
+            {
+//                rs.last();    // moves cursor to the last row
+                System.out.println(rs.getString("ScriptName")); // get row id
+            }
+
+        } catch (SQLException e) {
+            //e.printStackTrace();
+        }
+
+    }
 }
