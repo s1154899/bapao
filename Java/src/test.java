@@ -74,6 +74,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -81,31 +82,41 @@ public class test extends JPanel {
 
     public JLabel imageLabel;
     public JLabel Title;
-
-
+    Main.colorEnum colorScheme;
+    private Font usedFont;
 
     public test(String imgsrc, String title){
-
-        setLayout(new GridLayout(3,1));
-
         try {
-            BufferedImage image = null;
-            image = ImageIO.read(new File(imgsrc));
-            imageLabel = new JLabel(new ImageIcon(image));
-            add(imageLabel);
-        } catch (IOException e) {
+            usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
+        } catch (IOException |FontFormatException e) {
             e.printStackTrace();
         }
 
-        Title = new JLabel();
+        this.colorScheme = Main.getColorScheme();
 
+        setLayout(new GridLayout(3,1));
+        setBackground(colorScheme.getFirstBackgroundColor());
+
+        try {
+//            BufferedImage image = null;
+//            image = ImageIO.read(new File(imgsrc));
+//            imageLabel = new JLabel(new ImageIcon(image));
+            setImage(imgsrc);
+            //add(imageLabel);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Title = new JLabel(title);
         Title.setHorizontalAlignment(SwingConstants.CENTER);
-        Title.setText(title);
+        Title.setFont(usedFont.deriveFont(20f));
+        Title.setForeground(colorScheme.getDetailColor());
 
         add(Title);
 
         JPanel PlayButtonsPanel = new JPanel();
         PlayButtonsPanel.setLayout(new FlowLayout());
+        PlayButtonsPanel.setBackground(colorScheme.getFirstBackgroundColor());
 
         RoundButton back = new RoundButton();
         back.setText("<");
@@ -137,6 +148,7 @@ public class test extends JPanel {
                 }
             }
         });
+
         RoundButton next = new RoundButton();
         next.setText(">");
         next.addActionListener(new ActionListener() {
@@ -158,23 +170,22 @@ public class test extends JPanel {
         PlayButtonsPanel.add(next);
 
         add(PlayButtonsPanel);
-
-
     }
-
 
     public void setTitle(String text){
         Title.setText(text);
         revalidate();
         repaint();
     }
+
     public void setImage(String text){
         try {
+            InputStream albumCoverImg = Login.class.getResourceAsStream("Assets/AlbumCover1.png");
             BufferedImage image = null;
-            image = ImageIO.read(new File(text));
+            image = ImageIO.read(albumCoverImg);
             imageLabel = new JLabel(new ImageIcon(image));
             add(imageLabel);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -196,8 +207,6 @@ public class test extends JPanel {
                 JFileChooser file = new JFileChooser();
 
 
-
-
                 File f = new File("");
                 int returnVal = file.showOpenDialog(null);
                 if(returnVal == JFileChooser.APPROVE_OPTION) {
@@ -205,8 +214,6 @@ public class test extends JPanel {
                             file.getSelectedFile().getName());
                             f = file.getSelectedFile();
                 }
-
-
 
                 try {
                     RaspberryPi.copyFileUsingStream(f);

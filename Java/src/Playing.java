@@ -48,9 +48,10 @@ public class Playing extends JPanel {
         headPanel.setMaximumSize(new Dimension(1920,128));
         add(headPanel, gc);
 
-//        PlayingCenter playingCenter = new PlayingCenter(frame);
-        test t = new test("Assets/AlbumCover1.png","wooops");
-        add(t, gcSecond);
+        PlayingCenter playingCenter = new PlayingCenter(frame);
+        add(playingCenter, gcSecond);
+//        test t = new test("Assets/AlbumCover1.png","Title test");
+//        add(t, gcSecond);
 
         MusicFooter musicFooter = new MusicFooter(frame, musicMain);
         musicFooter.setPreferredSize(new Dimension(1920,30));
