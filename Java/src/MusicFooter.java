@@ -2,10 +2,10 @@ import javax.swing.*;
 
 public class MusicFooter extends JPanel {
 
-    Main frame;
+  //  Main frame;
 
     public MusicFooter(Main frame, boolean modal){
-        this.frame = frame;
+     //   this.frame = frame;
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setBackground(null);
 

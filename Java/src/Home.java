@@ -222,13 +222,6 @@ public class Home extends JPanel {
         gcThird.gridheight = 1;
 
         add(footerPanel, gcThird);
-
-
-
-
-        //paintPanel paintPanel = new paintPanel(frame);
-        //add(paintPanel);
-
         paintComponent(frame.getGraphics());
     }
 
