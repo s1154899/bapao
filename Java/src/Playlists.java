@@ -30,8 +30,6 @@ public class Playlists extends JDialog implements ActionListener {
                 public void actionPerformed(ActionEvent e) {
                     JButton event = (JButton) e.getSource();
                     System.out.println(event.getText());
-
-                    // function also gets called when pressing on song-buttons
                     for (String element : listNames) {
                         if (element == event.getText()) {
                             Playlist(event.getText());
@@ -43,11 +41,10 @@ public class Playlists extends JDialog implements ActionListener {
         }
 
 
-        add(listPanel);
-        // hoi
+
         Playing playing = new Playing();
         add(playing, BorderLayout.EAST);
-
+        add(listPanel);
 
         setVisible(true);
 
@@ -57,9 +54,6 @@ public class Playlists extends JDialog implements ActionListener {
 
         // moet geselecteerde playlist afspelen
 
-        Playing playing = new Playing();
-        add(playing,BorderLayout.EAST);
-        setVisible(true);
 
     }
 
