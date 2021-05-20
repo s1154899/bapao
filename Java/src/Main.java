@@ -1,9 +1,13 @@
+import raspberry.RaspberryPi;
+import raspberry.SubnetCheck;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 
 public class Main extends JFrame {
 
@@ -30,6 +34,7 @@ public class Main extends JFrame {
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width,r.height);
 
+
         //layout for the main panel
         BorderLayout border = new BorderLayout();
         setLayout(border);
@@ -55,12 +60,17 @@ public class Main extends JFrame {
         //adds the menu to the main screen
         add(menu, BorderLayout.CENTER);
 
+        //SubnetCheck subnetCheck = new SubnetCheck(this,true);
+
+        new RaspberryPi("192.168.2.22");
+
         //turns the Jframe Visible
 
         try {
             usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
         } catch (IOException |FontFormatException e) {
             e.printStackTrace();
+            usedFont = new Font("Serif", Font.TRUETYPE_FONT, 11);
         }
 
         loginPage();
@@ -87,12 +97,13 @@ public class Main extends JFrame {
         remove(menu);
         try {
             remove(home);
+            Home.added = false;
         }
         catch (Exception e){
 
         }
         home = new Home(this, true);
-
+        Home.added = true;
         this.add(home);
 
         revalidate();
@@ -101,6 +112,7 @@ public class Main extends JFrame {
 
     public void showMusic(){
         remove(home);
+        Home.added = false;
         MusicMain music = new MusicMain(this, true);
         add(music);
 
@@ -110,6 +122,7 @@ public class Main extends JFrame {
 
     public void showStats(){
         remove(home);
+        Home.added = false;
         SensorsMain sensors = new SensorsMain(this, true);
         add(sensors);
 
@@ -128,23 +141,43 @@ public class Main extends JFrame {
         repaint();
     }
     //function called when results button is pressed
-    public void ResultsPage(){
+    public void ResultsPage() {
         remove(menu);
 
+        RaspberryPi pi = RaspberryPi.connectedPis.get(0);
         Graphs graphs = new Graphs();
 
-        add(graphs.lineGraph());
+        try {
+
+            add(graphs.lineGraph(pi.databaseCon.getTemp()));
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
         revalidate();
         repaint();
         System.out.println("x");
     }
+    //function called when playlists button is pressed
+    public void PlaylistsPage(){
 
+        Playlists playlists = new Playlists(this);
+        add(playlists);
+
+
+
+
+
+
+    }
     //function called when actions is pressed
     public void ActionsPage(){
-        remove(menu);
-
-        revalidate();
-        repaint();
+        JFrame frame = new JFrame();
+        frame.add(new ActionsMain());
+        Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+        frame.setSize(r.width,r.height);
+        frame.setVisible(true);
     }
     //function called when edit playlists is pressed
     public void Edit_PlaylistPage(){
@@ -161,10 +194,10 @@ public class Main extends JFrame {
         repaint();
     }
     //function called when playing is pressed
-    public void PlayingPage(){
+    public void PlayingPage(MusicMain musicMain){
         remove(menu);
 
-        Playing playing = new Playing();
+        Playing playing = new Playing(this, true, musicMain);
         add(playing);
 
         revalidate();

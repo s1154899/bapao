@@ -13,10 +13,9 @@ public class AccountManager {
 
     public static void main(String[] args) {
         AccountManager accountManager = new AccountManager();
-        accountManager.makeAccount("pete", "poep");
-        accountManager.makeAccount("jan", "shieet");
-        accountManager.makeAccount("", "");
-        System.out.println(accountManager.validateAccount("jan", "shieet"));
+        accountManager.makeAccount("peter", "password");
+        accountManager.makeAccount("jantje", "password1");
+        System.out.println(accountManager.validateAccount("jantje", "password1"));
     }
 
     public boolean validateAccount(String name, String password){

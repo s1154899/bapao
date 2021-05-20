@@ -16,10 +16,11 @@ public class Home extends JPanel {
     JButton musicButton;
     JButton sensorButton;
 
-
     ImageIcon musicIcon;
     ImageIcon sensorIcon;
     static boolean added;
+
+    Header header;
 
     public Home(Main frame, boolean modal){
         added = true;
@@ -27,8 +28,13 @@ public class Home extends JPanel {
         this.colorScheme = Main.getColorScheme();
         //setSize(1920,1080);
 
+        float screenWidthFactor = (float) (frame.getWidth() / GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getWidth());
+        float screenHeightFactor = (float) (frame.getHeight() / GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getHeight());
+
         frame.setVisible(true);
         frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+        setSize(1920,1080);
+
 
         setBackground(colorScheme.getPrimaryColor());
         setLayout(new GridBagLayout());
@@ -53,7 +59,7 @@ public class Home extends JPanel {
                 sensorButton.setBackground(null);
                 frame.showStats();
                 removeThis();
-
+                Home.added = false;
             }
         });
 
@@ -78,8 +84,8 @@ public class Home extends JPanel {
         sensorButton.setPressedIcon(sensorIcon);
         musicButton.setPressedIcon(musicIcon);
 
-        sensorButton.setBorder(new EmptyBorder(30,Math.round(200f*(frame.getWidth()/1920f)),0,0));
-        musicButton.setBorder(new EmptyBorder(30,0,0,Math.round(200f*(frame.getWidth()/1920f))));
+        sensorButton.setBorder(new EmptyBorder(30,Math.round(200f*screenWidthFactor),0,0));
+        musicButton.setBorder(new EmptyBorder(30,0,0,Math.round(200f*screenWidthFactor)));
 
         sensorButton.setBackground(Color.RED);
         musicButton.setBackground(Color.RED);
@@ -139,7 +145,7 @@ public class Home extends JPanel {
         JLabel musicLabel = new JLabel("Music");
         musicLabel.setForeground(colorScheme.getDetailColor());
         musicLabel.setBackground(Color.WHITE);
-        musicLabel.setBorder(new EmptyBorder(10,0,0,Math.round(200f*(frame.getWidth()/1920f))));
+        musicLabel.setBorder(new EmptyBorder(10,0,0,Math.round(200f*screenWidthFactor)));
         musicLabel.setFont(frame.getUsedFont().deriveFont(20f));
         boxes[1].add(musicLabel);
 
@@ -160,7 +166,7 @@ public class Home extends JPanel {
         JLabel sensorLabel = new JLabel("Sensors");
         sensorLabel.setForeground(colorScheme.getDetailColor());
         sensorLabel.setFont(frame.getUsedFont().deriveFont(20f));
-        sensorLabel.setBorder(new EmptyBorder(Math.round(20f*(frame.getHeight()/1080f)),Math.round(170f*(frame.getWidth()/1920f)),50,0));
+        sensorLabel.setBorder(new EmptyBorder(Math.round(20f*screenHeightFactor),Math.round(170f*screenWidthFactor),50,0));
         boxes1[1].add(sensorLabel);
         //tempPanel.add(new JLabel());
         //tempPanel.add(new JLabel());
@@ -183,9 +189,9 @@ public class Home extends JPanel {
         add(tempPanel, gc);
 
 
-        Header headPanel = new Header(frame, this);
-        headPanel.setPreferredSize(new Dimension(1920,Math.round(128f*(frame.getHeight()/1080f))));
-        headPanel.setMaximumSize(new Dimension(1920,Math.round(128f*(frame.getHeight()/1080f))));
+        header = new Header(frame, this);
+        header.setPreferredSize(new Dimension(1920,Math.round(128f*screenHeightFactor)));
+        header.setMaximumSize(new Dimension(1920,Math.round(128f*screenHeightFactor)));
 
 
         GridBagConstraints gcSecond = new GridBagConstraints();
@@ -198,13 +204,13 @@ public class Home extends JPanel {
         gcSecond.gridheight = 1;
 
 
-        add(headPanel, gcSecond);
+        add(header, gcSecond);
 
         JPanel footerPanel = new JPanel();
         footerPanel.setBackground(null);
         //footerPanel.setBorder(BorderFactory.createMatteBorder(4,0,0,0, colorScheme.getBorderColor()));
-        footerPanel.setMaximumSize(new Dimension(1920,Math.round(128f*(frame.getHeight()/1080f))));
-        footerPanel.setPreferredSize(new Dimension(1920,Math.round(128f*(frame.getHeight()/1080f))));
+        footerPanel.setMaximumSize(new Dimension(1920,Math.round(128f*screenHeightFactor)));
+        footerPanel.setPreferredSize(new Dimension(1920,Math.round(128f*screenHeightFactor)));
         footerPanel.setOpaque(false);
         GridBagConstraints gcThird = new GridBagConstraints();
         gcThird.fill = GridBagConstraints.BOTH;
@@ -229,6 +235,8 @@ public class Home extends JPanel {
 
     public void removeThis(){
         frame.remove(this);
+        frame.remove(header);
+        header = null;
     }
 
     protected void paintComponent(Graphics g) {
@@ -246,27 +254,28 @@ public class Home extends JPanel {
 
             //g.drawImage(button, 538,343, 300, 300, null);
             //g.drawImage(button, 1048,343, 300, 300, null);
-            GradientPaint grad = new GradientPaint(0,0,colorScheme.getFirstBackgroundColor(), 0,1080,colorScheme.getSecondBackgroundColor());
+            GradientPaint grad = new GradientPaint(0,0,colorScheme.getFirstBackgroundColor(), 0, (float) GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getHeight(),colorScheme.getSecondBackgroundColor());
             Graphics2D g2d1 = (Graphics2D) g;
             g2d1.setPaint(grad);
-            g2d1.fill(new Rectangle2D.Double(0,0, 1920 , 1080));
+            g2d1.fill(new Rectangle2D.Double(0,0, frame.getWidth() , frame.getHeight()));
 
         }
         catch (Exception e){
 
         }
-
+        float screenWidthFactor = (frame.getWidth() / 1920f);
+        float screenHeightFactor = (frame.getHeight() / 1080f);
         Graphics2D g2d1 = (Graphics2D) g;
         g2d1.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d1.setColor(colorScheme.getSecondaryColor());
-        g2d1.fillOval(Math.round(538f* (frame.getWidth() / 1920f)),Math.round(350f* (frame.getHeight() / 1080f)), 300, 300);
-        g2d1.fillOval(Math.round(1048f* (frame.getWidth() / 1920f)),Math.round(350f* (frame.getHeight() / 1080f)), 300, 300);
+        g2d1.fillOval(Math.round(538f* screenWidthFactor),Math.round(350f* screenHeightFactor), 300, 300);
+        g2d1.fillOval(Math.round(1048f* screenWidthFactor),Math.round(350f* screenHeightFactor), 300, 300);
 
         g2d1.setColor(colorScheme.getBorderColor());
-        g2d1.drawOval(Math.round(538f* (frame.getWidth() / 1920f)),Math.round(350f* (frame.getHeight() / 1080f)), 300, 300);
-        g2d1.drawOval(Math.round(539f* (frame.getWidth() / 1920f)),Math.round(351f* (frame.getHeight() / 1080f)), 298, 298);
-        g2d1.drawOval(Math.round(1048f* (frame.getWidth() / 1920f)),Math.round(350f* (frame.getHeight() / 1080f)), 300, 300);
-        g2d1.drawOval(Math.round(1049f* (frame.getWidth() / 1920f)),Math.round(351f* (frame.getHeight() / 1080f)), 298, 298);
+        g2d1.drawOval(Math.round(538f* screenWidthFactor),Math.round(350f* screenHeightFactor), 300, 300);
+        g2d1.drawOval(Math.round(539f* screenWidthFactor),Math.round(351f* screenHeightFactor), 298, 298);
+        g2d1.drawOval(Math.round(1048f* screenWidthFactor),Math.round(350f* screenHeightFactor), 300, 300);
+        g2d1.drawOval(Math.round(1049f* screenWidthFactor),Math.round(351f* screenHeightFactor), 298, 298);
 
         repaint();
     }

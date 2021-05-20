@@ -34,8 +34,8 @@ public class Playlists extends JDialog implements ActionListener{
 
         add(listPanel);
 
-        Playing playing = new Playing();
-        add(playing, BorderLayout.EAST);
+//        Playing playing = new Playing();
+//        add(playing, BorderLayout.EAST);
 
 
         setVisible(true);
@@ -56,7 +56,7 @@ public class Playlists extends JDialog implements ActionListener{
             }
         }
         if("Terug" == event.getText()){
-           // ga terug
+            // ga terug
 
         } else if ("Edit playlist" == event.getText()){
             EditPlaylist editPlaylist = new EditPlaylist();
@@ -100,8 +100,8 @@ public class Playlists extends JDialog implements ActionListener{
 
         add(songsPanel);
 
-        Playing playing = new Playing();
-        add(playing,BorderLayout.EAST);
+//        Playing playing = new Playing();
+//        add(playing,BorderLayout.EAST);
         setVisible(true);
 
     }
