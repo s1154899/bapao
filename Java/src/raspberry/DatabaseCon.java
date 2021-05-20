@@ -137,6 +137,15 @@ public class DatabaseCon{
 
         // execute the preparedstatement
         preparedStmt.execute();
+
+        query = "UPDATE `sensors`.`player` SET `set` = 'played' WHERE `set` = 'playing' OR `set` = 'paused' OR `set` = 'pause' ;";
+
+        // create the mysql insert preparedstatement
+        preparedStmt = con.prepareStatement(query);
+        //preparedStmt.setString (1, song);
+
+        // execute the preparedstatement
+        preparedStmt.execute();
     }
 
     public void pauseMusic() throws SQLException {
@@ -182,5 +191,16 @@ public class DatabaseCon{
             //e.printStackTrace();
         }
 
+    }
+    public void uploadScript(String name, String location, String unit , int time) {
+        String query = "INSERT INTO `sensors`.`saved_script` (`ScriptID`,`ScriptName`,`ScriptLocation`,`ScriptUnit`,`ScriptTime`) VALUES ("+name+","+location+","+unit+","+time+");";
+        // create the mysql insert preparedstatement
+        PreparedStatement preparedStmt = null;
+        try {
+            preparedStmt = con.prepareStatement(query);
+            preparedStmt.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }
