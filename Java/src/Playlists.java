@@ -54,43 +54,8 @@ public class Playlists extends JDialog implements ActionListener {
 
     }
     public void Playlist(String playlist){
-        System.out.println(playlist);
 
-        getContentPane().removeAll(); //or remove(JComponent)
-        revalidate();
-        repaint();
-        setTitle("Selected playlist: " + playlist);
-
-        ArrayList<String> songNames = new ArrayList<>();
-
-        JPanel songsPanel = new JPanel();
-        songsPanel.setLayout(new GridLayout(songNames.size(), 1, 0, 20));
-
-
-        songNames.add("test 1");
-        songNames.add("test 2");
-        songNames.add("test 3");
-        songNames.add("test 4");
-        songNames.add("test 5");
-
-
-        for (String name: songNames){
-            JLabel songName = new JLabel(name);
-            songsPanel.add(songName);
-        }
-        JButton terug = new JButton("Terug");
-        terug.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        songsPanel.add(terug);
-        JButton edit = new JButton("Edit playlist");
-        edit.addActionListener(this);
-        songsPanel.add(edit);
-
-        add(songsPanel);
+        // moet geselecteerde playlist afspelen
 
         Playing playing = new Playing();
         add(playing,BorderLayout.EAST);
