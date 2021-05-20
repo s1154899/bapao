@@ -74,26 +74,16 @@ public class MusicMain extends JPanel implements ActionListener{
     }
 
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        JButton event = (JButton) e.getSource();
-        System.out.println(event.getText());
-        if("Terug" == event.getText()){
-            // ga terug
-
-        } else if ("Edit playlist" == event.getText()){
-       //     EditPlaylist editPlaylist = new EditPlaylist();
-
-        }
-
-    }
-
     //function called when playlists button is pressed
     public void PlaylistsPage(){
         Playlists playlists = new Playlists(new JFrame());
         add(playlists);
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+    }
 }
 
 
