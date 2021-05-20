@@ -1,3 +1,5 @@
+import raspberry.RaspberryPi;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -9,6 +11,8 @@ import java.awt.event.FocusEvent;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class PlayingCenter extends JPanel {
     Main frame;
@@ -54,8 +58,6 @@ public class PlayingCenter extends JPanel {
         boxes[2].setMaximumSize(new Dimension(750, 1080));
         add(boxes[2]);
 
-
-
         JLabel left = new JLabel("left", SwingConstants.CENTER);
         //JLabel left = new JLabel();
         boxes[0].add(left);
@@ -85,7 +87,7 @@ public class PlayingCenter extends JPanel {
 //        //label.setMaximumSize(new Dimension(640,));
 //        albumCover.add(label);
 
-        //playing.add(albumCover);
+        playing.add(albumCover);
 
         JLabel test = new JLabel("test1");
         playing.add(test);
@@ -95,26 +97,18 @@ public class PlayingCenter extends JPanel {
         songTitle.setForeground(colorScheme.getDetailColor());
         playing.add(songTitle);
 
-//        JLabel test2 = new JLabel("test2");
-//        playing.add(test2);
-//
-//        JLabel test3 = new JLabel("test3");
-//        playing.add(test3);
-//
-//        JLabel test4 = new JLabel("test4");
-//        playing.add(test4);
-//
-//        JLabel test5 = new JLabel("test5");
-//        playing.add(test5);
-//
-//        JLabel test6 = new JLabel("test6");
-//        playing.add(test6);
-
         previousButton = new JButton();
         previousButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("previous song");
+                ArrayList<RaspberryPi> pis = RaspberryPi.connectedPis;
+                for(int i = 0; i < pis.size() ;i++){
+                    try {
+                        pis.get(i).databaseCon.backMusic();
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                }
             }
         });
 
@@ -122,18 +116,16 @@ public class PlayingCenter extends JPanel {
         playPauseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("play/pause");
+                ArrayList<RaspberryPi> pis = RaspberryPi.connectedPis;
+                for(int i = 0; i < pis.size() ;i++){
+                    try {
+                        pis.get(i).databaseCon.pauseMusic();
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                }
             }
         });
-
-        nextButton = new JButton();
-        nextButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Next song");
-            }
-        });
-
 
         try{
             InputStream imageSource = Login.class.getResourceAsStream("Assets/playMusic.png");
@@ -161,8 +153,56 @@ public class PlayingCenter extends JPanel {
             }
         });
 
-//        playing.add(playPauseButton);
 
+        nextButton = new JButton();
+        nextButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<RaspberryPi> pis = RaspberryPi.connectedPis;
+                for(int i = 0; i < pis.size() ;i++){
+                    try {
+                        pis.get(i).databaseCon.nextMusic();
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        try{
+            InputStream imageSource = Login.class.getResourceAsStream("Assets/Next.png");
+            Image nextImage = ImageIO.read(imageSource);
+            nextIcon = new ImageIcon(nextImage);
+        } catch (Exception e){
+
+        }
+
+        nextButton.setIcon(nextIcon);
+        nextButton.setPressedIcon(nextIcon);
+        nextButton.setBorder(new EmptyBorder(30,0,0,Math.round(200f*(frame.getWidth()/1920f))));
+        nextButton.setBackground(Color.RED);
+        nextButton.setFocusable(false);
+        nextButton.setContentAreaFilled(false);
+        nextButton.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                nextButton.setBackground(null);
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                nextButton.setBackground(null);
+            }
+        });
+
+
+
+
+
+
+
+        playing.add(playPauseButton);
+        playing.add(nextButton);
 
         boxes[1].add(playing);
 
@@ -173,35 +213,35 @@ public class PlayingCenter extends JPanel {
 
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
-//
-//        Image albumCoverImage = null;
-//        try {
-//            InputStream albumCoverImg = Login.class.getResourceAsStream("Assets/AlbumCover1.png");
-//            albumCoverImage = ImageIO.read(albumCoverImg);
-//
-//            GradientPaint grad = new GradientPaint(0,0,colorScheme.getFirstBackgroundColor(), 0,1080,colorScheme.getSecondBackgroundColor());
-//            Graphics2D g2d1 = (Graphics2D) g;
-//            g2d1.setPaint(grad);
-//            g2d1.fill(new Rectangle2D.Double(0,0, 1920 , 1080));
-//
-//        } catch (Exception e) {
-//
-//        }
-//
-//        Graphics2D g2d = (Graphics2D)g;
-//        g2d.drawImage(albumCoverImage, 750,20,420,420, this);
-//
-//        Graphics2D g2d1 = (Graphics2D) g;
-//        g2d1.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//        g2d1.setColor(colorScheme.getSecondaryColor());
-//        g2d1.fillOval(Math.round(750f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//        g2d1.fillOval(Math.round(890f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//        g2d1.fillOval(Math.round(1030f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//
-//        g2d1.setColor(colorScheme.getBorderColor());
-//        g2d1.drawOval(Math.round(750f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//        g2d1.drawOval(Math.round(890f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//        g2d1.drawOval(Math.round(1030f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//        repaint();
+
+        Image albumCoverImage = null;
+        try {
+            InputStream albumCoverImg = Login.class.getResourceAsStream("Assets/AlbumCover1.png");
+            albumCoverImage = ImageIO.read(albumCoverImg);
+
+            GradientPaint grad = new GradientPaint(0,0,colorScheme.getFirstBackgroundColor(), 0,1080,colorScheme.getSecondBackgroundColor());
+            Graphics2D g2d1 = (Graphics2D) g;
+            g2d1.setPaint(grad);
+            g2d1.fill(new Rectangle2D.Double(0,0, 1920 , 1080));
+
+        } catch (Exception e) {
+
+        }
+
+        Graphics2D g2d = (Graphics2D)g;
+        g2d.drawImage(albumCoverImage, 750,20,420,420, this);
+
+        Graphics2D g2d1 = (Graphics2D) g;
+        g2d1.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d1.setColor(colorScheme.getSecondaryColor());
+        g2d1.fillOval(Math.round(750f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+        g2d1.fillOval(Math.round(890f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+        g2d1.fillOval(Math.round(1030f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+
+        g2d1.setColor(colorScheme.getBorderColor());
+        g2d1.drawOval(Math.round(750f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+        g2d1.drawOval(Math.round(890f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+        g2d1.drawOval(Math.round(1030f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+        repaint();
     }
 }
