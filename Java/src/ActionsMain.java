@@ -1,9 +1,13 @@
+import raspberry.RaspberryPi;
+import raspberry.UploadedScripts;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -30,6 +34,11 @@ class ActionsMain extends JPanel implements ActionListener {
     private ArrayList<Integer> alTimeInterval = new ArrayList<>();
     private int indexTime = 0;
 
+    private String[] tijdInterval = {"Seconden", "Minuten", "Uren", "Dagen"};
+
+
+    private File f;
+
 
     public ActionsMain() {
         this.colorScheme = Main.getColorScheme();
@@ -41,6 +50,9 @@ class ActionsMain extends JPanel implements ActionListener {
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
+
+
+
 
         //Change colors of selected and unselected pane
         UIManager.put("TabbedPane.selected", colorScheme.getPrimaryColor());
@@ -142,12 +154,67 @@ class ActionsMain extends JPanel implements ActionListener {
         c.gridx = 1;
         c.gridy = 3;
         c.insets = new Insets(25, 0, 0, 0);
+        jbUploadFile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser file = new JFileChooser();
+
+
+
+                try {
+
+                int returnVal = file.showOpenDialog(null);
+                if(returnVal == JFileChooser.APPROVE_OPTION) {
+                    System.out.println("You chose to open this file: " +
+                            file.getSelectedFile().getName());
+                    f = file.getSelectedFile();
+                    jbUploadFile.setText(f.getName());
+
+                    jbUploadFile.repaint();
+                    jbUploadFile.revalidate();
+                }
+
+
+
+
+                } catch (NullPointerException ioException ) {
+                    ioException.printStackTrace();
+                }
+
+            }
+        });
         jpAddAction.add(jbUploadFile, c);
+
+
 
         jbSaveAction = new JButton("Maak actie aan");
         jbSaveAction.setFont(usedFont.deriveFont(30f));
         jbSaveAction.setFocusable(false);
-        jbSaveAction.addActionListener(this);
+        jbSaveAction.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    RaspberryPi.copyFileUsingStream(f);
+
+                    if (e.getSource() == jbSaveAction) {
+                        alActions.add(indexActions, jtActionName.getText());
+                        alTimeInterval.add(indexTime, Integer.parseInt(jtTimeInterval.getText()));
+
+                        System.out.println("jbsaveactionbutton pressed");
+                        ActionView newAction = new ActionView(alTimeInterval.get(indexTime));
+                        jtpAction.addTab(alActions.get(indexActions), newAction);
+
+
+                        UploadedScripts.addNewScript(new UploadedScripts(jtActionName.getText(),"./scripts/"+f.getName(),jtTimeInterval.getText(),indexTime));
+
+                    }
+
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+
+            }
+        });
         c.fill = GridBagConstraints.NONE;
         c.gridx = 1;
         c.gridy = 4;
@@ -283,18 +350,24 @@ class ActionsMain extends JPanel implements ActionListener {
                 }
             }
         });
-    }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == jbSaveAction) {
-            alActions.add(indexActions, jtActionName.getText());
-            alTimeInterval.add(indexTime, Integer.parseInt(jtTimeInterval.getText()));
+
+        for (UploadedScripts scripts : UploadedScripts.ReadScripts()){
+            alActions.add(indexActions, scripts.name);
+            alTimeInterval.add(indexTime, scripts.intervalTime);
 
             System.out.println("jbsaveactionbutton pressed");
             ActionView newAction = new ActionView(alTimeInterval.get(indexTime));
             jtpAction.addTab(alActions.get(indexActions), newAction);
         }
+
+
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
 
     }
 }

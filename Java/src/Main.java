@@ -159,6 +159,8 @@ public class Main extends JFrame {
     public void ActionsPage(){
         JFrame frame = new JFrame();
         frame.add(new ActionsMain());
+        Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+        frame.setSize(r.width,r.height);
         frame.setVisible(true);
     }
     //function called when edit playlists is pressed
