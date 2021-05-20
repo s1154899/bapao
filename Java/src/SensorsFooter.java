@@ -41,9 +41,6 @@ public class SensorsFooter extends JPanel{
                 System.out.println("Pressed");
                 removeThis();
                 frame.ActionsPage();
-
-
-
             }
         });
         boxes[1].add(actions);
@@ -54,6 +51,14 @@ public class SensorsFooter extends JPanel{
         sensors.setBackground(colorScheme.getSecondBackgroundColor());
         sensors.setPreferredSize(new Dimension(640, 50));
         sensors.setMaximumSize(new Dimension(640, 50));
+        sensors.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Pressed");
+                removeThis();
+                frame.SensorWeergave();
+            }
+        });
         boxes[2].add(sensors);
     }
     public void removeThis(){

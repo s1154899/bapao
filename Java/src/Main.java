@@ -164,12 +164,6 @@ public class Main extends JFrame {
 
         Playlists playlists = new Playlists(this, true);
         add(playlists);
-
-
-
-
-
-
     }
     //function called when actions is pressed
     public void ActionsPage(){
@@ -177,6 +171,7 @@ public class Main extends JFrame {
         frame.add(new ActionsMain());
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         frame.setSize(r.width,r.height);
+        frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
     }
     //function called when edit playlists is pressed
@@ -202,6 +197,15 @@ public class Main extends JFrame {
 
         revalidate();
         repaint();
+    }
+    //function called when actions is pressed
+    public void SensorWeergave(){
+        JFrame frame = new JFrame();
+        frame.add(new SensorsWeergaveMain());
+        Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+        frame.setSize(r.width,r.height);
+        frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+        frame.setVisible(true);
     }
 
     public enum colorEnum{

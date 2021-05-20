@@ -5,19 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36aed5e0-e1db-4a97-8ae4-5cb7fe230041" name="Default Changelist" comment="">
-
-      <change afterPath="$PROJECT_DIR$/Java/src/PlayingCenter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/SensorsWeergaveMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/PlayingCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/PlayingCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/Playlists.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Playlists.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/SensorsFooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/SensorsFooter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Graphs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Graphs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/LineGrap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/LineGrap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Main$colorEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main$colorEnum.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Playing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Playing.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/RaspMetingen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/RaspMetingen.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/SensorsMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsFooter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/SensorsFooter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Songs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Songs.class" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/test.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +78,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSON" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../JSON/json-simple-1.1.1.jar" />
+    <property name="last_opened_file_path" value="$USER_HOME$/JSON/json-simple-1.1.1.jar" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -133,11 +149,9 @@
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.AccountManager" />
-        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Home" />
         <item itemvalue="Application.test" />
         <item itemvalue="Application.AccountManager" />
-        <item itemvalue="Application.DatabaseCon" />
       </list>
     </recent_temporary>
   </component>
