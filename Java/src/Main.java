@@ -162,7 +162,7 @@ public class Main extends JFrame {
     //function called when playlists button is pressed
     public void PlaylistsPage(){
 
-        Playlists playlists = new Playlists(this, true);
+        Playlists playlists = new Playlists(this);
         add(playlists);
 
 

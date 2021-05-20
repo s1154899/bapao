@@ -37,7 +37,13 @@ public class MusicFooter extends JPanel {
         playlists.setBackground(colorScheme.getSecondBackgroundColor());
         playlists.setPreferredSize(new Dimension(640, 50));
         playlists.setMaximumSize(new Dimension(640, 50));
-        playlists.addActionListener(musicMain);
+        playlists.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Playlists playlists = new Playlists(frame);
+                playlists.setVisible(true);
+            }
+        });
         boxes[1].add(playlists);
 
         JButton editPlaylist = new JButton("Edit playlist");

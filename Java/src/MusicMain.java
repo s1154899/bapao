@@ -69,8 +69,9 @@ public class MusicMain extends JPanel implements ActionListener {
             frame.SongsPage();
             removeThis();
         } else if (((JButton) e.getSource()).getText() == "Playists"){
-            frame.PlaylistsPage();
-            removeThis();
+
+
+
         } else if (((JButton) e.getSource()).getText() == "Edit playlist"){
             frame.Edit_PlaylistPage();
             removeThis();
