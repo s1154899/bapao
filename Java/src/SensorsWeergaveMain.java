@@ -2,9 +2,6 @@ import raspberry.RaspberryPi;
 import raspberry.UploadedScripts;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.PopupMenuEvent;
-import javax.swing.event.PopupMenuListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
