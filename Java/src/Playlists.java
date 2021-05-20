@@ -27,26 +27,13 @@ public class Playlists extends JDialog implements ActionListener{
 
         for (String name : listNames) {
             JButton listName = new JButton(name);
-            listName.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    JButton event = (JButton) e.getSource();
-                    System.out.println(event.getText());
-
-                    // function also gets called when pressing on song-buttons
-                    for (String element : listNames) {
-                        if (element == event.getText()) {
-                            Playlist(event.getText());
-                        }
-                    }
-                }
-            });
+            listName.addActionListener(this);
             listPanel.add(listName);
         }
 
 
         add(listPanel);
-        // hoi
+
         Playing playing = new Playing();
         add(playing, BorderLayout.EAST);
 
@@ -61,6 +48,13 @@ public class Playlists extends JDialog implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         JButton event = (JButton) e.getSource();
         System.out.println(event.getText());
+
+        // function also gets called when pressing on song-buttons
+        for (String element : listNames) {
+            if (element == event.getText()) {
+                Playlist(event.getText());
+            }
+        }
         if("Terug" == event.getText()){
            // ga terug
 
