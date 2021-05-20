@@ -9,7 +9,7 @@ public class Playlists extends JDialog implements ActionListener{
 
 
 
-    public Playlists() {
+    public Playlists(JFrame frame) {
 
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width, r.height);
@@ -17,11 +17,13 @@ public class Playlists extends JDialog implements ActionListener{
         JPanel listPanel = new JPanel();
         listPanel.setLayout(new GridLayout(10, 1));
 
-        listNames.add("playlists");
         listNames.add("plyalist");
         listNames.add(": cyka");
         listNames.add("blyat");
 
+
+        JLabel playlists = new JLabel("Playlists");
+        listPanel.add(playlists);
 
         for (String name : listNames) {
             JButton listName = new JButton(name);
@@ -46,36 +48,60 @@ public class Playlists extends JDialog implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         JButton event = (JButton) e.getSource();
         System.out.println(event.getText());
-        Playlist();
+
+        // function also gets called when pressing on song-buttons
+        for (String element : listNames) {
+            if (element == event.getText()) {
+                Playlist(event.getText());
+            }
+        }
+        if("Terug" == event.getText()){
+           // ga terug
+
+        } else if ("Edit playlist" == event.getText()){
+            EditPlaylist editPlaylist = new EditPlaylist();
+
+        }
+
     }
 
     // needs parameters stringArray to pull songs out from, for now using strings
-    public void Playlist(){
-        /*Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-        setSize(r.width, r.height);
+    public void Playlist(String playlist){
+        System.out.println(playlist);
 
+        getContentPane().removeAll(); //or remove(JComponent)
+        revalidate();
         repaint();
-        remove(listPanel);
-        listPanel.setLayout(new GridLayout(10, 1));
-        ArrayList<String> songs = new ArrayList;
-        songs.add("song1");
-        songs.add("song2");
-        songs.add("song3");
-        songs.add("song4");
+        setTitle("Selected playlist: " + playlist);
+
+        ArrayList<String> songNames = new ArrayList<>();
+
+        JPanel songsPanel = new JPanel();
+        songsPanel.setLayout(new GridLayout(songNames.size(), 1, 0, 20));
 
 
-        for (String name : songs) {
-            JButton listName = new JButton(name);
-            listPanel.add(listName);
+        songNames.add("test 1");
+        songNames.add("test 2");
+        songNames.add("test 3");
+        songNames.add("test 4");
+        songNames.add("test 5");
+
+
+        for (String name: songNames){
+            JLabel songName = new JLabel(name);
+            songsPanel.add(songName);
         }
+        JButton terug = new JButton("Terug");
+        terug.addActionListener(this);
+        songsPanel.add(terug);
+        JButton edit = new JButton("Edit playlist");
+        edit.addActionListener(this);
+        songsPanel.add(edit);
 
-
-        add(listPanel);
+        add(songsPanel);
 
         Playing playing = new Playing();
-        add(playing, BorderLayout.EAST);
-
-*/
+        add(playing,BorderLayout.EAST);
         setVisible(true);
 
     }
