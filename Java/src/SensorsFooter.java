@@ -1,15 +1,15 @@
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SensorsFooter extends JPanel{
-    Main frame;
-    Main.colorEnum colorScheme;
 
-    public SensorsFooter(Main frame){
-        this.frame = frame;
-        this.colorScheme = Main.getColorScheme();
+
+    public SensorsFooter(){
+
 
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setOpaque(false);
@@ -22,25 +22,42 @@ public class SensorsFooter extends JPanel{
         }
 
         JButton results = new JButton();
-        results.setFont(frame.getUsedFont().deriveFont(20f));
+//        results.setFont(getUsedFont().deriveFont(20f));
         results.setText("Results");
-        results.setBackground(colorScheme.getSecondBackgroundColor());
+        results.setBackground(ColorScheme.getSecondBackgroundColor());
         results.setPreferredSize(new Dimension(640, 50));
         results.setMaximumSize(new Dimension(640, 50));
+        results.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JDialog dialog = new JDialog(Main.mainFrame,true);
+
+                Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+                dialog.setSize(r.width,r.height);
+
+                dialog.setVisible(true);
+            }
+        });
         boxes[0].add(results);
 
         JButton actions = new JButton();
-        actions.setFont(frame.getUsedFont().deriveFont(20f));
+//        actions.setFont(getUsedFont().deriveFont(20f));
         actions.setText("Actions");
-        actions.setBackground(colorScheme.getSecondBackgroundColor());
+        actions.setBackground(ColorScheme.getSecondBackgroundColor());
         actions.setPreferredSize(new Dimension(640, 50));
         actions.setMaximumSize(new Dimension(640, 50));
         actions.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Pressed");
-                removeThis();
-                frame.ActionsPage();
+
+                JDialog dialog = new JDialog(Main.mainFrame,true);
+
+                dialog.add(new ActionsMain());
+
+                Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+                dialog.setSize(r.width,r.height);
+
+                dialog.setVisible(true);
 
 
 
@@ -49,14 +66,26 @@ public class SensorsFooter extends JPanel{
         boxes[1].add(actions);
 
         JButton sensors = new JButton();
-        sensors.setFont(frame.getUsedFont().deriveFont(20f));
+//        sensors.setFont(getUsedFont().deriveFont(20f));
         sensors.setText("Sensors");
-        sensors.setBackground(colorScheme.getSecondBackgroundColor());
+        sensors.setBackground(ColorScheme.getSecondBackgroundColor());
         sensors.setPreferredSize(new Dimension(640, 50));
         sensors.setMaximumSize(new Dimension(640, 50));
+        sensors.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JDialog dialog = new JDialog(Main.mainFrame,true);
+
+                Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+                dialog.setSize(r.width,r.height);
+
+                dialog.setVisible(true);
+            }
+        });
         boxes[2].add(sensors);
     }
     public void removeThis(){
-        frame.remove(this);
+
+//        frame.remove(this);
     }
 }

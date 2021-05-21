@@ -31,8 +31,8 @@ public class Songs extends JDialog{
 //        songNames.add("test 5");
 
 
-        RaspberryPi pi = new RaspberryPi("192.168.2.7");
-        String[] songs = pi.musicDirJava();
+
+        String[] songs = RaspberryPi.musicDirJava();
 
 
 
@@ -64,8 +64,10 @@ public class Songs extends JDialog{
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        pi.databaseCon.playmusic(s);
-                        t.setTitle(s);
+                        for (int i = 0; i < RaspberryPi.connectedPis.size(); i++) {
+                            RaspberryPi.connectedPis.get(i).databaseCon.playmusic(s);
+                            t.setTitle(s);
+                        }
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
                     }

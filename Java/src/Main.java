@@ -1,11 +1,11 @@
+
 import raspberry.RaspberryPi;
-import raspberry.SubnetCheck;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 
@@ -14,13 +14,12 @@ public class Main extends JFrame {
     public JPanel menu;
 
     public AccountManager accountManager;
-    private static colorEnum colorScheme;
-    private Font usedFont;
+
     private Home home;
-    private static Main main;
+    public static Main mainFrame;
 
     public static void main(String[] args) {
-        main = new Main();
+        mainFrame = new Main();
 
     }
 
@@ -28,50 +27,46 @@ public class Main extends JFrame {
     public Main(){
         super();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        colorScheme = colorEnum.lightMode;
         setTitle("Domotica: home screen");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width,r.height);
 
 
-        //layout for the main panel
-        BorderLayout border = new BorderLayout();
-        setLayout(border);
+//        //layout for the main panel
+//        BorderLayout border = new BorderLayout();
+//        setLayout(border);
+//
+//        //layout for the menu
+//        GridLayout grid = new GridLayout(4,2,40,60);
+//        menu = new JPanel();
+//        menu.setLayout(grid);
+//
+//        String[] buttons = {"Songs", "Results", "Playlists", "Actions", "Edit_Playlist", "Sensors", "Playing" };
+//
+//        for(String button : buttons) {
+//            //creates button for creating the senors page
+//            JButton button1 = new JButton();
+//            button1.setText(button);
+//            button1.addActionListener(Reflect.actionListenerFromMethod(this, button+"Page"));
+//
+//            //adds sensors button to the menu
+//            menu.add(button1);
+//        }
 
-        //layout for the menu
-        GridLayout grid = new GridLayout(4,2,40,60);
-        menu = new JPanel();
-        menu.setLayout(grid);
-
-        String[] buttons = {"Songs", "Results", "Playlists", "Actions", "Edit_Playlist", "Sensors", "Playing" };
-
-        for(String button : buttons) {
-            //creates button for creating the senors page
-            JButton button1 = new JButton();
-            button1.setText(button);
-            button1.addActionListener(Reflect.actionListenerFromMethod(this, button+"Page"));
-
-            //adds sensors button to the menu
-            menu.add(button1);
-        }
-
-
-        //adds the menu to the main screen
-        add(menu, BorderLayout.CENTER);
+//
+//        //adds the menu to the main screen
+//        add(menu, BorderLayout.CENTER);
 
         //SubnetCheck subnetCheck = new SubnetCheck(this,true);
 
         new RaspberryPi("192.168.2.22");
 
-        //turns the Jframe Visible
 
-        try {
-            usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
-        } catch (IOException |FontFormatException e) {
-            e.printStackTrace();
-            usedFont = new Font("Serif", Font.TRUETYPE_FONT, 11);
-        }
+        home = new Home();
+        Home.added = true;
+        add(home);
+
 
         loginPage();
 
@@ -81,29 +76,19 @@ public class Main extends JFrame {
     public void loginPage(){
         setVisible(false);
 
-        Login login = new Login(this, true);
+        Login login = new Login();
 
         revalidate();
         repaint();
     }
 
     public void resetApp(){
-        main.dispose();
-        main = new Main();
+        this.dispose();
+        mainFrame = new Main();
     }
 
     public void homeScreen(){
-
-        remove(menu);
-        try {
-            remove(home);
-            Home.added = false;
-        }
-        catch (Exception e){
-
-        }
-        home = new Home(this, true);
-        Home.added = true;
+        home = new Home();
         this.add(home);
 
         revalidate();
@@ -113,7 +98,7 @@ public class Main extends JFrame {
     public void showMusic(){
         remove(home);
         Home.added = false;
-        MusicMain music = new MusicMain(this, true);
+        MusicMain music = new MusicMain();
         add(music);
 
         revalidate();
@@ -123,7 +108,7 @@ public class Main extends JFrame {
     public void showStats(){
         remove(home);
         Home.added = false;
-        SensorsMain sensors = new SensorsMain(this, true);
+        SensorsMain sensors = new SensorsMain();
         add(sensors);
 
         revalidate();
@@ -134,7 +119,7 @@ public class Main extends JFrame {
     public void SongsPage(){
         remove(menu);
 
-        Songs songs = new Songs(this, true);
+        Songs songs = new Songs(mainFrame, true);
         add(songs);
 
         revalidate();
@@ -162,7 +147,7 @@ public class Main extends JFrame {
     //function called when playlists button is pressed
     public void PlaylistsPage(){
 
-        Playlists playlists = new Playlists(this);
+        Playlists playlists = new Playlists();
         add(playlists);
 
 
@@ -173,11 +158,7 @@ public class Main extends JFrame {
     }
     //function called when actions is pressed
     public void ActionsPage(){
-        JFrame frame = new JFrame();
-        frame.add(new ActionsMain());
-        Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-        frame.setSize(r.width,r.height);
-        frame.setVisible(true);
+
     }
     //function called when edit playlists is pressed
     public void Edit_PlaylistPage(){
@@ -194,93 +175,21 @@ public class Main extends JFrame {
         repaint();
     }
     //function called when playing is pressed
-    public void PlayingPage(MusicMain musicMain){
+    public void PlayingPage(){
         remove(menu);
 
-        Playing playing = new Playing(this, true, musicMain);
+        Playing playing = new Playing();
         add(playing);
 
         revalidate();
         repaint();
     }
 
-    public enum colorEnum{
-        lightMode(1),
-        normalMode(2),
-        darkMode(3);
-
-        colorEnum(int number){
-            switch (number) {
-                case 1 -> {
-                    this.primaryColor = new Color(249, 247, 247);
-                    this.secondaryColor = new Color(219, 226, 239);
-                    this.detailColor = new Color(63, 114, 175);
-                    this.firstBackgroundColor = primaryColor;
-                    this.secondBackgroundColor = secondaryColor;
-                    this.borderColor = detailColor.brighter();
-                    this.headerColor = null;
-                }
-                case 2 -> {
-                    this.primaryColor = new Color(67, 136, 204);
-                    this.secondaryColor = new Color(238, 238, 238);
-                    this.detailColor = Color.BLACK;
-                }
-                case 3 -> {
-                    this.primaryColor = new Color(34, 40, 49);
-                    this.secondaryColor = new Color(57, 62, 70);
-                    this.detailColor = new Color(238, 238, 238);
-                    this.firstBackgroundColor = secondaryColor;
-                    this.secondBackgroundColor = primaryColor;
-                    this.borderColor = primaryColor;
-                    this.headerColor = primaryColor;
-                }
-            }
-        }
-
-        public Color primaryColor = null;
-        public Color secondaryColor = null;
-        public Color detailColor = null;
-        public Color firstBackgroundColor = null;
-        public Color secondBackgroundColor = null;
-        public Color borderColor = null;
-        public Color headerColor = null;
-
-        public Color getDetailColor() {
-            return detailColor;
-        }
-
-        public Color getPrimaryColor() {
-            return primaryColor;
-        }
-
-        public Color getSecondaryColor() {
-            return secondaryColor;
-        }
-
-        public Color getFirstBackgroundColor() {
-            return firstBackgroundColor;
-        }
-
-        public Color getSecondBackgroundColor() {
-            return secondBackgroundColor;
-        }
-
-        public Color getBorderColor() {
-            return borderColor;
-        }
-
-        public Color getHeaderColor() {
-            return headerColor;
-        }
+    public void returnHome(){
+        add(new Home());
     }
 
-    public static colorEnum getColorScheme() {
-        return colorScheme;
-    }
 
-    public Font getUsedFont() {
-        return usedFont;
-    }
 }
 
 class Reflect{

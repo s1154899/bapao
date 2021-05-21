@@ -1,3 +1,5 @@
+
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,8 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class PlayingCenter extends JPanel {
-    Main frame;
-    Main.colorEnum colorScheme;
+
     private Font usedFont;
 
     JButton previousButton;
@@ -23,7 +24,7 @@ public class PlayingCenter extends JPanel {
     ImageIcon playPauseIcon;
     ImageIcon nextIcon;
 
-    public PlayingCenter(Main frame) {
+    public PlayingCenter() {
 
         try {
             usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
@@ -31,8 +32,8 @@ public class PlayingCenter extends JPanel {
             e.printStackTrace();
         }
 
-        this.frame = frame;
-        this.colorScheme = Main.getColorScheme();
+
+
 
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setOpaque(false);
@@ -70,7 +71,7 @@ public class PlayingCenter extends JPanel {
         playing.setOpaque(false);
 
         JPanel albumCover = new JPanel();
-        albumCover.setBackground(colorScheme.getSecondaryColor());
+        albumCover.setBackground(ColorScheme.getSecondaryColor());
         albumCover.setOpaque(false);
 
         Image albumCoverImage = null;
@@ -92,7 +93,7 @@ public class PlayingCenter extends JPanel {
 
         JLabel songTitle = new JLabel("Song title - Artist", SwingConstants.CENTER);
         songTitle.setFont(usedFont.deriveFont(20f));
-        songTitle.setForeground(colorScheme.getDetailColor());
+        songTitle.setForeground(ColorScheme.getDetailColor());
         playing.add(songTitle);
 
 //        JLabel test2 = new JLabel("test2");
@@ -145,7 +146,7 @@ public class PlayingCenter extends JPanel {
 
         playPauseButton.setIcon(playPauseIcon);
         playPauseButton.setPressedIcon(playPauseIcon);
-        playPauseButton.setBorder(new EmptyBorder(30,0,0,Math.round(200f*(frame.getWidth()/1920f))));
+        playPauseButton.setBorder(new EmptyBorder(30,0,0,Math.round(200f*(getWidth()))));
         playPauseButton.setBackground(Color.RED);
         playPauseButton.setFocusable(false);
         playPauseButton.setContentAreaFilled(false);
@@ -179,7 +180,7 @@ public class PlayingCenter extends JPanel {
 //            InputStream albumCoverImg = Login.class.getResourceAsStream("Assets/AlbumCover1.png");
 //            albumCoverImage = ImageIO.read(albumCoverImg);
 //
-//            GradientPaint grad = new GradientPaint(0,0,colorScheme.getFirstBackgroundColor(), 0,1080,colorScheme.getSecondBackgroundColor());
+//            GradientPaint grad = new GradientPaint(0,0,ColorScheme.getFirstBackgroundColor(), 0,1080,ColorScheme.getSecondBackgroundColor());
 //            Graphics2D g2d1 = (Graphics2D) g;
 //            g2d1.setPaint(grad);
 //            g2d1.fill(new Rectangle2D.Double(0,0, 1920 , 1080));
@@ -193,12 +194,12 @@ public class PlayingCenter extends JPanel {
 //
 //        Graphics2D g2d1 = (Graphics2D) g;
 //        g2d1.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//        g2d1.setColor(colorScheme.getSecondaryColor());
+//        g2d1.setColor(ColorScheme.getSecondaryColor());
 //        g2d1.fillOval(Math.round(750f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
 //        g2d1.fillOval(Math.round(890f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
 //        g2d1.fillOval(Math.round(1030f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
 //
-//        g2d1.setColor(colorScheme.getBorderColor());
+//        g2d1.setColor(ColorScheme.getBorderColor());
 //        g2d1.drawOval(Math.round(750f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
 //        g2d1.drawOval(Math.round(890f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
 //        g2d1.drawOval(Math.round(1030f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
