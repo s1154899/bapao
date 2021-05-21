@@ -71,15 +71,28 @@ public class PlayingCenter extends JPanel {
         //gc.fill = GridBagConstraints.HORIZONTAL;
 
         gc.gridx = 1;
-        gc.gridy = 1;
+        gc.gridy = 2;
         gc.weightx = 1;
         gc.weighty = 0.8f;
         gc.gridwidth = 1;
         gc.gridheight = 1;
+        gc.anchor = GridBagConstraints.CENTER;
         playing.setBackground(Color.cyan);
 //        playing.setPreferredSize(new Dimension(640, 922));
 //        playing.setMaximumSize(new Dimension(640, 922));
 //        playing.setMinimumSize(new Dimension(640, 922));
+
+        GridBagConstraints gc2 = new GridBagConstraints();
+        //gc.anchor = GridBagConstraints.CENTER;
+        //gc.fill = GridBagConstraints.HORIZONTAL;
+
+        gc2.gridx = 1;
+        gc2.gridy = 1;
+        gc2.weightx = 1;
+        gc2.weighty = 0.8f;
+        gc2.gridwidth = 1;
+        gc2.gridheight = 1;
+        gc2.anchor = GridBagConstraints.CENTER;
 
 
         playing.setOpaque(false);
@@ -108,7 +121,7 @@ public class PlayingCenter extends JPanel {
         JLabel songTitle = new JLabel("Song title - Artist", SwingConstants.CENTER);
         songTitle.setFont(usedFont.deriveFont(20f));
         //songTitle.setForeground(colorScheme.getDetailColor());
-        playing.add(songTitle, gc);
+        playing.add(songTitle, gc2);
 
         previousButton = new JButton();
         previousButton.addActionListener(new ActionListener() {
@@ -126,7 +139,7 @@ public class PlayingCenter extends JPanel {
         });
 
         try{
-            InputStream imageSource = Login.class.getResourceAsStream("Assets/left-arrow.png");
+            InputStream imageSource = Login.class.getResourceAsStream("Assets/rewind.png");
             Image previousImage = ImageIO.read(imageSource);
             previousIcon = new ImageIcon(previousImage);
         } catch (Exception e){
@@ -135,7 +148,7 @@ public class PlayingCenter extends JPanel {
 
         previousButton.setIcon(previousIcon);
         previousButton.setPressedIcon(previousIcon);
-        previousButton.setBorder(new EmptyBorder(30,0,0,Math.round(200f*(frame.getWidth()/1920f))));
+        previousButton.setBorder(new EmptyBorder(700,10,0,10));
         previousButton.setBackground(Color.RED);
         previousButton.setFocusable(false);
         previousButton.setContentAreaFilled(false);
@@ -178,7 +191,7 @@ public class PlayingCenter extends JPanel {
 
         playPauseButton.setIcon(playPauseIcon);
         playPauseButton.setPressedIcon(playPauseIcon);
-        playPauseButton.setBorder(new EmptyBorder(30,0,0,Math.round(200f*(frame.getWidth()/1920f))));
+        playPauseButton.setBorder(new EmptyBorder(700,0,0,0));
         playPauseButton.setBackground(Color.RED);
         playPauseButton.setFocusable(false);
         playPauseButton.setContentAreaFilled(false);
@@ -212,7 +225,7 @@ public class PlayingCenter extends JPanel {
         });
 
         try{
-            InputStream imageSource = Login.class.getResourceAsStream("Assets/Next.png");
+            InputStream imageSource = Login.class.getResourceAsStream("Assets/skip.png");
             Image nextImage = ImageIO.read(imageSource);
             nextIcon = new ImageIcon(nextImage);
         } catch (Exception e){
@@ -221,7 +234,7 @@ public class PlayingCenter extends JPanel {
 
         nextButton.setIcon(nextIcon);
         nextButton.setPressedIcon(nextIcon);
-        nextButton.setBorder(new EmptyBorder(30,0,0,Math.round(200f*(frame.getWidth()/1920f))));
+        nextButton.setBorder(new EmptyBorder(700,10,0,70));
         nextButton.setBackground(Color.RED);
         nextButton.setFocusable(false);
         nextButton.setContentAreaFilled(false);
@@ -271,14 +284,16 @@ public class PlayingCenter extends JPanel {
         Graphics2D g2d1 = (Graphics2D) g;
         g2d1.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         //g2d1.setColor(colorScheme.getSecondaryColor());
-        g2d1.fillOval(Math.round(750f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-        g2d1.fillOval(Math.round(890f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-        g2d1.fillOval(Math.round(1030f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+//        g2d1.fillOval(Math.round(755f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+//        g2d1.fillOval(Math.round(895f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+//        g2d1.fillOval(Math.round(1035f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+//
+//        //g2d1.setColor(colorScheme.getBorderColor());
+//        g2d1.drawOval(Math.round(755f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+//        g2d1.drawOval(Math.round(895f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+//        g2d1.drawOval(Math.round(1035f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
 
-        //g2d1.setColor(colorScheme.getBorderColor());
-        g2d1.drawOval(Math.round(750f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-        g2d1.drawOval(Math.round(890f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-        g2d1.drawOval(Math.round(1030f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+        g2d1.drawLine(960, 0, 960, 1080);
         repaint();
     }
 }
