@@ -68,7 +68,8 @@ public class Playlists extends JDialog implements ActionListener{
 
         add(listPanel);
 
-        Playing playing = new Playing();
+        MusicMain musicMain = new MusicMain();
+        Playing playing = new Playing(Main.mainFrame, true, musicMain);
         add(playing, BorderLayout.EAST);
 
 

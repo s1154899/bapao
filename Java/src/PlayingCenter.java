@@ -64,19 +64,29 @@ public class PlayingCenter extends JPanel {
 
         JPanel playing = new JPanel();
         playing.setBackground(null);
-//        playing.setLayout(new GridLayout(3, 1));
+        playing.setLayout(new GridBagLayout());
+
+        GridBagConstraints gc = new GridBagConstraints();
+        //gc.anchor = GridBagConstraints.CENTER;
+        //gc.fill = GridBagConstraints.HORIZONTAL;
+
+        gc.gridx = 1;
+        gc.gridy = 1;
+        gc.weightx = 1;
+        gc.weighty = 0.8f;
+        gc.gridwidth = 1;
+        gc.gridheight = 1;
+        playing.setBackground(Color.cyan);
 //        playing.setPreferredSize(new Dimension(640, 922));
 //        playing.setMaximumSize(new Dimension(640, 922));
 //        playing.setMinimumSize(new Dimension(640, 922));
-        playing.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
 
         playing.setOpaque(false);
 
-        Box[] boxesCenter = new Box[3];
-
-        playing.add(boxesCenter[0]);
-        playing.add(boxesCenter[1]);
-        playing.add(boxesCenter[2]);
+        JPanel albumCover = new JPanel();
+        //albumCover.setBackground(colorScheme.getSecondaryColor());
+        albumCover.setOpaque(false);
 
         Image albumCoverImage = null;
         try {
@@ -85,169 +95,153 @@ public class PlayingCenter extends JPanel {
         } catch (Exception e) {
 
         }
-
-        JLabel label = new JLabel(new ImageIcon(albumCoverImage));
-        boxesCenter[0].add(label);
-
-
-//        JPanel albumCover = new JPanel();
-//        //albumCover.setBackground(colorScheme.getSecondaryColor());
-//        albumCover.setOpaque(false);
 //
-////
-////        JLabel label = new JLabel(new ImageIcon(albumCoverImage));
-////        //label.setMaximumSize(new Dimension(640,));
-////        albumCover.add(label);
-//
-//        playing.add(albumCover);
+//        JLabel label = new JLabel(new ImageIcon(albumCoverImage));
+//        //label.setMaximumSize(new Dimension(640,));
+//        albumCover.add(label);
 
-//        JLabel test = new JLabel("test1");
-//        playing.add(test);
+        playing.add(albumCover);
+
+        JLabel test = new JLabel();
+        playing.add(test);
 
         JLabel songTitle = new JLabel("Song title - Artist", SwingConstants.CENTER);
         songTitle.setFont(usedFont.deriveFont(20f));
         //songTitle.setForeground(colorScheme.getDetailColor());
-        boxesCenter[1].add(songTitle);
+        playing.add(songTitle, gc);
 
-//        previousButton = new JButton();
-//        previousButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                ArrayList<RaspberryPi> pis = RaspberryPi.connectedPis;
-//                for(int i = 0; i < pis.size() ;i++){
-//                    try {
-//                        pis.get(i).databaseCon.backMusic();
-//                    } catch (SQLException throwables) {
-//                        throwables.printStackTrace();
-//                    }
-//                }
-//            }
-//        });
-//
-//        try{
-//            InputStream imageSource = Login.class.getResourceAsStream("Assets/left-arrow.png");
-//            Image previousImage = ImageIO.read(imageSource);
-//            previousIcon = new ImageIcon(previousImage);
-//        } catch (Exception e){
-//
-//        }
-//
-//        previousButton.setIcon(previousIcon);
-//        previousButton.setPressedIcon(previousIcon);
-//        previousButton.setBorder(new EmptyBorder(30,0,0,Math.round(200f*(frame.getWidth()/1920f))));
-//        previousButton.setBackground(Color.RED);
-//        previousButton.setFocusable(false);
-//        previousButton.setContentAreaFilled(false);
-//        previousButton.addFocusListener(new FocusAdapter() {
-//            @Override
-//            public void focusGained(FocusEvent e) {
-//                previousButton.setBackground(null);
-//            }
-//
-//            @Override
-//            public void focusLost(FocusEvent e) {
-//                previousButton.setBackground(null);
-//            }
-//        });
-//
-//
-//
-//        playPauseButton = new JButton();
-//        playPauseButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                ArrayList<RaspberryPi> pis = RaspberryPi.connectedPis;
-//                for(int i = 0; i < pis.size() ;i++){
-//                    try {
-//                        pis.get(i).databaseCon.pauseMusic();
-//                    } catch (SQLException throwables) {
-//                        throwables.printStackTrace();
-//                    }
-//                }
-//            }
-//        });
-//
-//        try{
-//            InputStream imageSource = Login.class.getResourceAsStream("Assets/playMusic.png");
-//            Image playPauseImage = ImageIO.read(imageSource);
-//            playPauseIcon = new ImageIcon(playPauseImage);
-//        } catch (Exception e){
-//
-//        }
-//
-//        playPauseButton.setIcon(playPauseIcon);
-//        playPauseButton.setPressedIcon(playPauseIcon);
-//        playPauseButton.setBorder(new EmptyBorder(30,0,0,Math.round(200f*(frame.getWidth()/1920f))));
-//        playPauseButton.setBackground(Color.RED);
-//        playPauseButton.setFocusable(false);
-//        playPauseButton.setContentAreaFilled(false);
-//        playPauseButton.addFocusListener(new FocusAdapter() {
-//            @Override
-//            public void focusGained(FocusEvent e) {
-//                playPauseButton.setBackground(null);
-//            }
-//
-//            @Override
-//            public void focusLost(FocusEvent e) {
-//                playPauseButton.setBackground(null);
-//            }
-//        });
-//
-//
-//
-//        nextButton = new JButton();
-//        nextButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                ArrayList<RaspberryPi> pis = RaspberryPi.connectedPis;
-//                for(int i = 0; i < pis.size() ;i++){
-//                    try {
-//                        pis.get(i).databaseCon.nextMusic();
-//                    } catch (SQLException throwables) {
-//                        throwables.printStackTrace();
-//                    }
-//                }
-//            }
-//        });
-//
-//        try{
-//            InputStream imageSource = Login.class.getResourceAsStream("Assets/Next.png");
-//            Image nextImage = ImageIO.read(imageSource);
-//            nextIcon = new ImageIcon(nextImage);
-//        } catch (Exception e){
-//
-//        }
-//
-//        nextButton.setIcon(nextIcon);
-//        nextButton.setPressedIcon(nextIcon);
-//        nextButton.setBorder(new EmptyBorder(30,0,0,Math.round(200f*(frame.getWidth()/1920f))));
-//        nextButton.setBackground(Color.RED);
-//        nextButton.setFocusable(false);
-//        nextButton.setContentAreaFilled(false);
-//        nextButton.addFocusListener(new FocusAdapter() {
-//            @Override
-//            public void focusGained(FocusEvent e) {
-//                nextButton.setBackground(null);
-//            }
-//
-//            @Override
-//            public void focusLost(FocusEvent e) {
-//                nextButton.setBackground(null);
-//            }
-//        });
-//
-//
-//
-//
-//
-//
-//        playing.add(previousButton);
-//        playing.add(playPauseButton);
-//        playing.add(nextButton);
-//
-//        boxes[1].add(playing);
+        previousButton = new JButton();
+        previousButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<RaspberryPi> pis = RaspberryPi.connectedPis;
+                for(int i = 0; i < pis.size() ;i++){
+                    try {
+                        pis.get(i).databaseCon.backMusic();
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                }
+            }
+        });
 
-        boxesCenter[2].add(new JLabel("test boxesCenter[2]"));
+        try{
+            InputStream imageSource = Login.class.getResourceAsStream("Assets/left-arrow.png");
+            Image previousImage = ImageIO.read(imageSource);
+            previousIcon = new ImageIcon(previousImage);
+        } catch (Exception e){
+
+        }
+
+        previousButton.setIcon(previousIcon);
+        previousButton.setPressedIcon(previousIcon);
+        previousButton.setBorder(new EmptyBorder(30,0,0,Math.round(200f*(frame.getWidth()/1920f))));
+        previousButton.setBackground(Color.RED);
+        previousButton.setFocusable(false);
+        previousButton.setContentAreaFilled(false);
+        previousButton.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                previousButton.setBackground(null);
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                previousButton.setBackground(null);
+            }
+        });
+
+
+
+        playPauseButton = new JButton();
+        playPauseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<RaspberryPi> pis = RaspberryPi.connectedPis;
+                for(int i = 0; i < pis.size() ;i++){
+                    try {
+                        pis.get(i).databaseCon.pauseMusic();
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        try{
+            InputStream imageSource = Login.class.getResourceAsStream("Assets/playMusic.png");
+            Image playPauseImage = ImageIO.read(imageSource);
+            playPauseIcon = new ImageIcon(playPauseImage);
+        } catch (Exception e){
+
+        }
+
+        playPauseButton.setIcon(playPauseIcon);
+        playPauseButton.setPressedIcon(playPauseIcon);
+        playPauseButton.setBorder(new EmptyBorder(30,0,0,Math.round(200f*(frame.getWidth()/1920f))));
+        playPauseButton.setBackground(Color.RED);
+        playPauseButton.setFocusable(false);
+        playPauseButton.setContentAreaFilled(false);
+        playPauseButton.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                playPauseButton.setBackground(null);
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                playPauseButton.setBackground(null);
+            }
+        });
+
+
+
+        nextButton = new JButton();
+        nextButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<RaspberryPi> pis = RaspberryPi.connectedPis;
+                for(int i = 0; i < pis.size() ;i++){
+                    try {
+                        pis.get(i).databaseCon.nextMusic();
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        try{
+            InputStream imageSource = Login.class.getResourceAsStream("Assets/Next.png");
+            Image nextImage = ImageIO.read(imageSource);
+            nextIcon = new ImageIcon(nextImage);
+        } catch (Exception e){
+
+        }
+
+        nextButton.setIcon(nextIcon);
+        nextButton.setPressedIcon(nextIcon);
+        nextButton.setBorder(new EmptyBorder(30,0,0,Math.round(200f*(frame.getWidth()/1920f))));
+        nextButton.setBackground(Color.RED);
+        nextButton.setFocusable(false);
+        nextButton.setContentAreaFilled(false);
+        nextButton.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                nextButton.setBackground(null);
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                nextButton.setBackground(null);
+            }
+        });
+
+        playing.add(previousButton);
+        playing.add(playPauseButton);
+        playing.add(nextButton);
+
+        boxes[1].add(playing);
 
         JLabel right = new JLabel("right", SwingConstants.CENTER);
         //JLabel right = new JLabel();
@@ -255,36 +249,36 @@ public class PlayingCenter extends JPanel {
     }
 
     protected void paintComponent(Graphics g){
-//        super.paintComponent(g);
-//
-//        Image albumCoverImage = null;
-//        try {
-//            InputStream albumCoverImg = Login.class.getResourceAsStream("Assets/AlbumCover1.png");
-//            albumCoverImage = ImageIO.read(albumCoverImg);
-//
-//            //GradientPaint grad = new GradientPaint(0,0,colorScheme.getFirstBackgroundColor(), 0,1080,colorScheme.getSecondBackgroundColor());
-//            Graphics2D g2d1 = (Graphics2D) g;
-//            //g2d1.setPaint(grad);
-//            g2d1.fill(new Rectangle2D.Double(0,0, 1920 , 1080));
-//
-//        } catch (Exception e) {
-//
-//        }
-//
-//        Graphics2D g2d = (Graphics2D)g;
-//        g2d.drawImage(albumCoverImage, 750,20,420,420, this);
-//
-//        Graphics2D g2d1 = (Graphics2D) g;
-//        g2d1.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//        //g2d1.setColor(colorScheme.getSecondaryColor());
-//        g2d1.fillOval(Math.round(750f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//        g2d1.fillOval(Math.round(890f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//        g2d1.fillOval(Math.round(1030f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//
-//        //g2d1.setColor(colorScheme.getBorderColor());
-//        g2d1.drawOval(Math.round(750f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//        g2d1.drawOval(Math.round(890f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//        g2d1.drawOval(Math.round(1030f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//        repaint();
+        super.paintComponent(g);
+
+        Image albumCoverImage = null;
+        try {
+            InputStream albumCoverImg = Login.class.getResourceAsStream("Assets/AlbumCover1.png");
+            albumCoverImage = ImageIO.read(albumCoverImg);
+
+            GradientPaint grad = new GradientPaint(0,0, Color.BLACK, 0,1080, Color.BLACK);
+            Graphics2D g2d1 = (Graphics2D) g;
+            g2d1.setPaint(grad);
+            g2d1.fill(new Rectangle2D.Double(0,0, 1920 , 1080));
+
+        } catch (Exception e) {
+
+        }
+
+        Graphics2D g2d = (Graphics2D)g;
+        g2d.drawImage(albumCoverImage, 750,20,420,420, this);
+
+        Graphics2D g2d1 = (Graphics2D) g;
+        g2d1.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        //g2d1.setColor(colorScheme.getSecondaryColor());
+        g2d1.fillOval(Math.round(750f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+        g2d1.fillOval(Math.round(890f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+        g2d1.fillOval(Math.round(1030f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+
+        //g2d1.setColor(colorScheme.getBorderColor());
+        g2d1.drawOval(Math.round(750f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+        g2d1.drawOval(Math.round(890f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+        g2d1.drawOval(Math.round(1030f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
+        repaint();
     }
 }
