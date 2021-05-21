@@ -28,7 +28,6 @@ public class Main extends JFrame {
         super();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Domotica: home screen");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width,r.height);
 

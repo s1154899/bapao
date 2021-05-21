@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36aed5e0-e1db-4a97-8ae4-5cb7fe230041" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Java/src/EditPlaylist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accounts.json" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Header.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Header.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/MusicMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/MusicMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/Playlist.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/Playlists.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Playlists.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Main$colorEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/SensorsMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Songs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Songs.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,13 +122,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -129,10 +138,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.AccountManager" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Home" />
         <item itemvalue="Application.test" />
-        <item itemvalue="Application.AccountManager" />
       </list>
     </recent_temporary>
   </component>

@@ -78,9 +78,9 @@ public class Header extends JPanel {
         homeButton.setIcon(lightHomeIcon);
         homeButton.setPreferredSize(new Dimension(64,64));
         homeButton.setMaximumSize(new Dimension(64,64));
-        homeButton.setBackground(null);
+        homeButton.setBackground(Color.WHITE);
         homeButton.setBorder(new EmptyBorder(Math.round(32f*(getHeight()/1080f)),0,Math.round(32f*(getHeight()/1080f)),0));
-
+        homeButton.setOpaque(false);
         homeButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -116,14 +116,15 @@ public class Header extends JPanel {
         time.setForeground(ColorScheme.getDetailColor());
 //        time.setFont(frame.getUsedFont().deriveFont(20f));
         time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-        time.setBorder(new EmptyBorder(0,Math.round(20f*(getWidth()/1080f)),0,Math.round(20f*(getWidth()/1080f))));
-        time.setPreferredSize(new Dimension(Math.round(170f*(getWidth()/1920f)),Math.round(64f*(getHeight()/1080f))));
-        time.setMaximumSize(new Dimension(Math.round(170f*(getWidth()/1920f)),Math.round(64f*(getHeight()/1080f))));
+        time.setBorder(new EmptyBorder(3,Math.round(40f*(getWidth()/1080f)),0,Math.round(40f*(getWidth()/1080f))));
+        time.setPreferredSize(new Dimension(Math.round(200f*(getWidth()/1920f)),Math.round(64f*(getHeight()/1080f))));
         boxes[3].add(time);
+        boxes[3].setBorder(new EmptyBorder(0,20,0,0));
+
 
         JButton logout = new JButton();
 //        logout.setFont(getUsedFont().deriveFont(20f));
-        logout.setBackground(null);
+        logout.setBackground(Color.WHITE);
         logout.setText("Log Out");
         logout.setBorder(new CompoundBorder(new LineBorder(ColorScheme.getBorderColor(), 2), new EmptyBorder(5,5,5,5)));
         logout.setForeground(ColorScheme.getDetailColor());
