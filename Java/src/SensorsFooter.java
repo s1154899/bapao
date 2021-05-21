@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import org.jfree.ui.RefineryUtilities;
+
 public class SensorsFooter extends JPanel{
 
 
@@ -30,12 +32,13 @@ public class SensorsFooter extends JPanel{
         results.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JDialog dialog = new JDialog(Main.mainFrame,true);
+                TemperatureChart chart = new TemperatureChart(
+                        "Temperature",
+                        "Temperature");
 
-                Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-                dialog.setSize(r.width,r.height);
-
-                dialog.setVisible(true);
+                chart.pack();
+                RefineryUtilities.centerFrameOnScreen(chart);
+                chart.setVisible(true);
             }
         });
         boxes[0].add(results);
@@ -49,15 +52,14 @@ public class SensorsFooter extends JPanel{
         actions.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 JDialog dialog = new JDialog(Main.mainFrame,true);
-
                 dialog.add(new ActionsMain());
-
                 Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
                 dialog.setSize(r.width,r.height);
-
                 dialog.setVisible(true);
+
+
+
 
 
 

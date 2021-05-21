@@ -60,7 +60,7 @@ public class Main extends JFrame {
 
         //SubnetCheck subnetCheck = new SubnetCheck(this,true);
 
-        new RaspberryPi("192.168.2.22");
+//        new RaspberryPi("192.168.2.22");
 
 
         home = new Home();
