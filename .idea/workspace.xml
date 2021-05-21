@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36aed5e0-e1db-4a97-8ae4-5cb7fe230041" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Assets/AlbumCover1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/AlbumCover1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/PlayingCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/PlayingCenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/test.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +79,8 @@
       <recent name="C:\Users\Yorben\Desktop\BapaoInvaders\bapao\Java\src\Assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\fleur\OneDrive\Documenten\GitHub\bapao\Java\src" />
+      <recent name="C:\Users\fleur\OneDrive\Documenten\GitHub\bapao\Java\src\Assets" />
       <recent name="C:\Users\Yorben\Desktop\BapaoInvaders\bapao\Java\src\Assets" />
       <recent name="C:\Users\Yorben\Desktop\BapaoInvaders\bapao\Java\src" />
       <recent name="C:\Users\Yorben\Desktop\BapaoInvaders\bapao\Java" />

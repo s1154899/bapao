@@ -180,7 +180,7 @@ public class test extends JPanel {
 
     public void setImage(String text){
         try {
-            InputStream albumCoverImg = Login.class.getResourceAsStream("Assets/AlbumCover1.png");
+            InputStream albumCoverImg = Login.class.getResourceAsStream("AlbumCover1.png");
             BufferedImage image = null;
             image = ImageIO.read(albumCoverImg);
             imageLabel = new JLabel(new ImageIcon(image));
