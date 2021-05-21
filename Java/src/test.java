@@ -82,7 +82,7 @@ public class test extends JPanel {
 
     public JLabel imageLabel;
     public JLabel Title;
-    Main.colorEnum colorScheme;
+    //Main.colorEnum colorScheme;
     private Font usedFont;
 
     public test(String imgsrc, String title){
@@ -92,10 +92,10 @@ public class test extends JPanel {
             e.printStackTrace();
         }
 
-        this.colorScheme = Main.getColorScheme();
+        //this.colorScheme = Main.getColorScheme();
 
         setLayout(new GridLayout(3,1));
-        setBackground(colorScheme.getFirstBackgroundColor());
+        //setBackground(colorScheme.getFirstBackgroundColor());
 
         try {
 //            BufferedImage image = null;
@@ -110,13 +110,13 @@ public class test extends JPanel {
         Title = new JLabel(title);
         Title.setHorizontalAlignment(SwingConstants.CENTER);
         Title.setFont(usedFont.deriveFont(20f));
-        Title.setForeground(colorScheme.getDetailColor());
+        //Title.setForeground(colorScheme.getDetailColor());
 
         add(Title);
 
         JPanel PlayButtonsPanel = new JPanel();
         PlayButtonsPanel.setLayout(new FlowLayout());
-        PlayButtonsPanel.setBackground(colorScheme.getFirstBackgroundColor());
+        //PlayButtonsPanel.setBackground(colorScheme.getFirstBackgroundColor());
 
         RoundButton back = new RoundButton();
         back.setText("<");

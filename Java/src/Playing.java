@@ -4,16 +4,16 @@ import java.awt.*;
 
 public class Playing extends JPanel {
     Main frame;
-    Main.colorEnum colorScheme;
+    //Main.colorEnum colorScheme;
     MusicMain musicMain;
 
     public Playing(Main frame, boolean modal, MusicMain musicMain){
         this.frame = frame;
-        this.colorScheme = Main.getColorScheme();
+        //this.colorScheme = Main.getColorScheme();
         this.musicMain = musicMain;
 
         setLayout(new GridBagLayout());
-        setBackground(colorScheme.getPrimaryColor());
+        //etBackground(colorScheme.getPrimaryColor());
 
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.BOTH;
@@ -43,9 +43,10 @@ public class Playing extends JPanel {
         gcThird.gridwidth = 3;
         gcThird.gridheight = 1;
 
-        Header headPanel = new Header(frame, this);
-        headPanel.setPreferredSize(new Dimension(1920,128));
-        headPanel.setMaximumSize(new Dimension(1920,128));
+//        Header headPanel = new Header(frame, this);
+//        headPanel.setPreferredSize(new Dimension(1920,128));
+//        headPanel.setMaximumSize(new Dimension(1920,128));
+        Header headPanel = new Header();
         add(headPanel, gc);
 
         PlayingCenter playingCenter = new PlayingCenter(frame);
@@ -53,9 +54,10 @@ public class Playing extends JPanel {
 //        test t = new test("Assets/AlbumCover1.png","Title test");
 //        add(t, gcSecond);
 
-        MusicFooter musicFooter = new MusicFooter(frame, musicMain);
-        musicFooter.setPreferredSize(new Dimension(1920,30));
-        musicFooter.setMaximumSize(new Dimension(1920,30));
+//        MusicFooter musicFooter = new MusicFooter(frame, musicMain);
+//        musicFooter.setPreferredSize(new Dimension(1920,30));
+//        musicFooter.setMaximumSize(new Dimension(1920,30));
+        MusicFooter musicFooter = new MusicFooter();
         add(musicFooter, gcThird);
     }
 

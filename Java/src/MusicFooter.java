@@ -71,7 +71,8 @@ public class MusicFooter extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JDialog dialog = new JDialog(Main.mainFrame,true);
 
-                Playing playing = new Playing();
+                MusicMain musicMain = new MusicMain();
+                Playing playing = new Playing(Main.mainFrame, true, musicMain);
                 dialog.add(playing);
 
                 Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();

@@ -178,7 +178,8 @@ public class Main extends JFrame {
     public void PlayingPage(){
         remove(menu);
 
-        Playing playing = new Playing();
+        MusicMain musicMain = new MusicMain();
+        Playing playing = new Playing(this, true, musicMain);
         add(playing);
 
         revalidate();
