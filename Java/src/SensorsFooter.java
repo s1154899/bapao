@@ -38,7 +38,24 @@ public class SensorsFooter extends JPanel{
 
                 chart.pack();
                 RefineryUtilities.centerFrameOnScreen(chart);
+                RefineryUtilities.positionFrameOnScreen(chart, 0, 1);
                 chart.setVisible(true);
+
+                PressureChart chart2 = new PressureChart(
+                        "Air Pressure",
+                        "Air Pressure");
+                chart2.pack();
+                RefineryUtilities.centerFrameOnScreen(chart2);
+                RefineryUtilities.positionFrameOnScreen(chart2, 0.6, 0);
+                chart2.setVisible(true);
+
+                HumidityChart chart3 = new HumidityChart(
+                        "Humidity",
+                        "Humidity");
+                chart3.pack();
+                RefineryUtilities.centerFrameOnScreen(chart3);
+                RefineryUtilities.positionFrameOnScreen(chart3, 0, 0);
+                chart3.setVisible(true);
             }
         });
         boxes[0].add(results);

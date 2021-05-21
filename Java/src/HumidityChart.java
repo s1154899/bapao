@@ -7,13 +7,13 @@ import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 import raspberry.RaspberryPi;
 
-public class TemperatureChart extends ApplicationFrame {
+public class HumidityChart extends ApplicationFrame {
 
-    public TemperatureChart(String applicationTitle, String chartTitle) {
+    public HumidityChart(String applicationTitle, String chartTitle) {
         super(applicationTitle);
         JFreeChart lineChart = ChartFactory.createLineChart(
                 chartTitle,
-                "Time", "Temperature",
+                "Time", "Air Pressure",
                 createDataset(),
                 PlotOrientation.VERTICAL,
                 false, true, false);
@@ -28,12 +28,12 @@ public class TemperatureChart extends ApplicationFrame {
 
     private DefaultCategoryDataset createDataset() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(50, "Temperature", "10:45:05");
-        dataset.addValue(90, "Temperature", "10:46.05");
-        dataset.addValue(20, "Temperature", "10:47.05");
-        dataset.addValue(120, "Temperature", "10:48.05");
-        dataset.addValue(290, "Temperature", "10:49.05");
-        dataset.addValue(250, "Temperature", "10:50.05");
+        dataset.addValue(105, "Humidity", "10:45:05");
+        dataset.addValue(70, "Humidity", "10:46.05");
+        dataset.addValue(60, "Humidity", "10:47.05");
+        dataset.addValue(140, "Humidity", "10:48.05");
+        dataset.addValue(20, "Humidity", "10:49.05");
+        dataset.addValue(300, "Humidity", "10:50.05");
         return dataset;
     }
 
