@@ -1,3 +1,7 @@
+
+
+import raspberry.RaspberryPi;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,8 +13,8 @@ public class Playlists extends JDialog implements ActionListener{
 
 
 
-    public Playlists(JFrame frame) {
-
+    public Playlists() {
+        super(Main.mainFrame,true);
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width, r.height);
 

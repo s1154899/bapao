@@ -21,34 +21,27 @@ public class Login extends JDialog {
 
     private String currentAccountName;
 
-    private JFrame frame;
     private JLabel errorMessage;
-
-    public Register register;
 
     private Image iconImage;
 
 
     private char passwordChar;
-    private Main.colorEnum colorScheme;
-    private Font usedFont;
+
 
     Icon enabled;
     Icon disabled;
 
-    public Login(Main frame, boolean modal){
+    public Login(){
 
-        try {
-            usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
-        } catch (IOException |FontFormatException e) {
-            e.printStackTrace();
-            usedFont = new Font("Serif", Font.PLAIN, 11);
-        }
+//        try {
+//            usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
+//        } catch (IOException |FontFormatException e) {
+//            e.printStackTrace();
+//            usedFont = new Font("Serif", Font.PLAIN, 11);
+//        }
 
-        this.frame = frame;
-        colorScheme = Main.getColorScheme();
 
-        register = new Register(frame, modal, this);
 
         try {
             InputStream imageSource = Login.class.getResourceAsStream("Assets/icon.png");
@@ -65,20 +58,20 @@ public class Login extends JDialog {
         setIconImage(iconImage);
 
         JPanel loginPanel = new JPanel();
-        loginPanel.setBackground(colorScheme.getPrimaryColor());
+        loginPanel.setBackground(ColorScheme.getPrimaryColor());
         loginPanel.setPreferredSize(new Dimension(500, 700));
         loginPanel.setMaximumSize(new Dimension(500, 700));
         loginPanel.setLocation(710, 0);
         loginPanel.setLayout(new BorderLayout());
 
         JLabel title = new JLabel("Login", SwingConstants.CENTER);
-        title.setForeground(colorScheme.getDetailColor());
+        title.setForeground(ColorScheme.getDetailColor());
 
         title.setPreferredSize(new Dimension(400,100));
         title.setMaximumSize(new Dimension(400,100));
 
         //title.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 30));
-        title.setFont(usedFont.deriveFont(40f));
+//        title.setFont(usedFont.deriveFont(40f));
         title.setLocation(0,0);
         title.setBackground(Color.WHITE);
         loginPanel.add(title, BorderLayout.PAGE_START);
@@ -97,8 +90,8 @@ public class Login extends JDialog {
         centerPanel.setBackground(null);
 
         JLabel username = new JLabel("Username:");
-        username.setFont(usedFont.deriveFont(20f));
-        username.setForeground(colorScheme.getDetailColor());
+//        username.setFont(usedFont.deriveFont(20f));
+        username.setForeground(ColorScheme.getDetailColor());
         username.setPreferredSize(new Dimension(460,30));
         username.setMaximumSize(new Dimension(460,30));
         username.setBorder(new EmptyBorder(10,0,10,0));
@@ -107,19 +100,19 @@ public class Login extends JDialog {
         usernameInput = new JTextField();
         usernameInput.setFocusable(false);
         usernameInput.setFocusable(true);
-        usernameInput.setFont(usedFont.deriveFont(25f));
+//        usernameInput.setFont(usedFont.deriveFont(25f));
         usernameInput.setMaximumSize(new Dimension(460, 60));
         usernameInput.setPreferredSize(new Dimension(460, 60));
         //usernameInput.setBorder(BorderFactory.createCompoundBorder(new BevelBorder(BevelBorder.LOWERED), new EmptyBorder(2,15,2,15)));
         usernameInput.setBorder(new EmptyBorder(2,15,2,15));
 
-        usernameInput.setBackground(colorScheme.getSecondaryColor());
+        usernameInput.setBackground(ColorScheme.getSecondaryColor());
 
         usernameInput.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
                 if (usernameInput.getText().equals("Username") || usernameInput.getText().equals("")) {
-                    usernameInput.setForeground(colorScheme.getDetailColor());
+                    usernameInput.setForeground(ColorScheme.getDetailColor());
                     usernameInput.setText("");
                 }
             }
@@ -136,15 +129,15 @@ public class Login extends JDialog {
         boxes[1].add(usernameInput);
 
         JLabel password = new JLabel("Password:");
-        password.setFont(usedFont.deriveFont(20f));
-        password.setForeground(colorScheme.getDetailColor());
+//        password.setFont(usedFont.deriveFont(20f));
+        password.setForeground(ColorScheme.getDetailColor());
         password.setPreferredSize(new Dimension(460,30));
         password.setMaximumSize(new Dimension(460,30));
         password.setBorder(new EmptyBorder(10,0,0,0));
         boxes[2].add(password);
 
         JPanel background = new JPanel();
-        background.setBackground(colorScheme.getSecondaryColor());
+        background.setBackground(ColorScheme.getSecondaryColor());
         background.setLayout(new BorderLayout());
 
         JPanel passwordInputPanel = new JPanel();
@@ -158,16 +151,16 @@ public class Login extends JDialog {
         passwordChar = passwordInput.getEchoChar();
         passwordInput.setEchoChar((char)0);
         passwordInput.setForeground(Color.GRAY);
-        passwordInput.setFont(usedFont.deriveFont(25f));
+//        passwordInput.setFont(usedFont.deriveFont(25f));
         passwordInput.setMaximumSize(new Dimension(460, 60));
         passwordInput.setPreferredSize(new Dimension(460, 60));
         passwordInput.setBorder(new EmptyBorder(2,15,2,15));
-        passwordInput.setBackground(colorScheme.getSecondaryColor());
+        passwordInput.setBackground(ColorScheme.getSecondaryColor());
 
 
 
         JButton changeInput = new JButton();
-        changeInput.setBackground(colorScheme.getSecondaryColor());
+        changeInput.setBackground(ColorScheme.getSecondaryColor());
         changeInput.setBorder(null);
 
         try {
@@ -211,7 +204,7 @@ public class Login extends JDialog {
             @Override
             public void focusGained(FocusEvent e) {
                 if (passwordInput.getText().equals("Password") || passwordInput.getText().equals("")) {
-                    passwordInput.setForeground(colorScheme.getDetailColor());
+                    passwordInput.setForeground(ColorScheme.getDetailColor());
                     passwordInput.setText("");
                     if (changeInput.getIcon() == disabled) {
                         passwordInput.setEchoChar(passwordChar);
@@ -251,17 +244,17 @@ public class Login extends JDialog {
         login = new JButton("Login");
         goToRegister = new JButton("Want to register?");
 
-        login.setFont(usedFont.deriveFont(15f));
-        goToRegister.setFont(usedFont.deriveFont(15f));
+//        login.setFont(usedFont.deriveFont(15f));
+//        goToRegister.setFont(usedFont.deriveFont(15f));
 
-        login.setForeground(colorScheme.getDetailColor());
-        goToRegister.setForeground(colorScheme.getDetailColor());
+        login.setForeground(ColorScheme.getDetailColor());
+        goToRegister.setForeground(ColorScheme.getDetailColor());
 
-        login.setBackground(colorScheme.getPrimaryColor());
-        goToRegister.setBackground(colorScheme.getPrimaryColor());
+        login.setBackground(ColorScheme.getPrimaryColor());
+        goToRegister.setBackground(ColorScheme.getPrimaryColor());
 
-        login.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(colorScheme.getDetailColor()), new EmptyBorder(5,2,5,2) ));
-        goToRegister.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(colorScheme.getDetailColor()), new EmptyBorder(5,2,5,2) ));
+        login.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(ColorScheme.getDetailColor()), new EmptyBorder(5,2,5,2) ));
+        goToRegister.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(ColorScheme.getDetailColor()), new EmptyBorder(5,2,5,2) ));
 
         login.setFocusable(false);
         goToRegister.setFocusable(false);
@@ -270,16 +263,16 @@ public class Login extends JDialog {
             @Override
             public void mouseEntered(MouseEvent e) {
                 Dimension tempSize = login.getSize();
-                login.setBackground(colorScheme.getSecondaryColor());
-                login.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(colorScheme.getDetailColor()), new EmptyBorder(5,2,5,2) ));
+                login.setBackground(ColorScheme.getSecondaryColor());
+                login.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(ColorScheme.getDetailColor()), new EmptyBorder(5,2,5,2) ));
                 login.setSize(tempSize);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 Dimension tempSize = login.getSize();
-                login.setBackground(colorScheme.getPrimaryColor());
-                login.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(colorScheme.getDetailColor()), new EmptyBorder(5,2,5,2) ));
+                login.setBackground(ColorScheme.getPrimaryColor());
+                login.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(ColorScheme.getDetailColor()), new EmptyBorder(5,2,5,2) ));
                 login.setSize(tempSize);
             }
         });
@@ -288,16 +281,16 @@ public class Login extends JDialog {
             @Override
             public void mouseEntered(MouseEvent e) {
                 Dimension tempSize = goToRegister.getSize();
-                goToRegister.setBackground(colorScheme.getSecondaryColor());
-                goToRegister.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(colorScheme.getDetailColor()), new EmptyBorder(5,2,5,2) ));
+                goToRegister.setBackground(ColorScheme.getSecondaryColor());
+                goToRegister.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(ColorScheme.getDetailColor()), new EmptyBorder(5,2,5,2) ));
                 goToRegister.setSize(tempSize);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 Dimension tempSize = goToRegister.getSize();
-                goToRegister.setBackground(colorScheme.getPrimaryColor());
-                goToRegister.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(colorScheme.getDetailColor()), new EmptyBorder(5,2,5,2) ));
+                goToRegister.setBackground(ColorScheme.getPrimaryColor());
+                goToRegister.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(ColorScheme.getDetailColor()), new EmptyBorder(5,2,5,2) ));
                 goToRegister.setSize(tempSize);
             }
         });
@@ -318,14 +311,14 @@ public class Login extends JDialog {
 
                 if (accountManager.validateAccount(insertedName, insertedPassword)){
                     currentAccountName = insertedName;
-                    frame.setVisible(true);
-                    frame.homeScreen();
+                    Main.mainFrame.setVisible(true);
+
                     removeThis();
                 }
                 else if (accountManager.validateAccount("jantje", "password1")){
                     currentAccountName = "jantje";
-                    frame.setVisible(true);
-                    frame.homeScreen();
+                    Main.mainFrame.setVisible(true);
+
                     removeThis();
                 }
                 else{
@@ -348,10 +341,12 @@ public class Login extends JDialog {
     }
 
     public void removeThis(){
-        this.setVisible(false);
+//        this.setVisible(false);
+        this.dispose();
     }
 
     public void showRegister(){
+        Register register = new Register();
         register.setVisible(true);
     }
 
@@ -359,9 +354,9 @@ public class Login extends JDialog {
         return currentAccountName;
     }
 
-    public Font getUsedFont() {
-        return usedFont;
-    }
+//    public Font getUsedFont() {
+//        return usedFont;
+//    }
 
     public void setCurrentAccountName(String currentAccountName) {
         this.currentAccountName = currentAccountName;

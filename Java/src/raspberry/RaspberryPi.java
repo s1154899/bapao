@@ -128,16 +128,16 @@ public class RaspberryPi {
     }
 
 
-    public String[] musicDirJava(){
+    public static String[] musicDirJava(){
         return DirJava("music");
 
     }
 
-    public String[] scriptsDirJava(){
+    public static String[] scriptsDirJava(){
         return DirJava("scripts");
     }
 
-    private String[] DirJava(String location){
+    private static String[] DirJava(String location){
 
         try (Stream<Path> paths = Files.walk(Paths.get("./"+location+"/"))) {
 
@@ -177,7 +177,7 @@ public class RaspberryPi {
             String s = sb.toString().replaceAll("[\\[\\](){}]","").replaceAll("'","");
             String[] files = s.split(",");
             for (int i = 0; i < files.length ; i++){
-               files[i] = files[i].trim();
+                files[i] = files[i].trim();
             }
             return files;
         } catch (MalformedURLException e) {

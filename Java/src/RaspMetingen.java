@@ -1,6 +1,6 @@
-import raspberry.DatabaseCon;
 
-import java.util.ArrayList;
+
+import raspberry.DatabaseCon;
 
 public class RaspMetingen {
 

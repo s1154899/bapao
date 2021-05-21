@@ -83,6 +83,20 @@ public class test extends JPanel {
     public JLabel Title;
 
 
+    public static void main(String[] args){
+        Frame f = new Frame();
+
+        f.setSize(600,600);
+
+        new Playlists();
+
+        f.setVisible(true);
+
+
+
+
+    }
+
 
     public test(String imgsrc, String title){
 
@@ -179,49 +193,49 @@ public class test extends JPanel {
         }
     }
 
-    public static void main(String[] args){
-        JFrame f = new JFrame();
-        f.setSize(500, 500);
-
+//    public static void main(String[] args){
+//        JFrame f = new JFrame();
+//        f.setSize(500, 500);
 //
-//        test t = new test("Assets/AlbumCover1.png","wooops");
-//        f.add(t);
+////
+////        test t = new test("Assets/AlbumCover1.png","wooops");
+////        f.add(t);
+////
+////        t.setTitle("tester");
 //
-//        t.setTitle("tester");
-
-        JButton b = new JButton();
-        b.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser file = new JFileChooser();
-
-
-
-
-                File f = new File("");
-                int returnVal = file.showOpenDialog(null);
-                if(returnVal == JFileChooser.APPROVE_OPTION) {
-                    System.out.println("You chose to open this file: " +
-                            file.getSelectedFile().getName());
-                            f = file.getSelectedFile();
-                }
-
-
-
-                try {
-                    RaspberryPi.copyFileUsingStream(f);
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
-
-            }
-        });
-        f.add(b);
-
-        f.setVisible(true);
-
-
-
-    }
+//        JButton b = new JButton();
+//        b.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                JFileChooser file = new JFileChooser();
+//
+//
+//
+//
+//                File f = new File("");
+//                int returnVal = file.showOpenDialog(null);
+//                if(returnVal == JFileChooser.APPROVE_OPTION) {
+//                    System.out.println("You chose to open this file: " +
+//                            file.getSelectedFile().getName());
+//                            f = file.getSelectedFile();
+//                }
+//
+//
+//
+//                try {
+//                    RaspberryPi.copyFileUsingStream(f);
+//                } catch (IOException ioException) {
+//                    ioException.printStackTrace();
+//                }
+//
+//            }
+//        });
+//        f.add(b);
+//
+//        f.setVisible(true);
+//
+//
+//
+//    }
 
 }
