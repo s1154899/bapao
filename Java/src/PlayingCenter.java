@@ -65,16 +65,18 @@ public class PlayingCenter extends JPanel {
         JPanel playing = new JPanel();
         playing.setBackground(null);
         playing.setLayout(new GridBagLayout());
+        playing.setPreferredSize(new Dimension(500,200));
+        playing.setMaximumSize(new Dimension(500,200));
 
         GridBagConstraints gc = new GridBagConstraints();
         //gc.anchor = GridBagConstraints.CENTER;
         //gc.fill = GridBagConstraints.HORIZONTAL;
 
-        gc.gridx = 1;
-        gc.gridy = 2;
+        gc.gridx = 0;
+        gc.gridy = 0;
         gc.weightx = 1;
-        gc.weighty = 0.8f;
-        gc.gridwidth = 1;
+        gc.weighty = 0.4f;
+        gc.gridwidth = 3;
         gc.gridheight = 1;
         gc.anchor = GridBagConstraints.CENTER;
         playing.setBackground(Color.cyan);
@@ -121,7 +123,7 @@ public class PlayingCenter extends JPanel {
         JLabel songTitle = new JLabel("Song title - Artist", SwingConstants.CENTER);
         songTitle.setFont(usedFont.deriveFont(20f));
         //songTitle.setForeground(colorScheme.getDetailColor());
-        playing.add(songTitle, gc2);
+        playing.add(songTitle, gc);
 
         previousButton = new JButton();
         previousButton.addActionListener(new ActionListener() {
@@ -148,7 +150,7 @@ public class PlayingCenter extends JPanel {
 
         previousButton.setIcon(previousIcon);
         previousButton.setPressedIcon(previousIcon);
-        previousButton.setBorder(new EmptyBorder(700,10,0,10));
+        previousButton.setBorder(new EmptyBorder(0,10,0,10));
         previousButton.setBackground(Color.RED);
         previousButton.setFocusable(false);
         previousButton.setContentAreaFilled(false);
@@ -191,7 +193,7 @@ public class PlayingCenter extends JPanel {
 
         playPauseButton.setIcon(playPauseIcon);
         playPauseButton.setPressedIcon(playPauseIcon);
-        playPauseButton.setBorder(new EmptyBorder(700,0,0,0));
+        playPauseButton.setBorder(new EmptyBorder(0,0,0,0));
         playPauseButton.setBackground(Color.RED);
         playPauseButton.setFocusable(false);
         playPauseButton.setContentAreaFilled(false);
@@ -234,7 +236,7 @@ public class PlayingCenter extends JPanel {
 
         nextButton.setIcon(nextIcon);
         nextButton.setPressedIcon(nextIcon);
-        nextButton.setBorder(new EmptyBorder(700,10,0,70));
+        nextButton.setBorder(new EmptyBorder(0,10,0,10));
         nextButton.setBackground(Color.RED);
         nextButton.setFocusable(false);
         nextButton.setContentAreaFilled(false);
@@ -250,9 +252,17 @@ public class PlayingCenter extends JPanel {
             }
         });
 
-        playing.add(previousButton);
-        playing.add(playPauseButton);
-        playing.add(nextButton);
+        gc2.gridx = 0;
+        playing.add(previousButton, gc2);
+
+        gc2.gridy = 1;
+        gc2.gridx = 1;
+        gc2.gridwidth = 1;
+        playing.add(playPauseButton, gc2);
+        gc2.gridy = 1;
+        gc2.gridx = 2;
+        gc2.gridwidth = 1;
+        playing.add(nextButton, gc2);
 
         boxes[1].add(playing);
 
