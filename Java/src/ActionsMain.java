@@ -17,7 +17,7 @@ class ActionsMain extends JPanel implements ActionListener {
     private JPanel jpAddAction;
     private JTabbedPane jtpAction;
 //    Main frame;
-    Main.colorEnum colorScheme;
+
 
 
     private JTextField jtActionName;
@@ -41,9 +41,9 @@ class ActionsMain extends JPanel implements ActionListener {
 
 
     public ActionsMain() {
-        this.colorScheme = Main.getColorScheme();
 
-        this.setBackground(colorScheme.getSecondaryColor());
+
+        this.setBackground(ColorScheme.getSecondaryColor());
         this.setLayout(new BorderLayout());
         try {
             usedFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Login.class.getResourceAsStream("Assets/Comfort.ttf")));
@@ -55,20 +55,20 @@ class ActionsMain extends JPanel implements ActionListener {
 
 
         //Change colors of selected and unselected pane
-        UIManager.put("TabbedPane.selected", colorScheme.getPrimaryColor());
-        UIManager.put("TabbedPane.unselectedTabBackground", colorScheme.getPrimaryColor());
+        UIManager.put("TabbedPane.selected", ColorScheme.getPrimaryColor());
+        UIManager.put("TabbedPane.unselectedTabBackground", ColorScheme.getPrimaryColor());
         //Remove borders
         UIManager.put("TabbedPane.contentBorderInsets", new Insets(0, 0, 0, 0));
 
         jpAddAction = new JPanel();
-        jpAddAction.setBackground(colorScheme.getPrimaryColor());
+        jpAddAction.setBackground(ColorScheme.getPrimaryColor());
         jpAddAction.setBorder(BorderFactory.createLineBorder(Color.black));
         jpAddAction.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
         jtpAction = new JTabbedPane(JTabbedPane.LEFT);
-        jtpAction.setForeground(colorScheme.getDetailColor());
-        jtpAction.setBackground(colorScheme.getPrimaryColor());
+        jtpAction.setForeground(ColorScheme.getDetailColor());
+        jtpAction.setBackground(ColorScheme.getPrimaryColor());
         jtpAction.setOpaque(false);
         jtpAction.setFocusable(false);
         add(jtpAction);
@@ -77,7 +77,7 @@ class ActionsMain extends JPanel implements ActionListener {
 
         JLabel jlNaam = new JLabel("Naam actie:");
         jlNaam.setFont(usedFont.deriveFont(20f));
-        jlNaam.setForeground(colorScheme.getDetailColor());
+        jlNaam.setForeground(ColorScheme.getDetailColor());
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
@@ -87,16 +87,16 @@ class ActionsMain extends JPanel implements ActionListener {
 
         jtActionName = new JTextField();
         jtActionName.setFont(usedFont.deriveFont(15f));
-        jtActionName.setBackground(colorScheme.getSecondaryColor());
+        jtActionName.setBackground(ColorScheme.getSecondaryColor());
         jtActionName.setText("Actienaam");
         jtActionName.setForeground(Color.gray);
         jtActionName.setBorder(new EmptyBorder(2, 15, 2, 15));
-        jtActionName.setCaretColor(colorScheme.getDetailColor()); //TODO setCaretColor op elke JTextfield
+        jtActionName.setCaretColor(ColorScheme.getDetailColor()); //TODO setCaretColor op elke JTextfield
         c.gridx = 1;
         jpAddAction.add(jtActionName, c);
 
         JLabel jlTijd = new JLabel("Tijd interval:");
-        jlTijd.setForeground(colorScheme.getDetailColor());
+        jlTijd.setForeground(ColorScheme.getDetailColor());
         jlTijd.setFont(usedFont.deriveFont(20f));
         c.gridx = 0;
         c.gridy = 1;
@@ -105,11 +105,11 @@ class ActionsMain extends JPanel implements ActionListener {
 
         jtTimeInterval = new JTextField();//TODO try catch
         jtTimeInterval.setFont(usedFont.deriveFont(15f));
-        jtTimeInterval.setBackground(colorScheme.getSecondaryColor());
+        jtTimeInterval.setBackground(ColorScheme.getSecondaryColor());
         jtTimeInterval.setText("Intervaltijd");
         jtTimeInterval.setForeground(Color.gray);
         jtTimeInterval.setBorder(new EmptyBorder(2, 15, 2, 15));
-        jtTimeInterval.setCaretColor(colorScheme.getDetailColor());
+        jtTimeInterval.setCaretColor(ColorScheme.getDetailColor());
         c.gridx = 1;
         c.gridy = 1;
         jpAddAction.add(jtTimeInterval, c);
@@ -221,32 +221,32 @@ class ActionsMain extends JPanel implements ActionListener {
         c.insets = new Insets(50, 0, 0, 0);
         jpAddAction.add(jbSaveAction, c);
 
-        jbSaveAction.setForeground(colorScheme.getDetailColor());
-        jbUploadFile.setForeground(colorScheme.getDetailColor());
-        jcbTime.setForeground(colorScheme.getDetailColor());
+        jbSaveAction.setForeground(ColorScheme.getDetailColor());
+        jbUploadFile.setForeground(ColorScheme.getDetailColor());
+        jcbTime.setForeground(ColorScheme.getDetailColor());
 
-        jbSaveAction.setBackground(colorScheme.getPrimaryColor());
-        jbUploadFile.setBackground(colorScheme.getPrimaryColor());
-        jcbTime.setBackground(colorScheme.getPrimaryColor());
+        jbSaveAction.setBackground(ColorScheme.getPrimaryColor());
+        jbUploadFile.setBackground(ColorScheme.getPrimaryColor());
+        jcbTime.setBackground(ColorScheme.getPrimaryColor());
 
-        jbSaveAction.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(colorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
-        jbUploadFile.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(colorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
+        jbSaveAction.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(ColorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
+        jbUploadFile.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(ColorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
 
 
         jbSaveAction.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 Dimension tempSize = jbSaveAction.getSize();
-                jbSaveAction.setBackground(colorScheme.getSecondaryColor());
-                jbSaveAction.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(colorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
+                jbSaveAction.setBackground(ColorScheme.getSecondaryColor());
+                jbSaveAction.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(ColorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
                 jbSaveAction.setSize(tempSize);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 Dimension tempSize = jbSaveAction.getSize();
-                jbSaveAction.setBackground(colorScheme.getPrimaryColor());
-                jbSaveAction.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(colorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
+                jbSaveAction.setBackground(ColorScheme.getPrimaryColor());
+                jbSaveAction.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(ColorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
                 jbSaveAction.setSize(tempSize);
             }
         });
@@ -255,16 +255,16 @@ class ActionsMain extends JPanel implements ActionListener {
             @Override
             public void mouseEntered(MouseEvent e) {
                 Dimension tempSize = jbUploadFile.getSize();
-                jbUploadFile.setBackground(colorScheme.getSecondaryColor());
-                jbUploadFile.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(colorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
+                jbUploadFile.setBackground(ColorScheme.getSecondaryColor());
+                jbUploadFile.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(ColorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
                 jbUploadFile.setSize(tempSize);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 Dimension tempSize = jbUploadFile.getSize();
-                jbUploadFile.setBackground(colorScheme.getPrimaryColor());
-                jbUploadFile.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(colorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
+                jbUploadFile.setBackground(ColorScheme.getPrimaryColor());
+                jbUploadFile.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(ColorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
                 jbUploadFile.setSize(tempSize);
             }
         });
@@ -274,11 +274,11 @@ class ActionsMain extends JPanel implements ActionListener {
             public void mouseEntered(MouseEvent e) {
                 if (!isComboBoxDropped) {
                     Dimension tempSize = jcbTime.getSize();
-                    jcbTime.setBackground(colorScheme.getSecondaryColor());
+                    jcbTime.setBackground(ColorScheme.getSecondaryColor());
                     jcbTime.setSize(tempSize);
                 } else {
                     Dimension tempSize = jcbTime.getSize();
-                    jcbTime.setBackground(colorScheme.getPrimaryColor());
+                    jcbTime.setBackground(ColorScheme.getPrimaryColor());
                     jcbTime.setSize(tempSize);
                 }
             }
@@ -286,14 +286,14 @@ class ActionsMain extends JPanel implements ActionListener {
             @Override
             public void mousePressed(MouseEvent e) {
                 Dimension tempSize = jcbTime.getSize();
-                jcbTime.setBackground(colorScheme.getPrimaryColor());
+                jcbTime.setBackground(ColorScheme.getPrimaryColor());
                 jcbTime.setSize(tempSize);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 Dimension tempSize = jcbTime.getSize();
-                jcbTime.setBackground(colorScheme.getPrimaryColor());
+                jcbTime.setBackground(ColorScheme.getPrimaryColor());
                 jcbTime.setSize(tempSize);
             }
         });
@@ -319,7 +319,7 @@ class ActionsMain extends JPanel implements ActionListener {
             @Override
             public void focusGained(FocusEvent e) {
                 if (jtActionName.getText().equals("Actienaam") || jtActionName.getText().equals("")) {
-                    jtActionName.setForeground(colorScheme.getDetailColor());
+                    jtActionName.setForeground(ColorScheme.getDetailColor());
                     jtActionName.setText("");
                 }
             }
@@ -337,7 +337,7 @@ class ActionsMain extends JPanel implements ActionListener {
             @Override
             public void focusGained(FocusEvent e) {
                 if (jtTimeInterval.getText().equals("Intervaltijd") || jtTimeInterval.getText().equals("")) {
-                    jtTimeInterval.setForeground(colorScheme.getDetailColor());
+                    jtTimeInterval.setForeground(ColorScheme.getDetailColor());
                     jtTimeInterval.setText("");
                 }
             }
@@ -375,26 +375,26 @@ class ActionsMain extends JPanel implements ActionListener {
 
 class ActionView extends JPanel {
 
-    Main.colorEnum colorScheme;
+
     Font usedFont;
 
 
     public ActionView(int timeInterval) {
 
-        this.colorScheme = Main.getColorScheme();
+
 
         try {
             usedFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Login.class.getResourceAsStream("Assets/Comfort.ttf")));
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
-        setBackground(colorScheme.getPrimaryColor());
+        setBackground(ColorScheme.getPrimaryColor());
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
         JLabel jlTimeInterval = new JLabel("Deze actie runt elke " + timeInterval + " seconden");
         jlTimeInterval.setFont(usedFont.deriveFont(20f));
-        jlTimeInterval.setForeground(colorScheme.getDetailColor());
+        jlTimeInterval.setForeground(ColorScheme.getDetailColor());
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 0;

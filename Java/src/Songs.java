@@ -24,8 +24,19 @@ public class Songs extends JDialog{
         JPanel songsPanel = new JPanel();
         songsPanel.setLayout(new GridLayout(songNames.size(), 1, 0, 20));
 
-        RaspberryPi pi = new RaspberryPi("192.168.2.7");
-        String[] songs = pi.musicDirJava();
+//        songNames.add("test 1");
+//        songNames.add("test 2");
+//        songNames.add("test 3");
+//        songNames.add("test 4");
+//        songNames.add("test 5");
+
+
+
+        String[] songs = RaspberryPi.musicDirJava();
+
+
+
+
 
         setLayout(new BorderLayout());
 
@@ -36,9 +47,12 @@ public class Songs extends JDialog{
         scrollFrame.setPreferredSize(new Dimension( getWidth() / 3,300));
         add(scrollFrame, BorderLayout.LINE_START);
 
+
         GridLayout grid = new GridLayout(songs.length,1);
 
         songsButtons.setLayout(grid);
+
+
 
         for (String s : songs) {
             JButton songButton = new JButton();
@@ -50,8 +64,10 @@ public class Songs extends JDialog{
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        pi.databaseCon.playmusic(s);
-                        t.setTitle(s);
+                        for (int i = 0; i < RaspberryPi.connectedPis.size(); i++) {
+                            RaspberryPi.connectedPis.get(i).databaseCon.playmusic(s);
+                            t.setTitle(s);
+                        }
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
                     }

@@ -1,18 +1,18 @@
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MusicMain extends JPanel implements ActionListener {
+public class MusicMain extends JPanel {
 
-    Main frame;
-    Main.colorEnum colorScheme;
+    Header header;
 
-    public MusicMain(Main frame, boolean modal){
-        this.frame = frame;
-        this.colorScheme = Main.getColorScheme();
+    public MusicMain(){
+
         setLayout(new GridBagLayout());
-        setBackground(colorScheme.getPrimaryColor());
+        setBackground(ColorScheme.getPrimaryColor());
 
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.BOTH;
@@ -42,38 +42,36 @@ public class MusicMain extends JPanel implements ActionListener {
         gcThird.gridwidth = 3;
         gcThird.gridheight = 1;
 
-        Header headPanel = new Header(frame, this);
-        headPanel.setPreferredSize(new Dimension(1920,128));
-        headPanel.setMaximumSize(new Dimension(1920,128));
-        add(headPanel, gc);
+        header = new Header();
+        header.setPreferredSize(new Dimension(1920,128));
+        header.setMaximumSize(new Dimension(1920,128));
+
+        add(header, gc);
+
+        header.homeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeThis();
+            }
+        });
+
+
 
         JLabel center = new JLabel("test");
         add(center, gcSecond);
 
-        MusicFooter musicFooter = new MusicFooter(frame, this);
+        MusicFooter musicFooter = new MusicFooter();
         musicFooter.setPreferredSize(new Dimension(1920,30));
         musicFooter.setMaximumSize(new Dimension(1920,30));
         add(musicFooter, gcThird);
     }
 
     public void removeThis(){
-        frame.remove(this);
+        Main.mainFrame.remove(this);
+        Main.mainFrame.returnHome();
+        Main.mainFrame.revalidate();
+        Main.mainFrame.repaint();
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (((JButton) e.getSource()).getText() == "Playing"){
-            frame.PlayingPage(this);
-            removeThis();
-        } else if (((JButton) e.getSource()).getText() == "Songs"){
-            frame.SongsPage();
-            removeThis();
-        } else if (((JButton) e.getSource()).getText() == "Playists"){
-            frame.PlaylistsPage();
-            removeThis();
-        } else if (((JButton) e.getSource()).getText() == "Edit playlist"){
-            frame.Edit_PlaylistPage();
-            removeThis();
-        }
-    }
+
 }

@@ -1,16 +1,20 @@
+
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SensorsMain extends JPanel {
-    Main frame;
-    Main.colorEnum colorScheme;
 
-    public SensorsMain(Main frame, boolean modal){
-        this.frame = frame;
-        this.colorScheme = Main.getColorScheme();
+
+    Header header;
+
+    public SensorsMain(){
+
 
         setLayout(new GridBagLayout());
-        setBackground(colorScheme.getPrimaryColor());
+        setBackground(ColorScheme.getPrimaryColor());
 
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.BOTH;
@@ -40,19 +44,32 @@ public class SensorsMain extends JPanel {
         gcThird.gridwidth = 3;
         gcThird.gridheight = 1;
 
-        Header headPanel = new Header(frame, this);
-        headPanel.setPreferredSize(new Dimension(1920,128));
-        headPanel.setMaximumSize(new Dimension(1920,128));
-        add(headPanel, gc);
+        header = new Header();
+        header.setPreferredSize(new Dimension(1920,128));
+        header.setMaximumSize(new Dimension(1920,128));
+        add(header, gc);
+
+        header.homeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeThis();
+            }
+        });
 
         JLabel center = new JLabel();
         add(center, gcSecond);
 
-        SensorsFooter sensorsFooterPanel = new SensorsFooter(frame);
+        SensorsFooter sensorsFooterPanel = new SensorsFooter();
         sensorsFooterPanel.setPreferredSize(new Dimension(1920,30));
         sensorsFooterPanel.setMaximumSize(new Dimension(1920,30));
         add(sensorsFooterPanel, gcThird);
 
+    }
+    public void removeThis(){
+        Main.mainFrame.remove(this);
+        Main.mainFrame.returnHome();
+        Main.mainFrame.revalidate();
+        Main.mainFrame.repaint();
     }
 
 }
