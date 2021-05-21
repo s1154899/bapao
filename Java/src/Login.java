@@ -42,6 +42,7 @@ public class Login extends JDialog {
             usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
         } catch (IOException |FontFormatException e) {
             e.printStackTrace();
+            usedFont = new Font("Serif", Font.PLAIN, 11);
         }
 
         this.frame = frame;
@@ -62,7 +63,6 @@ public class Login extends JDialog {
         setSize(500,600);
         setLocation(710, 190);
         setIconImage(iconImage);
-
 
         JPanel loginPanel = new JPanel();
         loginPanel.setBackground(colorScheme.getPrimaryColor());
@@ -91,8 +91,6 @@ public class Login extends JDialog {
             boxes[i] = Box.createHorizontalBox();
             centerPanel.add(boxes[i]);
         }
-
-
 
         centerPanel.setPreferredSize(new Dimension(480,100));
         centerPanel.setMaximumSize(new Dimension(480,100));

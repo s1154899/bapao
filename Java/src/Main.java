@@ -44,6 +44,7 @@ public class Main extends JFrame {
             usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
         } catch (IOException |FontFormatException e) {
             e.printStackTrace();
+            usedFont = new Font("Serif", Font.TRUETYPE_FONT, 11);
         }
 
         loginPage();
@@ -118,15 +119,26 @@ public class Main extends JFrame {
 
     //function called when actions is pressed
     public void ActionsPage(){
-        remove(menu);
-
-        revalidate();
-        repaint();
+        JFrame frame = new JFrame();
+        frame.add(new ActionsMain());
+        Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+        frame.setSize(r.width,r.height);
+        frame.setVisible(true);
     }
 
     //function called when sensors is pressed
     public void SensorsPage(){
         remove(menu);
+
+        revalidate();
+        repaint();
+    }
+    //function called when playing is pressed
+    public void PlayingPage(MusicMain musicMain){
+        remove(menu);
+
+        Playing playing = new Playing(this, true, musicMain);
+        add(playing);
 
         revalidate();
         repaint();

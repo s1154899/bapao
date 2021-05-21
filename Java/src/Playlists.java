@@ -40,11 +40,10 @@ public class Playlists extends JDialog implements ActionListener {
             listPanel.add(listName);
         }
 
-
-
-        Playing playing = new Playing();
-        add(playing, BorderLayout.EAST);
         add(listPanel);
+//
+//        Playing playing = new Playing();
+//        add(playing, BorderLayout.EAST);
 
         setVisible(true);
 
