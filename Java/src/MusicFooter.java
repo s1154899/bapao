@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MusicFooter extends JPanel {
-
+    static JDialog dialog;
     public MusicFooter(){
 
 
@@ -69,7 +69,12 @@ public class MusicFooter extends JPanel {
         playing.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JDialog dialog = new JDialog(Main.mainFrame,true);
+                if (dialog != null){
+                    dialog.setVisible(false);
+                }
+                dialog = null;
+
+                dialog = new JDialog(Main.mainFrame,true);
 
                 MusicMain musicMain = new MusicMain();
                 Playing playing = new Playing(Main.mainFrame, true, musicMain);
