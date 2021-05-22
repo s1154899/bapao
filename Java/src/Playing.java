@@ -19,7 +19,7 @@ public class Playing extends JPanel {
         gc.fill = GridBagConstraints.BOTH;
         gc.gridx = 0;
         gc.weightx = 1;
-        gc.weighty = 0.001f;
+        gc.weighty = 0.2f;
         gc.gridy = 0;
         gc.gridwidth = 3;
         gc.gridheight = 1;
@@ -38,7 +38,7 @@ public class Playing extends JPanel {
         //gcSecond.anchor = GridBagConstraints.FIRST_LINE_START;
         gcThird.gridx = 0;
         gcThird.weightx = 1;
-        gcThird.weighty = 0.001f;
+        gcThird.weighty = 0.1f;
         gcThird.gridy = 2;
         gcThird.gridwidth = 3;
         gcThird.gridheight = 1;

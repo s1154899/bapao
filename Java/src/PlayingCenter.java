@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -25,9 +27,21 @@ public class PlayingCenter extends JPanel {
     ImageIcon previousIcon;
     ImageIcon playPauseIcon;
     ImageIcon nextIcon;
-    Image albumCover1;
+
+    Image currentAlbumCover;
+
+    ArrayList<String> albumCovers = new ArrayList<String>();
+    ArrayList<String> songTitles = new ArrayList<String>();
+    int currentSongNumber = 2;
 
     public PlayingCenter(Main frame) {
+        albumCovers.add("Assets/AlbumCovers/AlbumCover1.png");
+        albumCovers.add("Assets/AlbumCovers/AlbumCover2.png");
+
+        songTitles.add("Song title 1");
+        songTitles.add("Song title 2");
+        songTitles.add("Song title 3");
+        songTitles.add("Song title 4");
 
         try {
             usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
@@ -58,10 +72,6 @@ public class PlayingCenter extends JPanel {
         boxes[2].setMaximumSize(new Dimension(750, 1080));
         add(boxes[2]);
 
-        JLabel left = new JLabel();
-        //JLabel left = new JLabel();
-        boxes[0].add(left);
-
         JPanel playing = new JPanel();
         playing.setBackground(null);
         playing.setLayout(new GridBagLayout());
@@ -69,27 +79,19 @@ public class PlayingCenter extends JPanel {
         playing.setMaximumSize(new Dimension(500,850));
 
         GridBagConstraints gc = new GridBagConstraints();
-        //gc.anchor = GridBagConstraints.CENTER;
-        //gc.fill = GridBagConstraints.HORIZONTAL;
 
         gc.gridx = 0;
-        gc.gridy = 3;
+        gc.gridy = 4;
         gc.weightx = 1;
         gc.weighty = 0.4f;
         gc.gridwidth = 3;
         gc.gridheight = 1;
         gc.anchor = GridBagConstraints.CENTER;
-        playing.setBackground(Color.cyan);
-//        playing.setPreferredSize(new Dimension(640, 922));
-//        playing.setMaximumSize(new Dimension(640, 922));
-//        playing.setMinimumSize(new Dimension(640, 922));
 
         GridBagConstraints gc2 = new GridBagConstraints();
-        //gc.anchor = GridBagConstraints.CENTER;
-        //gc.fill = GridBagConstraints.HORIZONTAL;
 
         gc2.gridx = 1;
-        gc2.gridy = 4;
+        gc2.gridy = 5;
         gc2.weightx = 1;
         gc2.weighty = 0.8f;
         gc2.gridwidth = 1;
@@ -108,45 +110,21 @@ public class PlayingCenter extends JPanel {
 
         playing.setOpaque(false);
 
-//        JPanel albumCover = new JPanel();
-//        //albumCover.setBackground(colorScheme.getSecondaryColor());
-//        albumCover.setOpaque(false);
-//
-//        Image albumCoverImage = null;
-//        try {
-//            InputStream albumCoverImg = Login.class.getResourceAsStream("Assets/AlbumCover1.png");
-//            albumCoverImage = ImageIO.read(albumCoverImg);
-//        } catch (Exception e) {
-//
-//        }
-////
-////        JLabel label = new JLabel(new ImageIcon(albumCoverImage));
-////        //label.setMaximumSize(new Dimension(640,));
-////        albumCover.add(label);
-//
-//        playing.add(albumCover);
-
-//        try{
-//            InputStream imageSource = Login.class.getResourceAsStream("Assets/AlbumCover1.png");
-//            Image albumCover1 = ImageIO.read(imageSource);
-//        } catch (Exception e){
-//
-//        }
-
         try {
-            InputStream albumCoverImg = Login.class.getResourceAsStream("AlbumCover1.png");
-            albumCover1 = ImageIO.read(albumCoverImg);
+            InputStream albumCoverImg = Login.class.getResourceAsStream(albumCovers.get(currentSongNumber - 1));
+            currentAlbumCover = ImageIO.read(albumCoverImg);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        ImageIcon albumCover1Icon = new ImageIcon(albumCover1);
+        JLabel albumCoverLabel = new JLabel();
+        Image test = currentAlbumCover.getScaledInstance(420, 420, Image.SCALE_SMOOTH);
+        ImageIcon albumCoverIcon = new ImageIcon(test);
+        albumCoverLabel.setIcon(albumCoverIcon);
+        playing.add(albumCoverLabel, gc3);
 
-        JLabel label = new JLabel(albumCover1Icon);
-        playing.add(label, gc3);
 
-
-        JLabel songTitle = new JLabel("Song title - Artist", SwingConstants.CENTER);
+        JLabel songTitle = new JLabel(songTitles.get(currentSongNumber - 1), SwingConstants.CENTER);
         songTitle.setFont(usedFont.deriveFont(20f));
         //songTitle.setForeground(colorScheme.getDetailColor());
         playing.add(songTitle, gc);
@@ -155,6 +133,11 @@ public class PlayingCenter extends JPanel {
         previousButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(currentSongNumber == 1){
+                    currentSongNumber = songTitles.size();
+                } else {
+                    currentSongNumber--;
+                }
                 ArrayList<RaspberryPi> pis = RaspberryPi.connectedPis;
                 for(int i = 0; i < pis.size() ;i++){
                     try {
@@ -163,6 +146,19 @@ public class PlayingCenter extends JPanel {
                         throwables.printStackTrace();
                     }
                 }
+                songTitle.setText(songTitles.get(currentSongNumber - 1));
+
+                try {
+                    InputStream albumCoverImg = Login.class.getResourceAsStream(albumCovers.get(currentSongNumber - 1));
+                    currentAlbumCover = ImageIO.read(albumCoverImg);
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
+
+                Image test = currentAlbumCover.getScaledInstance(420, 420, Image.SCALE_SMOOTH);
+                ImageIcon albumCoverIcon = new ImageIcon(test);
+                albumCoverLabel.setIcon(albumCoverIcon);
+
             }
         });
 
@@ -281,55 +277,14 @@ public class PlayingCenter extends JPanel {
         gc2.gridx = 0;
         playing.add(previousButton, gc2);
 
-        gc2.gridy = 4;
         gc2.gridx = 1;
         gc2.gridwidth = 1;
         playing.add(playPauseButton, gc2);
-        gc2.gridy = 4;
+
         gc2.gridx = 2;
         gc2.gridwidth = 1;
         playing.add(nextButton, gc2);
 
         boxes[1].add(playing);
-
-        JLabel right = new JLabel();
-        //JLabel right = new JLabel();
-        boxes[2].add(right);
-    }
-
-    protected void paintComponent(Graphics g){
-//        super.paintComponent(g);
-//
-//        Image albumCoverImage = null;
-//        try {
-//            InputStream albumCoverImg = Login.class.getResourceAsStream("Assets/AlbumCover1.png");
-//            albumCoverImage = ImageIO.read(albumCoverImg);
-//
-//            GradientPaint grad = new GradientPaint(0,0, Color.BLACK, 0,1080, Color.BLACK);
-//            Graphics2D g2d1 = (Graphics2D) g;
-//            g2d1.setPaint(grad);
-//            g2d1.fill(new Rectangle2D.Double(0,0, 1920 , 1080));
-//
-//        } catch (Exception e) {
-//
-//        }
-//
-//        Graphics2D g2d = (Graphics2D)g;
-//        g2d.drawImage(albumCoverImage, 750,20,420,420, this);
-//
-//        Graphics2D g2d1 = (Graphics2D) g;
-//        g2d1.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//        g2d1.setColor(colorScheme.getSecondaryColor());
-//        g2d1.fillOval(Math.round(755f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//        g2d1.fillOval(Math.round(895f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//        g2d1.fillOval(Math.round(1035f* (frame.getWidth() / 1920f)),Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//
-//        //g2d1.setColor(colorScheme.getBorderColor());
-//        g2d1.drawOval(Math.round(755f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//        g2d1.drawOval(Math.round(895f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//        g2d1.drawOval(Math.round(1035f* (frame.getWidth() / 1920f)), Math.round(500f* (frame.getHeight() / 1080f)), 130, 130);
-//
-//        g2d1.drawLine(960, 0, 960, 1080);
-//        repaint();
     }
 }
