@@ -196,8 +196,8 @@ class ActionsMain extends JPanel implements ActionListener {
         jbSaveAction.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    RaspberryPi.copyFileUsingStream(f);
+//                try {
+//                    RaspberryPi.copyFileUsingStream(f);
 
                     if (e.getSource() == jbSaveAction) {
                         Action action = new Action(jtActionName.getText(), Integer.parseInt(jtTimeInterval.getText()), (String) jcbTime.getSelectedItem());
@@ -213,9 +213,9 @@ class ActionsMain extends JPanel implements ActionListener {
 
                     }
 
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
+//                } catch (IOException ioException) {
+//                    ioException.printStackTrace();
+//                }
 
             }
         });
@@ -356,7 +356,7 @@ class ActionsMain extends JPanel implements ActionListener {
         });
 
 
-//        for (UploadedScripts scripts : UploadedScripts.ReadScripts()){ //todo geen idee wat dit doet dus kan het niet aanpassen :(
+//        for (UploadedScripts scripts : UploadedScripts.ReadScripts()){
 //            alActions.add(indexActions, scripts.name);
 //            alTimeInterval.add(indexTime, scripts.intervalTime);
 //
@@ -419,7 +419,9 @@ class ActionView extends JPanel {
 
             }
         });
-        add(jbRemoveAction);
+        c.gridy = 2;
+        c.insets = new Insets(50, 0, 0, 0);
+        add(jbRemoveAction, c);
 
         jbRemoveAction.addMouseListener(new MouseAdapter() {
             @Override
@@ -463,6 +465,8 @@ class Action {
     public String getTimeUnit() {
         return timeUnit;
     }
+
+
 }
 
 
