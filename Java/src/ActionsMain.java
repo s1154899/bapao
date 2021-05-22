@@ -15,7 +15,7 @@ import java.util.Objects;
 class ActionsMain extends JPanel implements ActionListener {
     private Font usedFont;
     private JPanel jpAddAction;
-    private JTabbedPane jtpAction;
+    JTabbedPane jtpAction;
 //    Main frame;
 
 
@@ -29,18 +29,12 @@ class ActionsMain extends JPanel implements ActionListener {
     private JButton jbUploadFile;
     private JButton jbSaveAction;
 
-    private ArrayList<String> alActions = new ArrayList<>();
-    private int indexActions = 0;
-    private ArrayList<Integer> alTimeInterval = new ArrayList<>();
-    private int indexTime = 0;
-    private ArrayList<String> alTijdAanduiding = new ArrayList<>();
-    private int indexTijdAanduiding;
+    ArrayList<Action> alActions = new ArrayList<>();
 
     private String[] tijdInterval = {"Seconden", "Minuten", "Uren", "Dagen"};
 
 
     private File f;
-
 
     public ActionsMain() {
 
@@ -192,20 +186,19 @@ class ActionsMain extends JPanel implements ActionListener {
         jbSaveAction.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               // try {
-                    //RaspberryPi.copyFileUsingStream(f);
+//                try {
+//                    RaspberryPi.copyFileUsingStream(f);
 
                     if (e.getSource() == jbSaveAction) {
-                        alActions.add(indexActions, jtActionName.getText());
-                        alTimeInterval.add(indexTime, Integer.parseInt(jtTimeInterval.getText()));
-                        alTijdAanduiding.add(indexTijdAanduiding, (String)jcbTime.getSelectedItem());
+                        Action action = new Action(jtActionName.getText(), Integer.parseInt(jtTimeInterval.getText()), (String)jcbTime.getSelectedItem());
 
                         System.out.println("jbsaveactionbutton pressed");
-                        ActionView newAction = new ActionView(alTimeInterval.get(indexTime), alActions.get(indexActions), alTijdAanduiding.get(indexTijdAanduiding));
-                        jtpAction.addTab(alActions.get(indexActions), newAction);
-                        indexActions++;
-                        indexTijdAanduiding++;
-                        indexTime++;
+                        ActionView newAction = new ActionView(action, alActions, jtpAction);
+                        jtpAction.addTab(action.getActionName(), newAction);
+                        alActions.add(action);
+                        jtpAction.setSelectedIndex(alActions.indexOf(action) + 1);
+                        System.out.println(alActions.indexOf(action));
+
                         //UploadedScripts.addNewScript(new UploadedScripts(jtActionName.getText(),"./scripts/"+f.getName(),jtTimeInterval.getText(),indexTime));
 
                     }
@@ -353,17 +346,16 @@ class ActionsMain extends JPanel implements ActionListener {
         });
 
 
+
+
 //        for (UploadedScripts scripts : UploadedScripts.ReadScripts()){
 //            alActions.add(indexActions, scripts.name);
 //            alTimeInterval.add(indexTime, scripts.intervalTime);
-//            alTijdAanduiding.add(indexTijdAanduiding, scripts.)
 //
 //            System.out.println("jbsaveactionbutton pressed");
 //            ActionView newAction = new ActionView(alTimeInterval.get(indexTime), alActions.get(indexActions), alTijdAanduiding.get(indexTijdAanduiding));
 //            jtpAction.addTab(alActions.get(indexActions), newAction);
 //        }
-
-
 
     }
 
@@ -372,16 +364,15 @@ class ActionsMain extends JPanel implements ActionListener {
 
 
     }
+
 }
 
 
 class ActionView extends JPanel {
-
-
     Font usedFont;
 
 
-    public ActionView(int timeInterval, String nameInterval, String tijdAanduiding) {
+    public ActionView(Action action, ArrayList alActions, JTabbedPane jtpAction) {
         JButton jbRemoveAction;
 
         try {
@@ -394,27 +385,29 @@ class ActionView extends JPanel {
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        JLabel jlNameAction = new JLabel("Deze actie heet " + nameInterval);
-        jlNameAction.setFont(usedFont.deriveFont(20f));
-        jlNameAction.setForeground(ColorScheme.getDetailColor());
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 1;
-        c.gridy = 0;
-        add(jlNameAction, c);
-
-        JLabel jlTimeInterval = new JLabel("Deze actie runt elke " + timeInterval + " " + tijdAanduiding);
+        JLabel jlTimeInterval = new JLabel("Deze actie runt elke " + action.getTimeInterval() + " " + action.getTimeUnit());
         jlTimeInterval.setFont(usedFont.deriveFont(20f));
         jlTimeInterval.setForeground(ColorScheme.getDetailColor());
-        c.gridy = 1;
+        c.gridy = 0;
         add(jlTimeInterval, c);
+
+        JLabel jlIndexes = new JLabel("");
+        jlIndexes.setFont(usedFont.deriveFont(20f));
+        jlIndexes.setForeground(ColorScheme.getDetailColor());
+        c.gridy = 1;
+        add(jlIndexes, c);
 
         jbRemoveAction = new JButton("Remove action");
         jbRemoveAction.setFont(usedFont.deriveFont(30f));
         jbRemoveAction.setFocusable(false);
+        jbRemoveAction.setForeground(ColorScheme.getDetailColor());
+        jbRemoveAction.setBackground(ColorScheme.getPrimaryColor());
+        jbRemoveAction.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(ColorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
         jbRemoveAction.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                jtpAction.removeTabAt(alActions.indexOf(action) + 1); //+1 to avoid removal of the 'addtab' tab, which has index 0
+                alActions.remove(action);
 
             }
         });
@@ -437,13 +430,33 @@ class ActionView extends JPanel {
                 jbRemoveAction.setSize(tempSize);
             }
         });
+    }
+}
 
+class Action
+{
+    private String actionName;
+    private int timeInterval;
+    private String timeUnit;
 
-
-
+    public Action(String actionName, int timeInterval, String timeUnit)
+    {
+        this.actionName = actionName;
+        this.timeInterval = timeInterval;
+        this.timeUnit = timeUnit;
     }
 
+    public String getActionName() {
+        return actionName;
+    }
 
+    public int getTimeInterval() {
+        return timeInterval;
+    }
+
+    public String getTimeUnit() {
+        return timeUnit;
+    }
 }
 
 
