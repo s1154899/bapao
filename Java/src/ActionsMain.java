@@ -33,6 +33,8 @@ class ActionsMain extends JPanel implements ActionListener {
     private int indexActions = 0;
     private ArrayList<Integer> alTimeInterval = new ArrayList<>();
     private int indexTime = 0;
+    private ArrayList<String> alTijdAanduiding = new ArrayList<>();
+    private int indexTijdAanduiding;
 
     private String[] tijdInterval = {"Seconden", "Minuten", "Uren", "Dagen"};
 
@@ -50,9 +52,6 @@ class ActionsMain extends JPanel implements ActionListener {
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
-
-
-
 
         //Change colors of selected and unselected pane
         UIManager.put("TabbedPane.selected", ColorScheme.getPrimaryColor());
@@ -193,25 +192,27 @@ class ActionsMain extends JPanel implements ActionListener {
         jbSaveAction.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    RaspberryPi.copyFileUsingStream(f);
+               // try {
+                    //RaspberryPi.copyFileUsingStream(f);
 
                     if (e.getSource() == jbSaveAction) {
                         alActions.add(indexActions, jtActionName.getText());
                         alTimeInterval.add(indexTime, Integer.parseInt(jtTimeInterval.getText()));
+                        alTijdAanduiding.add(indexTijdAanduiding, (String)jcbTime.getSelectedItem());
 
                         System.out.println("jbsaveactionbutton pressed");
-                        ActionView newAction = new ActionView(alTimeInterval.get(indexTime));
+                        ActionView newAction = new ActionView(alTimeInterval.get(indexTime), alActions.get(indexActions), alTijdAanduiding.get(indexTijdAanduiding));
                         jtpAction.addTab(alActions.get(indexActions), newAction);
-
-
-                        UploadedScripts.addNewScript(new UploadedScripts(jtActionName.getText(),"./scripts/"+f.getName(),jtTimeInterval.getText(),indexTime));
+                        indexActions++;
+                        indexTijdAanduiding++;
+                        indexTime++;
+                        //UploadedScripts.addNewScript(new UploadedScripts(jtActionName.getText(),"./scripts/"+f.getName(),jtTimeInterval.getText(),indexTime));
 
                     }
 
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
+              //  } catch (IOException ioException) {
+              //      ioException.printStackTrace();
+              //  }
 
             }
         });
@@ -352,14 +353,15 @@ class ActionsMain extends JPanel implements ActionListener {
         });
 
 
-        for (UploadedScripts scripts : UploadedScripts.ReadScripts()){
-            alActions.add(indexActions, scripts.name);
-            alTimeInterval.add(indexTime, scripts.intervalTime);
-
-            System.out.println("jbsaveactionbutton pressed");
-            ActionView newAction = new ActionView(alTimeInterval.get(indexTime));
-            jtpAction.addTab(alActions.get(indexActions), newAction);
-        }
+//        for (UploadedScripts scripts : UploadedScripts.ReadScripts()){
+//            alActions.add(indexActions, scripts.name);
+//            alTimeInterval.add(indexTime, scripts.intervalTime);
+//            alTijdAanduiding.add(indexTijdAanduiding, scripts.)
+//
+//            System.out.println("jbsaveactionbutton pressed");
+//            ActionView newAction = new ActionView(alTimeInterval.get(indexTime), alActions.get(indexActions), alTijdAanduiding.get(indexTijdAanduiding));
+//            jtpAction.addTab(alActions.get(indexActions), newAction);
+//        }
 
 
 
@@ -379,9 +381,8 @@ class ActionView extends JPanel {
     Font usedFont;
 
 
-    public ActionView(int timeInterval) {
-
-
+    public ActionView(int timeInterval, String nameInterval, String tijdAanduiding) {
+        JButton jbRemoveAction;
 
         try {
             usedFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Login.class.getResourceAsStream("Assets/Comfort.ttf")));
@@ -389,16 +390,55 @@ class ActionView extends JPanel {
             e.printStackTrace();
         }
         setBackground(ColorScheme.getPrimaryColor());
+        setBorder(BorderFactory.createLineBorder(Color.black));
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        JLabel jlTimeInterval = new JLabel("Deze actie runt elke " + timeInterval + " seconden");
-        jlTimeInterval.setFont(usedFont.deriveFont(20f));
-        jlTimeInterval.setForeground(ColorScheme.getDetailColor());
+        JLabel jlNameAction = new JLabel("Deze actie heet " + nameInterval);
+        jlNameAction.setFont(usedFont.deriveFont(20f));
+        jlNameAction.setForeground(ColorScheme.getDetailColor());
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 0;
-        add(jlTimeInterval);
+        add(jlNameAction, c);
+
+        JLabel jlTimeInterval = new JLabel("Deze actie runt elke " + timeInterval + " " + tijdAanduiding);
+        jlTimeInterval.setFont(usedFont.deriveFont(20f));
+        jlTimeInterval.setForeground(ColorScheme.getDetailColor());
+        c.gridy = 1;
+        add(jlTimeInterval, c);
+
+        jbRemoveAction = new JButton("Remove action");
+        jbRemoveAction.setFont(usedFont.deriveFont(30f));
+        jbRemoveAction.setFocusable(false);
+        jbRemoveAction.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+            }
+        });
+        add(jbRemoveAction);
+
+        jbRemoveAction.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Dimension tempSize = jbRemoveAction.getSize();
+                jbRemoveAction.setBackground(ColorScheme.getSecondaryColor());
+                jbRemoveAction.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(ColorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
+                jbRemoveAction.setSize(tempSize);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                Dimension tempSize = jbRemoveAction.getSize();
+                jbRemoveAction.setBackground(ColorScheme.getPrimaryColor());
+                jbRemoveAction.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(ColorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
+                jbRemoveAction.setSize(tempSize);
+            }
+        });
+
+
 
 
     }
