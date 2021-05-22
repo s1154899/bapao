@@ -58,7 +58,7 @@ public class MusicMain extends JPanel {
 
 
 
-        JLabel center = new JLabel("test");
+        JLabel center = new JLabel();
         add(center, gcSecond);
 
         MusicFooter musicFooter = new MusicFooter();

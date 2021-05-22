@@ -32,11 +32,13 @@ public class PlayingCenter extends JPanel {
 
     ArrayList<String> albumCovers = new ArrayList<String>();
     ArrayList<String> songTitles = new ArrayList<String>();
-    int currentSongNumber = 2;
+    int currentSongNumber = 1;
 
     public PlayingCenter(Main frame) {
         albumCovers.add("Assets/AlbumCovers/AlbumCover1.png");
         albumCovers.add("Assets/AlbumCovers/AlbumCover2.png");
+        albumCovers.add("Assets/AlbumCovers/AlbumCover3.png");
+        albumCovers.add("Assets/AlbumCovers/AlbumCover4.png");
 
         songTitles.add("Song title 1");
         songTitles.add("Song title 2");
@@ -188,8 +190,6 @@ public class PlayingCenter extends JPanel {
             }
         });
 
-
-
         playPauseButton = new JButton();
         playPauseButton.addActionListener(new ActionListener() {
             @Override
@@ -231,12 +231,16 @@ public class PlayingCenter extends JPanel {
             }
         });
 
-
-
         nextButton = new JButton();
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(currentSongNumber == songTitles.size()){
+                    currentSongNumber = 1;
+                } else {
+                    currentSongNumber++;
+                }
+
                 ArrayList<RaspberryPi> pis = RaspberryPi.connectedPis;
                 for(int i = 0; i < pis.size() ;i++){
                     try {
@@ -245,6 +249,19 @@ public class PlayingCenter extends JPanel {
                         throwables.printStackTrace();
                     }
                 }
+
+                songTitle.setText(songTitles.get(currentSongNumber - 1));
+
+                try {
+                    InputStream albumCoverImg = Login.class.getResourceAsStream(albumCovers.get(currentSongNumber - 1));
+                    currentAlbumCover = ImageIO.read(albumCoverImg);
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
+
+                Image test = currentAlbumCover.getScaledInstance(420, 420, Image.SCALE_SMOOTH);
+                ImageIcon albumCoverIcon = new ImageIcon(test);
+                albumCoverLabel.setIcon(albumCoverIcon);
             }
         });
 
