@@ -196,8 +196,8 @@ class ActionsMain extends JPanel implements ActionListener {
         jbSaveAction.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                try {
-//                    RaspberryPi.copyFileUsingStream(f);
+                try {
+                    RaspberryPi.copyFileUsingStream(f);
 
                     if (e.getSource() == jbSaveAction) {
                         Action action = new Action(jtActionName.getText(), Integer.parseInt(jtTimeInterval.getText()), (String) jcbTime.getSelectedItem());
@@ -213,9 +213,9 @@ class ActionsMain extends JPanel implements ActionListener {
 
                     }
 
-//                } catch (IOException ioException) {
-//                    ioException.printStackTrace();
-//                }
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
 
             }
         });
