@@ -78,6 +78,7 @@ public class SensorsFooter extends JPanel{
 
                 Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
                 dialog.setSize(r.width,r.height);
+                dialog.add(new SensorsWeergaveMain());
 
                 dialog.setVisible(true);
             }
