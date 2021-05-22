@@ -19,7 +19,6 @@ class ActionsMain extends JPanel implements ActionListener {
 //    Main frame;
 
 
-
     private JTextField jtActionName;
     private JTextField jtTimeInterval;
 
@@ -96,7 +95,7 @@ class ActionsMain extends JPanel implements ActionListener {
         c.insets = new Insets(10, 0, 0, 0);
         jpAddAction.add(jlTijd, c);
 
-        jtTimeInterval = new JTextField();//TODO try catch
+        jtTimeInterval = new JTextField();
         jtTimeInterval.setFont(usedFont.deriveFont(15f));
         jtTimeInterval.setBackground(ColorScheme.getSecondaryColor());
         jtTimeInterval.setText("Intervaltijd");
@@ -109,23 +108,39 @@ class ActionsMain extends JPanel implements ActionListener {
 
         JLabel jlIntegerWarning = new JLabel();
         jlIntegerWarning.setForeground(Color.red);
+        c.fill = GridBagConstraints.NONE;
         c.gridx = 1;
         c.gridy = 2;
         c.insets = new Insets(0, 0, 0, 0);
         jpAddAction.add(jlIntegerWarning, c);
 
         jtTimeInterval.addKeyListener(new KeyAdapter() {
-            public void keyPressed(KeyEvent ke) {
+            public void keyPressed(KeyEvent k) {
                 String value = jtTimeInterval.getText();
                 int l = value.length();
 
-                if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE) {
-                    jtTimeInterval.setEditable(true);
-                    jlIntegerWarning.setText("");
-                } else {
-                    jtTimeInterval.setEditable(false);
-                    jlIntegerWarning.setText("* Vul alleen hele nummers in (integers)[1-9]");
+                if (k.getKeyChar() >= '0' && k.getKeyChar() <= '9') {
+                    if (l < 2) {
+                        jtTimeInterval.setEditable(true);
+                        jlIntegerWarning.setText("");
+                    } else {
+                        jtTimeInterval.setEditable(false);
+                        jlIntegerWarning.setText("* Maximaal 2 cijfers");
+                    }
                 }
+                else
+                {
+                    if(k.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || k.getExtendedKeyCode() == KeyEvent.VK_DELETE)
+                    {
+                        jtTimeInterval.setEditable(true);
+                    }
+                    else
+                    {
+                        jtTimeInterval.setEditable(false);
+                        jlIntegerWarning.setText("* Vul alleen hele nummers in (integers)[1-9]");
+                    }
+                }
+
             }
         });
 
@@ -153,24 +168,21 @@ class ActionsMain extends JPanel implements ActionListener {
                 JFileChooser file = new JFileChooser();
 
 
-
                 try {
 
-                int returnVal = file.showOpenDialog(null);
-                if(returnVal == JFileChooser.APPROVE_OPTION) {
-                    System.out.println("You chose to open this file: " +
-                            file.getSelectedFile().getName());
-                    f = file.getSelectedFile();
-                    jbUploadFile.setText(f.getName());
+                    int returnVal = file.showOpenDialog(null);
+                    if (returnVal == JFileChooser.APPROVE_OPTION) {
+                        System.out.println("You chose to open this file: " +
+                                file.getSelectedFile().getName());
+                        f = file.getSelectedFile();
+                        jbUploadFile.setText(f.getName());
 
-                    jbUploadFile.repaint();
-                    jbUploadFile.revalidate();
-                }
-
-
+                        jbUploadFile.repaint();
+                        jbUploadFile.revalidate();
+                    }
 
 
-                } catch (NullPointerException ioException ) {
+                } catch (NullPointerException ioException) {
                     ioException.printStackTrace();
                 }
 
@@ -178,19 +190,17 @@ class ActionsMain extends JPanel implements ActionListener {
         });
         jpAddAction.add(jbUploadFile, c);
 
-
-
         jbSaveAction = new JButton("Maak actie aan");
         jbSaveAction.setFont(usedFont.deriveFont(30f));
         jbSaveAction.setFocusable(false);
         jbSaveAction.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                try {
-//                    RaspberryPi.copyFileUsingStream(f);
+                try {
+                    RaspberryPi.copyFileUsingStream(f);
 
                     if (e.getSource() == jbSaveAction) {
-                        Action action = new Action(jtActionName.getText(), Integer.parseInt(jtTimeInterval.getText()), (String)jcbTime.getSelectedItem());
+                        Action action = new Action(jtActionName.getText(), Integer.parseInt(jtTimeInterval.getText()), (String) jcbTime.getSelectedItem());
 
                         System.out.println("jbsaveactionbutton pressed");
                         ActionView newAction = new ActionView(action, alActions, jtpAction);
@@ -199,13 +209,13 @@ class ActionsMain extends JPanel implements ActionListener {
                         jtpAction.setSelectedIndex(alActions.indexOf(action) + 1);
                         System.out.println(alActions.indexOf(action));
 
-                        //UploadedScripts.addNewScript(new UploadedScripts(jtActionName.getText(),"./scripts/"+f.getName(),jtTimeInterval.getText(),indexTime));
+                        UploadedScripts.addNewScript(new UploadedScripts(action.getActionName(), "./scripts/" + f.getName(), action.getTimeUnit(), action.getTimeInterval()));
 
                     }
 
-              //  } catch (IOException ioException) {
-              //      ioException.printStackTrace();
-              //  }
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
 
             }
         });
@@ -346,9 +356,7 @@ class ActionsMain extends JPanel implements ActionListener {
         });
 
 
-
-
-//        for (UploadedScripts scripts : UploadedScripts.ReadScripts()){
+//        for (UploadedScripts scripts : UploadedScripts.ReadScripts()){ //todo geen idee wat dit doet dus kan het niet aanpassen :(
 //            alActions.add(indexActions, scripts.name);
 //            alTimeInterval.add(indexTime, scripts.intervalTime);
 //
@@ -433,14 +441,12 @@ class ActionView extends JPanel {
     }
 }
 
-class Action
-{
+class Action {
     private String actionName;
     private int timeInterval;
     private String timeUnit;
 
-    public Action(String actionName, int timeInterval, String timeUnit)
-    {
+    public Action(String actionName, int timeInterval, String timeUnit) {
         this.actionName = actionName;
         this.timeInterval = timeInterval;
         this.timeUnit = timeUnit;
