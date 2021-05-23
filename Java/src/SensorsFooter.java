@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+
 public class SensorsFooter extends JPanel{
 
 
@@ -34,6 +36,9 @@ public class SensorsFooter extends JPanel{
 
                 Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
                 dialog.setSize(r.width,r.height);
+
+                dialog.add();
+                
 
                 dialog.setVisible(true);
             }
