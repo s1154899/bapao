@@ -1,10 +1,14 @@
 
 
+import org.jfree.ui.RefineryUtilities;
+import raspberry.RaspberryPi;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 public class SensorsFooter extends JPanel{
@@ -34,13 +38,27 @@ public class SensorsFooter extends JPanel{
             public void actionPerformed(ActionEvent e) {
                 JDialog dialog = new JDialog(Main.mainFrame,true);
 
-                Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-                dialog.setSize(r.width,r.height);
+                //dialog.setLayout(new BoxLayout(Main.mainFrame,BoxLayout.Y_AXIS));
 
-                dialog.add();
-                
+                for (RaspberryPi pi : RaspberryPi.connectedPis) {
+                    String[] types = new String[]{"Temperature", "humidity", "pressure"};
+                    for (String type : types) {
+                        try {
+                            int[] results = pi.databaseCon.GetResults(10,type);
+                            String[] stamps = pi.databaseCon.GetTimestamps(10,type);
 
-                dialog.setVisible(true);
+                           // dialog.add(new Graphs().lineGraph(results,stamps,type,"tijd","waardens"));
+                        } catch (SQLException throwables) {
+                            throwables.printStackTrace();
+                        }
+
+                        Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+                        dialog.setSize(r.width, r.height);
+
+                        dialog.setVisible(true);
+                    }
+                }
+
             }
         });
         boxes[0].add(results);

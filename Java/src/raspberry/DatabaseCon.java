@@ -73,6 +73,49 @@ public class DatabaseCon{
             //e.printStackTrace();
         }
     }
+    public int[] GetResults(int Limit , String type) throws SQLException {
+
+        int[] results = new int[Limit];
+
+        String query = "SELECT * FROM `meting` A LEFT JOIN meting_types B ON A.metingTypesID = B.TypeID WHERE type = '"+type+"' LIMIT "+ Limit;
+        try (Statement stmt = con.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            int count = 0;
+            while (rs.next()) {
+                String meting = rs.getString("meting");
+
+                results[count] = (Integer.parseInt(meting));
+                System.out.println(meting+ " " + type);
+                count++;
+            }
+        } catch (SQLException e) {
+            //e.printStackTrace();
+        }
+        System.out.println(" " + type);
+        return results;
+    }
+
+    public String[] GetTimestamps(int Limit , String type) throws SQLException {
+
+        String[] results = new String[Limit];
+
+        String query = "SELECT * FROM `meting` A LEFT JOIN meting_types B ON A.metingTypesID = B.TypeID WHERE type = '"+type+"' LIMIT "+ Limit;
+        try (Statement stmt = con.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            int count = 0;
+            while (rs.next()) {
+                String meting = rs.getString("timestamps");
+
+                results[count] = meting;
+                System.out.println(meting+ " " + type);
+                count++;
+            }
+        } catch (SQLException e) {
+            //e.printStackTrace();
+        }
+
+        return results;
+    }
 
     public ArrayList<String[]> GetNieuwResults() throws SQLException {
         ArrayList<String[]> results = new ArrayList<>();
@@ -135,7 +178,7 @@ public class DatabaseCon{
     public void playmusic(String song) throws SQLException {
         // the mysql insert statement
         //TODO add prepared
-        String query = " INSERT INTO `sensors`.`player` (`location`,`set`) VALUES(\"/home/pi/ftp/music/"+song+"\",\"play\");";
+        String query = " INSERT INTO `sensors`.`player` (`location`,`set`) VALUES(\"/home/demo/ftp/music/"+song+"\",\"play\");";
 
         // create the mysql insert preparedstatement
         PreparedStatement preparedStmt = con.prepareStatement(query);
@@ -214,7 +257,7 @@ public class DatabaseCon{
 
     }
     public void uploadScript(String name, String location, String unit , int time) {
-        String query = "INSERT INTO `sensors`.`saved_script` (`ScriptID`,`ScriptName`,`ScriptLocation`,`ScriptUnit`,`ScriptTime`) VALUES ("+name+","+location+","+unit+","+time+");";
+        String query = "INSERT INTO `sensors`.`saved_script` (`ScriptName`,`ScriptLocation`,`ScriptUnit`,`ScriptTime`,`execAt`) VALUES ('"+name+"',"+"'/home/demo/ftp/scripts/"+location+"','"+unit+"',"+time+",0);";
         // create the mysql insert preparedstatement
         PreparedStatement preparedStmt = null;
         try {

@@ -1,1 +1,1 @@
-[{"fileName":"ttdasdasd","name":"t","interval":"2","intervalTime":20}]
+[{"fileName":".\/scripts\/setPixel.py","name":"1","interval":"Seconden","intervalTime":5},{"fileName":".\/scripts\/clearScreen.py","name":"2","interval":"Seconden","intervalTime":10},{"fileName":".\/scripts\/getHeat.py","name":"heat","interval":"Minuten","intervalTime":1}]
