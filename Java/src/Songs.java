@@ -14,7 +14,9 @@ public class Songs extends JDialog{
     public Songs (JFrame frame, boolean modal){
         super(frame, modal);
 
-        t = new test("Assest/","wwwooopps");
+        MusicMain musicMain = new MusicMain();
+        Playing playing = new Playing(Main.mainFrame, true, musicMain);
+
         setTitle("Songs");
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width, r.height);
@@ -30,13 +32,7 @@ public class Songs extends JDialog{
 //        songNames.add("test 4");
 //        songNames.add("test 5");
 
-
-
         String[] songs = RaspberryPi.musicDirJava();
-
-
-
-
 
         setLayout(new BorderLayout());
 
@@ -47,12 +43,9 @@ public class Songs extends JDialog{
         scrollFrame.setPreferredSize(new Dimension( getWidth() / 3,300));
         add(scrollFrame, BorderLayout.LINE_START);
 
-
         GridLayout grid = new GridLayout(songs.length,1);
 
         songsButtons.setLayout(grid);
-
-
 
         for (String s : songs) {
             JButton songButton = new JButton();
@@ -76,7 +69,8 @@ public class Songs extends JDialog{
 
             songsButtons.add(songButton);
 
-            add(t);
+//            add(t);
+            add(playing);
 
         }
 
@@ -87,9 +81,6 @@ public class Songs extends JDialog{
 //        }
 //
 //        add(songsPanel);
-
-//        Playing playing = new Playing(frame, true);
-//        add(playing,BorderLayout.EAST);
 
         setVisible(true);
 

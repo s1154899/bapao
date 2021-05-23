@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36aed5e0-e1db-4a97-8ae4-5cb7fe230041" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Java/src/Assets/AlbumCovers/AlbumCover4.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/Assets/AlbumCovers/img.png" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Assets/AlbumCovers/AlbumCover3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/MusicMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/MusicMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/PlayingCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/PlayingCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Assets/AlbumCovers/img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/MusicMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/MusicMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Songs.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Songs.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
