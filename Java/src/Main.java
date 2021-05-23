@@ -28,7 +28,6 @@ public class Main extends JFrame {
         super();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Domotica: home screen");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width,r.height);
 
@@ -60,7 +59,7 @@ public class Main extends JFrame {
 
         //SubnetCheck subnetCheck = new SubnetCheck(this,true);
 
-        new RaspberryPi("192.168.2.22");
+        new RaspberryPi("192.168.2.18");
 
 
         home = new Home();

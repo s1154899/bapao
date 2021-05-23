@@ -1,6 +1,7 @@
 package raspberry;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Properties;
 
 public class DatabaseCon{
@@ -71,6 +72,26 @@ public class DatabaseCon{
         } catch (SQLException e) {
             //e.printStackTrace();
         }
+    }
+
+    public ArrayList<String[]> GetNieuwResults() throws SQLException {
+        ArrayList<String[]> results = new ArrayList<>();
+
+
+        String query = "SELECT * FROM `meting` A LEFT JOIN meting_types B ON A.metingTypesID = B.TypeID WHERE `timestamp` in (SELECT max(`timestamp`) FROM `meting` GROUP BY `metingTypesID` );";
+        try (Statement stmt = con.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                String meting = rs.getString("meting");
+                String type = rs.getString("type");
+                results.add(new String[]{type,meting});
+                System.out.println(meting+ " " + type);
+            }
+        } catch (SQLException e) {
+            //e.printStackTrace();
+        }
+
+        return results;
     }
 
     public int[] getTemp() throws SQLException {

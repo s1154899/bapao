@@ -1,45 +1,75 @@
 
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import raspberry.RaspberryPi;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Playlists extends JDialog implements ActionListener{
     ArrayList<String> listNames = new ArrayList<>();
 
 
+    public static JSONArray Readplaylist()  {
+        FileReader reader = null;
+        try {
+            reader = new FileReader("./playlist.json");
+            JSONParser jsonParser = new JSONParser();
+            JSONArray jsonArray = (JSONArray) jsonParser.parse(reader);
+
+            return jsonArray;
+
+        } catch (ParseException | IOException e) {
+            e.printStackTrace();
+        }
+
+        return new JSONArray();
+    }
+
+    private JSONArray array;
 
     public Playlists() {
         super(Main.mainFrame,true);
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width, r.height);
 
+        array = Readplaylist();
+
         JPanel listPanel = new JPanel();
         listPanel.setLayout(new GridLayout(10, 1));
-
-        listNames.add("plyalist");
-        listNames.add(": cyka");
-        listNames.add("blyat");
 
 
         JLabel playlists = new JLabel("Playlists");
         listPanel.add(playlists);
 
-        for (String name : listNames) {
-            JButton listName = new JButton(name);
+
+        for (int i = 0; i < array.size(); i++){
+
+            JSONObject obj = (JSONObject) array.get(i);
+
+            JButton listName = new JButton(obj.get("name").toString());
             listName.addActionListener(this);
             listPanel.add(listName);
+
+        }
+
+        for (String name : listNames) {
         }
 
 
         add(listPanel);
 
-//        Playing playing = new Playing();
-//        add(playing, BorderLayout.EAST);
+        Playing playing = new Playing();
+        add(playing, BorderLayout.EAST);
 
 
         setVisible(true);
@@ -52,19 +82,23 @@ public class Playlists extends JDialog implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         JButton event = (JButton) e.getSource();
         System.out.println(event.getText());
-
-        // function also gets called when pressing on song-buttons
-        for (String element : listNames) {
-            if (element == event.getText()) {
-                Playlist(event.getText());
+        this.setTitle("now playing"+ event.getText());
+        JSONArray songsArray = new JSONArray();
+        for (int i =0; i < array.size();i++){
+            JSONObject obj2 = (JSONObject) array.get(i);
+            if (event.getText().equals(obj2.get("name"))){
+                songsArray = (JSONArray) obj2.get("songs");
             }
+
         }
-        if("Terug" == event.getText()){
-            // ga terug
-
-        } else if ("Edit playlist" == event.getText()){
-            EditPlaylist editPlaylist = new EditPlaylist();
-
+        for(RaspberryPi pi : RaspberryPi.connectedPis){
+            for (int i = 0; i < songsArray.size();i++) {
+                try {
+                    pi.databaseCon.playmusic(songsArray.get(i).toString());
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
         }
 
     }
