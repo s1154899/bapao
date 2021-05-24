@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Playing extends JPanel {
     Main frame;
@@ -43,37 +45,29 @@ public class Playing extends JPanel {
         gcThird.gridwidth = 3;
         gcThird.gridheight = 1;
 
-//        Header headPanel = new Header(frame, this);
-//        headPanel.setPreferredSize(new Dimension(1920,128));
-//        headPanel.setMaximumSize(new Dimension(1920,128));
         Header headPanel = new Header();
+
+        headPanel.homeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeThis();
+            }
+        });
         add(headPanel, gc);
+
 
         PlayingCenter playingCenter = new PlayingCenter(frame);
         add(playingCenter, gcSecond);
-//        test t = new test("Assets/AlbumCover1.png","Title test");
-//        add(t, gcSecond);
 
-//        MusicFooter musicFooter = new MusicFooter(frame, musicMain);
-//        musicFooter.setPreferredSize(new Dimension(1920,30));
-//        musicFooter.setMaximumSize(new Dimension(1920,30));
         MusicFooter musicFooter = new MusicFooter();
         musicFooter.setMinimumSize(new Dimension(0,48));
         add(musicFooter, gcThird);
     }
 
-//    protected void paintComponent(Graphics g){
-//        super.paintComponent(g);
-//        g.setColor(Color.BLUE);
-//        g.fillRect(280, 25, 400, 400);
-//        g.fillOval(280, 500, 120, 120);
-//        g.fillOval(420, 500, 120, 120);
-//        g.fillOval(560, 500, 120, 120);
-//
-//        g.setColor(Color.BLACK);
-//        g.setFont(new Font("SansSerif Bold", Font.BOLD, 20));
-//        g.drawString("Song title", 435, 450);
-//        g.drawString("<", 325, 565);
-//        g.drawString(">", 615, 565);
-//    }
+    public void removeThis(){
+        Main.mainFrame.remove(this);
+        Main.mainFrame.returnHome();
+        Main.mainFrame.revalidate();
+        Main.mainFrame.repaint();
+    }
 }

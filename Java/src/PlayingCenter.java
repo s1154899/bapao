@@ -30,9 +30,10 @@ public class PlayingCenter extends JPanel {
 
     Image currentAlbumCover;
 
-    ArrayList<String> albumCovers = new ArrayList<String>();
-    ArrayList<String> songTitles = new ArrayList<String>();
+    ArrayList<String> albumCovers = new ArrayList<>();
+    ArrayList<String> songTitles = new ArrayList<>();
     int currentSongNumber = 1;
+    String[] songTitle;
 
     public PlayingCenter(Main frame) {
         albumCovers.add("Assets/AlbumCovers/AlbumCover1.png");
@@ -44,6 +45,9 @@ public class PlayingCenter extends JPanel {
         songTitles.add("Song title 2");
         songTitles.add("Song title 3");
         songTitles.add("Song title 4");
+
+        songTitle = RaspberryPi.musicDirJava();
+        System.out.println(songTitle[0]);
 
         try {
             usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
