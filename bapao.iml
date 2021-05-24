@@ -9,5 +9,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jSerialComm-2.6.2" level="project" />
     <orderEntry type="library" name="json-simple-1.1.1" level="project" />
+    <orderEntry type="library" name="java" level="project" />
+    <orderEntry type="library" name="java1" level="project" />
+    <orderEntry type="library" name="jfree:jfreechart:1.0.13" level="project" />
   </component>
 </module>

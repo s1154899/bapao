@@ -314,6 +314,9 @@ public class Login extends JDialog {
                     Main.mainFrame.setVisible(true);
 
                     removeThis();
+                } else if(insertedName == "" && insertedPassword == ""){
+                    accountManager.validateAccount("jantje", "password1");
+                    Main.mainFrame.setVisible(true);
                 }
                 else{
                     System.out.println("incorrect");

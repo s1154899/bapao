@@ -5,18 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36aed5e0-e1db-4a97-8ae4-5cb7fe230041" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/java.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/java1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jfree_jfreechart_1_0_13.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Accounts.json" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/Header.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Header.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/MusicMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/MusicMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Main$colorEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bapao.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bapao.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsMain$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionsMain$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsMain$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionsMain$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsMain$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionsMain$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsMain$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionsMain$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsMain$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionsMain$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsMain$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionsMain$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsMain$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionsMain$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionsMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Graphs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Graphs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/LineGrap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/SensorsMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Songs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Songs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsFooter$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/SensorsFooter$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsFooter$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/SensorsFooter$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsFooter$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/SensorsFooter$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsFooter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/SensorsFooter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/raspberry/DatabaseCon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/raspberry/DatabaseCon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/test$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/test$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/test$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/test$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/test$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/test$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/test$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/test.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,8 +94,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Java/src/lib" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/jfreechart-1.5.3.zip" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -85,6 +113,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AccountManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AccountManager" />
       <module name="bapao" />
@@ -118,19 +159,6 @@
     <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test" />
       <module name="bapao" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
