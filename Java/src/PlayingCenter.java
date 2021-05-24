@@ -36,21 +36,17 @@ public class PlayingCenter extends JPanel {
     String[] songTitle;
 
     public PlayingCenter(Main frame) {
-        albumCovers.add("Assets/AlbumCovers/AlbumCover1.png");
-        albumCovers.add("Assets/AlbumCovers/AlbumCover2.png");
-        albumCovers.add("Assets/AlbumCovers/AlbumCover3.png");
-        albumCovers.add("Assets/AlbumCovers/AlbumCover4.png");
-
-//        songTitles.add("Song title 1");
-//        songTitles.add("Song title 2");
-//        songTitles.add("Song title 3");
-//        songTitles.add("Song title 4");
+        albumCovers.add("Assets/AlbumCovers/Company.png");
+        albumCovers.add("Assets/AlbumCovers/Doom Crossing Eternal Horizons.png");
+        albumCovers.add("Assets/AlbumCovers/God's plan.png");
+        albumCovers.add("Assets/AlbumCovers/Never Gonna Give You Up.png");
+        albumCovers.add("Assets/AlbumCovers/Summer Jam 2003.png");
+        albumCovers.add("Assets/AlbumCovers/Wii Go Hard.png");
 
         songTitle = RaspberryPi.musicDirJava();
-        System.out.println(songTitle.length);
         for(String song : songTitle){
-            System.out.println(song);
-            songTitles.add(song);
+            int endIndex = song.length() - 4;
+            songTitles.add(song.substring(10, endIndex));
         }
 
         try {

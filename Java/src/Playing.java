@@ -21,7 +21,7 @@ public class Playing extends JPanel {
         gc.fill = GridBagConstraints.BOTH;
         gc.gridx = 0;
         gc.weightx = 1;
-        gc.weighty = 0.01f;
+        gc.weighty = 0.001f;
         gc.gridy = 0;
         gc.gridwidth = 3;
         gc.gridheight = 1;
@@ -46,6 +46,7 @@ public class Playing extends JPanel {
         gcThird.gridheight = 1;
 
         Header headPanel = new Header();
+        headPanel.setMinimumSize(new Dimension(0, 128));
 
         headPanel.homeButton.addActionListener(new ActionListener() {
             @Override

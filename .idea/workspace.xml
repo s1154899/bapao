@@ -5,46 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36aed5e0-e1db-4a97-8ae4-5cb7fe230041" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/java.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/java1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jfree_jfreechart_1_0_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/music/Company.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/music/Doom Crossing Eternal Horizons.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/music/God's Plan.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/music/Never Gonna Give You Up.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/music/Summer Jam 2003.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/music/Wii Go Hard.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Assets/AlbumCovers/Company.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Assets/AlbumCovers/Doom Crossing Eternal Horizons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Assets/AlbumCovers/God's plan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Assets/AlbumCovers/Never Gonna Give You Up.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Assets/AlbumCovers/Summer Jam 2003.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Assets/AlbumCovers/Wii Go Hard.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Accounts.json" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bapao.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bapao.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsMain$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionsMain$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsMain$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionsMain$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsMain$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionsMain$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsMain$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionsMain$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsMain$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionsMain$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsMain$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionsMain$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsMain$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionsMain$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/ActionsMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ActionsMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Graphs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Graphs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Header.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/LineGrap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/music/Rick Astley - Never Gonna Give You Up (Video).mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/music/hallo.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/music/mii channel but all the pauses are uncomfortably long.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Assets/AlbumCovers/AlbumCover1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Assets/AlbumCovers/AlbumCover2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Assets/AlbumCovers/AlbumCover3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Assets/AlbumCovers/AlbumCover4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Playing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/src/PlayingCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/PlayingCenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Assets/AlbumCovers/AlbumCover1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Assets/AlbumCovers/AlbumCover2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Assets/AlbumCovers/AlbumCover3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Assets/AlbumCovers/AlbumCover4.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$7.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsFooter$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/SensorsFooter$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsFooter$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/SensorsFooter$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsFooter$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/SensorsFooter$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsFooter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/SensorsFooter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/raspberry/DatabaseCon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/raspberry/DatabaseCon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/test$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/test$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/test$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/test$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/test$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/test$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/test$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Playing$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Playing$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/Playing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Playing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bapao/PlayingCenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/PlayingCenter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
