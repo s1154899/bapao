@@ -59,7 +59,7 @@ public class Main extends JFrame {
 
         //SubnetCheck subnetCheck = new SubnetCheck(this,true);
 
-        new RaspberryPi("192.168.2.22");
+        new RaspberryPi("192.168.2.18");
 
 
         home = new Home();
@@ -86,104 +86,6 @@ public class Main extends JFrame {
         mainFrame = new Main();
     }
 
-    public void homeScreen(){
-        home = new Home();
-        this.add(home);
-
-        revalidate();
-        repaint();
-    }
-
-    public void showMusic(){
-        remove(home);
-        Home.added = false;
-        MusicMain music = new MusicMain();
-        add(music);
-
-        revalidate();
-        repaint();
-    }
-
-    public void showStats(){
-        remove(home);
-        Home.added = false;
-        SensorsMain sensors = new SensorsMain();
-        add(sensors);
-
-        revalidate();
-        repaint();
-    }
-
-    //function called when songs button is pressed
-    public void SongsPage(){
-        remove(menu);
-
-        Songs songs = new Songs(mainFrame, true);
-        add(songs);
-
-        revalidate();
-        repaint();
-    }
-    //function called when results button is pressed
-    public void ResultsPage() {
-        remove(menu);
-
-        RaspberryPi pi = RaspberryPi.connectedPis.get(0);
-        Graphs graphs = new Graphs();
-
-        try {
-
-            add(graphs.lineGraph(pi.databaseCon.getTemp()));
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
-
-        revalidate();
-        repaint();
-        System.out.println("x");
-    }
-    //function called when playlists button is pressed
-    public void PlaylistsPage(){
-
-        Playlists playlists = new Playlists();
-        add(playlists);
-
-
-
-
-
-
-    }
-    //function called when actions is pressed
-    public void ActionsPage(){
-
-    }
-    //function called when edit playlists is pressed
-    public void Edit_PlaylistPage(){
-        remove(menu);
-
-        revalidate();
-        repaint();
-    }
-    //function called when sensors is pressed
-    public void SensorsPage(){
-        remove(menu);
-
-        revalidate();
-        repaint();
-    }
-    //function called when playing is pressed
-    public void PlayingPage(){
-        remove(menu);
-
-        MusicMain musicMain = new MusicMain();
-        Playing playing = new Playing(this, true, musicMain);
-        add(playing);
-
-        revalidate();
-        repaint();
-    }
 
     public void returnHome(){
         add(new Home());

@@ -55,7 +55,6 @@ public class Header extends JPanel {
 
         setPreferredSize(new Dimension(getWidth(),128));
         setMaximumSize(new Dimension(getWidth(),128));
-        setMinimumSize(new Dimension(0,128));
 
         try {
 

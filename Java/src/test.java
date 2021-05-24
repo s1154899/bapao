@@ -74,7 +74,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -82,41 +81,45 @@ public class test extends JPanel {
 
     public JLabel imageLabel;
     public JLabel Title;
-    //Main.colorEnum colorScheme;
-    private Font usedFont;
+
+
+    public static void main(String[] args){
+        Frame f = new Frame();
+
+        f.setSize(600,600);
+
+        new Playlists();
+
+        f.setVisible(true);
+
+
+
+
+    }
+
 
     public test(String imgsrc, String title){
-        try {
-            usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
-        } catch (IOException |FontFormatException e) {
-            e.printStackTrace();
-        }
-
-        //this.colorScheme = Main.getColorScheme();
 
         setLayout(new GridLayout(3,1));
-        //setBackground(colorScheme.getFirstBackgroundColor());
 
         try {
-//            BufferedImage image = null;
-//            image = ImageIO.read(new File(imgsrc));
-//            imageLabel = new JLabel(new ImageIcon(image));
-            setImage(imgsrc);
-            //add(imageLabel);
-        } catch (Exception e) {
+            BufferedImage image = null;
+            image = ImageIO.read(new File(imgsrc));
+            imageLabel = new JLabel(new ImageIcon(image));
+            add(imageLabel);
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Title = new JLabel(title);
+        Title = new JLabel();
+
         Title.setHorizontalAlignment(SwingConstants.CENTER);
-        Title.setFont(usedFont.deriveFont(20f));
-        //Title.setForeground(colorScheme.getDetailColor());
+        Title.setText(title);
 
         add(Title);
 
         JPanel PlayButtonsPanel = new JPanel();
         PlayButtonsPanel.setLayout(new FlowLayout());
-        //PlayButtonsPanel.setBackground(colorScheme.getFirstBackgroundColor());
 
         RoundButton back = new RoundButton();
         back.setText("<");
@@ -148,7 +151,6 @@ public class test extends JPanel {
                 }
             }
         });
-
         RoundButton next = new RoundButton();
         next.setText(">");
         next.addActionListener(new ActionListener() {
@@ -170,65 +172,70 @@ public class test extends JPanel {
         PlayButtonsPanel.add(next);
 
         add(PlayButtonsPanel);
+
+
     }
+
 
     public void setTitle(String text){
         Title.setText(text);
         revalidate();
         repaint();
     }
-
     public void setImage(String text){
         try {
-            InputStream albumCoverImg = Login.class.getResourceAsStream("Assets/AlbumCovers/AlbumCover1.png");
             BufferedImage image = null;
-            image = ImageIO.read(albumCoverImg);
+            image = ImageIO.read(new File(text));
             imageLabel = new JLabel(new ImageIcon(image));
             add(imageLabel);
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void main(String[] args){
-        JFrame f = new JFrame();
-        f.setSize(500, 500);
-
+//    public static void main(String[] args){
+//        JFrame f = new JFrame();
+//        f.setSize(500, 500);
 //
-//        test t = new test("Assets/AlbumCover1.png","wooops");
-//        f.add(t);
+////
+////        test t = new test("Assets/AlbumCover1.png","wooops");
+////        f.add(t);
+////
+////        t.setTitle("tester");
 //
-//        t.setTitle("tester");
-
-        JButton b = new JButton();
-        b.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser file = new JFileChooser();
-
-
-                File f = new File("");
-                int returnVal = file.showOpenDialog(null);
-                if(returnVal == JFileChooser.APPROVE_OPTION) {
-                    System.out.println("You chose to open this file: " +
-                            file.getSelectedFile().getName());
-                            f = file.getSelectedFile();
-                }
-
-                try {
-                    RaspberryPi.copyFileUsingStream(f);
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
-
-            }
-        });
-        f.add(b);
-
-        f.setVisible(true);
-
-
-
-    }
+//        JButton b = new JButton();
+//        b.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                JFileChooser file = new JFileChooser();
+//
+//
+//
+//
+//                File f = new File("");
+//                int returnVal = file.showOpenDialog(null);
+//                if(returnVal == JFileChooser.APPROVE_OPTION) {
+//                    System.out.println("You chose to open this file: " +
+//                            file.getSelectedFile().getName());
+//                            f = file.getSelectedFile();
+//                }
+//
+//
+//
+//                try {
+//                    RaspberryPi.copyFileUsingStream(f);
+//                } catch (IOException ioException) {
+//                    ioException.printStackTrace();
+//                }
+//
+//            }
+//        });
+//        f.add(b);
+//
+//        f.setVisible(true);
+//
+//
+//
+//    }
 
 }
