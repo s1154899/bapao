@@ -94,7 +94,7 @@ public class RaspberryPi {
     }
 
     public void UploadMusic(String name){
-        upload("./music/"+name,"/music/"+name);
+        upload("Java/out/music/" +name, "/Java/out/music/" +name);
     }
     public void UploadScripts(String name){ upload("./scripts/"+name, "/scripts/"+name);}
     //vraag me niet hoe dit werkt
@@ -129,7 +129,7 @@ public class RaspberryPi {
 
 
     public static String[] musicDirJava(){
-        return DirJava("music");
+        return DirJava("Java/music");
 
     }
 

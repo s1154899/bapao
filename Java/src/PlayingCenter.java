@@ -41,13 +41,17 @@ public class PlayingCenter extends JPanel {
         albumCovers.add("Assets/AlbumCovers/AlbumCover3.png");
         albumCovers.add("Assets/AlbumCovers/AlbumCover4.png");
 
-        songTitles.add("Song title 1");
-        songTitles.add("Song title 2");
-        songTitles.add("Song title 3");
-        songTitles.add("Song title 4");
+//        songTitles.add("Song title 1");
+//        songTitles.add("Song title 2");
+//        songTitles.add("Song title 3");
+//        songTitles.add("Song title 4");
 
         songTitle = RaspberryPi.musicDirJava();
-        System.out.println(songTitle[0]);
+        System.out.println(songTitle.length);
+        for(String song : songTitle){
+            System.out.println(song);
+            songTitles.add(song);
+        }
 
         try {
             usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
