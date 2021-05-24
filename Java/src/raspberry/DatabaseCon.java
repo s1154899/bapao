@@ -91,11 +91,11 @@ public class DatabaseCon{
         } catch (SQLException e) {
             //e.printStackTrace();
         }
-        System.out.println(" " + type);
         return results;
     }
 
-    public String[] GetTimestamps(int Limit , String type) throws SQLException {
+
+    public String[] GetTimeStamps(int Limit , String type) throws SQLException {
 
         String[] results = new String[Limit];
 
@@ -104,18 +104,18 @@ public class DatabaseCon{
             ResultSet rs = stmt.executeQuery(query);
             int count = 0;
             while (rs.next()) {
-                String meting = rs.getString("timestamps");
 
-                results[count] = meting;
-                System.out.println(meting+ " " + type);
+
+                results[count] = rs.getString("timestamp");
+                System.out.println(results[count]+ " " + type);
                 count++;
             }
         } catch (SQLException e) {
             //e.printStackTrace();
         }
-
         return results;
     }
+
 
     public ArrayList<String[]> GetNieuwResults() throws SQLException {
         ArrayList<String[]> results = new ArrayList<>();

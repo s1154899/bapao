@@ -38,27 +38,68 @@ public class SensorsFooter extends JPanel{
             public void actionPerformed(ActionEvent e) {
                 JDialog dialog = new JDialog(Main.mainFrame,true);
 
-                //dialog.setLayout(new BoxLayout(Main.mainFrame,BoxLayout.Y_AXIS));
+                JPanel mainPanel = new JPanel();
+                mainPanel.setLayout(new BoxLayout(mainPanel,BoxLayout.Y_AXIS));
+
+                JScrollPane scrollFrame = new JScrollPane(mainPanel);
+                mainPanel.setAutoscrolls(true);
+                scrollFrame.setPreferredSize(new Dimension( getWidth() / 3,300));
+                dialog.add(scrollFrame);
 
                 for (RaspberryPi pi : RaspberryPi.connectedPis) {
                     String[] types = new String[]{"Temperature", "humidity", "pressure"};
                     for (String type : types) {
                         try {
-                            int[] results = pi.databaseCon.GetResults(10,type);
-                            String[] stamps = pi.databaseCon.GetTimestamps(10,type);
+                            int[] results = pi.databaseCon.GetResults(30,type);
+                            String[] stamps = pi.databaseCon.GetTimeStamps(30,type);
 
-                           // dialog.add(new Graphs().lineGraph(results,stamps,type,"tijd","waardens"));
+                           mainPanel.add(new Graphs().lineGraph(results,stamps,type,"tijd","waardens"));
                         } catch (SQLException throwables) {
                             throwables.printStackTrace();
                         }
 
-                        Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-                        dialog.setSize(r.width, r.height);
 
-                        dialog.setVisible(true);
                     }
                 }
+                Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+                dialog.setSize(r.width, r.height);
 
+                dialog.setVisible(true);
+
+                Timer timer = new Timer(1000 * 60, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        remove(mainPanel);
+                        JPanel mainPanel = new JPanel();
+                        mainPanel.setLayout(new BoxLayout(mainPanel,BoxLayout.Y_AXIS));
+
+                        JScrollPane scrollFrame = new JScrollPane(mainPanel);
+                        mainPanel.setAutoscrolls(true);
+                        scrollFrame.setPreferredSize(new Dimension( getWidth() / 3,300));
+                        dialog.add(scrollFrame);
+
+                        for (RaspberryPi pi : RaspberryPi.connectedPis) {
+                            String[] types = new String[]{"Temperature", "humidity", "pressure"};
+                            for (String type : types) {
+                                try {
+                                    int[] results = pi.databaseCon.GetResults(10,type);
+                                    String[] stamps = pi.databaseCon.GetTimeStamps(10,type);
+
+                                    mainPanel.add(new Graphs().lineGraph(results,stamps,type,"tijd","waardens"));
+                                } catch (SQLException throwables) {
+                                    throwables.printStackTrace();
+                                }
+
+
+                            }
+                        }
+                        repaint();
+                        revalidate();
+
+                    }
+
+                });
+            timer.start();
             }
         });
         boxes[0].add(results);
@@ -81,7 +122,6 @@ public class SensorsFooter extends JPanel{
                 dialog.setSize(r.width,r.height);
 
                 dialog.setVisible(true);
-
 
 
             }
