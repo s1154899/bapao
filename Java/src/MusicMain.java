@@ -2,17 +2,15 @@
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class MusicMain extends JPanel implements ActionListener{
+public class MusicMain extends JPanel {
 
     Header header;
 
     public MusicMain(){
 
-    public MusicMain(Main frame, boolean modal) {
-        this.frame = frame;
-        this.colorScheme = Main.getColorScheme();
         setLayout(new GridBagLayout());
         setBackground(ColorScheme.getPrimaryColor());
 
@@ -20,7 +18,7 @@ public class MusicMain extends JPanel implements ActionListener{
         gc.fill = GridBagConstraints.BOTH;
         gc.gridx = 0;
         gc.weightx = 1;
-        gc.weighty = 0.001f;
+        gc.weighty = 0.05f;
         gc.gridy = 0;
         gc.gridwidth = 3;
         gc.gridheight = 1;
@@ -39,52 +37,33 @@ public class MusicMain extends JPanel implements ActionListener{
         //gcSecond.anchor = GridBagConstraints.FIRST_LINE_START;
         gcThird.gridx = 0;
         gcThird.weightx = 1;
-        gcThird.weighty = 0.001f;
+        gcThird.weighty = 0.01f;
         gcThird.gridy = 2;
         gcThird.gridwidth = 3;
         gcThird.gridheight = 1;
 
+        header = new Header();
+        header.setPreferredSize(new Dimension(1920,128));
+        header.setMaximumSize(new Dimension(1920,128));
 
-        // header related
-        Header headPanel = new Header(frame, this);
-        headPanel.setPreferredSize(new Dimension(1920, 10));
-        headPanel.setMaximumSize(new Dimension(1920, 10));
-        add(headPanel, gc);
+        add(header, gc);
 
-        // menu
-        JPanel menu = new JPanel();
-        String[] buttons = {"Songs", "Playlists", "Edit_Playlist", "Playing"};
-        for(String button : buttons) {
-            //creates buttons for every item in arrayList
-            JButton button1 = new JButton(button);
-            button1.addActionListener(Reflect.actionListenerFromMethod(this, button+"Page"));
-
-
-            //adds button to menu
-            add(button1);
-        }
+        header.homeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeThis();
+            }
+        });
 
 
 
+        JLabel center = new JLabel("test");
+        add(center, gcSecond);
 
-        // footer
-        MusicFooter musicFooter = new MusicFooter(frame, modal);
-        musicFooter.setPreferredSize(new Dimension(1920, 10));
-        musicFooter.setMaximumSize(new Dimension(1920, 10));
+        MusicFooter musicFooter = new MusicFooter();
+        musicFooter.setPreferredSize(new Dimension(1920,30));
+        musicFooter.setMaximumSize(new Dimension(1920,30));
         add(musicFooter, gcThird);
-
-    }
-
-
-    //function called when playlists button is pressed
-    public void PlaylistsPage(){
-        Playlists playlists = new Playlists(new JFrame());
-        add(playlists);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        
     }
 
     public void removeThis(){
@@ -96,5 +75,3 @@ public class MusicMain extends JPanel implements ActionListener{
 
 
 }
-
-

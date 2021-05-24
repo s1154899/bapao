@@ -14,7 +14,7 @@ public class TemperatureChart extends ApplicationFrame {
         JFreeChart lineChart = ChartFactory.createLineChart(
                 chartTitle,
                 "Time", "Temperature",
-                createDataset(),
+                createDataset(new int[]{1, 2, 3, 4, 5, 6}, new String[]{"t","t","t","t","t","t","t",}),
                 PlotOrientation.VERTICAL,
                 false, true, false);
 
@@ -26,14 +26,11 @@ public class TemperatureChart extends ApplicationFrame {
 
 
 
-    private DefaultCategoryDataset createDataset() {
+    private DefaultCategoryDataset createDataset(int[] value,String[] columnKey) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(50, "Temperature", "10:45:05");
-        dataset.addValue(90, "Temperature", "10:46.05");
-        dataset.addValue(20, "Temperature", "10:47.05");
-        dataset.addValue(120, "Temperature", "10:48.05");
-        dataset.addValue(290, "Temperature", "10:49.05");
-        dataset.addValue(250, "Temperature", "10:50.05");
+        for (int i =0; i< value.length;i++) {
+            dataset.addValue(value[i], "Temperature", columnKey[i]);
+        }
         return dataset;
     }
 

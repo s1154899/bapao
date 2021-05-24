@@ -205,7 +205,11 @@ class ActionsMain extends JPanel implements ActionListener {
                         jtpAction.addTab(alActions.get(indexActions), newAction);
 
 
-                        UploadedScripts.addNewScript(new UploadedScripts(jtActionName.getText(),"./scripts/"+f.getName(),jtTimeInterval.getText(),indexTime));
+                        UploadedScripts.addNewScript(new UploadedScripts(jtActionName.getText(),"./scripts/"+f.getName(),tijdInterval[jcbTime.getSelectedIndex()],alTimeInterval.get(indexTime)));
+
+                        for(RaspberryPi pi : RaspberryPi.connectedPis){
+                            pi.databaseCon.uploadScript(jtActionName.getText(),f.getName(),tijdInterval[jcbTime.getSelectedIndex()],alTimeInterval.get(indexTime));
+                        }
 
                     }
 

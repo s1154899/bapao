@@ -1,11 +1,15 @@
 
 
+import org.jfree.ui.RefineryUtilities;
+import raspberry.RaspberryPi;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
-import org.jfree.ui.RefineryUtilities;
 
 public class SensorsFooter extends JPanel{
 
@@ -32,30 +36,70 @@ public class SensorsFooter extends JPanel{
         results.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TemperatureChart chart = new TemperatureChart(
-                        "Temperature",
-                        "Temperature");
+                JDialog dialog = new JDialog(Main.mainFrame,true);
 
-                chart.pack();
-                RefineryUtilities.centerFrameOnScreen(chart);
-                RefineryUtilities.positionFrameOnScreen(chart, 0, 1);
-                chart.setVisible(true);
+                JPanel mainPanel = new JPanel();
+                mainPanel.setLayout(new BoxLayout(mainPanel,BoxLayout.Y_AXIS));
 
-                PressureChart chart2 = new PressureChart(
-                        "Air Pressure",
-                        "Air Pressure");
-                chart2.pack();
-                RefineryUtilities.centerFrameOnScreen(chart2);
-                RefineryUtilities.positionFrameOnScreen(chart2, 0.6, 0);
-                chart2.setVisible(true);
+                JScrollPane scrollFrame = new JScrollPane(mainPanel);
+                mainPanel.setAutoscrolls(true);
+                scrollFrame.setPreferredSize(new Dimension( getWidth() / 3,300));
+                dialog.add(scrollFrame);
 
-                HumidityChart chart3 = new HumidityChart(
-                        "Humidity",
-                        "Humidity");
-                chart3.pack();
-                RefineryUtilities.centerFrameOnScreen(chart3);
-                RefineryUtilities.positionFrameOnScreen(chart3, 0, 0);
-                chart3.setVisible(true);
+                for (RaspberryPi pi : RaspberryPi.connectedPis) {
+                    String[] types = new String[]{"Temperature", "humidity", "pressure"};
+                    for (String type : types) {
+                        try {
+                            int[] results = pi.databaseCon.GetResults(30,type);
+                            String[] stamps = pi.databaseCon.GetTimeStamps(30,type);
+
+                           mainPanel.add(new Graphs().lineGraph(results,stamps,type,"tijd","waardens"));
+                        } catch (SQLException throwables) {
+                            throwables.printStackTrace();
+                        }
+
+
+                    }
+                }
+                Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+                dialog.setSize(r.width, r.height);
+
+                dialog.setVisible(true);
+
+                Timer timer = new Timer(1000 * 60, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        remove(mainPanel);
+                        JPanel mainPanel = new JPanel();
+                        mainPanel.setLayout(new BoxLayout(mainPanel,BoxLayout.Y_AXIS));
+
+                        JScrollPane scrollFrame = new JScrollPane(mainPanel);
+                        mainPanel.setAutoscrolls(true);
+                        scrollFrame.setPreferredSize(new Dimension( getWidth() / 3,300));
+                        dialog.add(scrollFrame);
+
+                        for (RaspberryPi pi : RaspberryPi.connectedPis) {
+                            String[] types = new String[]{"Temperature", "humidity", "pressure"};
+                            for (String type : types) {
+                                try {
+                                    int[] results = pi.databaseCon.GetResults(10,type);
+                                    String[] stamps = pi.databaseCon.GetTimeStamps(10,type);
+
+                                    mainPanel.add(new Graphs().lineGraph(results,stamps,type,"tijd","waardens"));
+                                } catch (SQLException throwables) {
+                                    throwables.printStackTrace();
+                                }
+
+
+                            }
+                        }
+                        repaint();
+                        revalidate();
+
+                    }
+
+                });
+            timer.start();
             }
         });
         boxes[0].add(results);
@@ -69,15 +113,15 @@ public class SensorsFooter extends JPanel{
         actions.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 JDialog dialog = new JDialog(Main.mainFrame,true);
+
                 dialog.add(new ActionsMain());
+
                 Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
                 dialog.setSize(r.width,r.height);
+
                 dialog.setVisible(true);
-
-
-
-
 
 
             }
@@ -97,6 +141,7 @@ public class SensorsFooter extends JPanel{
 
                 Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
                 dialog.setSize(r.width,r.height);
+                dialog.add(new SensorsWeergaveMain());
 
                 dialog.setVisible(true);
             }
