@@ -22,8 +22,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Header extends JPanel {
 
-    Main frame;
-    private Main.colorEnum colorScheme;
+
+
     private boolean timeEnabled = false;
 
     ImageIcon lightHomeIcon;
@@ -34,13 +34,11 @@ public class Header extends JPanel {
     JPanel parent;
 
 
-    public Header(Main frame, JPanel parent){
-        this.frame = frame;
-        colorScheme = Main.getColorScheme();
-        this.parent = parent;
+    public Header(){
 
-        setBackground(colorScheme.getHeaderColor());
-        setBorder(BorderFactory.createMatteBorder(0,0,5,0, (colorScheme.getSecondaryColor() == Main.colorEnum.darkMode.getSecondaryColor())? null : colorScheme.getSecondaryColor()));
+
+        setBackground(ColorScheme.getHeaderColor());
+        setBorder(BorderFactory.createMatteBorder(0,0,5,0, ColorScheme.getSecondaryColor()));
         setLocation(0,0);
         BoxLayout layout = new BoxLayout(this, BoxLayout.X_AXIS);
         setLayout(layout);
@@ -55,8 +53,8 @@ public class Header extends JPanel {
 
         boxes[0].setBorder(new EmptyBorder(0,32,0,32));
 
-        setPreferredSize(new Dimension(frame.getWidth(),128));
-        setMaximumSize(new Dimension(frame.getWidth(),128));
+        setPreferredSize(new Dimension(getWidth(),128));
+        setMaximumSize(new Dimension(getWidth(),128));
 
         try {
 
@@ -81,7 +79,7 @@ public class Header extends JPanel {
         homeButton.setPreferredSize(new Dimension(64,64));
         homeButton.setMaximumSize(new Dimension(64,64));
         homeButton.setBackground(null);
-        homeButton.setBorder(new EmptyBorder(Math.round(32f*(frame.getHeight()/1080f)),0,Math.round(32f*(frame.getHeight()/1080f)),0));
+        homeButton.setBorder(new EmptyBorder(Math.round(32f*(getHeight()/1080f)),0,Math.round(32f*(getHeight()/1080f)),0));
 
         homeButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -95,48 +93,46 @@ public class Header extends JPanel {
             }
         });
 
-        homeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (!Home.added) {
-                    frame.homeScreen();
-                    removeThis();
-                }
-            }
-        });
+//        homeButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                //removeThis();
+////                Main.mainFrame.homeScreen();
+//            }
+//        });
 
 
 
         boxes[0].add(homeButton);
 
         JLabel date = new JLabel();
-        date.setForeground(colorScheme.getDetailColor());
-        date.setFont(frame.getUsedFont().deriveFont(20f));
+        date.setForeground(ColorScheme.getDetailColor());
+//        date.setFont(frame.getUsedFont().deriveFont(20f));
         date.setBorder(new EmptyBorder(3,50,0,0));
         date.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("cccc dd.MM.uuuu", Locale.ENGLISH)));
         boxes[2].add(date);
 
         time = new JLabel();
-        time.setForeground(colorScheme.getDetailColor());
-        time.setFont(frame.getUsedFont().deriveFont(20f));
+        time.setForeground(ColorScheme.getDetailColor());
+//        time.setFont(frame.getUsedFont().deriveFont(20f));
         time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-        time.setBorder(new EmptyBorder(0,Math.round(20f*(frame.getWidth()/1080f)),0,Math.round(20f*(frame.getWidth()/1080f))));
-        time.setPreferredSize(new Dimension(Math.round(170f*(frame.getWidth()/1920f)),Math.round(64f*(frame.getHeight()/1080f))));
-        time.setMaximumSize(new Dimension(Math.round(170f*(frame.getWidth()/1920f)),Math.round(64f*(frame.getHeight()/1080f))));
+        time.setBorder(new EmptyBorder(0,Math.round(20f*(getWidth()/1080f)),0,Math.round(20f*(getWidth()/1080f))));
+        time.setPreferredSize(new Dimension(Math.round(170f*(getWidth()/1920f)),Math.round(64f*(getHeight()/1080f))));
+        time.setMaximumSize(new Dimension(Math.round(170f*(getWidth()/1920f)),Math.round(64f*(getHeight()/1080f))));
         boxes[3].add(time);
 
         JButton logout = new JButton();
-        logout.setFont(frame.getUsedFont().deriveFont(20f));
+//        logout.setFont(getUsedFont().deriveFont(20f));
         logout.setBackground(null);
         logout.setText("Log Out");
-        logout.setBorder(new CompoundBorder(new LineBorder(colorScheme.getBorderColor(), 2), new EmptyBorder(5,5,5,5)));
-        logout.setForeground(colorScheme.getDetailColor());
+        logout.setBorder(new CompoundBorder(new LineBorder(ColorScheme.getBorderColor(), 2), new EmptyBorder(5,5,5,5)));
+        logout.setForeground(ColorScheme.getDetailColor());
         logout.setAlignmentX(Component.RIGHT_ALIGNMENT);
         logout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //frame.removeAll();
-                frame.resetApp();
+                Main.mainFrame.removeAll();
+                Main.mainFrame.resetApp();
                 bc.halt();
 
             }
@@ -159,7 +155,7 @@ public class Header extends JPanel {
         try {
             InputStream imageSource = Login.class.getResourceAsStream("Assets/icon.png");
             Image icon = ImageIO.read(imageSource);
-            g2d.drawImage(icon, Math.round(1814f * (frame.getWidth() / 1920f)),32,64,64, null);
+            g2d.drawImage(icon, Math.round(1814f * (getWidth() / 1920f)),32,64,64, null);
         }
         catch (Exception e){
             e.printStackTrace();
@@ -167,8 +163,12 @@ public class Header extends JPanel {
     }
 
     public void removeThis(){
-        frame.remove(this);
-        frame.remove(parent);
+        remove(this);
+//        remove(parent);
+
+        revalidate();
+        repaint();
+
         bc = null;
 
     }

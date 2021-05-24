@@ -1,24 +1,26 @@
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class MusicMain extends JPanel implements ActionListener{
 
-    Main frame;
-    Main.colorEnum colorScheme;
+    Header header;
 
+    public MusicMain(){
 
     public MusicMain(Main frame, boolean modal) {
         this.frame = frame;
         this.colorScheme = Main.getColorScheme();
         setLayout(new GridBagLayout());
-        setBackground(colorScheme.getPrimaryColor());
+        setBackground(ColorScheme.getPrimaryColor());
 
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.BOTH;
         gc.gridx = 0;
         gc.weightx = 1;
-        gc.weighty = 0.3f;
+        gc.weighty = 0.001f;
         gc.gridy = 0;
         gc.gridwidth = 3;
         gc.gridheight = 1;
@@ -37,7 +39,7 @@ public class MusicMain extends JPanel implements ActionListener{
         //gcSecond.anchor = GridBagConstraints.FIRST_LINE_START;
         gcThird.gridx = 0;
         gcThird.weightx = 1;
-        gcThird.weighty = 0.3f;
+        gcThird.weighty = 0.001f;
         gcThird.gridy = 2;
         gcThird.gridwidth = 3;
         gcThird.gridheight = 1;
@@ -84,52 +86,15 @@ public class MusicMain extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         
     }
+
+    public void removeThis(){
+        Main.mainFrame.remove(this);
+        Main.mainFrame.returnHome();
+        Main.mainFrame.revalidate();
+        Main.mainFrame.repaint();
+    }
+
+
 }
 
-
-
-
-
-/*
-
-        //adds the menu to the main screen
-        add(menu, BorderLayout.CENTER);
-
-         //function called when songs button is pressed
-    public void SongsPage(){
-        remove(menu);
-
-        Songs songs = new Songs(this, true);
-        add(songs);
-
-        revalidate();
-        repaint();
-    }
-
-
-
-       //function called when edit playlists is pressed
-    public void Edit_PlaylistPage(){
-        remove(menu);
-
-        revalidate();
-        repaint();
-    }
-
-
-       //function called when playing is pressed
-    public void PlayingPage(){
-        remove(menu);
-
-        Playing playing = new Playing();
-        add(playing);
-
-        revalidate();
-        repaint();
-    }
-
-
-
-
-*/
 
