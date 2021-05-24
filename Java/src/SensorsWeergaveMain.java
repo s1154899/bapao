@@ -73,18 +73,6 @@ public class SensorsWeergaveMain extends JPanel implements ActionListener {
         }
 
 
-        Timer timer = new Timer(100 * 60, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                remove(scrollFrame);
-                refresh();
-                repaint();
-                revalidate();
-            }
-        });
-        timer.setRepeats(true);
-        timer.start();
-
     }
 
     @Override
