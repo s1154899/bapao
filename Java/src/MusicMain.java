@@ -18,7 +18,7 @@ public class MusicMain extends JPanel {
         gc.fill = GridBagConstraints.BOTH;
         gc.gridx = 0;
         gc.weightx = 1;
-        gc.weighty = 0.05f;
+        gc.weighty = 0.01f;
         gc.gridy = 0;
         gc.gridwidth = 3;
         gc.gridheight = 1;
@@ -45,6 +45,7 @@ public class MusicMain extends JPanel {
         header = new Header();
         header.setPreferredSize(new Dimension(1920,128));
         header.setMaximumSize(new Dimension(1920,128));
+        header.setMinimumSize(new Dimension(0,128));
 
         add(header, gc);
 
@@ -57,7 +58,7 @@ public class MusicMain extends JPanel {
 
 
 
-        JLabel center = new JLabel("test");
+        JLabel center = new JLabel();
         add(center, gcSecond);
 
         MusicFooter musicFooter = new MusicFooter();

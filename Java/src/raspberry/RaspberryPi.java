@@ -17,7 +17,7 @@ public class RaspberryPi {
     public static ArrayList<RaspberryPi> connectedPis = new ArrayList<>();
     private static final int BUFFER_SIZE = 4096;
     private String host = "192.168.2.4";
-    private String user = "demo";
+    private String user = "pi";
     private String pass = "raspberry";
     private String filePath = "C:/Users/edmar/Downloads/5758.jpg";
     private String uploadPath = "/files/pic.jpg";
@@ -94,7 +94,7 @@ public class RaspberryPi {
     }
 
     public void UploadMusic(String name){
-        upload("./music/"+name,"/music/"+name);
+        upload("Java/out/music/" +name, "/Java/out/music/" +name);
     }
     public void UploadScripts(String name){ upload("./scripts/"+name, "/scripts/"+name);}
     //vraag me niet hoe dit werkt

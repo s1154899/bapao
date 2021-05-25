@@ -1,18 +1,21 @@
-
-
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Playing extends JPanel {
+    Main frame;
+    //Main.colorEnum colorScheme;
+    MusicMain musicMain;
 
-
-    public Playing(){
-
-
-
+    public Playing(Main frame, boolean modal, MusicMain musicMain){
+        this.frame = frame;
+        //this.colorScheme = Main.getColorScheme();
+        this.musicMain = musicMain;
 
         setLayout(new GridBagLayout());
-        setBackground(Main.colorScheme.getPrimaryColor());
+        //etBackground(colorScheme.getPrimaryColor());
 
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.BOTH;
@@ -42,33 +45,30 @@ public class Playing extends JPanel {
         gcThird.gridwidth = 3;
         gcThird.gridheight = 1;
 
-//        Header headPanel = new Header();
-//        headPanel.setPreferredSize(new Dimension(1920,128));
-//        headPanel.setMaximumSize(new Dimension(1920,128));
-//        add(headPanel, gc);
+        Header headPanel = new Header();
+        headPanel.setMinimumSize(new Dimension(0, 128));
 
-//        PlayingCenter playingCenter = new PlayingCenter(frame);
-        test t = new test("Assets/AlbumCover1.png","wooops");
-        add(t, gcSecond);
-//
-//        MusicFooter musicFooter = new MusicFooter();
-//        musicFooter.setPreferredSize(new Dimension(1920,30));
-//        musicFooter.setMaximumSize(new Dimension(1920,30));
-//        add(musicFooter, gcThird);
+        headPanel.homeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                removeThis();
+            }
+        });
+        add(headPanel, gc);
+
+
+        PlayingCenter playingCenter = new PlayingCenter(frame);
+        add(playingCenter, gcSecond);
+
+        MusicFooter musicFooter = new MusicFooter();
+        musicFooter.setMinimumSize(new Dimension(0,48));
+        add(musicFooter, gcThird);
     }
 
-//    protected void paintComponent(Graphics g){
-//        super.paintComponent(g);
-//        g.setColor(Color.BLUE);
-//        g.fillRect(280, 25, 400, 400);
-//        g.fillOval(280, 500, 120, 120);
-//        g.fillOval(420, 500, 120, 120);
-//        g.fillOval(560, 500, 120, 120);
-//
-//        g.setColor(Color.BLACK);
-//        g.setFont(new Font("SansSerif Bold", Font.BOLD, 20));
-//        g.drawString("Song title", 435, 450);
-//        g.drawString("<", 325, 565);
-//        g.drawString(">", 615, 565);
-//    }
+    public void removeThis(){
+        Main.mainFrame.remove(this);
+        Main.mainFrame.returnHome();
+        Main.mainFrame.revalidate();
+        Main.mainFrame.repaint();
+    }
 }
