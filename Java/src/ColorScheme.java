@@ -30,7 +30,7 @@ public class ColorScheme {
                     this.detailColor = new Color(238, 238, 238);
                     this.firstBackgroundColor = secondaryColor;
                     secondBackgroundColor = primaryColor;
-                    borderColor = primaryColor;
+                    borderColor = detailColor;
                     headerColor = primaryColor;
                 }
             }

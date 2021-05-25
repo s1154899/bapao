@@ -1,6 +1,7 @@
 
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -81,6 +82,22 @@ public class MusicFooter extends JPanel {
             }
         });
         boxes[3].add(playing);
+
+        songs.setForeground(Main.colorScheme.getDetailColor());
+        songs.setBorder(new LineBorder(Main.colorScheme.getBorderColor()));
+        songs.setBackground(Main.colorScheme.getSecondaryColor());
+
+        playlists.setForeground(Main.colorScheme.getDetailColor());
+        playlists.setBorder(new LineBorder(Main.colorScheme.getBorderColor()));
+        playlists.setBackground(Main.colorScheme.getSecondaryColor());
+
+        editPlaylist.setForeground(Main.colorScheme.getDetailColor());
+        editPlaylist.setBorder(new LineBorder(Main.colorScheme.getBorderColor()));
+        editPlaylist.setBackground(Main.colorScheme.getSecondaryColor());
+
+        playing.setForeground(Main.colorScheme.getDetailColor());
+        playing.setBorder(new LineBorder(Main.colorScheme.getBorderColor()));
+        playing.setBackground(Main.colorScheme.getSecondaryColor());
     }
 
 

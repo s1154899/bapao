@@ -5,75 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36aed5e0-e1db-4a97-8ae4-5cb7fe230041" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jcommon_1_0_23.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jfreechart_1_0_19.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Assets/darkMode.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Java/src/Assets/lightMode.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/ActionsMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/ActionsMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accounts.json" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/ColorScheme.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/ColorScheme.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/Header.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Header.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/MusicFooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/MusicFooter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/MusicMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/MusicMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Playing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/PlayingCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/PlayingCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/Register.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/SensorsFooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/SensorsFooter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Java/src/SensorsMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/SensorsMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/src/SensorsWeergaveMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Java/src/SensorsWeergaveMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bapao.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bapao.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/AccountManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/AccountManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/CheckHost.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/ClickOnSong.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/ClickOnSong.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/DatabaseCon.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/EditPlaylist.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/EditPlaylist.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Graphs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Graphs.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header$TimeControl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Header.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Header.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Home$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/Home.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Home.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/LineGrap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Main$colorEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Meting.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Meting.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/MusicFooter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/MusicFooter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/MusicMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/MusicMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Playing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Playing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Playlists.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Playlists.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/RaspMetingen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/RaspMetingen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Reflect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Reflect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Register$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Register$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Register$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Register$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Register$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Register$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Register$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Register$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Register$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Register.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Register.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsFooter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/SensorsFooter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bapao/SensorsMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/SensorsMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/Songs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/Songs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/SubnetCheck.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bapao/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bapao/test.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +76,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Java/src/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Java/src/Assets" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -132,6 +85,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\yorbe\Desktop\Bapao Invaders\bapao\Java\src\Assets" />
       <recent name="C:\Users\yorbe\Desktop\Bapao Invaders\bapao\Java\src\lib" />
       <recent name="C:\Users\Yorben\Desktop\BapaoInvaders\bapao\Java\src\Assets" />
     </key>

@@ -1,6 +1,7 @@
 
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +21,7 @@ public class SensorsMain extends JPanel {
         gc.fill = GridBagConstraints.BOTH;
         gc.gridx = 0;
         gc.weightx = 1;
-        gc.weighty = 0.05f;
+        gc.weighty = 0.001f;
         gc.gridy = 0;
         gc.gridwidth = 3;
         gc.gridheight = 1;
@@ -39,7 +40,7 @@ public class SensorsMain extends JPanel {
         //gcSecond.anchor = GridBagConstraints.FIRST_LINE_START;
         gcThird.gridx = 0;
         gcThird.weightx = 1;
-        gcThird.weighty = 0.01f;
+        gcThird.weighty = 0.001f;
         gcThird.gridy = 2;
         gcThird.gridwidth = 3;
         gcThird.gridheight = 1;
@@ -47,6 +48,7 @@ public class SensorsMain extends JPanel {
         header = new Header();
         header.setPreferredSize(new Dimension(1920,128));
         header.setMaximumSize(new Dimension(1920,128));
+        header.setMinimumSize(new Dimension(0,128));
         add(header, gc);
 
         header.homeButton.addActionListener(new ActionListener() {
@@ -62,8 +64,10 @@ public class SensorsMain extends JPanel {
         SensorsFooter sensorsFooterPanel = new SensorsFooter();
         sensorsFooterPanel.setPreferredSize(new Dimension(1920,30));
         sensorsFooterPanel.setMaximumSize(new Dimension(1920,30));
+        sensorsFooterPanel.setMinimumSize(new Dimension(0,30));
         add(sensorsFooterPanel, gcThird);
 
+        center.setForeground(Main.colorScheme.getDetailColor());
     }
     public void removeThis(){
         Main.mainFrame.remove(this);
@@ -73,7 +77,21 @@ public class SensorsMain extends JPanel {
     }
 
     public void changeColor(){
+        setBackground(Main.colorScheme.getPrimaryColor());
+        setForeground(Main.colorScheme.getDetailColor());
 
+        for (Component component : getComponents()){
+            component.setForeground(Main.colorScheme.getDetailColor());
+            if (component instanceof SensorsFooter){
+                for (Component component1 : ((SensorsFooter) component).getComponents()){
+                    Box box = (Box) component1;
+                    JButton button = (JButton) box.getComponent(0);
+                    button.setForeground(Main.colorScheme.getDetailColor());
+                    button.setBorder(new LineBorder(Main.colorScheme.getBorderColor()));
+                    button.setBackground(Main.colorScheme.getSecondaryColor());
+                }
+            }
+        }
     }
 
 }
