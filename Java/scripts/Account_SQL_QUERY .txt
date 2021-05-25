@@ -1,0 +1,5 @@
+SELECT p.EmailAddress, p.Fullname, p.PhoneNumber, p.PersonID, c.PhoneNumber, c.CustomerName, 
+FROM people as p
+JOIN customers as c ON p.PhoneNumber = c.PhoneNumber 
+WHERE p.Fullname = c.CustomerName
+                        
