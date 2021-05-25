@@ -23,7 +23,7 @@ public class MusicFooter extends JPanel {
 
         JButton songs = new JButton("Songs");
 //        songs.setFont(getUsedFont().deriveFont(20f));
-        songs.setBackground(ColorScheme.getSecondBackgroundColor());
+        songs.setBackground(Main.colorScheme.getSecondBackgroundColor());
         songs.setPreferredSize(new Dimension(640, 50));
         songs.setMaximumSize(new Dimension(640, 50));
         songs.addActionListener(new ActionListener() {
@@ -36,7 +36,7 @@ public class MusicFooter extends JPanel {
 
         JButton playlists = new JButton("Playlists");
 //        playlists.setFont(getUsedFont().deriveFont(20f));
-        playlists.setBackground(ColorScheme.getSecondBackgroundColor());
+        playlists.setBackground(Main.colorScheme.getSecondBackgroundColor());
         playlists.setPreferredSize(new Dimension(640, 50));
         playlists.setMaximumSize(new Dimension(640, 50));
         playlists.addActionListener(new ActionListener() {
@@ -49,7 +49,7 @@ public class MusicFooter extends JPanel {
 
         JButton editPlaylist = new JButton("Edit playlist");
 //        editPlaylist.setFont(getUsedFont().deriveFont(20f));
-        editPlaylist.setBackground(ColorScheme.getSecondBackgroundColor());
+        editPlaylist.setBackground(Main.colorScheme.getSecondBackgroundColor());
         editPlaylist.setPreferredSize(new Dimension(640, 50));
         editPlaylist.setMaximumSize(new Dimension(640, 50));
         editPlaylist.addActionListener(new ActionListener() {
@@ -63,7 +63,7 @@ public class MusicFooter extends JPanel {
 
         JButton playing = new JButton("Playing");
 //        playing.setFont(getUsedFont().deriveFont(20f));
-        playing.setBackground(ColorScheme.getSecondBackgroundColor());
+        playing.setBackground(Main.colorScheme.getSecondBackgroundColor());
         playing.setPreferredSize(new Dimension(640, 50));
         playing.setMaximumSize(new Dimension(640, 50));
         playing.addActionListener(new ActionListener() {

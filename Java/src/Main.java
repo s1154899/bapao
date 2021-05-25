@@ -6,12 +6,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 
 public class Main extends JFrame {
 
     public JPanel menu;
+    public static ColorScheme.colorEnum colorScheme;
+    public static Font usedFont;
 
     public AccountManager accountManager;
 
@@ -26,10 +30,16 @@ public class Main extends JFrame {
     //creates the main page for the domotica system
     public Main(){
         super();
+        colorScheme = ColorScheme.colorEnum.lightMode;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Domotica: home screen");
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width,r.height);
+        try {
+            usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
+        } catch (IOException |FontFormatException e) {
+            //Handle exception
+        }
 
 
 //        //layout for the main panel

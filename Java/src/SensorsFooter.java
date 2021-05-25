@@ -30,7 +30,7 @@ public class SensorsFooter extends JPanel{
         JButton results = new JButton();
 //        results.setFont(getUsedFont().deriveFont(20f));
         results.setText("Results");
-        results.setBackground(ColorScheme.getSecondBackgroundColor());
+        results.setBackground(Main.colorScheme.getSecondBackgroundColor());
         results.setPreferredSize(new Dimension(640, 50));
         results.setMaximumSize(new Dimension(640, 50));
         results.addActionListener(new ActionListener() {
@@ -107,7 +107,7 @@ public class SensorsFooter extends JPanel{
         JButton actions = new JButton();
 //        actions.setFont(getUsedFont().deriveFont(20f));
         actions.setText("Actions");
-        actions.setBackground(ColorScheme.getSecondBackgroundColor());
+        actions.setBackground(Main.colorScheme.getSecondBackgroundColor());
         actions.setPreferredSize(new Dimension(640, 50));
         actions.setMaximumSize(new Dimension(640, 50));
         actions.addActionListener(new ActionListener() {
@@ -131,7 +131,7 @@ public class SensorsFooter extends JPanel{
         JButton sensors = new JButton();
 //        sensors.setFont(getUsedFont().deriveFont(20f));
         sensors.setText("Sensors");
-        sensors.setBackground(ColorScheme.getSecondBackgroundColor());
+        sensors.setBackground(Main.colorScheme.getSecondBackgroundColor());
         sensors.setPreferredSize(new Dimension(640, 50));
         sensors.setMaximumSize(new Dimension(640, 50));
         sensors.addActionListener(new ActionListener() {

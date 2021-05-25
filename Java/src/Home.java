@@ -33,7 +33,7 @@ public class Home extends JPanel {
         setSize(1920,1080);
 
 
-//        setBackground(ColorScheme.getPrimaryColor());
+        setBackground(Main.colorScheme.getPrimaryColor());
         setLayout(new GridBagLayout());
 
         musicButton = new JButton();
@@ -130,7 +130,7 @@ public class Home extends JPanel {
 
         JPanel musicPanel = new JPanel();
         musicPanel.setLayout(new BoxLayout(musicPanel,BoxLayout.Y_AXIS ));
-//        musicPanel.setBackground(ColorScheme.getSecondaryColor());
+        musicPanel.setBackground(Main.colorScheme.getSecondaryColor());
         musicPanel.setOpaque(false);
 
         Box[] boxes = new Box[2];
@@ -142,8 +142,9 @@ public class Home extends JPanel {
 
         boxes[0].add(musicButton);
         JLabel musicLabel = new JLabel("Music");
-//        musicLabel.setForeground(ColorScheme.getDetailColor());
+        musicLabel.setForeground(Main.colorScheme.getDetailColor());
         musicLabel.setBackground(Color.WHITE);
+        musicLabel.setFont(Main.usedFont.deriveFont(20f));
         musicLabel.setBorder(new EmptyBorder(10,0,0,Math.round(200f)));
 
         boxes[1].add(musicLabel);
@@ -153,7 +154,7 @@ public class Home extends JPanel {
         JPanel sensorPanel = new JPanel();
         sensorPanel.setOpaque(false);
         sensorPanel.setLayout(new BoxLayout(sensorPanel,BoxLayout.Y_AXIS ));
-//        sensorPanel.setBackground(ColorScheme.getSecondaryColor());
+        sensorPanel.setBackground(Main.colorScheme.getSecondaryColor());
         Box[] boxes1 = new Box[2];
 
         for (int i = 0; i < boxes.length; i++){
@@ -163,8 +164,8 @@ public class Home extends JPanel {
 
         boxes1[0].add(sensorButton);
         JLabel sensorLabel = new JLabel("Sensors");
-//        sensorLabel.setForeground(ColorScheme.getDetailColor());
-
+        sensorLabel.setForeground(Main.colorScheme.getDetailColor());
+        sensorLabel.setFont(Main.usedFont.deriveFont(20f));
         sensorLabel.setBorder(new EmptyBorder(Math.round(20f),Math.round(170f),50,0));
         boxes1[1].add(sensorLabel);
         //tempPanel.add(new JLabel());
@@ -207,7 +208,7 @@ public class Home extends JPanel {
 
         JPanel footerPanel = new JPanel();
         footerPanel.setBackground(null);
-        //footerPanel.setBorder(BorderFactory.createMatteBorder(4,0,0,0, ColorScheme.getBorderColor()));
+        //footerPanel.setBorder(BorderFactory.createMatteBorder(4,0,0,0, Main.colorScheme.getBorderColor()));
         footerPanel.setMaximumSize(new Dimension(1920,Math.round(128f)));
         footerPanel.setPreferredSize(new Dimension(1920,Math.round(128f)));
         footerPanel.setOpaque(false);
@@ -247,6 +248,10 @@ public class Home extends JPanel {
         Main.mainFrame.repaint();
     }
 
+    public void changeColor(){
+
+    }
+
 
 
 //    protected void paintComponent(Graphics g) {
@@ -264,7 +269,7 @@ public class Home extends JPanel {
 //
 //            //g.drawImage(button, 538,343, 300, 300, null);
 //            //g.drawImage(button, 1048,343, 300, 300, null);
-//            GradientPaint grad = new GradientPaint(0,0,Color.WHITE, 0, (float) GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getHeight(),ColorScheme.getSecondBackgroundColor());
+//            GradientPaint grad = new GradientPaint(0,0,Color.WHITE, 0, (float) GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getHeight(),Main.colorScheme.getSecondBackgroundColor());
 //            Graphics2D g2d1 = (Graphics2D) g;
 //            g2d1.setPaint(grad);
 //            g2d1.fill(new Rectangle2D.Double(0,0, getWidth() , getHeight()));

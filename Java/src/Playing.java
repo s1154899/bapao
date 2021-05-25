@@ -12,7 +12,7 @@ public class Playing extends JPanel {
 
 
         setLayout(new GridBagLayout());
-        setBackground(ColorScheme.getPrimaryColor());
+        setBackground(Main.colorScheme.getPrimaryColor());
 
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.BOTH;

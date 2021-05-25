@@ -14,7 +14,7 @@ public class SensorsMain extends JPanel {
 
 
         setLayout(new GridBagLayout());
-        setBackground(ColorScheme.getPrimaryColor());
+        setBackground(Main.colorScheme.getPrimaryColor());
 
         GridBagConstraints gc = new GridBagConstraints();
         gc.fill = GridBagConstraints.BOTH;
@@ -70,6 +70,10 @@ public class SensorsMain extends JPanel {
         Main.mainFrame.returnHome();
         Main.mainFrame.revalidate();
         Main.mainFrame.repaint();
+    }
+
+    public void changeColor(){
+
     }
 
 }

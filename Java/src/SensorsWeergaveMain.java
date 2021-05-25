@@ -17,7 +17,7 @@ public class SensorsWeergaveMain extends JPanel implements ActionListener {
 
     public SensorsWeergaveMain() {
 
-        this.setBackground(ColorScheme.getSecondaryColor());
+        this.setBackground(Main.colorScheme.getSecondaryColor());
         this.setLayout(new BorderLayout());
         try {
             usedFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Login.class.getResourceAsStream("Assets/Comfort.ttf")));
@@ -48,11 +48,11 @@ public class SensorsWeergaveMain extends JPanel implements ActionListener {
 
             RaspPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
-            setBackground(ColorScheme.getPrimaryColor());
+            setBackground(Main.colorScheme.getPrimaryColor());
 
             JLabel jlRaspberryIp = new JLabel("Ip van raspberry pi is: "+ pi.getHost());
             jlRaspberryIp.setFont(usedFont.deriveFont(20f));
-            jlRaspberryIp.setForeground(ColorScheme.getDetailColor());
+            jlRaspberryIp.setForeground(Main.colorScheme.getDetailColor());
             c.fill = GridBagConstraints.HORIZONTAL;
             c.gridx = 0;
             c.gridy = 0;
@@ -62,7 +62,7 @@ public class SensorsWeergaveMain extends JPanel implements ActionListener {
 
                 JLabel jlLastTemperature = new JLabel("De laatste "+results.get(i)[0]+" van de sensor is: "+results.get(i)[1]);
                 jlLastTemperature.setFont(usedFont.deriveFont(20f));
-                jlLastTemperature.setForeground(ColorScheme.getDetailColor());
+                jlLastTemperature.setForeground(Main.colorScheme.getDetailColor());
                 c.fill = GridBagConstraints.HORIZONTAL;
                 c.gridx = 0;
                 c.gridy = i + 1;
@@ -117,11 +117,11 @@ public class SensorsWeergaveMain extends JPanel implements ActionListener {
 
             RaspPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
-            setBackground(ColorScheme.getPrimaryColor());
+            setBackground(Main.colorScheme.getPrimaryColor());
 
             JLabel jlRaspberryIp = new JLabel("Ip van raspberry pi is: "+ pi.getHost());
             jlRaspberryIp.setFont(usedFont.deriveFont(20f));
-            jlRaspberryIp.setForeground(ColorScheme.getDetailColor());
+            jlRaspberryIp.setForeground(Main.colorScheme.getDetailColor());
             c.fill = GridBagConstraints.HORIZONTAL;
             c.gridx = 0;
             c.gridy = 0;
@@ -131,7 +131,7 @@ public class SensorsWeergaveMain extends JPanel implements ActionListener {
 
                 JLabel jlLastTemperature = new JLabel("De laatste "+results.get(i)[0]+" van de sensor is: "+results.get(i)[1]);
                 jlLastTemperature.setFont(usedFont.deriveFont(20f));
-                jlLastTemperature.setForeground(ColorScheme.getDetailColor());
+                jlLastTemperature.setForeground(Main.colorScheme.getDetailColor());
                 c.fill = GridBagConstraints.HORIZONTAL;
                 c.gridx = 0;
                 c.gridy = i + 1;

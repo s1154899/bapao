@@ -37,12 +37,12 @@ public class Header extends JPanel {
     public Header(){
 
 
-        setBackground(ColorScheme.getHeaderColor());
-        setBorder(BorderFactory.createMatteBorder(0,0,5,0, ColorScheme.getSecondaryColor()));
+        setBackground(Main.colorScheme.getHeaderColor());
+        setBorder(BorderFactory.createMatteBorder(0,0,5,0, Main.colorScheme.getSecondaryColor()));
         setLocation(0,0);
         BoxLayout layout = new BoxLayout(this, BoxLayout.X_AXIS);
         setLayout(layout);
-        Box[] boxes = new Box[4];
+        Box[] boxes = new Box[5];
 
         for (int i = 0; i < boxes.length; i++){
             boxes[i] = Box.createHorizontalBox();
@@ -105,29 +105,12 @@ public class Header extends JPanel {
 
         boxes[0].add(homeButton);
 
-        JLabel date = new JLabel();
-        date.setForeground(ColorScheme.getDetailColor());
-//        date.setFont(frame.getUsedFont().deriveFont(20f));
-        date.setBorder(new EmptyBorder(3,50,0,0));
-        date.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("cccc dd.MM.uuuu", Locale.ENGLISH)));
-        boxes[2].add(date);
-
-        time = new JLabel();
-        time.setForeground(ColorScheme.getDetailColor());
-//        time.setFont(frame.getUsedFont().deriveFont(20f));
-        time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-        time.setBorder(new EmptyBorder(3,Math.round(40f*(getWidth()/1080f)),0,Math.round(40f*(getWidth()/1080f))));
-        time.setPreferredSize(new Dimension(Math.round(200f*(getWidth()/1920f)),Math.round(64f*(getHeight()/1080f))));
-        boxes[3].add(time);
-        boxes[3].setBorder(new EmptyBorder(0,20,0,0));
-
-
         JButton logout = new JButton();
-//        logout.setFont(getUsedFont().deriveFont(20f));
+        logout.setFont(Main.usedFont.deriveFont(20f));
         logout.setBackground(Color.WHITE);
         logout.setText("Log Out");
-        logout.setBorder(new CompoundBorder(new LineBorder(ColorScheme.getBorderColor(), 2), new EmptyBorder(5,5,5,5)));
-        logout.setForeground(ColorScheme.getDetailColor());
+        logout.setBorder(new CompoundBorder(new LineBorder(Main.colorScheme.getBorderColor(), 2), new EmptyBorder(5,5,5,5)));
+        logout.setForeground(Main.colorScheme.getDetailColor());
         logout.setAlignmentX(Component.RIGHT_ALIGNMENT);
         logout.addActionListener(new ActionListener() {
             @Override
@@ -140,6 +123,45 @@ public class Header extends JPanel {
         });
         //boxes[3].setBorder(new EmptyBorder(0,Math.round(1200f*(frame.getWidth()/1920f)),0,0));
         boxes[1].add(logout);
+
+        JButton changeStyle = new JButton();
+        changeStyle.setForeground(Main.colorScheme.getDetailColor());
+        changeStyle.setFont(Main.usedFont.deriveFont(20f));
+        changeStyle.setBackground(Main.colorScheme.primaryColor);
+        changeStyle.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (Main.colorScheme == ColorScheme.colorEnum.darkMode){
+                    Main.colorScheme = ColorScheme.colorEnum.lightMode;
+                }
+                else if (Main.colorScheme == ColorScheme.colorEnum.lightMode){
+                    Main.colorScheme = ColorScheme.colorEnum.darkMode;
+                }
+                changeColor();
+                repaint();
+                revalidate();
+            }
+        });
+        boxes[2].add(changeStyle);
+
+        JLabel date = new JLabel();
+        date.setForeground(Main.colorScheme.getDetailColor());
+        date.setFont(Main.usedFont.deriveFont(20f));
+        date.setBorder(new EmptyBorder(3,50,0,0));
+        date.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("cccc dd.MM.uuuu", Locale.ENGLISH)));
+        boxes[3].add(date);
+
+        time = new JLabel();
+        time.setForeground(Main.colorScheme.getDetailColor());
+        time.setFont(Main.usedFont.deriveFont(20f));
+        time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+        time.setBorder(new EmptyBorder(3,Math.round(40f*(getWidth()/1080f)),0,Math.round(40f*(getWidth()/1080f))));
+        time.setPreferredSize(new Dimension(Math.round(200f*(getWidth()/1920f)),Math.round(64f*(getHeight()/1080f))));
+        boxes[4].add(time);
+        boxes[4].setBorder(new EmptyBorder(0,20,0,0));
+
+
+
 
         if (!timeEnabled) {
             bc = new TimeControl();
@@ -172,6 +194,46 @@ public class Header extends JPanel {
 
         bc = null;
 
+    }
+
+    public void changeColor(){
+        System.out.println("pressed");
+        setBackground(Main.colorScheme.getHeaderColor());
+        setBorder(BorderFactory.createMatteBorder(0,0,5,0, Main.colorScheme.getSecondaryColor()));
+        for (Component component : this.getComponents()){
+            if (component instanceof Box) {
+                Box box = (Box) component;
+                for (Component componentOfBox : box.getComponents()){
+                    if (componentOfBox instanceof JTextArea){
+                        //componentOfBox.setBackground();
+                    }
+                    else if (componentOfBox instanceof JButton){
+                        componentOfBox.setForeground(Main.colorScheme.getDetailColor());
+                        componentOfBox.setBackground(Main.colorScheme.getPrimaryColor());
+                    }
+                    else if (componentOfBox instanceof JLabel){
+                        componentOfBox.setForeground(Main.colorScheme.getDetailColor());
+                    }
+                    else if (componentOfBox instanceof JPanel){
+
+                    }
+                }
+            }
+        }
+        for (Component parentComponents : getParent().getComponents()){
+            if (parentComponents instanceof Home ){
+                Home home = (Home) parentComponents;
+                home.changeColor();
+            }
+            else if (parentComponents instanceof MusicMain){
+                MusicMain musicMain = (MusicMain) parentComponents;
+                musicMain.changeColor();
+            }
+            else if (parentComponents instanceof SensorsMain){
+                SensorsMain sensorsMain = (SensorsMain) parentComponents;
+                sensorsMain.changeColor();
+            }
+        }
     }
 
     class TimeControl {
