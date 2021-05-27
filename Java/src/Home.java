@@ -9,8 +9,8 @@ import java.io.InputStream;
 public class Home extends JPanel {
 
 
-
-
+    JLabel sensorLabel;
+    JLabel musicLabel;
     JButton musicButton;
     JButton sensorButton;
 
@@ -141,7 +141,7 @@ public class Home extends JPanel {
         }
 
         boxes[0].add(musicButton);
-        JLabel musicLabel = new JLabel("Music");
+        musicLabel = new JLabel("Music");
         musicLabel.setForeground(Main.colorScheme.getDetailColor());
         musicLabel.setBackground(Color.WHITE);
         musicLabel.setFont(Main.usedFont.deriveFont(20f));
@@ -163,7 +163,7 @@ public class Home extends JPanel {
         }
 
         boxes1[0].add(sensorButton);
-        JLabel sensorLabel = new JLabel("Sensors");
+        sensorLabel = new JLabel("Sensors");
         sensorLabel.setForeground(Main.colorScheme.getDetailColor());
         sensorLabel.setFont(Main.usedFont.deriveFont(20f));
         sensorLabel.setBorder(new EmptyBorder(Math.round(20f),Math.round(170f),50,0));
@@ -192,13 +192,13 @@ public class Home extends JPanel {
         header = new Header();
         header.setPreferredSize(new Dimension(1920,Math.round(128f)));
         header.setMaximumSize(new Dimension(1920,Math.round(128f)));
-
+        header.setMinimumSize(new Dimension(0,Math.round(128f)));
 
         GridBagConstraints gcSecond = new GridBagConstraints();
         gcSecond.fill = GridBagConstraints.BOTH;
         gcSecond.gridx = 0;
         gcSecond.weightx = 1;
-        gcSecond.weighty = 0.1f;
+        gcSecond.weighty = 0.001f;
         gcSecond.gridy = 0;
         gcSecond.gridwidth = 3;
         gcSecond.gridheight = 1;
@@ -211,13 +211,14 @@ public class Home extends JPanel {
         //footerPanel.setBorder(BorderFactory.createMatteBorder(4,0,0,0, Main.colorScheme.getBorderColor()));
         footerPanel.setMaximumSize(new Dimension(1920,Math.round(128f)));
         footerPanel.setPreferredSize(new Dimension(1920,Math.round(128f)));
+        footerPanel.setMinimumSize(new Dimension(0,Math.round(128f)));
         footerPanel.setOpaque(false);
         GridBagConstraints gcThird = new GridBagConstraints();
         gcThird.fill = GridBagConstraints.BOTH;
         //gcSecond.anchor = GridBagConstraints.FIRST_LINE_START;
         gcThird.gridx = 0;
         gcThird.weightx = 1;
-        gcThird.weighty = 0.2f;
+        gcThird.weighty = 0.001f;
         gcThird.gridy = 2;
         gcThird.gridwidth = 3;
         gcThird.gridheight = 1;
@@ -249,7 +250,11 @@ public class Home extends JPanel {
     }
 
     public void changeColor(){
-
+        setBackground(Main.colorScheme.getPrimaryColor());
+        sensorLabel.setForeground(Main.colorScheme.getDetailColor());
+        sensorLabel.setFont(Main.usedFont.deriveFont(20f));
+        musicLabel.setForeground(Main.colorScheme.getDetailColor());
+        musicLabel.setBackground(Color.WHITE);
     }
 
 
