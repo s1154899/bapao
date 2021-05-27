@@ -39,7 +39,7 @@ class LineGraph extends JPanel{
 
     private DefaultCategoryDataset createDataset(int[] value, String[] columnKey) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        for (int i =0; i< value.length;i++) {
+        for (int i =value.length -1; i > 0 ;i--) {
             dataset.addValue(value[i], "Temperature", columnKey[i]);
         }
         return dataset;

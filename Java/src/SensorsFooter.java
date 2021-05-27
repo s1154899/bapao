@@ -13,6 +13,9 @@ import java.util.ArrayList;
 
 public class SensorsFooter extends JPanel{
 
+    private SensorsWeergaveMain sensorsWeergaveMain;
+    private JPanel sensors;
+    private JDialog sensorsDialog;
 
     public SensorsFooter(){
 
@@ -36,24 +39,24 @@ public class SensorsFooter extends JPanel{
         results.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JDialog dialog = new JDialog(Main.mainFrame,true);
+                sensorsDialog = new JDialog(Main.mainFrame,true);
 
-                JPanel mainPanel = new JPanel();
-                mainPanel.setLayout(new BoxLayout(mainPanel,BoxLayout.Y_AXIS));
+                sensors = new JPanel();
+                sensors.setLayout(new BoxLayout(sensors,BoxLayout.Y_AXIS));
 
-                JScrollPane scrollFrame = new JScrollPane(mainPanel);
-                mainPanel.setAutoscrolls(true);
+                JScrollPane scrollFrame = new JScrollPane(sensors);
+                sensors.setAutoscrolls(true);
                 scrollFrame.setPreferredSize(new Dimension( getWidth() / 3,300));
-                dialog.add(scrollFrame);
+                sensorsDialog.add(scrollFrame);
 
                 for (RaspberryPi pi : RaspberryPi.connectedPis) {
-                    String[] types = new String[]{"Temperature", "humidity", "pressure"};
+                    String[] types = new String[]{"Temperature", "humidity", "pressure","licht"};
                     for (String type : types) {
                         try {
-                            int[] results = pi.databaseCon.GetResults(30,type);
-                            String[] stamps = pi.databaseCon.GetTimeStamps(30,type);
+                            int[] results = pi.databaseCon.GetResults(10,type);
+                            String[] stamps = pi.databaseCon.GetTimeStamps(10,type);
 
-                           mainPanel.add(new Graphs().lineGraph(results,stamps,type,"tijd","waardens"));
+                           sensors.add(new Graphs().lineGraph(results,stamps,type,"tijd","waardens"));
                         } catch (SQLException throwables) {
                             throwables.printStackTrace();
                         }
@@ -62,30 +65,23 @@ public class SensorsFooter extends JPanel{
                     }
                 }
                 Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-                dialog.setSize(r.width, r.height);
+                sensorsDialog.setSize(r.width, r.height);
 
-                dialog.setVisible(true);
 
-                Timer timer = new Timer(1000 * 60, new ActionListener() {
+                Timer timer = new Timer(1000, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        remove(mainPanel);
-                        JPanel mainPanel = new JPanel();
-                        mainPanel.setLayout(new BoxLayout(mainPanel,BoxLayout.Y_AXIS));
-
-                        JScrollPane scrollFrame = new JScrollPane(mainPanel);
-                        mainPanel.setAutoscrolls(true);
-                        scrollFrame.setPreferredSize(new Dimension( getWidth() / 3,300));
-                        dialog.add(scrollFrame);
+                        System.out.println("test");
+                        sensors.removeAll();
 
                         for (RaspberryPi pi : RaspberryPi.connectedPis) {
-                            String[] types = new String[]{"Temperature", "humidity", "pressure"};
+                            String[] types = new String[]{"Temperature", "humidity", "pressure","licht"};
                             for (String type : types) {
                                 try {
                                     int[] results = pi.databaseCon.GetResults(10,type);
                                     String[] stamps = pi.databaseCon.GetTimeStamps(10,type);
 
-                                    mainPanel.add(new Graphs().lineGraph(results,stamps,type,"tijd","waardens"));
+                                    sensors.add(new Graphs().lineGraph(results,stamps,type,"tijd","waardens"));
                                 } catch (SQLException throwables) {
                                     throwables.printStackTrace();
                                 }
@@ -93,14 +89,22 @@ public class SensorsFooter extends JPanel{
 
                             }
                         }
-                        repaint();
-                        revalidate();
+                        Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+                        sensorsDialog.setSize(r.width, r.height);
 
+
+
+                        sensors.repaint();
+                        sensors.revalidate();
                     }
 
                 });
-            timer.start();
+
+                timer.setRepeats(true);
+                timer.start();
+                sensorsDialog.setVisible(true);
             }
+
         });
         boxes[0].add(results);
 
@@ -141,7 +145,26 @@ public class SensorsFooter extends JPanel{
 
                 Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
                 dialog.setSize(r.width,r.height);
-                dialog.add(new SensorsWeergaveMain());
+
+                sensorsWeergaveMain = new SensorsWeergaveMain();
+                dialog.add(sensorsWeergaveMain);
+
+
+
+
+                Timer timer = new Timer(100 * 60, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                    dialog.remove(sensorsWeergaveMain);
+                    sensorsWeergaveMain = new SensorsWeergaveMain();
+                    dialog.add(sensorsWeergaveMain);
+                    dialog.repaint();
+                    dialog.revalidate();
+                    }
+                });
+                timer.setRepeats(true);
+                timer.start();
+
 
                 dialog.setVisible(true);
             }

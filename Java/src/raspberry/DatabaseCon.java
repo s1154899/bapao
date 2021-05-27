@@ -77,7 +77,7 @@ public class DatabaseCon{
 
         int[] results = new int[Limit];
 
-        String query = "SELECT * FROM `meting` A LEFT JOIN meting_types B ON A.metingTypesID = B.TypeID WHERE type = '"+type+"' LIMIT "+ Limit;
+        String query = "SELECT * FROM `meting` A LEFT JOIN meting_types B ON A.metingTypesID = B.TypeID WHERE type = '"+type+"' ORDER BY `metingID` DESC LIMIT "+ Limit;
         try (Statement stmt = con.createStatement()) {
             ResultSet rs = stmt.executeQuery(query);
             int count = 0;
@@ -99,7 +99,7 @@ public class DatabaseCon{
 
         String[] results = new String[Limit];
 
-        String query = "SELECT * FROM `meting` A LEFT JOIN meting_types B ON A.metingTypesID = B.TypeID WHERE type = '"+type+"' LIMIT "+ Limit;
+        String query = "SELECT * FROM `meting` A LEFT JOIN meting_types B ON A.metingTypesID = B.TypeID WHERE type = '"+type+"'  ORDER BY `metingID` DESC LIMIT "+ Limit;
         try (Statement stmt = con.createStatement()) {
             ResultSet rs = stmt.executeQuery(query);
             int count = 0;
