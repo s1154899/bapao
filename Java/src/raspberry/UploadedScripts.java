@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UploadedScripts {
@@ -81,6 +82,7 @@ public class UploadedScripts {
                 obj.put("fileName",script.fileName );
                 obj.put("interval",script.interval );
                 obj.put("intervalTime",script.intervalTime );
+                jsonArray.add(obj);
             }
 
         }
@@ -90,6 +92,35 @@ public class UploadedScripts {
             e.printStackTrace();
         }
     }
+    public static void removePlaylist(String scriptName){
+        JSONArray jsonArray = new JSONArray();
+
+        for (UploadedScripts script : ReadScripts()){
+            JSONObject obj = new JSONObject();
+            if (!scriptName.equals(script.name)){
+                obj.put("name",script.name );
+                obj.put("fileName",script.fileName );
+                obj.put("interval",script.interval );
+                obj.put("intervalTime",script.intervalTime );
+                jsonArray.add(obj);
+            }else{
+
+                for(RaspberryPi rasp :  RaspberryPi.connectedPis){
+                    try {
+                        rasp.databaseCon.removeScript(scriptName);
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                }
+            }
+        }
+        try {
+            Files.writeString(Path.of("./Scripts.json"), jsonArray.toJSONString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static void addNewScript(UploadedScripts scripts){
         JSONArray jsonArray = new JSONArray();
@@ -112,6 +143,9 @@ public class UploadedScripts {
             obj.put("intervalTime",scripts.intervalTime );
             jsonArray.add(obj);
 
+            for(RaspberryPi rasp :  RaspberryPi.connectedPis){
+                rasp.databaseCon.uploadScript(scripts.name, scripts.fileName, scripts.interval, scripts.intervalTime);
+            }
         System.out.println(jsonArray.toJSONString());
         try {
             Files.writeString(Path.of("./Scripts.json"), jsonArray.toJSONString());

@@ -267,4 +267,18 @@ public class DatabaseCon{
             throwables.printStackTrace();
         }
     }
+
+
+    public void removeScript(String scriptName) throws SQLException {
+        // the mysql insert statement
+        //TODO add prepared
+        String query = "DELETE FROM `saved_scripts` WHERE `ScriptName` = '"+scriptName+"'";
+
+        // create the mysql insert preparedstatement
+        PreparedStatement preparedStmt = con.prepareStatement(query);
+        //preparedStmt.setString (1, song);
+
+        // execute the preparedstatement
+        preparedStmt.execute();
+    }
 }

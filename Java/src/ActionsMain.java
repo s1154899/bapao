@@ -408,6 +408,9 @@ class ActionView extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 jtpAction.removeTabAt(alActions.indexOf(action) + 1); //+1 to avoid removal of the 'addtab' tab, which has index 0
                 alActions.remove(action);
+                System.out.println(action.getActionName());
+                UploadedScripts.removePlaylist(action.getActionName());
+
 
             }
         });
