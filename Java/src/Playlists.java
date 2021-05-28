@@ -42,31 +42,83 @@ public class Playlists extends JDialog implements ActionListener{
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width, r.height);
 
-        array = Readplaylist();
+        JSONArray jsonArray = Readplaylist();
 
-        JPanel listPanel = new JPanel();
-        listPanel.setLayout(new GridLayout(10, 1));
-
-
-        JLabel playlists = new JLabel("Playlists");
-        listPanel.add(playlists);
-
-
-        for (int i = 0; i < array.size(); i++){
-
-            JSONObject obj = (JSONObject) array.get(i);
-
-            JButton listName = new JButton(obj.get("name").toString());
-            listName.addActionListener(this);
-            listPanel.add(listName);
-
-        }
-
-        for (String name : listNames) {
+        String[] array = new String[jsonArray.size()];
+        for (int i = 0; i < jsonArray.size();i++){
+            JSONObject obj2 = (JSONObject) jsonArray.get(i);
+            array[i] = (String) obj2.get("name");
         }
 
 
-        add(listPanel);
+        JPanel container = new JPanel();
+
+        GridBagLayout grid = new GridBagLayout();
+
+        container.setLayout(grid);
+        //creates Constraint vairable for setting constraints on objects
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.anchor = GridBagConstraints.NORTH;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.gridx = 0;
+
+        JPanel playlistPanel = new JPanel();
+        JScrollPane scrollPane = new JScrollPane(playlistPanel);
+//        scrollPane.setPreferredSize(new Dimension(400,600));
+
+
+        playlistPanel.setAutoscrolls(true);
+        playlistPanel.setBackground(Color.yellow);
+
+        playlistPanel.setPreferredSize(new Dimension(100,array.length * 75));
+
+        playlistPanel.setLayout(new BoxLayout(playlistPanel,BoxLayout.Y_AXIS));
+        playlistPanel.setAutoscrolls(true);
+
+
+        for (String name : array) {
+            JButton but = new JButton(name);
+            but.setMaximumSize(new Dimension(Integer.MAX_VALUE, 75));
+            but.setSize(new Dimension(Integer.MAX_VALUE, 75));
+
+            but.addActionListener(this);
+            playlistPanel.add(but);
+        }
+
+        container.add(scrollPane,gbc);
+
+        container.setPreferredSize(new Dimension(500,100));
+        add(container, BorderLayout.LINE_START);
+
+
+
+        //
+//        JPanel listPanel = new JPanel();
+//        listPanel.setLayout(new GridLayout(10, 1));
+//
+//
+//        JLabel playlists = new JLabel("Playlists");
+//        listPanel.add(playlists);
+//
+//
+//        for (int i = 0; i < array.size(); i++){
+//
+//            JSONObject obj = (JSONObject) array.get(i);
+//
+//            JButton listName = new JButton(obj.get("name").toString());
+//            listName.addActionListener(this);
+//            listPanel.add(listName);
+//
+//        }
+
+//        for (String name : listNames) {
+//        }
+//
+//
+//        add(listPanel);
 
         MusicMain musicMain = new MusicMain();
         Playing playing = new Playing(Main.mainFrame, true, musicMain);

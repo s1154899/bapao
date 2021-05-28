@@ -46,10 +46,10 @@ public class EditPlaylist extends JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 2;
         gbc.gridy = 0;
-        gbc.ipady = 50;
+        gbc.ipady = 25;
         playlistName = new JTextField();
-        playlistName.setPreferredSize(new Dimension(300,200));
-        playlistName.setMaximumSize(new Dimension(300,200));
+//        playlistName.setPreferredSize(new Dimension(300,200));
+//        playlistName.setMaximumSize(new Dimension(300,200));
         add(playlistName,gbc);
 
 
