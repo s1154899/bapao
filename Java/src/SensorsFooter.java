@@ -47,7 +47,7 @@ public class SensorsFooter extends JPanel{
                 dialog.add(scrollFrame);
 
                 for (RaspberryPi pi : RaspberryPi.connectedPis) {
-                    String[] types = new String[]{"Temperature", "humidity", "pressure"};
+                    String[] types = new String[]{"Temperature", "humidity", "pressure","licht"};
                     for (String type : types) {
                         try {
                             int[] results = pi.databaseCon.GetResults(30,type);
