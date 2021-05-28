@@ -57,7 +57,7 @@ public class Register extends JDialog {
         title.setForeground(Main.colorScheme.getDetailColor());
         title.setPreferredSize(new Dimension(400,100));
         title.setMaximumSize(new Dimension(400,100));
-        title.setFont(Main.usedFont.deriveFont(40f));
+        title.setFont(Main.colorScheme.usedFont.deriveFont(40f));
         title.setLocation(0,0);
         title.setBackground(Color.WHITE);
 
@@ -81,12 +81,12 @@ public class Register extends JDialog {
         username.setForeground(Main.colorScheme.getDetailColor());
         username.setPreferredSize(new Dimension(460,30));
         username.setMaximumSize(new Dimension(460,30));
-        username.setFont(Main.usedFont.deriveFont(20f));
+        username.setFont(Main.colorScheme.usedFont.deriveFont(20f));
         username.setBorder(new EmptyBorder(10,0,10,0));
         boxes[0].add(username);
 
         usernameInput = new JTextField();
-        usernameInput.setFont(Main.usedFont.deriveFont(25f));
+        usernameInput.setFont(Main.colorScheme.usedFont.deriveFont(25f));
         usernameInput.setMaximumSize(new Dimension(460, 60));
         usernameInput.setPreferredSize(new Dimension(460, 60));
         usernameInput.setBorder(new EmptyBorder(2,15,2,15));
@@ -117,7 +117,7 @@ public class Register extends JDialog {
         password.setForeground(Main.colorScheme.getDetailColor());
         password.setPreferredSize(new Dimension(460,30));
         password.setMaximumSize(new Dimension(460,30));
-        password.setFont(Main.usedFont.deriveFont(20f));
+        password.setFont(Main.colorScheme.usedFont.deriveFont(20f));
         password.setBorder(new EmptyBorder(10,0,0,0));
         boxes[2].add(password);
 
@@ -136,7 +136,7 @@ public class Register extends JDialog {
         passwordChar = passwordInput.getEchoChar();
         passwordInput.setEchoChar((char)0);
         passwordInput.setForeground(Color.GRAY);
-        passwordInput.setFont(Main.usedFont.deriveFont(25f));
+        passwordInput.setFont(Main.colorScheme.usedFont.deriveFont(25f));
         passwordInput.setMaximumSize(new Dimension(460, 60));
         passwordInput.setPreferredSize(new Dimension(460, 60));
         passwordInput.setBackground(Main.colorScheme.getSecondaryColor());
@@ -215,7 +215,7 @@ public class Register extends JDialog {
 
         JLabel secondPassword = new JLabel("Validate password:");
         secondPassword.setForeground(Main.colorScheme.getDetailColor());
-        secondPassword.setFont(Main.usedFont.deriveFont(20f));
+        secondPassword.setFont(Main.colorScheme.usedFont.deriveFont(20f));
         secondPassword.setPreferredSize(new Dimension(460,30));
         secondPassword.setMaximumSize(new Dimension(460,30));
         boxes[4].add(secondPassword);
@@ -237,7 +237,7 @@ public class Register extends JDialog {
         secondPasswordInput = new JPasswordField("Password");
         secondPasswordInput.setEchoChar((char) 0);
         secondPasswordInput.setForeground(Color.GRAY);
-        secondPasswordInput.setFont(Main.usedFont.deriveFont(25f));
+        secondPasswordInput.setFont(Main.colorScheme.usedFont.deriveFont(25f));
         secondPasswordInput.setMaximumSize(new Dimension(460, 60));
         secondPasswordInput.setPreferredSize(new Dimension(460, 60));
         secondPasswordInput.setBorder(new EmptyBorder(2,15,2,15));
@@ -315,8 +315,8 @@ public class Register extends JDialog {
         register = new JButton("Register");
         goToLogin = new JButton("Want to login?");
 
-        register.setFont(Main.usedFont.deriveFont(15f));
-        goToLogin.setFont(Main.usedFont.deriveFont(15f));
+        register.setFont(Main.colorScheme.usedFont.deriveFont(15f));
+        goToLogin.setFont(Main.colorScheme.usedFont.deriveFont(15f));
 
         register.setFocusable(false);
         goToLogin.setFocusable(false);

@@ -18,24 +18,27 @@ public class RoundButton extends JButton {
 
     int width, height;
     Color color;
+    Color borderColor;
 
     public RoundButton(){
-        this(100,100,new Color(1f,0f,0f,.5f ));
-
+        this(100,100,new Color(1f,0f,0f,.5f ), new Color(1f,0f,0f,.5f ));
     }
 
-    public RoundButton(int width, int height, Color color){
+    public RoundButton(int width, int height, Color color, Color borderColor){
         this.width = width;
         this.height = height;
         this.color = color;
+        this.borderColor = borderColor;
 
 
-        setBorder(new EmptyBorder(30, 0, 0, Math.round(20f)));
+        setBorder(new EmptyBorder(0,0,0,(width-128/2)));
         setFocusable(false);
 
 
         setSize(width, height);
         setPreferredSize(new Dimension(width, height));
+        setMaximumSize(new Dimension(width, height));
+        setMinimumSize(new Dimension(width, height));
 
         setContentAreaFilled(false);
 
@@ -68,15 +71,19 @@ public class RoundButton extends JButton {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint (RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(color);
-        g2d.fillOval(0,0, width, height);
+        g2d.fillOval(((width-128)/2)-4,0, width, height);
+        g2d.setColor(borderColor);
+        g2d.drawOval(((width-128)/2)-4,0, width, height);
+        g2d.drawOval(((width-128)/2)-3,1, width-2, height-2);
 
         super.paintComponent(g);
 
     }
 
 
-    public RoundButton(int width, int height, Color color, String imgLink){
-        this(width,height,color);
+    public RoundButton(int width, int height, Color color, Color borderColor, String imgLink){
+        //this(width,height,color, borderColor);
+
         try {
         InputStream imageSource = Login.class.getResourceAsStream(imgLink);
         Image musicImage = null;
@@ -89,6 +96,34 @@ public class RoundButton extends JButton {
             e.printStackTrace();
         }
 
+        this.width = width;
+        this.height = height;
+        this.color = color;
+        this.borderColor = borderColor;
+
+        setBorder(new EmptyBorder(0,0,0,0));
+        setFocusable(false);
+
+
+        setSize(width, height);
+        setPreferredSize(new Dimension(width, height));
+        setMaximumSize(new Dimension(width, height));
+        setMinimumSize(new Dimension(width, height));
+
+        setContentAreaFilled(false);
+
+        setBackground(null);
+        addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                setBackground(null);
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                setBackground(null);
+            }
+        });
     }
 
 
@@ -96,8 +131,8 @@ public class RoundButton extends JButton {
         JFrame frame = new JFrame();
         frame.setSize(500,500);
 
-        RoundButton rb = new RoundButton(150,150,new Color(1f,0f,0f,.5f ),"Assets/music.png");
-        RoundButton rb2 = new RoundButton(150,150,new Color(1f,0f,0f,.5f ));
+        RoundButton rb = new RoundButton(150,150,new Color(1f,0f,0f,.5f ),Color.WHITE,"Assets/music.png");
+        RoundButton rb2 = new RoundButton(150,150,new Color(1f,0f,0f,.5f ), new Color(1f,0f,0f,.5f ));
         rb2.setText("dasd");
         frame.setLayout(new FlowLayout());
         frame.add(rb);

@@ -112,7 +112,7 @@ public class Header extends JPanel {
         boxes[0].add(homeButton);
 
         logout = new JButton();
-        logout.setFont(Main.usedFont.deriveFont(20f));
+        logout.setFont(Main.colorScheme.usedFont.deriveFont(20f));
         logout.setBackground(null);
         logout.setText("Log Out");
         logout.setBorder(new CompoundBorder(new LineBorder(Main.colorScheme.getBorderColor(), 2), new EmptyBorder(5, 5, 5, 5)));
@@ -132,7 +132,7 @@ public class Header extends JPanel {
 
         JButton changeStyle = new JButton();
         changeStyle.setForeground(Main.colorScheme.getDetailColor());
-        changeStyle.setFont(Main.usedFont.deriveFont(20f));
+        changeStyle.setFont(Main.colorScheme.usedFont.deriveFont(20f));
         changeStyle.setBackground(Main.colorScheme.primaryColor);
         if (Main.colorScheme == ColorScheme.colorEnum.lightMode) {
             changeStyle.setIcon(darkMode);
@@ -165,14 +165,14 @@ public class Header extends JPanel {
 
         JLabel date = new JLabel();
         date.setForeground(Main.colorScheme.getDetailColor());
-        date.setFont(Main.usedFont.deriveFont(20f));
+        date.setFont(Main.colorScheme.usedFont.deriveFont(20f));
         date.setBorder(new EmptyBorder(3, 50, 0, 0));
         date.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("cccc dd.MM.uuuu", Locale.ENGLISH)));
         boxes[3].add(date);
 
         time = new JLabel();
         time.setForeground(Main.colorScheme.getDetailColor());
-        time.setFont(Main.usedFont.deriveFont(20f));
+        time.setFont(Main.colorScheme.usedFont.deriveFont(20f));
         time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
         time.setBorder(new EmptyBorder(3, Math.round(40f * (getWidth() / 1080f)), 0, Math.round(40f * (getWidth() / 1080f))));
         time.setPreferredSize(new Dimension(Math.round(200f * (getWidth() / 1920f)), Math.round(64f * (getHeight() / 1080f))));
@@ -209,7 +209,6 @@ public class Header extends JPanel {
         repaint();
 
         bc = null;
-
     }
 
     public void changeColor() {

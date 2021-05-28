@@ -35,11 +35,7 @@ public class Main extends JFrame {
         setTitle("Domotica: home screen");
         Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
         setSize(r.width,r.height);
-        try {
-            usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
-        } catch (IOException |FontFormatException e) {
-            //Handle exception
-        }
+
 
 
 //        //layout for the main panel

@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.io.IOException;
 
 public class ColorScheme {
 
@@ -18,6 +19,11 @@ public class ColorScheme {
                     this.secondBackgroundColor = secondaryColor;
                     this.borderColor = detailColor.brighter();
                     this.headerColor = null;
+                    try {
+                        usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
+                    } catch (IOException |FontFormatException e) {
+                        //Handle exception
+                    }
                 }
                 case 2 -> {
                     this.primaryColor = new Color(67, 136, 204);
@@ -32,17 +38,37 @@ public class ColorScheme {
                     secondBackgroundColor = primaryColor;
                     borderColor = detailColor;
                     headerColor = primaryColor;
+                    try {
+                        usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
+                    } catch (IOException |FontFormatException e) {
+                        //Handle exception
+                    }
+                }
+                default -> {
+                    this.primaryColor = new Color(249, 247, 247);
+                    this.secondaryColor = new Color(219, 226, 239);
+                    this.detailColor = new Color(63, 114, 175);
+                    this.firstBackgroundColor = new Color(249, 247, 247);
+                    this.secondBackgroundColor = new Color(219, 226, 239);
+                    this.borderColor = new Color(63, 114, 175).brighter();
+                    this.headerColor = null;
+                    try {
+                        usedFont = Font.createFont(Font.TRUETYPE_FONT, Login.class.getResourceAsStream("Assets/Comfort.ttf"));
+                    } catch (IOException |FontFormatException e) {
+                        //Handle exception
+                    }
                 }
             }
         }
 
-        public Color primaryColor = new Color(249, 247, 247);;
-        public Color secondaryColor = new Color(219, 226, 239);
-        public Color detailColor = new Color(63, 114, 175);
-        public Color firstBackgroundColor = primaryColor;
-        public Color secondBackgroundColor = secondaryColor;
+        public final Color primaryColor;
+        public final Color secondaryColor;
+        public final Color detailColor;
+        public Color firstBackgroundColor;
+        public Color secondBackgroundColor;
         public Color borderColor;
-        public Color headerColor = null;
+        public Color headerColor;
+        public Font usedFont;
 
         public Color getDetailColor() {
             return detailColor;
@@ -70,6 +96,10 @@ public class ColorScheme {
 
         public Color getHeaderColor() {
             return headerColor;
+        }
+
+        public Font getUsedFont() {
+            return usedFont;
         }
     }
 }

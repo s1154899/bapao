@@ -86,18 +86,22 @@ public class MusicFooter extends JPanel {
         songs.setForeground(Main.colorScheme.getDetailColor());
         songs.setBorder(new LineBorder(Main.colorScheme.getBorderColor()));
         songs.setBackground(Main.colorScheme.getSecondaryColor());
+        songs.setFont(Main.colorScheme.usedFont.deriveFont(15f));
 
         playlists.setForeground(Main.colorScheme.getDetailColor());
         playlists.setBorder(new LineBorder(Main.colorScheme.getBorderColor()));
         playlists.setBackground(Main.colorScheme.getSecondaryColor());
+        playlists.setFont(Main.colorScheme.usedFont.deriveFont(15f));
 
         editPlaylist.setForeground(Main.colorScheme.getDetailColor());
         editPlaylist.setBorder(new LineBorder(Main.colorScheme.getBorderColor()));
         editPlaylist.setBackground(Main.colorScheme.getSecondaryColor());
+        editPlaylist.setFont(Main.colorScheme.usedFont.deriveFont(15f));
 
         playing.setForeground(Main.colorScheme.getDetailColor());
         playing.setBorder(new LineBorder(Main.colorScheme.getBorderColor()));
         playing.setBackground(Main.colorScheme.getSecondaryColor());
+        playing.setFont(Main.colorScheme.usedFont.deriveFont(15f));
     }
 
 
