@@ -10,9 +10,11 @@ import java.awt.event.ActionListener;
 public class MusicMain extends JPanel {
 
     Header header;
+    MusicMain musicMain;
 
     public MusicMain(){
 
+        musicMain = this;
         setLayout(new GridBagLayout());
         setBackground(Main.colorScheme.getPrimaryColor());
 
@@ -108,7 +110,7 @@ public class MusicMain extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JDialog dialog = new JDialog(Main.mainFrame,true);
 
-                Playing playing = new Playing();
+                Playing playing = new Playing(Main.mainFrame, true, musicMain);
                 dialog.add(playing);
 
                 Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
