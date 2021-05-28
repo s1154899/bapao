@@ -4,6 +4,7 @@ import org.jfree.ui.RefineryUtilities;
 import raspberry.RaspberryPi;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -147,6 +148,21 @@ public class SensorsFooter extends JPanel{
             }
         });
         boxes[2].add(sensors);
+
+        results.setForeground(Main.colorScheme.getDetailColor());
+        results.setBorder(new LineBorder(Main.colorScheme.getBorderColor()));
+        results.setBackground(Main.colorScheme.getSecondaryColor());
+        results.setFont(Main.colorScheme.usedFont.deriveFont(15f));
+
+        actions.setForeground(Main.colorScheme.getDetailColor());
+        actions.setBorder(new LineBorder(Main.colorScheme.getBorderColor()));
+        actions.setBackground(Main.colorScheme.getSecondaryColor());
+        actions.setFont(Main.colorScheme.usedFont.deriveFont(15f));
+
+        sensors.setForeground(Main.colorScheme.getDetailColor());
+        sensors.setBorder(new LineBorder(Main.colorScheme.getBorderColor()));
+        sensors.setBackground(Main.colorScheme.getSecondaryColor());
+        sensors.setFont(Main.colorScheme.usedFont.deriveFont(15f));
     }
     public void removeThis(){
 
