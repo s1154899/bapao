@@ -98,8 +98,17 @@ public class MusicMain extends JPanel {
         editPlaylist.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                EditPlaylist play = new EditPlaylist();
-                play.setVisible(true);
+
+                
+                JDialog dialog = null;
+                dialog = new JDialog(Main.mainFrame,true);
+
+                dialog.add(new EditPlaylist());
+
+                Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+                dialog.setSize(r.width,r.height);
+
+                dialog.setVisible(true);
             }
         });
 
