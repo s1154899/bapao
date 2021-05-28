@@ -14,7 +14,26 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-public class EditPlaylist extends JPanel {
+public class testScherm extends JFrame{
+
+    public static void main(String[] args){
+        new testScherm();
+
+    }
+
+    public testScherm(){
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Domotica: home screen");
+        Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+        setSize(r.width,r.height);
+        add(new edit_playlist());
+        setVisible(true);
+    }
+
+
+}
+
+class edit_playlist extends JPanel{
     private JPanel playlist;
     private JPanel addSongsList;
     private JPanel removeSongsList;
@@ -22,7 +41,7 @@ public class EditPlaylist extends JPanel {
     private JTextField playlistName;
     private String OldName;
 
-    public EditPlaylist(){
+    public edit_playlist(){
         OldName = "";
         //creates grid layout
         GridBagLayout grid = new GridBagLayout();

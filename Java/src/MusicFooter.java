@@ -55,8 +55,19 @@ public class MusicFooter extends JPanel {
         editPlaylist.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                EditPlaylist play = new EditPlaylist();
-                play.setVisible(true);
+                if (dialog != null){
+                    dialog.setVisible(false);
+                }
+                dialog = null;
+
+                dialog = new JDialog(Main.mainFrame,true);
+
+                dialog.add(new EditPlaylist());
+
+                Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+                dialog.setSize(r.width,r.height);
+
+                dialog.setVisible(true);
             }
         });
         boxes[2].add(editPlaylist);
