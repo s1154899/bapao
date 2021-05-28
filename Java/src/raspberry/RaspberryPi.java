@@ -17,7 +17,7 @@ public class RaspberryPi {
     public static ArrayList<RaspberryPi> connectedPis = new ArrayList<>();
     private static final int BUFFER_SIZE = 4096;
     private String host = "192.168.2.4";
-    private String user = "pi";
+    private String user = "demo";
     private String pass = "raspberry";
     private String filePath = "C:/Users/edmar/Downloads/5758.jpg";
     private String uploadPath = "/files/pic.jpg";

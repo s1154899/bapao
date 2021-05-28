@@ -136,11 +136,13 @@ public class Playlists extends JDialog implements ActionListener{
         JButton event = (JButton) e.getSource();
         System.out.println(event.getText());
         this.setTitle("now playing"+ event.getText());
+        JSONArray jsonArray = Readplaylist();
         JSONArray songsArray = new JSONArray();
-        for (int i =0; i < array.size();i++){
-            JSONObject obj2 = (JSONObject) array.get(i);
+        for (int i =0; i < jsonArray.size();i++){
+            JSONObject obj2 = (JSONObject) jsonArray.get(i);
             if (event.getText().equals(obj2.get("name"))){
                 songsArray = (JSONArray) obj2.get("songs");
+                System.out.println(obj2.toString());
             }
 
         }
@@ -148,6 +150,7 @@ public class Playlists extends JDialog implements ActionListener{
             for (int i = 0; i < songsArray.size();i++) {
                 try {
                     pi.databaseCon.playmusic(songsArray.get(i).toString());
+                    System.out.println(songsArray.get(i).toString());
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }

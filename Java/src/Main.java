@@ -1,5 +1,6 @@
 
 import raspberry.RaspberryPi;
+import raspberry.SubnetCheck;
 
 
 import javax.swing.*;
@@ -63,9 +64,9 @@ public class Main extends JFrame {
 //        //adds the menu to the main screen
 //        add(menu, BorderLayout.CENTER);
 
-        //SubnetCheck subnetCheck = new SubnetCheck(this,true);
+//        SubnetCheck subnetCheck = new SubnetCheck(this,true);
 
-//        new RaspberryPi("192.168.2.18");
+        new RaspberryPi("192.168.0.108");
 
 
         home = new Home();
@@ -99,26 +100,3 @@ public class Main extends JFrame {
 
 
 }
-
-class Reflect{
-
-    public static ActionListener actionListenerFromMethod(Object obj, String Method){
-
-
-        return new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    java.lang.reflect.Method method;
-                    method = obj.getClass().getMethod(Method);
-                    method.invoke(obj);
-                } catch (SecurityException | NoSuchMethodException | InvocationTargetException exception) {exception.printStackTrace(); } catch (IllegalAccessException illegalAccessException) {
-                    illegalAccessException.printStackTrace();
-                }
-            }
-        };
-    }
-
-}
-
-

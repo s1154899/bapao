@@ -121,7 +121,7 @@ public class DatabaseCon{
         ArrayList<String[]> results = new ArrayList<>();
 
 
-        String query = "SELECT * FROM `meting` A LEFT JOIN meting_types B ON A.metingTypesID = B.TypeID WHERE `timestamp` in (SELECT max(`timestamp`) FROM `meting` GROUP BY `metingTypesID` );";
+        String query = "SELECT * FROM `meting` A LEFT JOIN meting_types B ON A.metingTypesID = B.TypeID WHERE `metingID` in (SELECT max(`metingID`) FROM `meting` GROUP BY `metingTypesID` );";
         try (Statement stmt = con.createStatement()) {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
@@ -272,7 +272,7 @@ public class DatabaseCon{
     public void removeScript(String scriptName) throws SQLException {
         // the mysql insert statement
         //TODO add prepared
-        String query = "DELETE FROM `saved_scripts` WHERE `ScriptName` = '"+scriptName+"'";
+        String query = "DELETE FROM `saved_script` WHERE `ScriptName` = '"+scriptName+"'";
 
         // create the mysql insert preparedstatement
         PreparedStatement preparedStmt = con.prepareStatement(query);
