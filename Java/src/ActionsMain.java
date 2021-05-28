@@ -10,14 +10,14 @@ import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Objects;
 
 class ActionsMain extends JPanel implements ActionListener {
     private Font usedFont;
     private JPanel jpAddAction;
-    private JTabbedPane jtpAction;
+    JTabbedPane jtpAction;
 //    Main frame;
-
 
 
     private JTextField jtActionName;
@@ -29,16 +29,9 @@ class ActionsMain extends JPanel implements ActionListener {
     private JButton jbUploadFile;
     private JButton jbSaveAction;
 
-    private ArrayList<String> alActions = new ArrayList<>();
-    private int indexActions = 0;
-    private ArrayList<Integer> alTimeInterval = new ArrayList<>();
-    private int indexTime = 0;
-
-    private String[] tijdInterval = {"Seconden", "Minuten", "Uren", "Dagen"};
-
+    ArrayList<Action> alActions = new ArrayList<>();
 
     private File f;
-
 
     public ActionsMain() {
 
@@ -50,9 +43,6 @@ class ActionsMain extends JPanel implements ActionListener {
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
-
-
-
 
         //Change colors of selected and unselected pane
         UIManager.put("TabbedPane.selected", Main.colorScheme.getPrimaryColor());
@@ -103,7 +93,7 @@ class ActionsMain extends JPanel implements ActionListener {
         c.insets = new Insets(10, 0, 0, 0);
         jpAddAction.add(jlTijd, c);
 
-        jtTimeInterval = new JTextField();//TODO try catch
+        jtTimeInterval = new JTextField();
         jtTimeInterval.setFont(usedFont.deriveFont(15f));
         jtTimeInterval.setBackground(Main.colorScheme.getSecondaryColor());
         jtTimeInterval.setText("Intervaltijd");
@@ -116,23 +106,39 @@ class ActionsMain extends JPanel implements ActionListener {
 
         JLabel jlIntegerWarning = new JLabel();
         jlIntegerWarning.setForeground(Color.red);
+        c.fill = GridBagConstraints.NONE;
         c.gridx = 1;
         c.gridy = 2;
         c.insets = new Insets(0, 0, 0, 0);
         jpAddAction.add(jlIntegerWarning, c);
 
         jtTimeInterval.addKeyListener(new KeyAdapter() {
-            public void keyPressed(KeyEvent ke) {
+            public void keyPressed(KeyEvent k) {
                 String value = jtTimeInterval.getText();
                 int l = value.length();
 
-                if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE) {
-                    jtTimeInterval.setEditable(true);
-                    jlIntegerWarning.setText("");
-                } else {
-                    jtTimeInterval.setEditable(false);
-                    jlIntegerWarning.setText("* Vul alleen hele nummers in (integers)[1-9]");
+                if (k.getKeyChar() >= '0' && k.getKeyChar() <= '9') {
+                    if (l < 2) {
+                        jtTimeInterval.setEditable(true);
+                        jlIntegerWarning.setText("");
+                    } else {
+                        jtTimeInterval.setEditable(false);
+                        jlIntegerWarning.setText("* Maximaal 2 cijfers");
+                    }
                 }
+                else
+                {
+                    if(k.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || k.getExtendedKeyCode() == KeyEvent.VK_DELETE)
+                    {
+                        jtTimeInterval.setEditable(true);
+                    }
+                    else
+                    {
+                        jtTimeInterval.setEditable(false);
+                        jlIntegerWarning.setText("* Vul alleen hele nummers in (integers)[1-9]");
+                    }
+                }
+
             }
         });
 
@@ -160,32 +166,27 @@ class ActionsMain extends JPanel implements ActionListener {
                 JFileChooser file = new JFileChooser();
 
 
-
                 try {
 
-                int returnVal = file.showOpenDialog(null);
-                if(returnVal == JFileChooser.APPROVE_OPTION) {
-                    System.out.println("You chose to open this file: " +
-                            file.getSelectedFile().getName());
-                    f = file.getSelectedFile();
-                    jbUploadFile.setText(f.getName());
+                    int returnVal = file.showOpenDialog(null);
+                    if (returnVal == JFileChooser.APPROVE_OPTION) {
+                        System.out.println("You chose to open this file: " +
+                                file.getSelectedFile().getName());
+                        f = file.getSelectedFile();
+                        jbUploadFile.setText(f.getName());
 
-                    jbUploadFile.repaint();
-                    jbUploadFile.revalidate();
-                }
-
-
+                        jbUploadFile.repaint();
+                        jbUploadFile.revalidate();
+                    }
 
 
-                } catch (NullPointerException ioException ) {
+                } catch (NullPointerException ioException) {
                     ioException.printStackTrace();
                 }
 
             }
         });
         jpAddAction.add(jbUploadFile, c);
-
-
 
         jbSaveAction = new JButton("Maak actie aan");
         jbSaveAction.setFont(usedFont.deriveFont(30f));
@@ -197,19 +198,16 @@ class ActionsMain extends JPanel implements ActionListener {
                     RaspberryPi.copyFileUsingStream(f);
 
                     if (e.getSource() == jbSaveAction) {
-                        alActions.add(indexActions, jtActionName.getText());
-                        alTimeInterval.add(indexTime, Integer.parseInt(jtTimeInterval.getText()));
+                        Action action = new Action(jtActionName.getText(), Integer.parseInt(jtTimeInterval.getText()), (String) jcbTime.getSelectedItem());
 
                         System.out.println("jbsaveactionbutton pressed");
-                        ActionView newAction = new ActionView(alTimeInterval.get(indexTime));
-                        jtpAction.addTab(alActions.get(indexActions), newAction);
+                        ActionView newAction = new ActionView(action, alActions, jtpAction);
+                        jtpAction.addTab(action.getActionName(), newAction);
+                        alActions.add(action);
+                        jtpAction.setSelectedIndex(alActions.indexOf(action) + 1);
+                        System.out.println(alActions.indexOf(action));
 
-
-                        UploadedScripts.addNewScript(new UploadedScripts(jtActionName.getText(),"./scripts/"+f.getName(),tijdInterval[jcbTime.getSelectedIndex()],alTimeInterval.get(indexTime)));
-
-                        for(RaspberryPi pi : RaspberryPi.connectedPis){
-                            pi.databaseCon.uploadScript(jtActionName.getText(),f.getName(),tijdInterval[jcbTime.getSelectedIndex()],alTimeInterval.get(indexTime));
-                        }
+                        UploadedScripts.addNewScript(new UploadedScripts(action.getActionName(), "./scripts/" + f.getName(), action.getTimeUnit(), action.getTimeInterval()));
 
                     }
 
@@ -357,15 +355,13 @@ class ActionsMain extends JPanel implements ActionListener {
 
 
         for (UploadedScripts scripts : UploadedScripts.ReadScripts()){
-            alActions.add(indexActions, scripts.name);
-            alTimeInterval.add(indexTime, scripts.intervalTime);
+            Action action = new Action(scripts.name, scripts.intervalTime, scripts.interval);
+            alActions.add(action);
 
             System.out.println("jbsaveactionbutton pressed");
-            ActionView newAction = new ActionView(alTimeInterval.get(indexTime));
-            jtpAction.addTab(alActions.get(indexActions), newAction);
+            ActionView newAction = new ActionView(action, alActions, jtpAction);
+            jtpAction.addTab(action.getActionName(), newAction);
         }
-
-
 
     }
 
@@ -374,18 +370,16 @@ class ActionsMain extends JPanel implements ActionListener {
 
 
     }
+
 }
 
 
 class ActionView extends JPanel {
-
-
     Font usedFont;
 
 
-    public ActionView(int timeInterval) {
-
-
+    public ActionView(Action action, ArrayList alActions, JTabbedPane jtpAction) {
+        JButton jbRemoveAction;
 
         try {
             usedFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Login.class.getResourceAsStream("Assets/Comfort.ttf")));
@@ -393,18 +387,75 @@ class ActionView extends JPanel {
             e.printStackTrace();
         }
         setBackground(Main.colorScheme.getPrimaryColor());
+        setBorder(BorderFactory.createLineBorder(Color.black));
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        JLabel jlTimeInterval = new JLabel("Deze actie runt elke " + timeInterval + " seconden");
+        JLabel jlTimeInterval = new JLabel("Deze actie runt elke " + action.getTimeInterval() + " " + action.getTimeUnit().toLowerCase());
         jlTimeInterval.setFont(usedFont.deriveFont(20f));
         jlTimeInterval.setForeground(Main.colorScheme.getDetailColor());
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 1;
         c.gridy = 0;
-        add(jlTimeInterval);
+        add(jlTimeInterval, c);
 
+        jbRemoveAction = new JButton("Remove action");
+        jbRemoveAction.setFont(usedFont.deriveFont(30f));
+        jbRemoveAction.setFocusable(false);
+        jbRemoveAction.setForeground(Main.colorScheme.getDetailColor());
+        jbRemoveAction.setBackground(Main.colorScheme.getPrimaryColor());
+        jbRemoveAction.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Main.colorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
+        jbRemoveAction.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jtpAction.removeTabAt(alActions.indexOf(action) + 1); //+1 to avoid removal of the 'addtab' tab, which has index 0
+                alActions.remove(action);
 
+            }
+        });
+        c.gridy = 1;
+        c.insets = new Insets(50, 0, 0, 0);
+        add(jbRemoveAction, c);
+
+        jbRemoveAction.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Dimension tempSize = jbRemoveAction.getSize();
+                jbRemoveAction.setBackground(Main.colorScheme.getSecondaryColor());
+                jbRemoveAction.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Main.colorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
+                jbRemoveAction.setSize(tempSize);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                Dimension tempSize = jbRemoveAction.getSize();
+                jbRemoveAction.setBackground(Main.colorScheme.getPrimaryColor());
+                jbRemoveAction.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Main.colorScheme.getDetailColor()), new EmptyBorder(5, 2, 5, 2)));
+                jbRemoveAction.setSize(tempSize);
+            }
+        });
+    }
+}
+
+class Action {
+    private String actionName;
+    private int timeInterval;
+    private String timeUnit;
+
+    public Action(String actionName, int timeInterval, String timeUnit) {
+        this.actionName = actionName;
+        this.timeInterval = timeInterval;
+        this.timeUnit = timeUnit;
+    }
+
+    public String getActionName() {
+        return actionName;
+    }
+
+    public int getTimeInterval() {
+        return timeInterval;
+    }
+
+    public String getTimeUnit() {
+        return timeUnit;
     }
 
 
