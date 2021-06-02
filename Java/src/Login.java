@@ -71,7 +71,7 @@ public class Login extends JDialog {
         title.setMaximumSize(new Dimension(400,100));
 
         //title.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 30));
-        title.setFont(Main.usedFont.deriveFont(40f));
+        title.setFont(Main.colorScheme.usedFont.deriveFont(40f));
         title.setLocation(0,0);
         title.setBackground(Color.WHITE);
         loginPanel.add(title, BorderLayout.PAGE_START);
@@ -90,7 +90,7 @@ public class Login extends JDialog {
         centerPanel.setBackground(null);
 
         JLabel username = new JLabel("Username:");
-        username.setFont(Main.usedFont.deriveFont(20f));
+        username.setFont(Main.colorScheme.usedFont.deriveFont(20f));
         username.setForeground(Main.colorScheme.getDetailColor());
         username.setPreferredSize(new Dimension(460,30));
         username.setMaximumSize(new Dimension(460,30));
@@ -100,7 +100,7 @@ public class Login extends JDialog {
         usernameInput = new JTextField();
         usernameInput.setFocusable(false);
         usernameInput.setFocusable(true);
-        usernameInput.setFont(Main.usedFont.deriveFont(25f));
+        usernameInput.setFont(Main.colorScheme.usedFont.deriveFont(25f));
         usernameInput.setMaximumSize(new Dimension(460, 60));
         usernameInput.setPreferredSize(new Dimension(460, 60));
         //usernameInput.setBorder(BorderFactory.createCompoundBorder(new BevelBorder(BevelBorder.LOWERED), new EmptyBorder(2,15,2,15)));
@@ -129,7 +129,7 @@ public class Login extends JDialog {
         boxes[1].add(usernameInput);
 
         JLabel password = new JLabel("Password:");
-        password.setFont(Main.usedFont.deriveFont(20f));
+        password.setFont(Main.colorScheme.usedFont.deriveFont(20f));
         password.setForeground(Main.colorScheme.getDetailColor());
         password.setPreferredSize(new Dimension(460,30));
         password.setMaximumSize(new Dimension(460,30));
@@ -151,7 +151,7 @@ public class Login extends JDialog {
         passwordChar = passwordInput.getEchoChar();
         passwordInput.setEchoChar((char)0);
         passwordInput.setForeground(Color.GRAY);
-        passwordInput.setFont(Main.usedFont.deriveFont(25f));
+        passwordInput.setFont(Main.colorScheme.usedFont.deriveFont(25f));
         passwordInput.setMaximumSize(new Dimension(460, 60));
         passwordInput.setPreferredSize(new Dimension(460, 60));
         passwordInput.setBorder(new EmptyBorder(2,15,2,15));
@@ -244,8 +244,8 @@ public class Login extends JDialog {
         login = new JButton("Login");
         goToRegister = new JButton("Want to register?");
 
-        login.setFont(Main.usedFont.deriveFont(15f));
-        goToRegister.setFont(Main.usedFont.deriveFont(15f));
+        login.setFont(Main.colorScheme.usedFont.deriveFont(15f));
+        goToRegister.setFont(Main.colorScheme.usedFont.deriveFont(15f));
 
         login.setForeground(Main.colorScheme.getDetailColor());
         goToRegister.setForeground(Main.colorScheme.getDetailColor());

@@ -48,7 +48,7 @@ public class SensorsFooter extends JPanel{
                 dialog.add(scrollFrame);
 
                 for (RaspberryPi pi : RaspberryPi.connectedPis) {
-                    String[] types = new String[]{"Temperature", "humidity", "pressure"};
+                    String[] types = new String[]{"Temperature", "humidity", "pressure","licht"};
                     for (String type : types) {
                         try {
                             int[] results = pi.databaseCon.GetResults(30,type);
@@ -152,14 +152,17 @@ public class SensorsFooter extends JPanel{
         results.setForeground(Main.colorScheme.getDetailColor());
         results.setBorder(new LineBorder(Main.colorScheme.getBorderColor()));
         results.setBackground(Main.colorScheme.getSecondaryColor());
+        results.setFont(Main.colorScheme.usedFont.deriveFont(15f));
 
         actions.setForeground(Main.colorScheme.getDetailColor());
         actions.setBorder(new LineBorder(Main.colorScheme.getBorderColor()));
         actions.setBackground(Main.colorScheme.getSecondaryColor());
+        actions.setFont(Main.colorScheme.usedFont.deriveFont(15f));
 
         sensors.setForeground(Main.colorScheme.getDetailColor());
         sensors.setBorder(new LineBorder(Main.colorScheme.getBorderColor()));
         sensors.setBackground(Main.colorScheme.getSecondaryColor());
+        sensors.setFont(Main.colorScheme.usedFont.deriveFont(15f));
     }
     public void removeThis(){
 

@@ -144,7 +144,7 @@ public class Home extends JPanel {
         musicLabel = new JLabel("Music");
         musicLabel.setForeground(Main.colorScheme.getDetailColor());
         musicLabel.setBackground(Color.WHITE);
-        musicLabel.setFont(Main.usedFont.deriveFont(20f));
+        musicLabel.setFont(Main.colorScheme.usedFont.deriveFont(20f));
         musicLabel.setBorder(new EmptyBorder(10,0,0,Math.round(200f)));
 
         boxes[1].add(musicLabel);
@@ -165,7 +165,7 @@ public class Home extends JPanel {
         boxes1[0].add(sensorButton);
         sensorLabel = new JLabel("Sensors");
         sensorLabel.setForeground(Main.colorScheme.getDetailColor());
-        sensorLabel.setFont(Main.usedFont.deriveFont(20f));
+        sensorLabel.setFont(Main.colorScheme.usedFont.deriveFont(20f));
         sensorLabel.setBorder(new EmptyBorder(Math.round(20f),Math.round(170f),50,0));
         boxes1[1].add(sensorLabel);
         //tempPanel.add(new JLabel());
@@ -252,7 +252,7 @@ public class Home extends JPanel {
     public void changeColor(){
         setBackground(Main.colorScheme.getPrimaryColor());
         sensorLabel.setForeground(Main.colorScheme.getDetailColor());
-        sensorLabel.setFont(Main.usedFont.deriveFont(20f));
+        sensorLabel.setFont(Main.colorScheme.usedFont.deriveFont(20f));
         musicLabel.setForeground(Main.colorScheme.getDetailColor());
         musicLabel.setBackground(Color.WHITE);
     }

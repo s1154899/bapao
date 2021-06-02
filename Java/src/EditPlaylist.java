@@ -14,308 +14,277 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-public class EditPlaylist extends JDialog {
+public class EditPlaylist extends JPanel {
+    private JPanel playlist;
+    private JPanel addSongsList;
+    private JPanel removeSongsList;
+    private ArrayList<String> songsArray;
+    private JTextField playlistName;
+    private String OldName;
 
-    public static playlistJPanel playlist;
-    public static editCreateJPanel edit;
-    public static EditPlaylist editPlaylist;
+    public EditPlaylist(){
+        OldName = "";
+        //creates grid layout
+        GridBagLayout grid = new GridBagLayout();
 
-    public static ArrayList<String> songsArray;
+        setLayout(grid);
+        //creates Constraint vairable for setting constraints on objects
+        GridBagConstraints gbc = new GridBagConstraints();
 
+        songsArray = new ArrayList<>();
 
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.anchor = GridBagConstraints.LINE_END;
 
-   public EditPlaylist(){
-       super(Main.mainFrame,true);
-       setLayout(new GridLayout(1,2));
+        drawList();
 
-       Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-       setSize(r.width,r.height);
+        gbc.gridheight =1;
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        add(new JLabel("edit name: "),gbc);
 
-        editPlaylist = this;
-
-
-       songsArray = new ArrayList<>();
-
-
-
-       playlist = new playlistJPanel(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               JButton button = (JButton) e.getSource();
-
-               songsArray = new ArrayList<>();
-
-               JSONArray jsonArray = SavedPlaylist.Readplaylist();
-
-               for (int i = 0; i < jsonArray.size(); i++) {
-                   JSONObject obj2 = (JSONObject) jsonArray.get(i);
-                   if (button.getText().equals(obj2.get("name"))) {
-                       JSONArray array = (JSONArray) obj2.get("songs");
-                       for (int j = 0; j < array.size(); j++) {
-                           songsArray.add((String) array.get(j));
-
-                       }
-
-                   }
-
-               }
-               redrawEditCreate(button.getText());
-           }
-       }, new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               JButton button = (JButton) e.getSource();
-               redrawEditCreate("");
-               songsArray = new ArrayList<>();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.ipady = 25;
+        playlistName = new JTextField();
+//        playlistName.setPreferredSize(new Dimension(300,200));
+//        playlistName.setMaximumSize(new Dimension(300,200));
+        add(playlistName,gbc);
 
 
-           }
-       });
-       add(playlist);
-
-       edit = new editCreateJPanel("");
-       add(edit);
-
-       setVisible(true);
-
-   }
-
-   public void redrawEditCreate(String oldName){
-       this.remove(edit);
-       edit = new editCreateJPanel(oldName);
-       add(edit);
-       repaint();
-       revalidate();
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.anchor = GridBagConstraints.NORTH;
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.ipady = 0;
 
 
-   }
+        add(new JLabel("add new songs to playlist: "),gbc);
 
-   public void redrawPlaylist(String OldName){
-       this.remove(playlist);
-       this.remove(edit);
-       playlist = new playlistJPanel(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               JButton button = (JButton) e.getSource();
+        gbc.gridx = 2;
+        gbc.gridy = 1;
 
-               songsArray = new ArrayList<>();
-
-               JSONArray jsonArray = SavedPlaylist.Readplaylist();
-
-               for (int i = 0; i < jsonArray.size(); i++) {
-                   JSONObject obj2 = (JSONObject) jsonArray.get(i);
-                   if (button.getText().equals(obj2.get("name"))) {
-                       JSONArray array = (JSONArray) obj2.get("songs");
-                       for (int j = 0; j < array.size(); j++) {
-                           songsArray.add((String) array.get(j));
-
-                       }
-
-                   }
-
-               }
-               redrawEditCreate(button.getText());
-           }
-       }, new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               JButton button = (JButton) e.getSource();
-               redrawEditCreate("");
-               songsArray = new ArrayList<>();
+        add(new JLabel("remove songs from playlist: "),gbc);
 
 
-           }
-       });
-       add(playlist);
+        JButton save = new JButton("save");
 
-       edit = new editCreateJPanel(OldName);
-       add(edit);
-       repaint();
-       revalidate();
-   }
+        save.addActionListener(SavePlaylist());
+
+        save.setBackground(Color.GREEN);
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        gbc.ipady = 50;
+        gbc.ipadx = 100;
+        gbc.insets = new Insets(0,0,0,30);
+        add(save,gbc);
+
+        JButton remove = new JButton("remove");
+
+        remove.addActionListener(removePlaylist());
+
+        remove.setBackground(Color.RED);
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.gridx = 2;
+        gbc.gridy = 3;
+        gbc.insets = new Insets(0,30,0,0);
+
+
+        add(remove,gbc);
 
 
 
-}
-
-class playlistJPanel extends JPanel {
-    public playlistJPanel(ActionListener actionListener, ActionListener newPlaylist) {
-        Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-        setSize(r.width / 6,r.height);
-        setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
-
-        JButton createPlaylist = new JButton("create new playlist");
-        createPlaylist.setSize(this.getWidth(),100);
-        createPlaylist.addActionListener(newPlaylist);
-        add(createPlaylist);
 
 
-        JSONArray jsonArray = SavedPlaylist.Readplaylist();
 
-        for (int i =0; i < jsonArray.size();i++){
-            JSONObject obj2 = (JSONObject) jsonArray.get(i);
-            JButton but = new JButton((String) obj2.get("name"));
-            but.setSize(this.getWidth(),100);
-            but.addActionListener(actionListener);
-            add(but);
 
-        }
 
 
 
     }
 
+    private void drawList(){
 
-}
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridheight = 5;
+
+        playlist = ListWithButtons(SavedPlaylist.returnPlaylistArray("name"), loadPlaylist());
+        add( playlist, gbc);
+
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        gbc.gridheight =1;
+        gbc.ipady = 600;
+
+        addSongsList = ListWithButtons(RaspberryPi.musicDirJava(), addToSongArray(),50);
+        add(addSongsList,gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 2;
+
+        removeSongsList = ListWithButtons(songsArray.toArray(new String[0]), RemoveSongfromSongArray(),50);
+        add(removeSongsList,gbc);
+
+    }
 
 
-class editCreateJPanel extends JPanel{
+    private JPanel ListWithButtons(String[] buttonNames, ActionListener ButtonAction){
+        return ListWithButtons(buttonNames,ButtonAction,75);
+    }
+    private JPanel ListWithButtons(String[] buttonNames, ActionListener ButtonAction, int ButtonHight){
+        JPanel container = new JPanel();
 
-    String OldName;
-    JPanel middel;
-    JPanel SongsSelection;
-    JPanel InPlaylist;
+        GridBagLayout grid = new GridBagLayout();
 
-    public editCreateJPanel(String OldName){
-        this.OldName = OldName;
+        container.setLayout(grid);
+        //creates Constraint vairable for setting constraints on objects
+        GridBagConstraints gbc = new GridBagConstraints();
 
-        Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-        setSize(r.width / 6,r.height);
-        setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.anchor = GridBagConstraints.NORTH;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.gridx = 0;
 
-        JPanel top = new JPanel();
-        top.setLayout(new FlowLayout(FlowLayout.RIGHT));
-
-        JLabel label = new JLabel("edit name:");
-        label.setPreferredSize(new Dimension(200,100));
-        label.setSize(new Dimension(200,100));
-        top.add(label);
-
-        JTextField nameField = new JTextField(OldName);
-//        nameField.setPreferredSize(new Dimension(300,100));
-        nameField.setSize(300,50);
-        nameField.setMaximumSize(new Dimension(300, 50));
-        nameField.setPreferredSize(new Dimension(300, 50));
-        top.add(nameField);
+        JPanel playlistPanel = new JPanel();
+        JScrollPane scrollPane = new JScrollPane(playlistPanel);
+//        scrollPane.setPreferredSize(new Dimension(400,600));
 
 
+        playlistPanel.setAutoscrolls(true);
+        playlistPanel.setBackground(Color.yellow);
 
-        add(top);
+        playlistPanel.setPreferredSize(new Dimension(100,buttonNames.length * 75));
 
-        middel = new JPanel();
+        playlistPanel.setLayout(new BoxLayout(playlistPanel,BoxLayout.Y_AXIS));
+        playlistPanel.setAutoscrolls(true);
 
-        SongsSelection = SongList(RaspberryPi.musicDirJava(), "+", "add to playlist", new ActionListener() {
+
+        for (String name : buttonNames) {
+            JButton but = new JButton(name);
+            but.setMaximumSize(new Dimension(Integer.MAX_VALUE, 75));
+            but.setSize(new Dimension(Integer.MAX_VALUE, 75));
+
+            but.addActionListener(ButtonAction);
+            playlistPanel.add(but);
+        }
+
+        container.add(scrollPane,gbc);
+        return container;
+    }
+
+
+    private void removeAndRedraw(){
+
+        remove(playlist);
+        remove(removeSongsList);
+        remove(addSongsList);
+
+        drawList();
+        repaint();
+        revalidate();
+
+
+    }
+
+    private ActionListener addToSongArray(){
+        return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JButton button = (JButton) e.getSource();
-                EditPlaylist.songsArray.add(button.getText());
-                redrawMiddel();
-            }
-        });
-        middel.add(SongsSelection);
+                JButton button =(JButton) e.getSource();
+                songsArray.add(button.getText());
+                removeAndRedraw();
 
-        InPlaylist = SongList(EditPlaylist.songsArray.toArray(new String[0]), "-", "in playlist", new ActionListener() {
+            }
+        };
+    }
+
+    private ActionListener RemoveSongfromSongArray(){
+        return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JButton button = (JButton) e.getSource();
-                EditPlaylist.songsArray.remove(button.getText());
+                JButton button =(JButton) e.getSource();
+                songsArray.remove(button.getText());
+                removeAndRedraw();
 
-                redrawMiddel();
             }
-        });
-        middel.add(InPlaylist);
+        };
+    }
 
-        add(middel);
-
-        JPanel bottom = new JPanel();
-        bottom.setLayout(new FlowLayout());
-
-        JButton save = new JButton("save");
-        save.setSize(200,100);
-        save.setMaximumSize(new Dimension(200,100));
-        save.addActionListener(new ActionListener() {
+    private ActionListener SavePlaylist(){
+        return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (OldName.equals("")){
-                    SavedPlaylist.addNewScript(nameField.getText(), EditPlaylist.songsArray.toArray(new String[0]));
-                    EditPlaylist.editPlaylist.redrawPlaylist(nameField.getText());
+                    SavedPlaylist.addNewScript(playlistName.getText(), songsArray.toArray(new String[0]));
+                    removeAndRedraw();
 
                 }else{
-                    SavedPlaylist.changePlaylist(OldName,nameField.getText(),EditPlaylist.songsArray.toArray(new String[0]));
-                    EditPlaylist.editPlaylist.redrawPlaylist(nameField.getText());
+                    SavedPlaylist.changePlaylist(OldName,playlistName.getText(),songsArray.toArray(new String[0]));
+                    removeAndRedraw();
                 }
             }
-        });
-        bottom.add(save);
-        JButton remove = new JButton("remove");
-        remove.setSize(200,100);
-        remove.setMaximumSize(new Dimension(200,100));
-        remove.addActionListener(new ActionListener() {
+        };
+
+    }
+
+
+    private ActionListener removePlaylist(){
+        return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SavedPlaylist.removePlaylist(OldName);
-                EditPlaylist.editPlaylist.redrawPlaylist("");
+                removeAndRedraw();
             }
-        });
-        bottom.add(remove);
-        add(bottom);
-
+        };
     }
 
-    public JPanel SongList(String[] songs, String atEnd , String title, ActionListener buttonsAction){
-        JPanel list = new JPanel();
-        list.setLayout(new BoxLayout(list,BoxLayout.Y_AXIS));
-        list.add(new JLabel(title));
-
-
-        JPanel songsButtons = new JPanel();
-        songsButtons.setPreferredSize(new Dimension( getWidth() / 3 - 20, songs.length * 100));
-        JScrollPane scrollFrame = new JScrollPane(songsButtons);
-        songsButtons.setAutoscrolls(true);
-        scrollFrame.setPreferredSize(new Dimension( getWidth() / 3,300));
-        list.add(scrollFrame, BorderLayout.LINE_START);
-
-
-        songsButtons.setLayout(new BoxLayout(songsButtons,BoxLayout.Y_AXIS));
-
-        for (String s: songs) {
-            JButton button = new JButton(s);
-            button.addActionListener(buttonsAction);
-            songsButtons.add(button);
-        }
-
-
-
-    return list;
-    }
-
-    public void redrawMiddel(){
-        middel.remove(SongsSelection);
-        middel.remove(InPlaylist);
-        SongsSelection = SongList(RaspberryPi.musicDirJava(), "+", "add to playlist", new ActionListener() {
+    private ActionListener loadPlaylist(){
+        return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JButton button = (JButton) e.getSource();
-                EditPlaylist.songsArray.add(button.getText());
-                redrawMiddel();
-            }
-        });
-        middel.add(SongsSelection);
+                if(!button.getText().equals("new playlist")) {
+                    OldName = button.getText();
+                    playlistName.setText(button.getText());
+                    songsArray = new ArrayList<>();
 
-        InPlaylist = SongList(EditPlaylist.songsArray.toArray(new String[0]), "-", "in playlist", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JButton button = (JButton) e.getSource();
-                EditPlaylist.songsArray.remove(button.getText());
-                redrawMiddel();
+                    JSONArray jsonArray = SavedPlaylist.Readplaylist();
+
+                    for (int i = 0; i < jsonArray.size(); i++) {
+                        JSONObject obj2 = (JSONObject) jsonArray.get(i);
+                        if (button.getText().equals(obj2.get("name"))) {
+                            JSONArray array = (JSONArray) obj2.get("songs");
+                            for (int j = 0; j < array.size(); j++) {
+                                songsArray.add((String) array.get(j));
+
+                            }
+
+                        }
+
+                    }
+                }else{
+                    OldName = "";
+                    playlistName.setText("");
+                    songsArray = new ArrayList<>();
+                }
+                removeAndRedraw();
             }
-        });
-        middel.add(InPlaylist);
-        repaint();
-        revalidate();
+        };
     }
-
-
 
 }
 
@@ -411,6 +380,18 @@ class SavedPlaylist {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String[] returnPlaylistArray(String name){
+        JSONArray jsonArray = SavedPlaylist.Readplaylist();
+
+        String[] array = new String[jsonArray.size() + 1];
+        array[0] = "new playlist";
+        for (int i = 0; i < jsonArray.size();i++){
+            JSONObject obj2 = (JSONObject) jsonArray.get(i);
+            array[i+1] = (String) obj2.get(name);
+        }
+        return array;
     }
 
 

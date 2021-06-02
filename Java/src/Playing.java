@@ -17,15 +17,6 @@ public class Playing extends JPanel {
         setLayout(new GridBagLayout());
         //etBackground(colorScheme.getPrimaryColor());
 
-        GridBagConstraints gc = new GridBagConstraints();
-        gc.fill = GridBagConstraints.BOTH;
-        gc.gridx = 0;
-        gc.weightx = 1;
-        gc.weighty = 0.001f;
-        gc.gridy = 0;
-        gc.gridwidth = 3;
-        gc.gridheight = 1;
-
         GridBagConstraints gcSecond = new GridBagConstraints();
         gcSecond.anchor = GridBagConstraints.CENTER;
         gcSecond.gridx = 1;
@@ -35,15 +26,6 @@ public class Playing extends JPanel {
         gcSecond.gridwidth = 1;
         gcSecond.gridheight = 1;
 
-        GridBagConstraints gcThird = new GridBagConstraints();
-        gcThird.fill = GridBagConstraints.BOTH;
-        //gcSecond.anchor = GridBagConstraints.FIRST_LINE_START;
-        gcThird.gridx = 0;
-        gcThird.weightx = 1;
-        gcThird.weighty = 0.001f;
-        gcThird.gridy = 2;
-        gcThird.gridwidth = 3;
-        gcThird.gridheight = 1;
 
         Header headPanel = new Header();
         headPanel.setMinimumSize(new Dimension(0, 128));
@@ -54,15 +36,9 @@ public class Playing extends JPanel {
                 removeThis();
             }
         });
-        add(headPanel, gc);
-
 
         PlayingCenter playingCenter = new PlayingCenter(frame);
         add(playingCenter, gcSecond);
-
-        MusicFooter musicFooter = new MusicFooter();
-        musicFooter.setMinimumSize(new Dimension(0,48));
-        add(musicFooter, gcThird);
     }
 
     public void removeThis(){
